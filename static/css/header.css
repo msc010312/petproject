@@ -1,0 +1,31 @@
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100px;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.menu { 
+    position: relative;
+    flex: 3;
+}
+
+.menu>ul {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sign {
+    flex: 1;
+}
