@@ -1,0 +1,50 @@
+@charset 'utf-8';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline-style: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+html {
+    /*font-size: 10px;*/
+    user-select: none;
+}
+
+body {
+    /* font-family: 'IBM Plex Serif', serif; */
+    overflow-x: hidden;
+}
+
+/* wrapper */
+.wrapper {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* 1260px pagew */
+.pagew {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+.title { 
+    font-size: 64px;
+}
