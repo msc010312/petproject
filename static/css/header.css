@@ -18,7 +18,7 @@
     font-weight: bold;
 }
 
-.menu { 
+.menu {
     position: relative;
     flex: 3;
     height: 100%;
@@ -33,26 +33,73 @@
     height: 100%;
 }
 
-.menu-service:hover .sub-menu{
-    visibility: visible;
-}
-
-.sub-menu {
-    position: absolute;
-    visibility: hidden;
-    display: block;
-    top: 100%;
-    left: -25px;
-    z-index: 999;
-    background: #ccc;
-    margin-top: 1px;
-}
-
-.sub-menu>li {
+.menu-service {
+    position: relative;
+    height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 10px;
-    height: 50px;
+}
+
+/* 서브메뉴 */
+.sub-menu {
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.menu-service:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.sub-item {
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: translateY(-10px);
+    border-bottom: 1px solid #333;
+    padding: 20px 0 ;
+}
+
+.sub-item a {
+    transition: all 0.25s ease;
+}
+
+.sub-item:hover {
+    background: #333;
+}
+
+.sub-item:hover a {
+    color: #fff;
+}
+
+.menu-service:hover .sub-item:nth-child(1) {
+    transition-delay: 0.1s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-service:hover .sub-item:nth-child(2) {
+    transition-delay: 0.2s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-service:hover .sub-item:nth-child(3) {
+    transition-delay: 0.3s;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .sign {
