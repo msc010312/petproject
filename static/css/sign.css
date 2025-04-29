@@ -1,0 +1,207 @@
+@charset 'utf-8';
+
+/*wrap*/
+.login_wrap,
+.signup_wrap,
+.find_wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 200px);
+}
+
+.login_form,
+.signup_form {
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.login_form {
+    height: 450px;
+}
+
+.login_form>span,
+.signup_form>span,
+.find_form>span {
+    display: block;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+#loginFrm,
+#signupFrm,
+#findFrm {
+    position: relative;
+    display: block;
+    padding: 10px 40px;
+}
+
+.txt_field {
+    position: relative;
+    display: block;
+    border-bottom: 2px solid #333;
+    margin: 25px 0;
+}
+
+.txt_field label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #A9A9A9;
+    display: block;
+    transform: translateY(-50%);
+    font-size: 17px;
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+.txt_field input {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    border: none;
+    background: none;
+    font-size: 15px;
+}
+
+.txt_field input[name=userEmail],
+#textEmail {
+    display: inline-block;
+    width: 450px;
+}
+
+#anno {
+    display: inline-block;
+    width: 10%;
+}
+
+/*유효하다면 올라감*/
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+    top: -5px;
+    color: #333;
+}
+
+#domainSelect {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    border: none;
+    font-size: 15px;
+}
+
+.fg_pw {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    margin: 20px 0 20px 0;
+}
+
+.fg_pw > a {
+    color: #A9A9A9;
+    font-size: 15px;
+}
+
+.fg_pw > a:hover {
+    color: #333;
+    text-decoration: underline;
+    
+}
+
+#loginFrm>input[name=signIn],
+#signupFrm>input[name=signUp],
+#findFrm > input[name=find] {
+    width: 100%;
+    border-radius: 25px;
+}
+
+.signup_link {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.signup_link a {
+    position: relative;
+    display: inline-block;
+    color: #6495ED;
+    margin: 0 5px;
+}
+
+.signup_link a:hover {
+    text-decoration: underline;
+}
+
+.cert {
+    position: relative;
+    display: block;
+    font-family: 'Noto Serif KR', serif;
+    margin-top: 35px;
+}
+
+#emailsend  {
+    width: 100%;
+    border-radius: 25px;
+    margin: 0;
+}
+
+#emailchkbtn {
+    position: absolute;
+    right: 2%;
+    bottom: 10%;
+}
+
+.confirm_btn {
+	width:100%;
+	border-radius: 25px !important;
+	cursor:default !important;
+}
+
+.confirm_btn:hover {
+	box-shadow:none !important;
+	background:#fff !important;
+	color:#333 !important;
+}
+
+
+/*find password*/
+.find_form {
+    position: relative;
+    display: block;
+    height: 350px;
+    width: 800px;
+    background: #fff;
+    padding: 0 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+/* signBtn */
+#loginBtn,
+#joinButton {
+    width: 100%;
+}
+
+#loginBtn:hover,
+#joinButton:hover {
+    background: #333;
+    color: #fff;
+    transition: all 0.3s;
+}
