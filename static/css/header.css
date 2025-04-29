@@ -65,20 +65,14 @@
     flex: 1;
 }
 
-.btn {
-    border-radius: 5px;
-    width: 100px;
-    height: 50px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.4rem;
-}
-
 .sign-in {
     background: #fff;
 }
 
 .sign-up {
     background: #333;
+}
+
+.sign-up>a {
     color: #fff;
 }

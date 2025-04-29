@@ -3,9 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link -->
+    <script src="../js/link.js" defer></script>
     <title>Document</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/sign.css">
 </head>
 <body>
-    
+    <div class="wrapper">
+        <!-- 헤더영역 (템플릿화 예정) -->
+        <div class="header">
+            <div class="logo">
+                <span><a href="#">LOGO</a></span>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="menu-service">
+                        <a href="#">Service</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Day Care</a></li>
+                            <li><a href="#">Hotelling</a></li>
+                            <li><a href="#">work with pet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">place</a></li>
+                    <li><a href="#">board</a></li>
+                </ul>
+            </div>
+            <div class="sign">
+                <button class="sign-in btn">
+                    <a href="/html/sign/login.html">로그인</a>
+                </button>
+                <button class="sign-up btn">
+                    <a href="/html/sign/signup.html">회원가입</a>
+                </button>
+            </div>
+        </div>
+        <!-- 메인영역 -->
+        <div class="main">
+            <!-- pagew 1260px -->
+            <div class="pagew">
+                <!-- 작업 영역 -->
+                <div class="content">
+                    <div class="signup_wrap">
+                        <div class="signup_form">
+                            <span>sign up</span>
+                            <form id="form">
+                                <div class="txt_field">
+                                    <input type="text" name="userEmail" id="email" required>
+                                    <label>e-mail</label>
+                                    <select name="domain" id="domainSelect" onchange="changeDomain()">
+                                        <option value="direct">직접입력</option>
+                                        <option value="gmail.com">gmail.com</option>
+                                        <option value="naver.com">naver.com</option>
+                                    </select>
+                                </div>
+                                <div class="txt_field">
+                                    <input type="password" name="userPw" required>
+                                    <label>Password</label>
+                                </div>
+                                <div class="txt_field">
+                                    <input type="password" name="userPwRe" required>
+                                    <label>confirm Password</label>
+                                </div>
+                                <div class="txt_field">
+                                    <input type="text" name="name" required>
+                                    <label>name</label>
+                                </div>
+                                <input type="button" name="signUp" value="signup" id="joinButton" class="btn">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer영역(템플릿화 예정) -->
+        <div class="footer">
+            <span>footer</span>
+        </div>
+    </div>
 </body>
 </html>

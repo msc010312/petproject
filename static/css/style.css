@@ -56,6 +56,17 @@ body {
 /* content */
 .content {
     position: relative;
+    min-height: calc(100vh - 200px);
+}
+
+/* btn */
+.btn {
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
 }
 
 .title { 
