@@ -37,12 +37,27 @@ body {
     position: relative;
     width: 100vw;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* 1260px pagew */
 .pagew {
     width: 1260px;
     margin: 0 auto;
+}
+
+.main {
+    position: relative;
+    display: block;
+    height: calc(100vh - 200px);
+    width: 100%;
+}
+
+/* content */
+.content {
+    position: relative;
 }
 
 .title { 
