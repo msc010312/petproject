@@ -5,6 +5,7 @@
     width: 100vw;
     height: 100px;
     border-bottom: 1px solid #333;
+    font-size: 1.6rem;
 }
 
 .logo {
@@ -13,19 +14,71 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    font-size: 36px;
+    font-weight: bold;
 }
 
 .menu { 
     position: relative;
     flex: 3;
+    height: 100%;
 }
 
 .menu>ul {
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
+    gap: 150px;
+    align-items: center;
+    height: 100%;
+}
+
+.menu-service:hover .sub-menu{
+    visibility: visible;
+}
+
+.sub-menu {
+    position: absolute;
+    visibility: hidden;
+    display: block;
+    top: 100%;
+    left: -25px;
+    z-index: 999;
+    background: #ccc;
+    margin-top: 1px;
+}
+
+.sub-menu>li {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 50px;
 }
 
 .sign {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    height: 100%;
     flex: 1;
+}
+
+.btn {
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.sign-in {
+    background: #fff;
+}
+
+.sign-up {
+    background: #333;
+    color: #fff;
 }
