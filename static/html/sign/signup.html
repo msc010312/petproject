@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link -->
-    <script src="../js/link.js" defer></script>
+    <script src="../../js/link.js" defer></script>
+    <script src="../../js/tab.js"></script>
     <title>Document</title>
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
@@ -12,6 +14,7 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/sign.css">
 </head>
+
 <body>
     <div class="wrapper">
         <!-- 헤더영역 (템플릿화 예정) -->
@@ -51,29 +54,76 @@
                     <div class="signup_wrap">
                         <div class="signup_form">
                             <span>sign up</span>
-                            <form id="form">
-                                <div class="txt_field">
-                                    <input type="text" name="userEmail" id="email" required>
-                                    <label>e-mail</label>
-                                    <select name="domain" id="domainSelect" onchange="changeDomain()">
-                                        <option value="direct">직접입력</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                        <option value="naver.com">naver.com</option>
-                                    </select>
+                            <form id="form" id="loginFrm">
+                                <div class="convert-tab">
+                                    <input id="owner" type="radio" name="tabName" checked>
+                                    <label class="tab-name" for="owner">Owner</label>
+                                    <input id="sitter" type="radio" name="tabName">
+                                    <label class="tab-name" for="sitter">Sitter</label>
                                 </div>
-                                <div class="txt_field">
-                                    <input type="password" name="userPw" required>
-                                    <label>Password</label>
+                                <div class="tab-content" id="ownerSign">
+                                    <div class="txt_field">
+                                        <input type="text" name="userEmail" id="email" required>
+                                        <label>e-mail</label>
+                                        <select name="domain" id="domainSelect" onchange="changeDomain()">
+                                            <option value="direct">직접입력</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                            <option value="naver.com">naver.com</option>
+                                        </select>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="password" name="userPw" required>
+                                        <label>Password</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="password" name="userPwRe" required>
+                                        <label>confirm Password</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="text" name="ownerName" required>
+                                        <label>Owner name</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="text" name="addr" required>
+                                        <label>address</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="text" name="phoneNum" required>
+                                        <label>Phone Number</label>
+                                    </div>
                                 </div>
-                                <div class="txt_field">
-                                    <input type="password" name="userPwRe" required>
-                                    <label>confirm Password</label>
+                                <div class="tab-content" id="sitterSign">
+                                    <div class="txt_field">
+                                        <input type="text" name="userEmail" id="email" required>
+                                        <label>e-mail</label>
+                                        <select name="domain" id="domainSelect" onchange="changeDomain()">
+                                            <option value="direct">직접입력</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                            <option value="naver.com">naver.com</option>
+                                        </select>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="password" name="userPw" required>
+                                        <label>Password</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="password" name="userPwRe" required>
+                                        <label>confirm Password</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="text" name="sitterName" required>
+                                        <label>Sitter name</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="text" name="addr" required>
+                                        <label>address</label>
+                                    </div>
+                                    <div class="txt_field">
+                                        <input type="text" name="phoneNum" required>
+                                        <label>Phone Number</label>
+                                    </div>
                                 </div>
-                                <div class="txt_field">
-                                    <input type="text" name="name" required>
-                                    <label>name</label>
-                                </div>
-                                <input type="button" name="signUp" value="signup" id="joinButton" class="btn">
+                                <input type="button" name="signUp" value="Sign Up" id="joinButton" class="btn">
                             </form>
                         </div>
                     </div>
@@ -86,4 +136,5 @@
         </div>
     </div>
 </body>
+
 </html>
