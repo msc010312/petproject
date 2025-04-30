@@ -23,7 +23,7 @@ img {
 }
 
 html {
-    /*font-size: 10px;*/
+    font-size: 10px;
     user-select: none;
 }
 
@@ -37,12 +37,36 @@ body {
     position: relative;
     width: 100vw;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* 1260px pagew */
 .pagew {
     width: 1260px;
     margin: 0 auto;
+}
+
+.main {
+    position: relative;
+    display: block;
+    flex: 1;
+}
+
+/* content */
+.content {
+    position: relative;
+    min-height: calc(100vh - 200px);
+}
+
+/* btn */
+.btn {
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
 }
 
 .title { 

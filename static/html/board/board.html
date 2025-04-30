@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link -->
-    <script src="/js/link.js" defer></script>
+    <script src="../../js/link.js" defer></script>
     <title>Document</title>
     <!-- css -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/board.css">
 </head>
 
 <body>
@@ -43,13 +44,21 @@
                 </button>
             </div>
         </div>
-        <!-- 메인영역 -->
         <div class="main">
-            <!-- pagew 1260px -->
             <div class="pagew">
-                <!-- 작업 영역 -->
                 <div class="content">
-                    <span class="title">title</span>
+                    <table class="board">
+                        <tr class="board-title">
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>날짜</th>
+                        </tr>
+                        <tr class="board-cont">
+                            <td>1</td>
+                            <td>Lorem Ipsum is simply dummy text of the printing and typesetting indust ry.</td>
+                            <td>2025-05-01</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -58,7 +67,6 @@
             <span>footer</span>
         </div>
     </div>
-
 </body>
 
 </html>
