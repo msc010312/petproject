@@ -1,0 +1,14 @@
+.board {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(100vh - 200px);
+}
+
+tbody {
+    position: relative;
+}
+
+.board-title {
+    border-bottom: 1px solid #333;
+}
