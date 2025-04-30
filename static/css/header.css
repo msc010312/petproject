@@ -43,7 +43,7 @@
 /* 서브메뉴 */
 .sub-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 1px);
     left: -100%;
     width: 150px;
     display: flex;
@@ -70,6 +70,7 @@
     transform: translateY(-10px);
     border-bottom: 1px solid #333;
     padding: 20px 0 ;
+    background: #fff;
 }
 
 .sub-item a {
