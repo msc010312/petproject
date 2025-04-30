@@ -1,0 +1,17 @@
+.content {
+    border: 1px solid;
+}
+
+
+.slide {
+    border: 1px solid;
+    min-height: 100vh - 200px;
+}
+
+.description {
+    border: 1px solid;
+}
+
+.rank {
+    border: 1px solid;
+}
