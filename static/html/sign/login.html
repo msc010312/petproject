@@ -5,45 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link -->
-    <script src="../js/link.js" defer></script>
+    <script src="/static/js/link.js" defer></script>
     <title>Document</title>
     <!-- css -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/sign.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/sign.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <!-- 헤더영역 (템플릿화 예정) -->
-        <div class="header">
-            <div class="logo">
-                <span><a href="#">LOGO</a></span>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li class="menu-service">
-                        <a href="#">Service</a>
-                        <ul class="sub-menu">
-                            <li class="sub-item"><a href="#">Day Care</a></li>
-                            <li class="sub-item"><a href="#">Hotelling</a></li>
-                            <li class="sub-item"><a href="#">work with pet</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">place</a></li>
-                    <li><a href="#">board</a></li>
-                </ul>
-            </div>
-            <div class="sign">
-                <button class="sign-in btn">
-                    <a href="/html/sign/login.html">로그인</a>
-                </button>
-                <button class="sign-up btn">
-                    <a href="/html/sign/signup.html">회원가입</a>
-                </button>
-            </div>
-        </div>
+        <!-- 헤더영역 -->
+        <div id="headerContainer"></div>
         <!-- 메인영역 -->
         <div class="main">
             <!-- pagew 1260px -->
@@ -56,11 +28,11 @@
                             <span>login</span>
                             <form id="form">
                                 <div class="txt_field">
-                                    <input type="text" name="userEmail" required> 
+                                    <input type="text" name="userEmail" required>
                                     <label>ID (e-mail)</label>
                                 </div>
                                 <div class="txt_field">
-                                    <input type="password" name="userPw" required> 
+                                    <input type="password" name="userPw" required>
                                     <label>Password</label>
                                 </div>
                                 <input type="button" name="signIn" value="login" id="loginBtn" class="btn">
@@ -77,10 +49,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- footer영역(템플릿화 예정) -->
-        <div class="footer">
-            <span>footer</span>
+        <!-- footer -->
+        <div id="footerContainer">
         </div>
     </div>
 </body>
