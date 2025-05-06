@@ -82,6 +82,7 @@ input[name="tabName"] {
 .tab-content {
     position: relative;
     margin-top: 30px;
+    display: none;
 }
 
 .txt_field {
