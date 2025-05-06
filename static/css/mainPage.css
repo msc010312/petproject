@@ -1,17 +1,135 @@
 .content {
-    border: 1px solid;
+	font-size: 50px;
 }
 
+.material-symbols-outlined {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 24
+}
 
 .slide {
-    border: 1px solid;
-    min-height: 100vh - 200px;
+	min-height: calc(100vh - 100px);
 }
 
-.description {
-    border: 1px solid;
+.slide.swiper {
+	min-height: calc(100vh - 100px);
+	/* 헤더 제외한 높이 */
+	height: calc(100vh - 100px);
+}
+
+/* 슬라이드 래퍼와 각 슬라이드가 100% 높이 차지하도록 */
+.swiper-wrapper {
+	height: 100%;
+}
+
+.swiper-slide {
+	height: 100%;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+}
+
+.swiper-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.slide-text {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 16px;
+	border-radius: 10px;
+	font-size: 25px;
+	opacity: 0;
+	transform: translateY(-60px);
+	transition: all 0.8s ease-out;
+}
+
+.swiper-slide-active .slide-text {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* 처음엔 숨김 + 아래로 살짝 이동 */
+.services.hidden {
+	opacity: 0;
+	transform: translateY(500px);
+	transition: all 0.8s ease-out;
+}
+
+/* 보일 때 적용되는 애니메이션 */
+.services.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.services {
+	margin: 0 auto;
+	width: 1280px;
+	justify-items: center;
+	min-height: 100vh;
+}
+
+.services>.service-cards {
+	display: flex;
+	text-align: center;
+	margin-top: 100px;
+}
+
+.services>.service-cards>.card {
+	display: block;
+	opacity: 0;
+	transform: translateY(40px);
+	transition: all 0.8s ease-out;
+	height: 500px;
+	margin: 30px;
+	border: 1px solid gray;
+	border-radius: 25px;
+}
+
+.card.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.services>.service-cards>.card>p {
+	font-size: 40px;
+}
+
+.services>.service-cards>.card>.image {
+	width: 330px;
+	height: 300px;
+}
+
+.services>.service-cards>.card>.image>img {
+	width: 100%;
+	height: 100%;
+}
+
+.services>.service-cards>.card>a {
+	display: block;
+	border-radius: 30px;
+	font-size: 30px;
+	color: white;
+	background-color: black;
+	width: 300px;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 15px;
 }
 
 .rank {
-    border: 1px solid;
+	border: 1px solid;
+	margin: 0 auto;
+	width: 1280px;
+	justify-items: center;
+	min-height: calc(100vh - 100px);
 }
