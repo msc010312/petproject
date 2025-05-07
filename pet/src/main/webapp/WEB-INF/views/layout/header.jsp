@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
     <div class="header" id="headerContainer">
         <div class="logo">
@@ -22,13 +20,11 @@
         </div>
         <div class="sign">
             <button class="sign-in btn">
-                <a href="/static/html/sign/login.html">로그인</a>
+                <a href="${pageContext.request.contextPath}/login">로그인</a>
             </button>
             <button class="sign-up btn">
-                <a href="/static/html/sign/signup.html">회원가입</a>
+                <a href="${pageContext.request.contextPath}/signup">회원가입</a>
             </button>
         </div>
     </div>
 </body>
-
-</html>

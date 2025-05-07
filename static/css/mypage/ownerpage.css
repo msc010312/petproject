@@ -1,0 +1,167 @@
+.produce{
+    border: 1px solid;
+}
+.name{
+    margin-left: 7px;
+}
+.name>img{
+    border-radius: 50%;
+}
+.name>span{
+    font-size: x-large;
+    font-weight: bold;
+}
+.name>li{
+    font-size: small;
+}
+.produce>.pet{
+    font-size: medium;
+    margin-top: 2%;
+    margin-left: 7px;
+}
+.produce>.review{
+    font-size: medium;
+    margin-left: 7px;
+}
+.produce>.reserving{
+    font-size: medium;
+    margin-left: 650px;
+    margin-top: -3.8%;
+}
+.produce>.payment-amount{
+    font-size: medium;
+    margin-left: 650px;
+}
+.produce>.btn>.pro-setting{
+    border-radius: 10px solid;
+    width: 600px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: lightgray;
+    margin-top: 15px;
+    margin-left: 7px;
+}
+.produce>.btn>.pay-amount{
+    border-radius: 10px solid;
+    width: 600px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: gray;
+    margin-left: 650px;
+    margin-top: -24px;
+   
+}
+
+/* reserve section */
+.reserve{
+    border: 1px solid;
+}
+.reserve>.reserv{}
+.reserve>.reserv>span{
+    font-size: x-large;
+}
+.reserve>.reserv>li{
+    font-size: small;
+}
+.res1{
+    border: 1px solid;
+    border-radius: 5px;
+    width: 600px;
+    height: auto;
+
+    margin-top: 15px;
+    margin-left: 7px;
+}
+.res1>ul{
+    border: 1px;
+    border-radius: 20%;
+    width: 70px;
+    height: 20px;
+}
+.res1>ul>li:nth-child(1){
+    background-color: #cccccc;
+    margin: 5px;
+}
+.res1>ul>li:nth-child(2){
+    background-color: #B9FDA4;  
+}
+.res1>.schedule1{
+    font-size: medium;
+}
+.reserve>.res1>.chart1{
+    border-radius: 3px;
+    border: 1px solid;
+    width: 60px;
+    height: 15px;
+}
+.reserve>.res1>.view1{
+    border-radius: 3px;
+    border: 1px solid;
+    width: 60px;
+    height: 15px;
+}
+.res2{
+    border: 1px solid;
+    border-radius: 5px;
+    width: 600px;
+    height: auto;
+
+    margin-left: 650px;
+    margin-top: -104px;
+}
+.res2>ul{
+    border: 1px;
+    width: 70px;
+    height: 20px;
+}
+.res2>ul>li:nth-child(1){
+    background-color: #cccccc;
+    margin: 5px;
+}
+.res2>ul>li:nth-child(2){
+    background-color: #B9FDA4;  
+}
+.reserve>.res2>.chart2{
+    border-radius: 3px;
+    border: 1px solid;
+    width: 60px;
+    height: 15px;
+}
+.reserve>.res2>.view2{
+    border-radius: 3px;
+    border: 1px solid;
+    width: 60px;
+    height: 15px;
+}
+.allres{
+    border: 1px solid;
+    width: auto;
+    height: 20px;
+    text-align: center;
+    margin: 10px;
+}
+/* pet profil */
+.profil{
+   border: 1px solid;
+   width: auto;
+   height: auto;
+
+}
+.profil>.pet-prof{
+    
+}
+.profil>.pet-prof>.pro1{
+    border: 1px solid;
+}
+.profil>.pet-prof>.pro2{
+    border: 1px solid;
+}
+.sitter{
+    border: 1px solid;
+}
