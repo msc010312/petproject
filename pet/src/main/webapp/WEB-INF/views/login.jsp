@@ -25,16 +25,16 @@
                     <div class="login_wrap">
                         <div class="login_form">
                             <span>login</span>
-                            <form id="form">
+                            <form id="form" action="${pageContext.request.contextPath}/login" method="post">
                                 <div class="txt_field">
-                                    <input type="text" name="userEmail" required>
+                                    <input type="text" name="email" required>
                                     <label>ID (e-mail)</label>
                                 </div>
                                 <div class="txt_field">
-                                    <input type="password" name="userPw" required>
+                                    <input type="password" name="password" required>
                                     <label>Password</label>
                                 </div>
-                                <input type="button" name="signIn" value="login" id="loginBtn" class="btn">
+                                <input type="submit" name="signIn" value="login" id="loginBtn" class="btn">
                                 <div class="fg_pw">
                                     <a href="/findpw">Forgot your password?</a>
                                 </div>

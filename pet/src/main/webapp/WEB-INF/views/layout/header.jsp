@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
     <div class="header" id="headerContainer">
         <div class="logo">
-            <span><a href="#">LOGO</a></span>
+            <span><a href="${pageContext.request.contextPath}/main}">LOGO</a></span>
         </div>
         <div class="menu">
             <ul>
@@ -19,12 +20,22 @@
             </ul>
         </div>
         <div class="sign">
-            <button class="sign-in btn">
-                <a href="${pageContext.request.contextPath}/login">로그인</a>
-            </button>
-            <button class="sign-up btn">
-                <a href="${pageContext.request.contextPath}/signup">회원가입</a>
-            </button>
+            <c:choose>
+            <c:when test="${not empty sessionScope.loggedInUser}">
+                <span>${sessionScope.loggedInUser.name}님 환영합니다</span>
+                <button class="sign-out btn">
+                    <a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+                </button>
+            </c:when>
+           <c:otherwise>
+                    <button class="sign-in btn">
+                        <a href="${pageContext.request.contextPath}/login">로그인</a>
+                    </button>
+                    <button class="sign-up btn">
+                        <a href="${pageContext.request.contextPath}/signup">회원가입</a>
+                    </button>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </body>

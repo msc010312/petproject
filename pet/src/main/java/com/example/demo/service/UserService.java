@@ -11,4 +11,6 @@ public interface UserService {
     // 회원가입 처리
     UserEntity registerUser(UserEntity user);
 
+    //로그인
+    UserEntity findByEmail(String email);
 }
