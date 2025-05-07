@@ -75,6 +75,7 @@ const serviceTemplates = {
     </div>
   `
 };
+
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
 
@@ -84,6 +85,20 @@ tabs.forEach(tab => {
 
     const type = tab.dataset.type;
     reservationHeader.innerHTML = serviceTemplates[type];
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  initializePickers();
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const type = tab.dataset.type;
+      reservationHeader.innerHTML = serviceTemplates[type];
+      initializePickers();
+    });
   });
 });
 
@@ -101,19 +116,5 @@ function initializePickers() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initializePickers();
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const type = tab.dataset.type;
-      reservationHeader.innerHTML = serviceTemplates[type];
-      initializePickers();
-    });
-  });
-});
 
 
