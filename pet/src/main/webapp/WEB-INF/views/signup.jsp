@@ -58,7 +58,7 @@
                                        <input type="text" name="phone" required>
                                        <label>Phone Number</label>
                                    </div>
-                                   <input type="button" name="signUp" value="Sign Up" id="OwnerBtn" class="btn">
+                                   <input type="submit" name="signUp" value="Sign Up" id="OwnerBtn" class="btn">
                                </form>
                                <form action="${pageContext.request.contextPath}/signup" class="tab-content" id="sitterSign" method="post">
                                    <div class="txt_field">
@@ -85,7 +85,7 @@
                                        <input type="text" name="phone" required>
                                        <label>Phone Number</label>
                                    </div>
-                                   <input type="button" name="signUp" value="Sign Up" id="SitterBtn" class="btn">
+                                   <input type="submit" name="signUp" value="Sign Up" id="SitterBtn" class="btn">
                                </form>
                            </div>
                        </div>
