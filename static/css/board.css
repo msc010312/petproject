@@ -1,3 +1,7 @@
+.content {
+    height: 100%;
+}
+
 .board-container {
     position: relative;
     display: flex;
@@ -20,6 +24,7 @@
 .board-subject {
     font-size: 2.5rem;
     font-weight: bold;
+    padding-left: 15px;
 }
 
 .b-layout {
@@ -39,36 +44,31 @@
 .board-title {
     text-align: center;
     margin-top: 30px;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 15px;
 }
 
-.board-title-num {
-    flex: 0.5;
-}
-
-.board-title-cont {
-    flex: 6.5;
-}
-
-.board-title-name {
-    flex: 0.6;
-}
-
+.board-title-num,
 .board-list-num {
-    flex: 0.3;
+    flex: 0.4;
 }
 
+.board-title-cont,
 .board-list-cont {
     cursor: pointer;
     flex: 10;
     text-align: left;
 }
 
+.board-title-cont {
+    text-align: center;
+    cursor: default;
+}
+
 .board-list-cont:hover {
     text-decoration: underline;
 }
 
+.board-title-name,
 .board-list-name {
     flex: 1;
 }
@@ -85,7 +85,7 @@
 .add-list {
     position: relative;
     text-align: right;
-    margin: 20px 0 ;
+    margin: 20px 0;
 }
 
 .add {

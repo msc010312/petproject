@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // header.css 동적으로 추가
       let link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "/static/css/header.css";
+      link.href = "/css/header.css";
       document.head.appendChild(link);
     })
     .catch(error => console.error("헤더 로딩 실패:", error));
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // footer.css 동적으로 추가
       let link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = "/static/css/footer.css";
+      link.href = "/css/footer.css";
       document.head.appendChild(link);
     })
     .catch(error => console.error("footer 로딩 실패:", error));
