@@ -87,15 +87,15 @@
 .services>.service-cards>.card {
 	display: block;
 	opacity: 0;
-	transform: translateY(40px);
-	transition: all 0.8s ease-out;
+	transform: translateY(500px);
+	transition: all 1s ease-out;
 	height: 500px;
 	margin: 30px;
 	border: 1px solid gray;
 	border-radius: 25px;
 }
 
-.card.show {
+.services>.service-cards>.card.show {
 	opacity: 1;
 	transform: translateY(0);
 }

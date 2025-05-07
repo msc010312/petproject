@@ -33,13 +33,13 @@
                                    <input id="sitter" type="radio" name="tabName">
                                    <label class="tab-name" for="sitter">Sitter</label>
                                </div>
-                               <form id="ownerSign" class="tab-content">
+                               <form action="${pageContext.request.contextPath}/signup" id="ownerSign" class="tab-content" method="post">
                                    <div class="txt_field">
-                                       <input type="text" name="userEmail" required>
+                                       <input type="text" name="email" required>
                                        <label>e-mail</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="password" name="userPw" required>
+                                       <input type="password" name="password" required>
                                        <label>Password</label>
                                    </div>
                                    <div class="txt_field">
@@ -47,25 +47,26 @@
                                        <label>confirm Password</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="text" name="ownerName" required>
+                                       <input type="text" name="name" required>
                                        <label>Owner name</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="text" name="addr" required>
+                                       <input type="text" name="address" required>
                                        <label>address</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="text" name="phoneNum" required>
+                                       <input type="text" name="phone" required>
                                        <label>Phone Number</label>
                                    </div>
+                                   <input type="button" name="signUp" value="Sign Up" id="OwnerBtn" class="btn">
                                </form>
-                               <form class="tab-content" id="sitterSign">
+                               <form action="${pageContext.request.contextPath}/signup" class="tab-content" id="sitterSign" method="post">
                                    <div class="txt_field">
-                                       <input type="text" name="userEmail"required>
+                                       <input type="text" name="email"required>
                                        <label>e-mail</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="password" name="userPw" required>
+                                       <input type="password" name="password" required>
                                        <label>Password</label>
                                    </div>
                                    <div class="txt_field">
@@ -73,19 +74,19 @@
                                        <label>confirm Password</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="text" name="sitterName" required>
+                                       <input type="text" name="name" required>
                                        <label>Sitter name</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="text" name="addr" required>
+                                       <input type="text" name="address" required>
                                        <label>address</label>
                                    </div>
                                    <div class="txt_field">
-                                       <input type="text" name="phoneNum" required>
+                                       <input type="text" name="phone" required>
                                        <label>Phone Number</label>
                                    </div>
+                                   <input type="button" name="signUp" value="Sign Up" id="SitterBtn" class="btn">
                                </form>
-                               <input type="button" name="signUp" value="Sign Up" id="joinButton" class="btn">
                            </div>
                        </div>
                    </div>

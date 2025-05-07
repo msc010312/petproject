@@ -16,10 +16,10 @@ class UserRepositoryTest {
     public void test() throws Exception{
         UserEntity user = UserEntity.builder()
                 .email("aaa@test.com")
-                .password("1111")
+                .password("1234")
                 .name("max")
-                .address("bbb-bbbb")
-                .phone("010-2222-2222")
+                .address("aaa-bbbb")
+                .phone("010-1111-1111")
                 .userType(UserType.Owner)
                 .build();
         userRepository.save(user);

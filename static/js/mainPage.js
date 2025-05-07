@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("카드 개수:", cards.length);
 
         function revealCardsOnScroll() {
-            const triggerPoint = serviceSection.offsetTop - window.innerHeight / 1.3;
+            const triggerPoint = serviceSection.offsetTop - window.innerHeight / 2;
             console.log("스크롤Y:", window.scrollY, "트리거포인트:", triggerPoint);
 
             if (window.scrollY > triggerPoint) {
