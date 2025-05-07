@@ -115,6 +115,33 @@ function initializePickers() {
     time_24hr: true
   });
 }
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('reserve-modal.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('modalContainer').innerHTML = data;
 
+      const modal = document.getElementById('sitterModal');
+      const closeModal = modal.querySelector('.close-btn');
+
+      document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('details-btn')) {
+          modal.classList.remove('hidden');
+        }
+      });
+
+
+      closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+
+
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+});
 
 

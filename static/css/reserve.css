@@ -119,17 +119,21 @@ textarea {
     padding: 20px;
     z-index: 999;
 }
-.reservation-info p{
+
+.reservation-info p {
     display: flex;
     justify-content: space-between;
 }
-.reservation-info p:first-child{
+
+.reservation-info p:first-child {
     margin-bottom: 5px;
 }
-.location{
+
+.location {
     border-bottom: 1px solid #333;
     padding: 10px 0;
 }
+
 .payment-method {
     margin: 10px 0;
 }
@@ -152,16 +156,18 @@ textarea {
     padding: 20px;
     padding-right: 30px;
     border-radius: 10px;
-    border: 1px solid #757575;   
+    border: 1px solid #757575;
     overflow: hidden;
 }
-.sitter-card{
+
+.sitter-card {
     width: 970px;
     height: 400px;
     overflow-y: scroll;
     padding: 20px;
-    
+
 }
+
 /* .sitter-section::-webkit-scrollbar-thumb{
     background-color: hsl(0, 0%, 45%);
     border-radius: 20%;
@@ -206,11 +212,45 @@ textarea {
     border: 1px solid #757575;
     border-radius: 5px;
     cursor: pointer;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .modal-note {
     margin-top: 20px;
     font-size: 14px;
     color: #666;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
 }
