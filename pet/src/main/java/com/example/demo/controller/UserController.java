@@ -60,6 +60,6 @@ public class UserController {
         }
         model.addAttribute("successLogin", "로그인 성공");
         session.setAttribute("loggedInUser", user);
-        return "redirect:/main";
+        return "login-success";
     }
 }
