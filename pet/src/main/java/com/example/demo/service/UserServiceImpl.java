@@ -30,4 +30,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email); // 이메일로 사용자 조회
     }
 
+    @Override
+    public void deleteById(Long userId) {
+        userRepository.deleteById(userId);
+    }
 }

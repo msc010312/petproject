@@ -4,6 +4,7 @@ import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.service.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
+import oracle.ucp.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,10 +41,10 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("resign")
-    public String resign(){
-        return "redirect:/main";
-    }
+//    @GetMapping("resign")
+//    public String resign(){
+//        return "redirect:/main";
+//    }
 
     @PostMapping("/signup")
     public String registerUser(UserEntity user, Model model) throws Exception {
@@ -66,5 +67,14 @@ public class UserController {
         model.addAttribute("successLogin", "로그인 성공");
         session.setAttribute("loggedInUser", user);
         return "login-success";
+    }
+
+    @PostMapping("/delete")
+    public String deleteUser(HttpSession session, Model model) {
+        UserEntity loggedInUser = (UserEntity) session.getAttribute("loggedInUser");
+        userService.deleteById(loggedInUser.getUserId());
+        session.invalidate();
+        model.addAttribute("message", "회원 탈퇴가 완료되었습니다.");
+        return "delete-success";
     }
 }

@@ -13,4 +13,7 @@ public interface UserService {
 
     //로그인
     UserEntity findByEmail(String email);
+
+    //회원탈퇴
+    void deleteById(Long userId);
 }

@@ -26,9 +26,10 @@
                 <button class="sign-out btn">
                     <a href="${pageContext.request.contextPath}/logout">로그아웃</a>
                 </button>
-                <button class="resign btn">
-                    <a href="${pageContext.request.contextPath}/resign">회원탈퇴</a>
-                </button>
+                <form action="${pageContext.request.contextPath}/delete" method="post" style="display:inline;">
+                    <input type="hidden" name="userId" value="${sessionScope.loggedInUser.userId}" />
+                    <button type="submit" class="resign btn" onclick="return confirm('정말로 회원 탈퇴하시겠습니까?')">회원탈퇴</button>
+                </form>
             </c:when>
             <c:otherwise>
                     <button class="sign-in btn">
