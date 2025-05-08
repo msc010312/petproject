@@ -40,6 +40,11 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("resign")
+    public String resign(){
+        return "redirect:/main";
+    }
+
     @PostMapping("/signup")
     public String registerUser(UserEntity user, Model model) throws Exception {
         userService.registerUser(user);

@@ -3,7 +3,7 @@
 <body>
     <div class="header" id="headerContainer">
         <div class="logo">
-            <span><a href="${pageContext.request.contextPath}/main}">LOGO</a></span>
+            <span><a href="${pageContext.request.contextPath}/main">LOGO</a></span>
         </div>
         <div class="menu">
             <ul>
@@ -26,16 +26,19 @@
                 <button class="sign-out btn">
                     <a href="${pageContext.request.contextPath}/logout">로그아웃</a>
                 </button>
+                <button class="resign btn">
+                    <a href="${pageContext.request.contextPath}/resign">회원탈퇴</a>
+                </button>
             </c:when>
-           <c:otherwise>
+            <c:otherwise>
                     <button class="sign-in btn">
                         <a href="${pageContext.request.contextPath}/login">로그인</a>
                     </button>
                     <button class="sign-up btn">
                         <a href="${pageContext.request.contextPath}/signup">회원가입</a>
                     </button>
-                </c:otherwise>
-            </c:choose>
+            </c:otherwise>
+           </c:choose>
         </div>
     </div>
 </body>

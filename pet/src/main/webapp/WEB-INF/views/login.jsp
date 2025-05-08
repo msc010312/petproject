@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- css -->
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css" />
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css" />
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sign.css" />
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css?after" />
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css?after" />
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css?after" />
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sign.css?after" />
 </head>
 <body>
 <!--헤더-->

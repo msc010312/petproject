@@ -110,11 +110,11 @@
     align-items: center;
     gap: 25px;
     height: 100%;
-    flex: 1;
+    flex: 1.5;
 }
 
 .sign-in {
-    background: #fff;
+    background: #ccc;
 }
 
 .sign-up {
@@ -122,5 +122,13 @@
 }
 
 .sign-up>a {
+    color: #fff;
+}
+
+.resign {
+    background : crimson;
+}
+
+.resign>a {
     color: #fff;
 }
