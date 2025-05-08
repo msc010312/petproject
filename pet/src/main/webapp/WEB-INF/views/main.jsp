@@ -18,6 +18,9 @@
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/header.css" />
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css" />
      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mainPage.css" />
+     <script>
+             alert('${successLogin}');
+     </script>
 </head>
 <body>
 <!--헤더-->

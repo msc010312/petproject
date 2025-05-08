@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="signup_link">
                                     Not a member?
-                                    <a href="/join">Sign Up</a>
+                                    <a href="/signup">Sign Up</a>
                                 </div>
                             </form>
                         </div>

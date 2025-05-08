@@ -1,6 +1,5 @@
 package com.example.demo.domain.entity;
 
-import com.example.demo.ennotion.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,8 +44,7 @@ public class UserEntity {
     private String phone;
 
     @Column(name = "usertype", length = 10)
-    @Enumerated(EnumType.STRING)
-    private UserType userType;
+    private String userType;
 
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();

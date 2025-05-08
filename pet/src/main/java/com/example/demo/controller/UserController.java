@@ -58,7 +58,7 @@ public class UserController {
             model.addAttribute("error", "이메일 또는 비밀번호가 올바르지 않습니다.");
             return "login";
         }
-
+        model.addAttribute("successLogin", "로그인 성공");
         session.setAttribute("loggedInUser", user);
         return "redirect:/main";
     }
