@@ -1,5 +1,14 @@
+img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+
+    margin: 5px;
+}
+
 .produce {
     border: 1px solid;
+    border-radius: 3px;
     width: 1260px;
     height: auto;
     margin: 10px 0 10px 0;
@@ -7,10 +16,6 @@
 
 .name {
     margin-left: 7px;
-}
-
-.name>img {
-    border-radius: 50%;
 }
 
 .name>span {
@@ -45,7 +50,8 @@
 }
 
 .produce>.btn>.pro-setting {
-    border-radius: 10px solid;
+    border: 1px;
+    border-radius: 5px;
     width: 600px;
     height: 25px;
     display: flex;
@@ -58,7 +64,8 @@
 }
 
 .produce>.btn>.pay-amount {
-    border-radius: 10px solid;
+    border: 1px;
+    border-radius: 5px;
     width: 600px;
     height: 25px;
     display: flex;
@@ -67,22 +74,20 @@
     font-size: 14px;
     background-color: gray;
     margin-left: 650px;
-    margin-top: -24px;
+    margin-top: -25px;
 }
 
 /* reserve section */
 .reserve {
     border: 1px solid;
+    border-radius: 3px;
     width: 1260px;
     height: auto;
     position: relative;
     display: flex;
-    justify-content: center;
-
+    flex-wrap: wrap;
     margin: 10px 0 10px 0;
 }
-
-.reserv {}
 
 .reserve>.reserv>span {
     font-size: x-large;
@@ -97,16 +102,11 @@
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin-top: 6%;
-    margin-left: -11%;
-    margin-bottom: 10px;
+    margin: 6% -13% 10px;
 }
 
 .res1>ul {
     border: 1px;
-    border-radius: 20%;
-    width: 120px;
-    height: 20px;
     text-align: center;
     display: flex;
 }
@@ -115,12 +115,18 @@
     background-color: #cccccc;
     margin-top: 5px;
     margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    border-radius: 30px;
 }
 
 .res1>ul>li:nth-child(2) {
     background-color: #B9FDA4;
     margin-top: 5px;
     margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    border-radius: 30px;
 }
 
 .res1>.schedule1>span {
@@ -146,7 +152,7 @@
     display: block;
     text-align: center;
     margin-top: 10%;
-    margin-left: 5px;
+    margin-left: 13px;
 }
 
 .reserve>.res1>.view1 {
@@ -155,9 +161,8 @@
     width: 280px;
     height: 30px;
     text-align: center;
-    margin-left: 290px;
-    margin-right: 5px;
-    margin-top: -5.3%;
+    margin-left: 51%;
+    margin-top: -5%;
 }
 
 .res2 {
@@ -166,13 +171,12 @@
     width: 600px;
     height: 150px;
     margin-top: 6%;
-    margin-left: 10px;
+    margin-left: 14.5%;
 }
 
 .res2>ul {
     border: 1px;
-    width: 120px;
-    height: 20px;
+
     text-align: center;
     display: flex;
 }
@@ -181,12 +185,18 @@
     background-color: #cccccc;
     margin-top: 5px;
     margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    border-radius: 30px;
 }
 
 .res2>ul>li:nth-child(2) {
     background-color: #B9FDA4;
     margin-top: 5px;
     margin-left: 10px;
+    width: 60px;
+    height: 20px;
+    border-radius: 30px;
 }
 
 .res2>.schedule2>span {
@@ -212,7 +222,7 @@
     display: block;
     text-align: center;
     margin-top: 10%;
-    margin-left: 5px;
+    margin-left: 13px;
 }
 
 .reserve>.res2>.view2 {
@@ -221,17 +231,17 @@
     width: 280px;
     height: 30px;
     text-align: center;
-    margin-left: 290px;
-    margin-right: 5px;
-    margin-top: -5.3%;
+    margin-left: 51%;
+    margin-top: -5%;
 }
 
 .allres {
     border: 1px solid;
-    width: auto;
-    height: 20px;
+    border-radius: 5px;
+    width: 1220px;
+    height: 30px;
     text-align: center;
-    margin: 10px;
+    margin: 10px 20px;
 }
 
 /* pet profil */
@@ -241,17 +251,21 @@
 
 .profil {
     border: 1px solid;
-    width: 610px;
-    height: 250px;
-    margin-top: 20px;
+    border-radius: 3px;
+    width: 680px;
+    height: 260px;
 }
 
-.care>a {
+.care {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     border: 1px solid;
-    width: 60px;
-
-    margin-left: 90%;
-    margin-top: -10%;
+    width: 70px;
+    height: 30px;
+    margin-left: 85%;
+    margin-top: -20px;
+    border-radius: 5px;
 }
 
 .profil>.pet-prof>span {
@@ -264,26 +278,29 @@
 
 .profil>.pet-prof>.pro1 {
     border: 1px solid;
+    border-radius: 5px;
     width: 590px;
     height: auto;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 8px;
 }
 
 .profil>.pet-prof>.pro2 {
     border: 1px solid;
+    border-radius: 5px;
     width: 590px;
     height: auto;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 8px;
 }
 
 /* SITTER */
 .sitter {
     border: 1px solid;
-    width: 610px;
-    height: auto;
-    margin-left: 40px;
+    border-radius: 3px;
+    width: 680px;
+    height: 260px;
+    margin-left: 30px;
 }
 
 .sitter>.sit-used>span {
@@ -296,84 +313,103 @@
 
 .sitter>.sit-name1 {
     border: 1px solid;
+    border-radius: 5px;
     width: 590px;
-    height: auto;
+    height: 70px;
     margin-top: 10px;
     margin-left: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .sitter>.sit-name1>ul>li:nth-child(1) {
     font-weight: bold;
     font-size: small;
+    padding: 5px;
 }
 
 .sitter>.sit-name1>ul>li:nth-child(2) {
     font-size: small;
     font-weight: bolder;
-    margin-left: 5%;
-    margin-top: -3.1%;
+    margin-left: 30%;
+    margin-top: -13.5%;
 }
 
 .sitter>.sit-name1>ul>li:nth-child(3) {
     font-size: small;
+    padding: 5px;
 }
 
 .sitter>.sit-name1>ul>li:nth-child(4) {
     font-size: small;
-    margin-left: 15%;
-    margin-top: -3.1%;
+    margin-top: -13.5%;
+    margin-left: 85px;
 }
 
-.sitter>.sit-name1>a {
+.sitter>.sit-name1>.chat1 {
     border: 1px solid;
-    border-radius: 2px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
     text-align: center;
-    justify-content: center;
-    margin-left: 90%;
+
+    margin-top: -41px;
+    margin-left: 84%;
 }
 
 .sitter>.sit-name2 {
     border: 1px solid;
+    border-radius: 5px;
     width: 590px;
-    height: auto;
+    height: 70px;
     margin-top: 10px;
     margin-left: 8px;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(1) {
     font-weight: bold;
     font-size: small;
+    padding: 5px;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(2) {
     font-size: small;
     font-weight: bolder;
-    margin-left: 5%;
-    margin-top: -3.1%;
+    margin-left: 30%;
+    margin-top: -13.5%;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(3) {
     font-size: small;
+    padding: 5px;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(4) {
     font-size: small;
-    margin-left: 15%;
-    margin-top: -3.1%;
+    margin-top: -13.5%;
+    margin-left: 85px;
 }
 
-.sitter>.sit-name2>a {
+.sitter>.sit-name2>.chat2 {
     border: 1px solid;
-    border-radius: 2px;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
     text-align: center;
-    justify-content: center;
-    margin-left: 90%;
+
+    margin-top: -41px;
+    margin-left: 84%;
 }
 
 .sitter>.res3 {
     border: 1px solid;
+    border-radius: 5px;
     width: 590px;
-    height: auto;
+    height: 25px;
     text-align: center;
     justify-content: center;
 
