@@ -34,6 +34,9 @@
                                     <input type="password" name="password" required>
                                     <label>Password</label>
                                 </div>
+                                <div class="error-msg">
+                                    <span>${error}</span>
+                                </div>
                                 <input type="submit" name="signIn" value="login" id="loginBtn" class="btn">
                                 <div class="fg_pw">
                                     <a href="/findpw">Forgot your password?</a>

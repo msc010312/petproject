@@ -126,6 +126,11 @@ input[name="tabName"] {
     width: 10%;
 }
 
+.error-msg {
+    margin : 10px 0 20px 0;
+    font-size: 1.3rem;
+}
+
 /*유효하다면 올라감*/
 .txt_field input:focus~label,
 .txt_field input:valid~label {

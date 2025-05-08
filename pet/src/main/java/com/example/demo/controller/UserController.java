@@ -4,7 +4,6 @@ import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.service.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
-import oracle.ucp.proxy.annotation.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,11 +39,6 @@ public class UserController {
         session.invalidate();
         return "redirect:/login";
     }
-
-//    @GetMapping("resign")
-//    public String resign(){
-//        return "redirect:/main";
-//    }
 
     @PostMapping("/signup")
     public String registerUser(UserEntity user, Model model) throws Exception {
