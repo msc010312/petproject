@@ -30,12 +30,12 @@ img {
 .produce>.pet {
     font-size: medium;
     margin-top: 2%;
-    margin-left: 7px;
+    margin-left: 15px;
 }
 
 .produce>.review {
     font-size: medium;
-    margin-left: 7px;
+    margin-left: 10px;
 }
 
 .produce>.reserving {
@@ -91,10 +91,12 @@ img {
 
 .reserve>.reserv>span {
     font-size: x-large;
+    padding-left: 10px;
 }
 
-.reserve>.reserv>li {
+.reserve>.reserv>ul>li {
     font-size: small;
+    padding-left: 15px;
 }
 
 .res1 {
@@ -102,7 +104,8 @@ img {
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin: 6% -13% 10px;
+    margin-left: -19%;
+    margin-top: 7%;
 }
 
 .res1>ul {
@@ -129,17 +132,23 @@ img {
     border-radius: 30px;
 }
 
+.res1>.schedule1 {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
 .res1>.schedule1>span {
     font-size: small;
 }
 
 .res1>.na1 {
     font-size: small;
+    padding: 15px;
 }
 
 .res1>.price1 {
     margin-left: 85%;
-    margin-top: -7%;
+    margin-top: -14%;
     font-size: medium;
     font-weight: bold;
 }
@@ -170,8 +179,8 @@ img {
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin-top: 6%;
-    margin-left: 14.5%;
+    margin-top: -12%;
+    margin-left: 51%;
 }
 
 .res2>ul {
@@ -199,17 +208,23 @@ img {
     border-radius: 30px;
 }
 
+.res2>.schedule2 {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
 .res2>.schedule2>span {
     font-size: small;
 }
 
 .res2>.na2 {
     font-size: small;
+    padding: 15px;
 }
 
 .res2>.price2 {
     margin-left: 85%;
-    margin-top: -7%;
+    margin-top: -14%;
     font-size: medium;
     font-weight: bold;
 }
@@ -270,6 +285,10 @@ img {
 
 .profil>.pet-prof>span {
     font-size: large;
+}
+
+.profil>.pet-prof>ul {
+    margin-left: 10%;
 }
 
 .profil>.pet-prof>ul>li {
