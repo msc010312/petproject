@@ -109,10 +109,6 @@ img {
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin-top: 6%;
-    margin-left: -11%;
-    margin-bottom: 10px;
-    margin: 6% -13% 10px;
     margin-left: -19%;
     margin-top: 7%;
 }
@@ -123,40 +119,6 @@ img {
     display: flex;
 }
 
-/* pet profil */
-.all-pro {
-    display: flex;
-}
-
-.profil {
-    border: 1px solid;
-    width: 610px;
-    height: 250px;
-    margin-top: 20px;
-}
-
-.care>a {
-    border: 1px solid;
-    width: 60px;
-
-    margin-left: 90%;
-    margin-top: -10%;
-}
-
-.profil>.pet-prof>span {
-    font-size: large;
-}
-
-.profil>.pet-prof>ul>li {
-    font-size: x-small;
-}
-
-.profil>.pet-prof>.pro1 {
-    border: 1px solid;
-    width: 590px;
-    height: auto;
-    margin-top: 10px;
-}
 .res1>ul>li:nth-child(1) {
     background-color: #cccccc;
     margin-top: 5px;
@@ -351,7 +313,6 @@ img {
     width: 590px;
     height: 72px;
     margin-top: 20px;
-    margin-left: 8px;
     margin-left: 11px;
 }
 
@@ -371,7 +332,6 @@ img {
     border: 1px solid;
     border-radius: 5px;
     width: 590px;
-    height: auto;
     height: 72px;
     margin-top: 15px;
     margin-left: 11px;
@@ -415,6 +375,7 @@ img {
     height: 70px;
     margin-top: 10px;
     margin-left: 11px;
+
     display: flex;
     flex-wrap: wrap;
 }
@@ -434,7 +395,6 @@ img {
 
 .sitter>.sit-name1>ul>li:nth-child(3) {
     font-size: small;
-    padding: 5px;
     padding-left: 25px;
     margin-top: -22px;
 }
@@ -486,13 +446,13 @@ img {
 
 .sitter>.sit-name2>ul>li:nth-child(3) {
     font-size: small;
-    padding: 5px;
     padding-left: 25px;
     margin-top: -22px;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(4) {
     font-size: small;
+    margin-top: -13.5%;
     margin-left: 85px;
 }
 
@@ -502,6 +462,7 @@ img {
     width: 80px;
     height: 30px;
     text-align: center;
+
     margin-top: -52px;
     margin-left: 84%;
 }
