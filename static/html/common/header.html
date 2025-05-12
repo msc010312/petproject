@@ -1,157 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <!-- google icon -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
-
 <body>
-    <!-- 헤더영역 -->
-    <div class="header">
-        <!-- 로고 -->
+    <div class="header" id="headerContainer">
         <div class="logo">
-            <a href="/pages/main/index.html">
-                <img src="../../static/asset/pageLogo.png" alt="logo">
-            </a>
+            <span><a href="#">LOGO</a></span>
         </div>
-        <!-- 네비게이션 -->
-        <ul class="hNav">
-            <li>
-                <a href="/pages/product/gameSearch.html">스토어</a>
-            </li>
-            <li>
-                <a href="#">공지사항</a>
-            </li>
-            <li class="event">
-                <span>이벤트</span>
-                <span class="material-symbols-outlined">
-                    chevron_right
-                </span>
-                <ul class="smallList">
-                    <li>
-                        <a href="#">개최중인 이벤트</a>
-                    </li>
-                    <li>
-                        <a href="#">프로모션</a>
-
-                    </li>
-                </ul>
-            </li>
-            <li class="help">
-                <span>고객지원</span>
-                <span class="material-symbols-outlined">
-                    chevron_right
-                </span>
-                <ul class="smallList">
-                    <li>
-                        <a href="#">자주묻는 질문</a>
-                    </li>
-                    <li>
-                        <a href="#">문의하기</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- 검색바 -->
-        <div class="hSearch">
-            <div class="hSearchBar">
-                <form action="url">
-                    <img src="../../static/asset/search.svg" alt="search">
-                    <input type="search" placeholder="Search for...">
-                </form>
-            </div>
-        </div>
-        <!-- 인증관련 영역 -->
-        <div class="sign">
-            <div class="account">
-                <!-- <img src="../../static/asset/account.svg" alt="profile"> -->
-                <a href="#">비회원</a>
-            </div>
-            <!-- <div class="acSort">
-                    <span>비회원</span>
-                    <span class="material-symbols-outlined">
-                        arrow_right
-                    </span>
-                </div>
-                <ul class="acList">
-                    여기를 복사
-                    <li>
-                        <a href="/pages/user/login.html">로그인</a>
-                    </li>
-                    <li>
-                        <a href="/pages/user/user.html">회원가입</a>
-                    </li>
-                </ul> -->
-            <ul class="signList">
-                <li>
-                    <a href="/pages/user/login.html">
-                        로그인
-                    </a>
+        <div class="menu">
+            <ul>
+                <li class="menu-service">
+                    <a href="#">Service</a>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="#">Day Care</a></li>
+                        <li class="sub-item"><a href="#">Hotelling</a></li>
+                        <li class="sub-item"><a href="#">work with pet</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="/pages/user/user.html">
-                        회원가입
-                    </a>
-                </li>
+                <li><a href="#">place</a></li>
+                <li><a href="#">board</a></li>
             </ul>
         </div>
-        <!-- width 1024이하 우측 햄버거메뉴 -->
-        <div class="hamMenu">
-            <div class="hamMenuIcon">
-                <img src="../../static/asset/ham.png" alt="메뉴">
-            </div>
-            <div class="hamList">
-                <div class="hamSearch">
-                    <form action="url">
-                        <img src="../../static/asset/search.svg" alt="">
-                        <input type="search" placeholder="Search">
-                    </form>
-                    <!-- 클래스 네이밍 수정필요 -->
-                    <div class="searchResult">
-                        <!-- 검색값 요청 -->
-                        <!-- 관련 검색항목 4개까지 -->
-                        <div class="result">
-                            <div class="resultImg">
-                            </div>
-                            <span class="resultName">
-                                good
-                            </span>
-                        </div>
-                        <div class="result">
-                            <div class="resultImg">
-                            </div>
-                            <span class="resultName">
-                                good
-                            </span>
-                        </div>
-                        <div class="result">
-                            <div class="resultImg">
-                            </div>
-                            <span class="resultName">
-                                good
-                            </span>
-                        </div>
-                        <div class="result">
-                            <div class="resultImg">
-                            </div>
-                            <span class="resultName">
-                                good
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hamSign">
-                    <div class="hamProfile">
-                        <img src="../../static/asset/account.svg" alt="">
-                        <span>비회원</span>
-                    </div>
-                    <a href="/pages/user/login.html" class="signbtn">
-                        <img src="../../static/asset/login.svg" alt="">
-                    </a>
-                </div>
-            </div>
+        <div class="sign">
+            <button class="sign-in btn">
+                <a href="/html/sign/login.html">로그인</a>
+            </button>
+            <button class="sign-up btn">
+                <a href="/html/sign/signup.html">회원가입</a>
+            </button>
         </div>
     </div>
 </body>

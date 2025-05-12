@@ -5,66 +5,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link -->
-    <script src="../../js/link.js" defer></script>
+    <script src="/js/link.js" defer></script>
     <title>Document</title>
     <!-- css -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
+
     <link rel="stylesheet" href="/css/board.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <!-- 헤더영역 (템플릿화 예정) -->
-        <div class="header">
-            <div class="logo">
-                <span><a href="#">LOGO</a></span>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li class="menu-service">
-                        <a href="#">Service</a>
-                        <ul class="sub-menu">
-                            <li class="sub-item"><a href="#">Day Care</a></li>
-                            <li class="sub-item"><a href="#">Hotelling</a></li>
-                            <li class="sub-item"><a href="#">work with pet</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">place</a></li>
-                    <li><a href="#">board</a></li>
-                </ul>
-            </div>
-            <div class="sign">
-                <button class="sign-in btn">
-                    <a href="/html/sign/login.html">로그인</a>
-                </button>
-                <button class="sign-up btn">
-                    <a href="/html/sign/signup.html">회원가입</a>
-                </button>
-            </div>
-        </div>
+        <!-- 헤더영역 -->
+        <div id="headerContainer"></div>
         <div class="main">
             <div class="pagew">
                 <div class="content">
-                    <table class="board">
-                        <tr class="board-title">
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>날짜</th>
-                        </tr>
-                        <tr class="board-cont">
-                            <td>1</td>
-                            <td>Lorem Ipsum is simply dummy text of the printing and typesetting indust ry.</td>
-                            <td>2025-05-01</td>
-                        </tr>
-                    </table>
+                    <div class="board-container">
+                        <div class="board">
+                            <div class="board-subject">
+                                <span>게시판 제목</span>
+                            </div>
+                            <ul class="board-title b-layout">
+                                <li class="board-title-num">번호</li>
+                                <li class="board-title-cont">제목</li>
+                                <li class="board-title-name">작성자</li>
+                                <li class="board-title-date">날짜</li>
+                            </ul>
+                            <!-- test -->
+                            <ul class="board-list b-layout">
+                                <li class="board-list-num">1</li>
+                                <li class="board-list-cont txt-hidden">Lorem Ipsum is simply dummy text of the printing
+                                    and
+                                    typesetting indust ry.Lorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                                    typesetting indust ry</li>
+                                <li class="board-list-name txt-hidden">
+                                    홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동
+                                </li>
+                                <li class="boar-list-date">2025-05-01</li>
+                            </ul>
+                            <!-- test -->
+                            <ul class="board-list b-layout">
+                                <li class="board-list-num">1</li>
+                                <li class="board-list-cont">Lorem .</li>
+                                <li class="board-list-name">홍길동</li>
+                                <li class="boar-list-date">2025-05-01</li>
+                            </ul>
+                        </div>
+                        <div class="board-bottom">
+                            <div class="add-list">
+                                <button class="add btn">글쓰기</button>
+                            </div>
+                            <div class="paging">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- footer영역(템플릿화 예정) -->
-        <div class="footer">
-            <span>footer</span>
+        <!-- footer -->
+        <div id="footerContainer">
         </div>
     </div>
 </body>
