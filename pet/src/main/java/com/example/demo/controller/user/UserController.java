@@ -20,18 +20,18 @@ public class UserController {
 
     @GetMapping("/signup")
     public String signup() {
-        return "signup";
+        return "sign/signup";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "login";
+        return "sign/login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:login";
     }
 
     @PostMapping("/signup")

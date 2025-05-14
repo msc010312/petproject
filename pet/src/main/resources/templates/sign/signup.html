@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -9,92 +9,83 @@
     <script src="/js/tab.js"></script>
     <title>Document</title>
     <!-- css -->
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/sign.css">
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 헤더영역 -->
-        <div id="headerContainer"></div>
-        <!-- 메인영역 -->
-        <div class="main">
-            <!-- pagew 1260px -->
-            <div class="pagew">
+<div th:replace="layout/temp :: base(
+        ~{::title='회원가입'},
+        ~{::content=~{this::content}} )">
                 <!-- 작업 영역 -->
-                <div class="content">
-                    <div class="signup_wrap">
-                        <div class="signup_form">
-                            <span>sign up</span>
-
-                            <div class="convert-tab">
-                                <input id="owner" type="radio" name="tabName" checked>
-                                <label class="tab-name" for="owner">Owner</label>
-                                <input id="sitter" type="radio" name="tabName">
-                                <label class="tab-name" for="sitter">Sitter</label>
-                            </div>
-                            <form id="ownerSign" class="tab-content">
-                                <div class="txt_field">
-                                    <input type="text" name="userEmail" required>
-                                    <label>e-mail</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="password" name="userPw" required>
-                                    <label>Password</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="password" name="userPwRe" required>
-                                    <label>confirm Password</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="text" name="ownerName" required>
-                                    <label>Owner name</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="text" name="addr" required>
-                                    <label>address</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="text" name="phoneNum" required>
-                                    <label>Phone Number</label>
-                                </div>
-                            </form>
-                            <form class="tab-content" id="sitterSign">
-                                <div class="txt_field">
-                                    <input type="text" name="userEmail"required>
-                                    <label>e-mail</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="password" name="userPw" required>
-                                    <label>Password</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="password" name="userPwRe" required>
-                                    <label>confirm Password</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="text" name="sitterName" required>
-                                    <label>Sitter name</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="text" name="addr" required>
-                                    <label>address</label>
-                                </div>
-                                <div class="txt_field">
-                                    <input type="text" name="phoneNum" required>
-                                    <label>Phone Number</label>
-                                </div>
-                            </form>
-                            <input type="button" name="signUp" value="Sign Up" id="joinButton" class="btn">
-                        </div>
+    <th:block th:fragment="content">
+        <div class="content">
+            <div class="signup_wrap">
+                <div class="signup_form">
+                    <span>sign up</span>
+                    <div class="convert-tab">
+                        <input id="owner" type="radio" name="tabName" checked>
+                        <label class="tab-name" for="owner">Owner</label>
+                        <input id="sitter" type="radio" name="tabName">
+                        <label class="tab-name" for="sitter">Sitter</label>
                     </div>
+                    <form id="ownerSign" class="tab-content">
+                        <div class="txt_field">
+                            <input type="text" name="userEmail" required>
+                            <label>e-mail</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="password" name="userPw" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="password" name="userPwRe" required>
+                            <label>confirm Password</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="text" name="ownerName" required>
+                            <label>Owner name</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="text" name="addr" required>
+                            <label>address</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="text" name="phoneNum" required>
+                            <label>Phone Number</label>
+                        </div>
+                    </form>
+                    <form class="tab-content" id="sitterSign">
+                        <div class="txt_field">
+                            <input type="text" name="userEmail"required>
+                            <label>e-mail</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="password" name="userPw" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="password" name="userPwRe" required>
+                            <label>confirm Password</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="text" name="sitterName" required>
+                            <label>Sitter name</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="text" name="addr" required>
+                            <label>address</label>
+                        </div>
+                        <div class="txt_field">
+                            <input type="text" name="phoneNum" required>
+                            <label>Phone Number</label>
+                        </div>
+                    </form>
+                    <input type="button" name="signUp" value="Sign Up" id="joinButton" class="btn">
                 </div>
             </div>
         </div>
-        <!-- footer -->
-        <div id="footerContainer">
-        </div>
-    </div>
+    </th:block>
+</div>
 </body>
 
 </html>

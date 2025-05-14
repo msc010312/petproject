@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="ko">
-
-<head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="base(title, content)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link -->
-    <script src="/js/link.js" defer></script>
-    <title>Document</title>
-    <!-- css -->
-    <link rel="stylesheet" href="/css/style.css">
+    <title th:replace="${title}">Document</title>
+    <th:block th:replace="common/config :: configFragment" ></th:block>
 </head>
 
 <body>
     <div class="wrapper">
         <!-- 헤더영역 -->
-        <div id="headerContainer"></div>
+        <div th:replace="layout/header :: header"></div>
         <!-- 메인영역 -->
         <div class="main">
             <!-- pagew 1260px -->
             <div class="pagew">
                 <!-- 작업 영역 -->
-                <div class="content">
-                    <span class="title">title</span>
+                <div class="content" th:replace="${content}">
                 </div>
             </div>
         </div>
         <!-- footer -->
-        <div id="footerContainer">
+        <div th:replace="layout/footer :: footer">
         </div>
     </div>
 
