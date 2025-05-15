@@ -1,15 +1,10 @@
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:fragment="configFragment" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<th:block th:fragment="configFragment">
-
-    <!-- js -->
     <!-- css -->
-    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
-
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!-- Content Page의 CSS fragment 삽입 -->
     <th:block layout:fragment="css"></th:block>
 
@@ -17,4 +12,3 @@
     <th:block layout:fragment="script"></th:block>
 
 </th:block>
-</html>

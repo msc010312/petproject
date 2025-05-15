@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
-<body>
-    <div class="header" th:fragment="header">
-        <div class="logo">
-            <span><a href="#">LOGO</a></span>
-        </div>
-        <div class="menu">
-            <ul>
-                <li class="menu-service">
-                    <a href="#">Service</a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="#">Day Care</a></li>
-                        <li class="sub-item"><a href="#">Hotelling</a></li>
-                        <li class="sub-item"><a href="#">work with pet</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">place</a></li>
-                <li><a href="#">board</a></li>
-            </ul>
-        </div>
-        <div class="sign">
-            <button class="sign-in btn">
-                <a href="/html/sign/login.html">로그인</a>
-            </button>
-            <button class="sign-up btn">
-                <a href="/html/sign/signup.html">회원가입</a>
-            </button>
-        </div>
+<div class="header" th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="logo">
+        <span><a th:href="@{/main}">LOGO</a></span>
     </div>
-</body>
-
-</html>
+    <div class="menu">
+        <ul>
+            <li class="menu-service">
+                <a href="#">Service</a>
+                <ul class="sub-menu">
+                    <li class="sub-item"><a href="#">Day Care</a></li>
+                    <li class="sub-item"><a href="#">Hotelling</a></li>
+                    <li class="sub-item"><a href="#">work with pet</a></li>
+                </ul>
+            </li>
+            <li><a href="#">place</a></li>
+            <li><a href="#">board</a></li>
+        </ul>
+    </div>
+    <div class="sign">
+        <button class="sign-in btn">
+            <a th:href="@{/login}">로그인</a>
+        </button>
+        <button class="sign-up btn">
+            <a th:href="@{/signup}">회원가입</a>
+        </button>
+    </div>
+</div>
