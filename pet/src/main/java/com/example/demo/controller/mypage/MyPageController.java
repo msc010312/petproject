@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyPageController {
     @GetMapping("/owner")
     public String owner() {
-        return "owner";
+        return "mypage/owner";
     }
 
     @GetMapping("/sitter")
     public String sitter() {
-        return "sitter";
+        return "mypage/sitter";
     }
 }

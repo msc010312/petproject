@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ReserveController {
     @GetMapping("/reserve")
     public String reserve() {
-        return "reserve";
+        return "reserve/reserve";
     }
 }

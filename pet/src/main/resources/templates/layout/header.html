@@ -4,16 +4,16 @@
     </div>
     <div class="menu">
         <ul>
-            <li class="menu-service">
+            <li class="menu-service list">
                 <a href="#">Service</a>
                 <ul class="sub-menu">
-                    <li class="sub-item"><a href="#">Day Care</a></li>
-                    <li class="sub-item"><a href="#">Hotelling</a></li>
-                    <li class="sub-item"><a href="#">work with pet</a></li>
+                    <li class="sub-item"><a th:href="@{/reserve}">Day Care</a></li>
+                    <li class="sub-item"><a th:href="@{/reserve}">Hotelling</a></li>
+                    <li class="sub-item"><a th:href="@{/reserve}">work with pet</a></li>
                 </ul>
             </li>
-            <li><a href="#">place</a></li>
-            <li><a href="#">board</a></li>
+            <li class="menu-place list"><a href="#">place</a></li>
+            <li class="menu-board list"><a th:href="@{/board}">board</a></li>
         </ul>
     </div>
     <div class="sign">
