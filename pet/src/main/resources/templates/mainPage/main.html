@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/noPagewTemp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    main
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/mainPage.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="/js/mainPage.js" defer></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</th:block>
+
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content2">
+    <!-- 슬라이드 영역 -->
+    <div class="swiper slide">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../../asset/강아지2.jpg" alt="슬라이드1">
+                <div class="slide-text">
+                    <h3>우리 강아지를 위한 최고의 공간</h3>
+                    <p>사랑과 안전이 가득한 데이케어 서비스를 제공합니다.</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="../../asset/산책.jpg" alt="슬라이드2">
+                <div class="slide-text">
+                    <h3>우리 강아지를 위한 최고의 공간</h3>
+                    <p>사랑과 안전이 가득한 데이케어 서비스를 제공합니다.</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="../../asset/산책2.jpg" alt="슬라이드3">
+                <div class="slide-text">
+                    <h3>우리 강아지를 위한 최고의 공간</h3>
+                    <p>사랑과 안전이 가득한 데이케어 서비스를 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+        <!-- 네비게이션 버튼 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <div class="services hidden">
+        <h2>서비스 소개</h2>
+        <p>원하시는 정보를 찾기 위한 서비스를 확인해보세요.</p>
+        <div class="service-cards">
+            <div class="card">
+              <span class="material-symbols-outlined">
+                pets
+              </span>
+                <p>데이 케어 서비스</p>
+                <div class="image">
+                    <img src="../../asset/강아지.jpg" alt="">
+                </div>
+                <a href="javascript:void(0)">신청하기</a>
+            </div>
+            <div class="card">
+              <span class="material-symbols-outlined">
+                location_city
+              </span>
+                <p>호텔링 서비스</p>
+                <div class="image">
+                    <img src="../../asset/강아지.jpg" alt="">
+                </div>
+                <a href="javascript:void(0)">신청하기</a>
+            </div>
+            <div class="card">
+              <span class="material-symbols-outlined">
+                location_on
+              </span>
+                <p>산책 서비스</p>
+                <div class="image">
+                    <img src="../../asset/강아지.jpg" alt="">
+                </div>
+                <a href="javascript:void(0)">신청하기</a>
+            </div>
+        </div>
+    </div>
+    <div class="rank">
+        <h2>이달의 베스트 시터</h2>
+    </div>
+</div>
+
+</html>

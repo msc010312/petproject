@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.user;
 
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.service.UserServiceImpl;
@@ -13,31 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Data
-
 public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping("/main")
-    public String main() {
-        return "main";
-    }
-
     @GetMapping("/signup")
     public String signup() {
-        return "signup";
+        return "sign/signup";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "login";
+        return "sign/login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:login";
     }
 
     @PostMapping("/signup")

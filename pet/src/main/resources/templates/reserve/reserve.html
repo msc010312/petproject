@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    reserve
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/reserve.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</th:block>
+
+<!-- script -->
+<th:block layout:fragment="script">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+    <script src="/js/reserve.js" defer></script>
+</th:block>
+
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <h1 class="title">예약하기</h1>
+    <div class="tabs">
+        <button class="tab active" data-type="short">데이케어</button>
+        <button class="tab" data-type="hotel">호텔링</button>
+        <button class="tab" data-type="walk">산책</button>
+    </div>
+
+    <div class="reservation-container">
+        <div id="reservationHeader" class="reservation-header">
+            <h2>데이케어 예약</h2>
+            <div class="form-group">
+                <label>데이케어 날짜와 시간을 입력하세요</label>
+                <div class="date-time">
+                    <div class="input-icon">
+                        <input type="text" class="date-picker" placeholder=" 📅 날짜를 선택해주세요">
+                    </div>
+                    <div class="input-icon">
+
+                        <input type="text" class="time-picker" placeholder="⏰ 시간을 선택해주세요">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>반려동물 정보나 요청사항</label>
+                <textarea></textarea>
+            </div>
+            <div class="form-group">
+                <label>위치</label>
+                <input type="text" placeholder="예: 서울특별시 강남구">
+                <p>주소를 입력하거나 지도에서 직접 위치를 선택해주세요</p>
+                <div class="map">지도</div>
+            </div>
+        </div>
+        <div class="sitter-section">
+            <h2>시터 선택</h2>
+            <div class="sitter-card">
+                <div class="sitter-content">
+                    <div class="sitter-img1">
+                        <img src="#" alt="" class="sitter-img">
+                    </div>
+                    <div class="sitter-info">
+
+                        <p><strong>이름</strong></p>
+                        <p>★ 4.9 (20)</p>
+                        <p>📍 대구광역시 중구</p>
+                        <p>🕒 6개월 경력</p>
+                        <p>📶 서비스 가능 반경 : 약 2.0km</p>
+                    </div>
+                    <div class="sitter-details">
+                        <div class="sitter-price">30,000원/일</div>
+                        <button class="details-btn">상세 정보</button>
+                    </div>
+                </div>
+                <div class="sitter-content">
+                    <div class="sitter-img1">
+                        <img src="#" alt="" class="sitter-img">
+                    </div>
+                    <div class="sitter-info">
+                        <p><strong>이름</strong></p>
+                        <p>★ 4.9 (20)</p>
+                        <p>📍 대구광역시 중구</p>
+                        <p>🕒 6개월 경력</p>
+                        <p>📶 서비스 가능 반경 : 약 2.0km</p>
+                    </div>
+                    <div class="sitter-details">
+                        <div class="sitter-price">30,000원/일</div>
+                        <button class="details-btn">상세 정보</button>
+                    </div>
+                </div>
+                <div class="sitter-content">
+                    <div class="sitter-img1">
+                        <img src="#" alt="" class="sitter-img">
+                    </div>
+                    <div class="sitter-info">
+
+                        <p><strong>이름</strong></p>
+                        <p>★ 4.9 (20)</p>
+                        <p>📍 대구광역시 중구</p>
+                        <p>🕒 6개월 경력</p>
+                        <p>📶 서비스 가능 반경 : 약 2.0km</p>
+                    </div>
+                    <div class="sitter-details">
+                        <div class="sitter-price">30,000원/일</div>
+                        <button class="details-btn">상세 정보</button>
+                    </div>
+                </div>
+                <div class="sitter-content">
+                    <div class="sitter-img1">
+                        <img src="#" alt="" class="sitter-img">
+                    </div>
+                    <div class="sitter-info">
+
+                        <p><strong>이름</strong></p>
+                        <p>★ 4.9 (20)</p>
+                        <p>📍 대구광역시 중구</p>
+                        <p>🕒 6개월 경력</p>
+                        <p>📶 서비스 가능 반경 : 약 2.0km</p>
+                    </div>
+                    <div class="sitter-details">
+                        <div class="sitter-price">30,000원/일</div>
+                        <button class="details-btn">상세 정보</button>
+                    </div>
+                </div>
+                <div class="sitter-content">
+                    <div class="sitter-img1">
+                        <img src="#" alt="" class="sitter-img">
+                    </div>
+                    <div class="sitter-info">
+                        <p><strong>이름</strong></p>
+                        <p>★ 4.9 (20)</p>
+                        <p>📍 대구광역시 중구</p>
+                        <p>🕒 6개월 경력</p>
+                        <p>📶 서비스 가능 반경 : 약 2.0km</p>
+                    </div>
+                    <div class="sitter-details">
+                        <div class="sitter-price">30,000원/일</div>
+                        <button class="details-btn">상세 정보</button>
+                    </div>
+                </div>
+                <div class="sitter-content">
+                    <div class="sitter-img1">
+                        <img src="#" alt="" class="sitter-img">
+                    </div>
+                    <div class="sitter-info">
+
+                        <p><strong>이름</strong></p>
+                        <p>★ 4.9 (20)</p>
+                        <p>📍 대구광역시 중구</p>
+                        <p>🕒 6개월 경력</p>
+                        <p>📶 서비스 가능 반경 : 약 2.0km</p>
+                    </div>
+                    <div class="sitter-details">
+                        <div class="sitter-price">30,000원/일</div>
+                        <button class="details-btn">상세 정보</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reservation-info">
+        <h3>예약 정보</h3>
+        <div class="location">
+            <p><span>서비스</span><span>데이케어 서비스</span></p>
+            <p><span>위치</span> <span>대구광역시 동구 신천로</span></p>
+        </div>
+        <div class="location">
+            <p><span>기본 가격:</span> <span>0원</span></p>
+            <p><span>총 결제 금액:</span> <span>0원</span></p>
+        </div>
+        <div class="payment-method">
+            <p>결제 방법</p>
+            <label><input type="radio" name="payment"> 신용/체크카드</label><br>
+            <label><input type="radio" name="payment"> 계좌이체</label><br>
+            <label><input type="radio" name="payment"> 현장 결제</label>
+        </div>
+        <button class="reserve-btn" onclick="location.href='reserveConfirm.html'">예약하기</button>
+    </div>
+
+</div>
+
+</html>

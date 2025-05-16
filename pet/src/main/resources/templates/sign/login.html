@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    login
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/sign.css">
+</th:block>
+
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <div class="login_wrap">
+        <div class="login_form">
+            <span>login</span>
+            <form id="form" method="post" th:action="@{/login}">
+                <div class="txt_field">
+                    <input name="userEmail" required type="text">
+                    <label>ID (e-mail)</label>
+                </div>
+                <div class="txt_field">
+                    <input name="userPw" required type="password">
+                    <label>Password</label>
+                </div>
+                <input class="btn" id="loginBtn" type="submit" value="login">
+                <div class="fg_pw">
+                    <a th:href="@{/findpw}">Forgot your password?</a>
+                </div>
+                <div class="signup_link">
+                    Not a member?
+                    <a th:href="@{/join}">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    signup
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/sign.css">
+</th:block>
+
+<!-- script -->
+<th:block layout:fragment="script">
+    <script src="/js/tab.js"></script>
+</th:block>
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <div class="signup_wrap">
+        <div class="signup_form">
+            <span>sign up</span>
+            <div class="convert-tab">
+                <input id="owner" type="radio" name="tabName" checked>
+                <label class="tab-name" for="owner">Owner</label>
+                <input id="sitter" type="radio" name="tabName">
+                <label class="tab-name" for="sitter">Sitter</label>
+            </div>
+            <form id="ownerSign" class="tab-content">
+                <div class="txt_field">
+                    <input type="text" name="userEmail" required>
+                    <label>e-mail</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="userPw" required>
+                    <label>Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="userPwRe" required>
+                    <label>confirm Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="ownerName" required>
+                    <label>Owner name</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="addr" required>
+                    <label>address</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="phoneNum" required>
+                    <label>Phone Number</label>
+                </div>
+            </form>
+            <form class="tab-content" id="sitterSign">
+                <div class="txt_field">
+                    <input type="text" name="userEmail" required>
+                    <label>e-mail</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="userPw" required>
+                    <label>Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="userPwRe" required>
+                    <label>confirm Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="sitterName" required>
+                    <label>Sitter name</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="addr" required>
+                    <label>address</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="phoneNum" required>
+                    <label>Phone Number</label>
+                </div>
+            </form>
+            <input type="button" name="signUp" value="Sign Up" id="joinButton" class="btn">
+        </div>
+    </div>
+</div>
+</html>

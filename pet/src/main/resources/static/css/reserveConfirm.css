@@ -1,0 +1,62 @@
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.sub-text {
+    margin: 10px 0 30px;
+    color: gray;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.card {
+    border: 1px solid #eee;
+    padding: 30px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.card h2 {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.primary-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.secondary-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    color: #1c1c1c;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    cursor: pointer;
+}

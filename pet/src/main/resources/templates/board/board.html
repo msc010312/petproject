@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    board
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/board.css">
+</th:block>
+
+
+<div class="content" layout:fragment="content">
+    <div class="board-container">
+        <div class="board">
+            <div class="board-subject">
+                <span>게시판 제목</span>
+            </div>
+            <ul class="board-title b-layout">
+                <li class="board-title-num">번호</li>
+                <li class="board-title-cont">제목</li>
+                <li class="board-title-name">작성자</li>
+                <li class="board-title-date">날짜</li>
+            </ul>
+            <!-- test -->
+            <ul class="board-list b-layout">
+                <li class="board-list-num">1</li>
+                <li class="board-list-cont txt-hidden">Lorem Ipsum is simply dummy text of the printing
+                    and
+                    typesetting indust ry.Lorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ryLorem Ipsum is simply dummy text of the printing and
+                    typesetting indust ry
+                </li>
+                <li class="board-list-name txt-hidden">
+                    홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동홍길동
+                </li>
+                <li class="boar-list-date">2025-05-01</li>
+            </ul>
+            <!-- test -->
+            <ul class="board-list b-layout">
+                <li class="board-list-num">1</li>
+                <li class="board-list-cont">Lorem .</li>
+                <li class="board-list-name">홍길동</li>
+                <li class="boar-list-date">2025-05-01</li>
+            </ul>
+        </div>
+        <div class="board-bottom">
+            <div class="add-list">
+                <button class="add btn">글쓰기</button>
+            </div>
+            <div class="paging">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
