@@ -60,3 +60,65 @@ h1 {
     font-size: 16px;
     cursor: pointer;
 }
+.sitter-review {
+    position: relative;
+    width: 660px; /* 200 * 3 + 20*2 margin */
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .sitter-review-img {
+    flex: 0 0 200px;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-right: 20px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .sitter-small-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ccc;
+  }
+
+  .slider__btn a {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #eee;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    z-index: 1;
+  }
+
+  .slider__btn a:hover {
+    border-radius: 50%;
+    background-color: #333;
+    color: #fff;
+  }
+
+  .slider__btn .prev {
+    left: -60px;
+  }
+
+  .slider__btn .next {
+    right: -60px;
+  }
+    /*  */
+   
