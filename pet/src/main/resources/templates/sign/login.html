@@ -12,7 +12,7 @@
 
 <!-- css -->
 <th:block layout:fragment="css">
-    <link rel="stylesheet" href="/css/sign.css">
+    <link rel="stylesheet" href="/css/sign.css?after">
 </th:block>
 
 <!-- 작업 영역 -->
@@ -35,7 +35,12 @@
                 </div>
                 <div class="signup_link">
                     Not a member?
-                    <a th:href="@{/join}">Sign Up</a>
+                    <a th:href="@{/signup}">Sign Up</a>
+                </div>
+                <div class="social_login">
+                    <a href="">Sign Up to Kakao</a>
+                    <a href="">Sign Up to Naver</a>
+                    <a href="">Sign Up to Google</a>
                 </div>
             </form>
         </div>

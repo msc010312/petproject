@@ -171,6 +171,12 @@ input[name="tabName"] {
     text-decoration: underline;
 }
 
+.social_login {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
 /* signBtn */
 #loginBtn,
 #joinButton {
