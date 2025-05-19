@@ -36,9 +36,17 @@ public class UserController {
 
     @PostMapping("/signup")
     public String registerUser(UserEntity user, Model model) throws Exception {
-        userService.registerUser(user);
-        model.addAttribute("success", "회원가입이 완료되었습니다.");
-        return "signup-success";
+        try {
+            System.out.println(">>> 회원가입 시도: " + user.getEmail());
+            userService.registerUser(user);
+            System.out.println(">>> 저장 성공");
+        } catch (Exception e) {
+            e.printStackTrace(); // 콘솔에서 정확한 원인 확인
+            model.addAttribute("error", "회원가입 중 오류 발생");
+            return "sign/signup";
+        }
+        model.addAttribute("success", "회원가입 완료");
+        return "sign/login";
     }
 
     @PostMapping("/login")
@@ -50,11 +58,11 @@ public class UserController {
 
         if (user == null || !user.getPassword().equals(password)) {
             model.addAttribute("error", "이메일 또는 비밀번호가 올바르지 않습니다.");
-            return "login";
+            return "sign/login";
         }
         model.addAttribute("successLogin", "로그인 성공");
         session.setAttribute("loggedInUser", user);
-        return "login-success";
+        return "sign/login-success";
     }
 
     @PostMapping("/delete")
