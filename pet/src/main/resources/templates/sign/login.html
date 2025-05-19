@@ -29,6 +29,9 @@
                     <input name="userPw" required type="password">
                     <label>Password</label>
                 </div>
+                <div th:if="${session.loginErrorMessage}">
+                    <p style="color:red;" th:text="${session.loginErrorMessage}"></p>
+                </div>
                 <input class="btn" id="loginBtn" type="submit" value="login">
                 <div class="fg_pw">
                     <a th:href="@{/findpw}">Forgot your password?</a>

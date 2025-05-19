@@ -4,15 +4,18 @@ import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @Data
-
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserEntity saveUser(UserEntity user) {
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
     // 회원가입 처리
     @Override
     public UserEntity registerUser(UserEntity user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
