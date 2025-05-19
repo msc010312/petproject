@@ -1,6 +1,5 @@
 package com.example.demo.domain.entity;
 
-import com.example.demo.ennotion.UserType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,14 +15,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class UserEntity {
-    //    USER_ID NUMBER PRIMARY KEY,
-//    EMAIL VARCHAR2(100) UNIQUE NOT NULL,
-//    PASSWORD VARCHAR2(255) NOT NULL,
-//    NAME VARCHAR2(100) NOT NULL,
-//    ADDRESS VARCHAR2(200),
-//    PHONE VARCHAR2(20),
-//    USER_TYPE VARCHAR2(10) CHECK (USER_TYPE IN ('OWNER', 'SITTER')),
-//    CREATED_AT TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "all_user_seq")
     @SequenceGenerator(name = "all_user_seq", sequenceName = "all_user_seq", allocationSize = 1)
@@ -45,8 +36,7 @@ public class UserEntity {
     private String phone;
 
     @Column(name = "usertype", length = 10)
-    @Enumerated(EnumType.STRING)
-    private UserType userType;
+    private String userType;
 
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -57,5 +47,4 @@ public class UserEntity {
             createdAt = LocalDateTime.now();
         }
     }
-
 }

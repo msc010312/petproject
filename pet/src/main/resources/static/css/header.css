@@ -28,7 +28,6 @@
     position: relative;
     display: flex;
     justify-content: left;
-    gap: 150px;
     align-items: center;
     height: 100%;
 }
@@ -40,11 +39,28 @@
     align-items: center;
 }
 
+.list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 150px;
+    transition: 0.3s ease;
+}
+
+.list:hover{
+    background: #333;
+}
+
+.list:hover > a {
+    color: #fff;
+}
+
 /* 서브메뉴 */
 .sub-menu {
     position: absolute;
     top: calc(100% + 1px);
-    left: -100%;
     width: 150px;
     display: flex;
     justify-content: center;
@@ -110,11 +126,11 @@
     align-items: center;
     gap: 25px;
     height: 100%;
-    flex: 1;
+    flex: 1.5;
 }
 
 .sign-in {
-    background: #fff;
+    background: #ccc;
 }
 
 .sign-up {
@@ -122,5 +138,13 @@
 }
 
 .sign-up>a {
+    color: #fff;
+}
+
+.resign {
+    background : crimson;
+}
+
+.resign>a {
     color: #fff;
 }

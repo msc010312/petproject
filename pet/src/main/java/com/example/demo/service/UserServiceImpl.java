@@ -25,4 +25,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public UserEntity findByEmail(String email) {
+        return userRepository.findByEmail(email); // 이메일로 사용자 조회
+    }
+
+    @Override
+    public void deleteById(Long userId) {
+        userRepository.deleteById(userId);
+    }
 }
