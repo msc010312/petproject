@@ -123,40 +123,6 @@ img {
     display: flex;
 }
 
-/* pet profil */
-.all-pro {
-    display: flex;
-}
-
-.profil {
-    border: 1px solid;
-    width: 610px;
-    height: 250px;
-    margin-top: 20px;
-}
-
-.care>a {
-    border: 1px solid;
-    width: 60px;
-
-    margin-left: 90%;
-    margin-top: -10%;
-}
-
-.profil>.pet-prof>span {
-    font-size: large;
-}
-
-.profil>.pet-prof>ul>li {
-    font-size: x-small;
-}
-
-.profil>.pet-prof>.pro1 {
-    border: 1px solid;
-    width: 590px;
-    height: auto;
-    margin-top: 10px;
-}
 .res1>ul>li:nth-child(1) {
     background-color: #cccccc;
     margin-top: 5px;
@@ -252,7 +218,7 @@ img {
     width: 60px;
     height: 20px;
     border-radius: 30px;
-    
+
 }
 
 .res2>.schedule2 {
@@ -316,6 +282,40 @@ img {
 
 .profil {
     border: 1px solid;
+    width: 610px;
+    height: 250px;
+    margin-top: 20px;
+}
+
+.care>a {
+    border: 1px solid;
+    width: 60px;
+
+    margin-left: 90%;
+    margin-top: -10%;
+}
+
+.profil>.pet-prof>span {
+    font-size: large;
+}
+
+.profil>.pet-prof>ul>li {
+    font-size: x-small;
+}
+
+.profil>.pet-prof>.pro1 {
+    border: 1px solid;
+    width: 590px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.all-pro {
+    display: flex;
+}
+
+.profil {
+    border: 1px solid;
     border-radius: 3px;
     width: 680px;
     height: 260px;
@@ -332,9 +332,11 @@ img {
     margin-top: -30px;
     border-radius: 5px;
 }
-.care>a{
+
+.care>a {
     font-size: medium;
 }
+
 .profil>.pet-prof>span {
     font-size: x-large;
     padding-left: 10px;
@@ -365,7 +367,7 @@ img {
     font-weight: bolder;
 }
 
-.profil>.pet-prof>.pro1>ul>li:nth-child(2){} 
+.profil>.pet-prof>.pro1>ul>li:nth-child(2) {}
 
 .profil>.pet-prof>.pro2 {
     border: 1px solid;
@@ -455,7 +457,8 @@ img {
     margin-top: -52px;
     margin-left: 84%;
 }
-.sitter>.sit-name1>.chat1>a{
+
+.sitter>.sit-name1>.chat1>a {
     font-size: medium;
 }
 
@@ -505,7 +508,8 @@ img {
     margin-top: -52px;
     margin-left: 84%;
 }
-.sitter>.sit-name2>.chat2>a{
+
+.sitter>.sit-name2>.chat2>a {
     font-size: medium;
 }
 
