@@ -1,7 +1,14 @@
 package com.example.demo.config;
 
+import com.example.demo.config.auth.loginHandler.CustomLoginFailureHandler;
+import com.example.demo.config.auth.loginHandler.CustomLoginSuccessHandler;
+import com.example.demo.config.auth.logoutHandler.CustomLogoutHandler;
+import com.example.demo.config.auth.logoutHandler.CustomLogoutSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,14 +18,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-//    @Autowired
-//    private CustomLoginSuccessHandler customLoginSuccessHandler;
-//
-//    @Autowired
-//    private CustomLogoutHandler customLogoutHandler;
-//
-//    @Autowired
-//    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
+    @Autowired
+    private CustomLoginSuccessHandler customLoginSuccessHandler;
+
+    @Autowired
+    private CustomLogoutHandler customLogoutHandler;
+
+    @Autowired
+    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -30,24 +37,27 @@ public class SecurityConfig {
 
         // 권한체크
 //        http.authorizeHttpRequests((auth)->{ auth
-//                .requestMatchers("/","/join","/login").permitAll()
-//                .requestMatchers("/user").hasRole("USER")
-//                .requestMatchers("/manager").hasRole("MANAGER")
-//                .requestMatchers("/admin").hasRole("ADMIN")
+//                .requestMatchers("/","/signup","/login").permitAll()
 //                .anyRequest().authenticated();
 //        });
 
         // 로그인
         http.formLogin((login)->{ login
-                .loginPage("/login");
-//                .successHandler(customLoginSuccessHandler)
-//                .failureHandler(new CustomLoginFailureHandler());
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .successHandler(customLoginSuccessHandler)
+                .failureHandler(new CustomLoginFailureHandler());
         });
 
         // 로그아웃
-        http.logout((logout)->{
-//                .addLogoutHandler(customLogoutHandler)
-//                .logoutSuccessHandler(customLogoutSuccessHandler);
+        http.logout((logout)->{ logout
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .addLogoutHandler(customLogoutHandler)
+                .logoutSuccessHandler(customLogoutSuccessHandler);
         });
 
         // 예외처리
@@ -60,5 +70,10 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 }

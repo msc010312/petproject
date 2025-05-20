@@ -121,12 +121,16 @@
 
 .sign {
     position: relative;
+    flex: 1.5;
+}
+
+.btn-box {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25px;
     height: 100%;
-    flex: 1.5;
 }
 
 .sign-in {

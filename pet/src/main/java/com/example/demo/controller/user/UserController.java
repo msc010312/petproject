@@ -2,15 +2,17 @@ package com.example.demo.controller.user;
 
 import com.example.demo.InvalidEmailFormatException.InvalidEmailFormatException;
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.UserRepository;
 import com.example.demo.service.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Data
@@ -18,6 +20,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/signup")
     public String signup() {
@@ -53,28 +58,28 @@ public class UserController {
         }
     }
 
-    @PostMapping("/login")
-    public String loginUser(@RequestParam String email,
-                            @RequestParam String password,
-                            HttpSession session,
-                            Model model) {
-        UserEntity user = userService.findByEmail(email);
-
-        if (user == null || !user.getPassword().equals(password)) {
-            model.addAttribute("error", "이메일 또는 비밀번호가 올바르지 않습니다.");
-            return "sign/login";
-        }
-        model.addAttribute("successLogin", "로그인 성공");
-        session.setAttribute("loggedInUser", user);
-        return "sign/login-success";
-    }
+//    @PostMapping("/login")
+//    public String loginUser(@RequestParam String email,
+//                            @RequestParam String password,
+//                            HttpSession session,
+//                            Model model) {
+//        UserEntity user = userService.findByEmail(email);
+//
+//        if (user == null || !user.getPassword().equals(password)) {
+//            model.addAttribute("error", "이메일 또는 비밀번호가 올바르지 않습니다.");
+//            return "sign/login";
+//        }
+//        model.addAttribute("successLogin", "로그인 성공");
+//        session.setAttribute("loggedInUser", user);
+//        return "sign/login-success";
+//    }
 
     @PostMapping("/delete")
-    public String deleteUser(HttpSession session, Model model) {
-        UserEntity loggedInUser = (UserEntity) session.getAttribute("loggedInUser");
-        userService.deleteById(loggedInUser.getUserId());
+    public String deleteUser(@AuthenticationPrincipal UserDetails userDetails, HttpSession session, Model model) {
+        UserEntity user = userRepository.findByEmail(userDetails.getUsername());
+        userService.deleteById(user.getUserId());
         session.invalidate();
         model.addAttribute("message", "회원 탈퇴가 완료되었습니다.");
-        return "delete-success";
+        return "sign/delete-success";
     }
 }

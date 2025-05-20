@@ -1,4 +1,5 @@
-<div class="header" th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+<div class="header" th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="logo">
         <span><a th:href="@{/main}">LOGO</a></span>
     </div>
@@ -17,11 +18,25 @@
         </ul>
     </div>
     <div class="sign">
-        <button class="sign-in btn">
-            <a th:href="@{/login}">로그인</a>
-        </button>
-        <button class="sign-up btn">
-            <a th:href="@{/signup}">회원가입</a>
-        </button>
+        <div class="btn-box" sec:authorize="isAnonymous()">
+            <button class="sign-in btn">
+                <a th:href="@{/login}">로그인</a>
+            </button>
+            <button class="sign-up btn">
+                <a th:href="@{/signup}">회원가입</a>
+            </button>
+        </div>
+        <div class="btn-box" sec:authorize="isAuthenticated()">
+            <div class="username-box">
+                <span th:text="${#authentication.name}"></span>
+                <span>님 안녕하세요!</span>
+            </div>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout btn">로그아웃</button>
+            </form>
+            <form th:action="@{/delete}" method="post">
+                <button type="submit" class="resign btn">회원탈퇴</button>
+            </form>
+        </div>
     </div>
 </div>
