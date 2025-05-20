@@ -1,7 +1,12 @@
 package com.example.demo.config;
 
+import com.example.demo.config.auth.loginHandler.CustomLoginFailureHandler;
+import com.example.demo.config.auth.loginHandler.CustomLoginSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,8 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-//    @Autowired
-//    private CustomLoginSuccessHandler customLoginSuccessHandler;
+    @Autowired
+    private CustomLoginSuccessHandler customLoginSuccessHandler;
 //
 //    @Autowired
 //    private CustomLogoutHandler customLogoutHandler;
@@ -39,9 +44,12 @@ public class SecurityConfig {
 
         // 로그인
         http.formLogin((login)->{ login
-                .loginPage("/login");
-//                .successHandler(customLoginSuccessHandler)
-//                .failureHandler(new CustomLoginFailureHandler());
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .successHandler(customLoginSuccessHandler)
+                .failureHandler(new CustomLoginFailureHandler());
         });
 
         // 로그아웃
@@ -61,5 +69,10 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 }
