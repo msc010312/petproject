@@ -43,8 +43,21 @@ public class UserController {
     @PostMapping("/signup")
     public String registerUser(UserEntity user, Model model) {
         String email = user.getEmail();
+        String password = user.getPassword();
+        String userPwRe = user.getUserPwRe();
+        String phone = user.getPhone();
         if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
             throw new InvalidEmailFormatException("이메일 형식이 올바르지 않습니다.");
+        }
+
+        if(password == null || !password.matches("^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$")){
+            throw new InvalidEmailFormatException("영문 숫자 특수기호 조합 8자리 이상 입력해주세요");
+        }
+        if(password.trim().equals(userPwRe.trim()) == false) {
+            throw new InvalidEmailFormatException("비밀번호가 일치하지 않습니다");
+        }
+        if(phone == null || !phone.matches("^01[016789]\\d{8}$")){
+            throw  new InvalidEmailFormatException("전화번호는 11자리를 입력해주세요");
         }
         try {
             System.out.println(">>> 회원가입 시도: " + user.getEmail());
