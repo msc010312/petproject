@@ -1,10 +1,13 @@
 package com.example.demo.controller.user;
 
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.UserRepository;
 import com.example.demo.service.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/signup")
     public String signup() {
@@ -65,11 +71,11 @@ public class UserController {
 //    }
 
     @PostMapping("/delete")
-    public String deleteUser(HttpSession session, Model model) {
-        UserEntity loggedInUser = (UserEntity) session.getAttribute("loggedInUser");
-        userService.deleteById(loggedInUser.getUserId());
+    public String deleteUser(@AuthenticationPrincipal UserDetails userDetails, HttpSession session, Model model) {
+        UserEntity user = userRepository.findByEmail(userDetails.getUsername());
+        userService.deleteById(user.getUserId());
         session.invalidate();
         model.addAttribute("message", "회원 탈퇴가 완료되었습니다.");
-        return "delete-success";
+        return "sign/delete-success";
     }
 }

@@ -22,11 +22,11 @@
             <span>login</span>
             <form id="form" method="post" th:action="@{/login}">
                 <div class="txt_field">
-                    <input name="userEmail" required type="text">
+                    <input name="email" required type="text">
                     <label>ID (e-mail)</label>
                 </div>
                 <div class="txt_field">
-                    <input name="userPw" required type="password">
+                    <input name="password" required type="password">
                     <label>Password</label>
                 </div>
                 <div th:if="${session.loginErrorMessage}">
