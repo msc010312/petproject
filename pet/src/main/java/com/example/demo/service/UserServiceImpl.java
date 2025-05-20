@@ -27,8 +27,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity findByEmail(String email) {
-        return userRepository.findByEmail(email); // 이메일로 사용자 조회
+        return userRepository.findByEmail((email));
     }
+
+//        if (userRepository.findByEmail(get)) {
+//            throw new DuplicateEmailException("이미 사용 중인 이메일입니다.");
+//        return userRepository.findByEmail(email); // 이메일로 사용자 조회
+
 
     @Override
     public void deleteById(Long userId) {

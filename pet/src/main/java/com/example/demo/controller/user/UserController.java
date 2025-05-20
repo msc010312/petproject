@@ -1,5 +1,6 @@
 package com.example.demo.controller.user;
 
+import com.example.demo.InvalidEmailFormatException.InvalidEmailFormatException;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.service.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
@@ -35,18 +36,21 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String registerUser(UserEntity user, Model model) throws Exception {
+    public String registerUser(UserEntity user, Model model) {
+        String email = user.getEmail();
+        if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            throw new InvalidEmailFormatException("이메일 형식이 올바르지 않습니다.");
+        }
         try {
             System.out.println(">>> 회원가입 시도: " + user.getEmail());
             userService.registerUser(user);
             System.out.println(">>> 저장 성공");
+            model.addAttribute("success", "회원가입 완료");
+            return "sign/login"; // 성공 시 로그인 페이지로
         } catch (Exception e) {
-            e.printStackTrace(); // 콘솔에서 정확한 원인 확인
-            model.addAttribute("error", "회원가입 중 오류 발생");
-            return "sign/signup";
+            model.addAttribute("error", e.getMessage());
+            return "sign/signup"; // 에러 시 회원가입 폼으로
         }
-        model.addAttribute("success", "회원가입 완료");
-        return "sign/login";
     }
 
     @PostMapping("/login")

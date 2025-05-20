@@ -52,7 +52,6 @@ public class SecurityConfig {
 
         // 예외처리
         http.exceptionHandling((exception)->{
-
         });
 
         return http.build();
