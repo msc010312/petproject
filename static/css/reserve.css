@@ -118,17 +118,21 @@ textarea {
     padding: 20px;
     z-index: 999;
 }
-.reservation-info p{
+
+.reservation-info p {
     display: flex;
     justify-content: space-between;
 }
-.reservation-info p:first-child{
+
+.reservation-info p:first-child {
     margin-bottom: 5px;
 }
-.location{
+
+.location {
     border-bottom: 1px solid #333;
     padding: 10px 0;
 }
+
 .payment-method {
     margin: 10px 0;
 }
@@ -151,23 +155,17 @@ textarea {
     padding: 20px;
     padding-right: 30px;
     border-radius: 10px;
-    border: 1px solid #757575;   
+    border: 1px solid #757575;
     overflow: hidden;
 }
-.sitter-card{
+
+.sitter-card {
     width: 970px;
     height: 400px;
     overflow-y: scroll;
     padding: 20px;
-    
-}
-/* .sitter-section::-webkit-scrollbar-thumb{
-    background-color: hsl(0, 0%, 45%);
-    border-radius: 20%;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-} */
 
+}
 .sitter-content {
     display: flex;
     border: 1px solid #ccc;
@@ -205,7 +203,7 @@ textarea {
     border: 1px solid #757575;
     border-radius: 5px;
     cursor: pointer;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .modal-note {
@@ -213,3 +211,110 @@ textarea {
     font-size: 14px;
     color: #666;
 }
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.sitter-main{
+    display: flex;
+}
+.sitter-big-img {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: #ccc;
+}
+.sitter-introduce {
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.sitter-review {
+    overflow: hidden;
+    position: relative;
+    width: 880px; 
+}
+.sitter-review-img {
+    flex: 0 0 200px;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background: white;
+}
+.id{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    gap: 10px;
+    height: 260px;
+}
+.reserve-btn2 {
+    width: 130px;
+    height: 50px;
+    padding: 10px;
+    background-color: #757575;
+    color: white;
+    border: none;
+    float: right;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.sitter-small-img{
+    width: 100px;
+    height: 100px;
+    margin: 10px 0 0 10px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: #ccc;
+}
+/*  */
+.slider__btn {
+    height: 100%;
+    position: relative;
+}
+.slider__btn span{
+    height: 100%;
+}
+.slider__btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    margin-top: 10px;
+    gap: 20px;
+}
+

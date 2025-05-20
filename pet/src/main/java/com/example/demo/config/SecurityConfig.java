@@ -2,6 +2,8 @@ package com.example.demo.config;
 
 import com.example.demo.config.auth.loginHandler.CustomLoginFailureHandler;
 import com.example.demo.config.auth.loginHandler.CustomLoginSuccessHandler;
+import com.example.demo.config.auth.logoutHandler.CustomLogoutHandler;
+import com.example.demo.config.auth.logoutHandler.CustomLogoutSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +20,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Autowired
     private CustomLoginSuccessHandler customLoginSuccessHandler;
-//
-//    @Autowired
-//    private CustomLogoutHandler customLogoutHandler;
-//
-//    @Autowired
-//    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
+
+    @Autowired
+    private CustomLogoutHandler customLogoutHandler;
+
+    @Autowired
+    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -35,10 +37,7 @@ public class SecurityConfig {
 
         // 권한체크
 //        http.authorizeHttpRequests((auth)->{ auth
-//                .requestMatchers("/","/join","/login").permitAll()
-//                .requestMatchers("/user").hasRole("USER")
-//                .requestMatchers("/manager").hasRole("MANAGER")
-//                .requestMatchers("/admin").hasRole("ADMIN")
+//                .requestMatchers("/","/signup","/login").permitAll()
 //                .anyRequest().authenticated();
 //        });
 
@@ -53,14 +52,16 @@ public class SecurityConfig {
         });
 
         // 로그아웃
-        http.logout((logout)->{
-//                .addLogoutHandler(customLogoutHandler)
-//                .logoutSuccessHandler(customLogoutSuccessHandler);
+        http.logout((logout)->{ logout
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .addLogoutHandler(customLogoutHandler)
+                .logoutSuccessHandler(customLogoutSuccessHandler);
         });
 
         // 예외처리
         http.exceptionHandling((exception)->{
-
         });
 
         return http.build();

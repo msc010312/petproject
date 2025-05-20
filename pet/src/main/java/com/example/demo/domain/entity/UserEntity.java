@@ -26,6 +26,8 @@ public class UserEntity {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
+    private String userPwRe;
+
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 

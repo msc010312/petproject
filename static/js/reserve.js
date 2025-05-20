@@ -75,6 +75,7 @@ const serviceTemplates = {
     </div>
   `
 };
+
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
 
@@ -84,6 +85,20 @@ tabs.forEach(tab => {
 
     const type = tab.dataset.type;
     reservationHeader.innerHTML = serviceTemplates[type];
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  initializePickers();
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const type = tab.dataset.type;
+      reservationHeader.innerHTML = serviceTemplates[type];
+      initializePickers();
+    });
   });
 });
 
@@ -100,20 +115,70 @@ function initializePickers() {
     time_24hr: true
   });
 }
+// document.addEventListener('DOMContentLoaded', () => {
+//   fetch('reserve-modal.html')
+//     .then(response => response.text())
+//     .then(data => {
+//       document.getElementById('modalContainer').innerHTML = data;
 
-document.addEventListener('DOMContentLoaded', () => {
-  initializePickers();
+//       const modal = document.getElementById('sitterModal');
+//       const closeModal = modal.querySelector('.close-btn');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+//       document.addEventListener('click', function (e) {
+//         if (e.target.classList.contains('details-btn')) {
+//           modal.classList.remove('hidden');
+//         }
+//       });
 
-      const type = tab.dataset.type;
-      reservationHeader.innerHTML = serviceTemplates[type];
-      initializePickers();
-    });
+
+//       closeModal.addEventListener('click', () => {
+//         modal.classList.add('hidden');
+//       });
+
+
+      // window.addEventListener('click', (e) => {
+      //   if (e.target === modal) {
+      //     modal.classList.add('hidden');
+      //   }
+      // });
+//     });
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".slider-track");
+  const items = document.querySelectorAll(".sitter-review-img");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+
+  const itemWidth = 220; 
+  const visibleCount = 4;
+  let currentIndex = 0;
+
+  function updateSlider() {
+    const offset = currentIndex * itemWidth;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  prevBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
   });
+
+  nextBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (currentIndex < items.length - visibleCount) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  updateSlider();
 });
+
+
+
 
 
