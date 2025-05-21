@@ -36,10 +36,11 @@ public class SecurityConfig {
 //		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
         // 권한체크
-//        http.authorizeHttpRequests((auth)->{ auth
-//                .requestMatchers("/","/signup","/login").permitAll()
-//                .anyRequest().authenticated();
-//        });
+        http.authorizeHttpRequests((auth)->{ auth
+                .requestMatchers("/","/signup","/login").permitAll()
+                .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
+                .anyRequest().authenticated();
+        });
 
         // 로그인
         http.formLogin((login)->{ login
