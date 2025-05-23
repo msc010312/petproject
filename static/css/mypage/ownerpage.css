@@ -11,7 +11,7 @@ img {
     border-radius: 3px;
     width: 1260px;
     height: auto;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 20px 0;
 }
 
 .name {
@@ -91,12 +91,13 @@ img {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 20px 0;
 }
 
 .reserve>.reserv>span {
     font-size: x-large;
     padding-left: 10px;
+    font-weight: bold;
 }
 
 .reserve>.reserv>ul>li {
@@ -192,7 +193,7 @@ img {
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin-top: -12%;
+    margin-top: -12.8%;
     margin-left: 51%;
 }
 
@@ -266,37 +267,59 @@ img {
 }
 
 .allres {
-    border: 1px solid;
-    border-radius: 5px;
-    width: 1220px;
-    height: 30px;
     text-align: center;
-    margin: 10px 20px;
-    font-size: medium;
+    display: flex;
+    margin-left: 5%;
 }
+
+.allres>.left {
+    margin-left: 520%;
+    margin-top: 2.5%;
+}
+
+.allres>.number {
+    margin-left: 26%;
+    margin-top: -18%;
+    font-size: large;
+}
+
+.allres>.number>ul {
+    /* margin-left: 40%; */
+    margin-top: 15px;
+    display: flex;
+}
+
+.allres>.number>ul>li {
+    padding-left: 40%;
+}
+
+.allres>.right {
+    margin-left: 125%;
+    margin-top: 2%;
+
+}
+
+
 
 /* pet profil */
 .all-pro {
     display: flex;
+    margin: 20px 0 20px 0;
 }
 
 .profil {
     border: 1px solid;
     width: 610px;
     height: 250px;
-    margin-top: 20px;
 }
 
 .care>a {
-    border: 1px solid;
     width: 60px;
-
-    margin-left: 90%;
-    margin-top: -10%;
 }
 
 .profil>.pet-prof>span {
     font-size: large;
+    font-weight: bold;
 }
 
 .profil>.pet-prof>ul>li {
@@ -402,6 +425,7 @@ img {
 
 .sitter>.sit-used>span {
     font-size: x-large;
+    font-weight: bold;
     padding-left: 10px;
 }
 
@@ -438,13 +462,18 @@ img {
     font-size: small;
     padding: 5px;
     padding-left: 25px;
-    margin-top: -22px;
+    margin-top: -27px;
 }
 
 .sitter>.sit-name1>ul>li:nth-child(4) {
     font-size: small;
-    margin-top: -13.5%;
+    margin-top: -16%;
     margin-left: 85px;
+}
+
+.sitter>.sit-name1>ul>li:nth-child(5) {
+    font-size: small;
+    margin-left: 1px;
 }
 
 .sitter>.sit-name1>.chat1 {
@@ -491,12 +520,18 @@ img {
     font-size: small;
     padding: 5px;
     padding-left: 25px;
-    margin-top: -22px;
+    margin-top: -27px;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(4) {
     font-size: small;
     margin-left: 85px;
+    margin-top: -16%;
+}
+
+.sitter>.sit-name2>ul>li:nth-child(5) {
+    font-size: small;
+    margin-left: 1px;
 }
 
 .sitter>.sit-name2>.chat2 {

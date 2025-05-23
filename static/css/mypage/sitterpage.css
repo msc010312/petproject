@@ -494,13 +494,36 @@ img {
 }
 
 .allres {
-    border: 1px solid;
-    border-radius: 5px;
-    width: 1220px;
-    height: 30px;
     text-align: center;
-    margin: 10px 20px;
-    font-size: medium;
+    display: flex;
+    margin-left: 5%;
+}
+
+.allres>.left {
+    margin-left: 520%;
+    margin-top: 2.5%;
+}
+
+.allres>.number {
+    margin-left: 26%;
+    margin-top: -18%;
+    font-size: large;
+}
+
+.allres>.number>ul {
+    /* margin-left: 40%; */
+    margin-top: 15px;
+    display: flex;
+}
+
+.allres>.number>ul>li {
+    padding-left: 40%;
+}
+
+.allres>.right {
+    margin-left: 125%;
+    margin-top: 2%;
+
 }
 
 /* reserve end */
@@ -540,7 +563,7 @@ img {
 }
 
 .end-res1>.dog6 {
-    margin-left: 12px;
+    margin-left: 20px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -563,22 +586,11 @@ img {
 .char1 {
     border: 1px solid;
     border-radius: 3px;
-    width: 65px;
+    width: 140px;
     height: 25px;
     text-align: center;
-    margin-left: 6px;
-    margin-top: 24px;
-    font-size: small;
-}
-
-.rec1 {
-    border: 1px solid;
-    border-radius: 3px;
-    width: 65px;
-    height: 25px;
-    text-align: center;
-    margin-left: 53%;
-    margin-top: -15.5%;
+    margin-left: 12px;
+    margin-top: 22px;
     font-size: small;
 }
 
@@ -592,7 +604,7 @@ img {
 }
 
 .end-res2>.dog7 {
-    margin-left: 12px;
+    margin-left: 20px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -615,22 +627,11 @@ img {
 .char2 {
     border: 1px solid;
     border-radius: 3px;
-    width: 65px;
+    width: 140px;
     height: 25px;
     text-align: center;
-    margin-left: 6px;
-    margin-top: 24px;
-    font-size: small;
-}
-
-.rec2 {
-    border: 1px solid;
-    border-radius: 3px;
-    width: 65px;
-    height: 25px;
-    text-align: center;
-    margin-left: 53%;
-    margin-top: -15.5%;
+    margin-left: 12px;
+    margin-top: 22px;
     font-size: small;
 }
 
@@ -644,7 +645,7 @@ img {
 }
 
 .end-res3>.dog8 {
-    margin-left: 12px;
+    margin-left: 20px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -667,40 +668,35 @@ img {
 .char3 {
     border: 1px solid;
     border-radius: 3px;
-    width: 65px;
+    width: 140px;
     height: 25px;
     text-align: center;
-    margin-left: 6px;
-    margin-top: 24px;
-    font-size: small;
-}
-
-.rec3 {
-    border: 1px solid;
-    border-radius: 3px;
-    width: 65px;
-    height: 25px;
-    text-align: center;
-    margin-left: 53%;
-    margin-top: -15.5%;
+    margin-left: 12px;
+    margin-top: 22px;
     font-size: small;
 }
 
 .section {}
 
 .section>.left {
-    margin-left: -120%;
+    margin-left: -140%;
     margin-top: 10%;
 }
 
 .section>.number {
-    margin-left: -93%;
+    margin-left: -118%;
     margin-top: -18%;
     font-size: large;
 }
+.section>.number>ul{
+    display: flex;
+}
+.section>.number>ul>li{
+    padding-left: 20px;
+}
 
 .section>.right {
-    margin-left: -45%;
-    margin-top: -14.5%;
+    margin-left: -22%;
+    margin-top: -14%;
 
 }
