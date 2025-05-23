@@ -23,7 +23,7 @@ public class TxConfig {
 //    }
 
     //    JPA TransactionManager Settings
-    @Bean(name = "jpaTransactionManager")
+    @Bean(name = "transactionManager")
     public JpaTransactionManager jpaTransactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);

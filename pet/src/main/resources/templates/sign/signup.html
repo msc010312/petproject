@@ -63,8 +63,9 @@
                 <div class="txt_field">
                     <input type="text" name="phone" required>
                     <label>Phone Number</label>
+                    <span class="example">하이픈(-),공백을 제외하고 입력해주세요</span>
                 </div>
-                <input type="hidden" name="userType" value="Owner" required>
+                <input type="hidden" name="role" value="ROLE_OWNER" required>
                 <input type="submit" name="signUp" value="Sign Up" id="OwnerBtn" class="btn">
             </form>
             <form action="/signup" class="tab-content" id="sitterSign" method="post">
@@ -93,8 +94,9 @@
                 <div class="txt_field">
                     <input type="text" name="phone" required>
                     <label>Phone Number</label>
+                    <span class="example">하이픈(-),공백을 제외하고 입력해주세요</span>
                 </div>
-                <input type="hidden" name="userType" value="Sitter" required>
+                <input type="hidden" name="role" value="ROLE_SITTER" required>
                 <input type="submit" name="signUp" value="Sign Up" id="SitterBtn" class="btn">
             </form>
 

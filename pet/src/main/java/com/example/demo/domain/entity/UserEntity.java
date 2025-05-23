@@ -26,8 +26,6 @@ public class UserEntity {
     @Column(name = "password", nullable = false, length = 255)
     private String password;
 
-    private String userPwRe;
-
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
@@ -37,8 +35,8 @@ public class UserEntity {
     @Column(name = "phone", length = 20)
     private String phone;
 
-    @Column(name = "usertype", length = 10)
-    private String userType;
+    @Column(name = "ROLE", length = 10)
+    private String role;
 
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();

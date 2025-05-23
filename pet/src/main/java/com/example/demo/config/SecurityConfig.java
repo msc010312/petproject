@@ -39,6 +39,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth)->{ auth
                 .requestMatchers("/","/signup","/login").permitAll()
                 .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
+                .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
+                .requestMatchers("/mypage/owner").hasRole("OWNER")
+                .requestMatchers("/mypage/sitter").hasRole("SITTER")
+                .requestMatchers("/mypage/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
         });
 
@@ -63,6 +67,11 @@ public class SecurityConfig {
 
         // 예외처리
         http.exceptionHandling((exception)->{
+        });
+
+        //OAUTH2-CLIENT
+        http.oauth2Login((oauth2)->{
+            oauth2.loginPage("/login");
         });
 
         return http.build();
