@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const ownerTab = document.getElementById("owner");
     const sitterTab = document.getElementById("sitter");
 
-    const ownerSign = document.getElementById("ownerSign");
-    const sitterSign = document.getElementById("sitterSign");
-
     function toggleTab() {
         if (ownerTab.checked) {
             ownerSign.style.display = "block";

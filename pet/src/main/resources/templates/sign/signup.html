@@ -25,9 +25,9 @@
         <div class="signup_form">
             <span>sign up</span>
             <div class="convert-tab">
-                <input id="owner" type="radio" name="tabName" checked>
+                <input id="owner" type="radio" name="role" checked>
                 <label class="tab-name" for="owner">Owner</label>
-                <input id="sitter" type="radio" name="tabName">
+                <input id="sitter" type="radio" name="role">
                 <label class="tab-name" for="sitter">Sitter</label>
             </div>
             <div th:if="${error}" class="error-message" style="color:red; text-align:center; margin-bottom:10px;">
@@ -66,7 +66,7 @@
                     <span class="example">하이픈(-),공백을 제외하고 입력해주세요</span>
                 </div>
                 <input type="hidden" name="role" value="ROLE_OWNER" required>
-                <input type="submit" name="signUp" value="Sign Up" id="OwnerBtn" class="btn">
+                <input type="submit" name="signUp" value="Sign Up" id="OwnerBtn" class="joinbtn btn">
             </form>
             <form action="/signup" class="tab-content" id="sitterSign" method="post">
                 <div class="txt_field">
@@ -97,7 +97,7 @@
                     <span class="example">하이픈(-),공백을 제외하고 입력해주세요</span>
                 </div>
                 <input type="hidden" name="role" value="ROLE_SITTER" required>
-                <input type="submit" name="signUp" value="Sign Up" id="SitterBtn" class="btn">
+                <input type="submit" name="signUp" value="Sign Up" id="SitterBtn" class="joinbtn btn">
             </form>
 
         </div>

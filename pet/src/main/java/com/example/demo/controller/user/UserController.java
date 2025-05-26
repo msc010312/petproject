@@ -12,9 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Data
@@ -80,5 +78,12 @@ public class UserController {
         session.invalidate();
         model.addAttribute("message", "회원 탈퇴가 완료되었습니다.");
         return "sign/delete-success";
+    }
+
+    @PostMapping("/set-role")
+    @ResponseBody
+    public void setRole(HttpSession session, @RequestParam String role) {
+        session.setAttribute("oauth2_role", role);
+        System.out.println("UserContorller role: " + role);
     }
 }

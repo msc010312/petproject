@@ -18,7 +18,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
 		log.info("CustomLoginSuccessHandler's onAuthenticationSuccess invoke");
-		response.sendRedirect("/main");
+		response.sendRedirect("/");
 	}
 
 }

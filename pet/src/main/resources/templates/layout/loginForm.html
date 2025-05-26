@@ -1,0 +1,36 @@
+<div class="login_form" xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="loginForm">
+  <span>login</span>
+  <div class="convert-tab">
+    <input id="owner" type="radio" name="role" value="ROLE_OWNER" checked>
+    <label class="tab-name" for="owner">Owner</label>
+    <input id="sitter" type="radio" name="role" value="ROLE_SITTER">
+    <label class="tab-name" for="sitter">Sitter</label>
+  </div>
+  <form id="loginForm" method="post" th:action="@{/login}">
+    <div class="txt_field">
+      <input name="email" required type="text">
+      <label>ID (e-mail)</label>
+    </div>
+    <div class="txt_field">
+      <input name="password" required type="password">
+      <label>Password</label>
+    </div>
+    <div th:if="${session.loginErrorMessage}">
+      <p style="color:red;" th:text="${session.loginErrorMessage}"></p>
+    </div>
+    <input class="btn" id="loginBtn" type="submit" value="login">
+    <div class="fg_pw">
+      <a th:href="@{/findpw}">Forgot your password?</a>
+    </div>
+    <div class="signup_link">
+      Not a member?
+      <a th:href="@{/signup}">Sign Up</a>
+    </div>
+    <div class="social_login">
+      <button class="social-login-btn btn" data-provider="kakao">Kakao login</button>
+      <button class="social-login-btn btn" data-provider="naver">Naver login</button>
+      <button class="social-login-btn btn" data-provider="google">Google login</button>
+    </div>
+    <input type="hidden" name="role" id="roleInput" value="ROLE_OWNER" required>
+  </form>
+</div>

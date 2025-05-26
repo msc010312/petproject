@@ -5,6 +5,7 @@ import com.example.demo.config.auth.provider.OAuth2UserInfo;
 import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -25,6 +26,9 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private HttpSession session;
+
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
@@ -36,6 +40,8 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
         OAuth2UserInfo oAuth2UserInfo = null;
         //'kakao','naver','google','in-'
         String provider = userRequest.getClientRegistration().getRegistrationId();
+
+
 
         Map<String,Object> attributes = oAuth2User.getAttributes();
         if(provider.startsWith("kakao")) {
@@ -62,16 +68,20 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
 //        }
 
         //최초 로그인시 로컬계정 DB 저장 처리
-        String username = oAuth2UserInfo.getProvider()+"_"+oAuth2UserInfo.getProviderId();
+        String username = oAuth2UserInfo.getName();
         String password = passwordEncoder.encode("1234");
         String email = oAuth2UserInfo.getEmail();
         String rawPhone = oAuth2UserInfo.getPhone();
+        String prov = oAuth2UserInfo.getProvider();
         String phone = null;
         if (rawPhone != null) {
             phone = rawPhone.replace("+82 ", "0").replaceAll("-", "");
         }
         System.out.println(phone);
-        Optional<UserEntity> userOptional =  userRepository.findByName(username);
+        String role = (String) session.getAttribute("oauth2_role");
+        System.out.println("----------------------role--------------- : " + role);
+        session.removeAttribute("oauth2_role");
+        Optional<UserEntity> userOptional =  userRepository.findByName(email);
         //UserDto 생성 (이유 : PrincipalDetails에 포함)
         //UserEntity 생성(이유 : 최초 로그인시 DB 저장용도)
         UserDto userDto = null;
@@ -82,9 +92,10 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
                         .email(email)
                         .password(password)
                         .phone(phone)
-//                        .role("ROLE_SITTER")
+                        .role(role)
                         .name(username)
                         .createAt(LocalDateTime.now())
+                        .provider(prov)
                         .build();
             UserEntity user = userDto.toEntity();
             userRepository.save(user);  //계정 등록

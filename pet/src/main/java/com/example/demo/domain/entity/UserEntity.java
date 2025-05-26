@@ -38,6 +38,9 @@ public class UserEntity {
     @Column(name = "ROLE", length = 10)
     private String role;
 
+    @Column(name ="provider", length = 10)
+    private String provider;
+
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
 

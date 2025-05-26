@@ -37,7 +37,7 @@ public class SecurityConfig {
 
         // 권한체크
         http.authorizeHttpRequests((auth)->{ auth
-                .requestMatchers("/","/signup","/login").permitAll()
+                .requestMatchers("/","/signup","/login","set-role").permitAll()
                 .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
                 .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
                 .requestMatchers("/mypage/owner").hasRole("OWNER")
@@ -50,6 +50,7 @@ public class SecurityConfig {
         http.formLogin((login)->{ login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/main")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .successHandler(customLoginSuccessHandler)

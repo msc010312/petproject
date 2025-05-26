@@ -1,6 +1,7 @@
 package com.example.demo.config.auth.logoutHandler;
 
 
+import com.example.demo.config.auth.PrincipalDetail;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +27,16 @@ public class CustomLogoutHandler implements LogoutHandler {
 		if (authentication != null) {
 			String username = authentication.getName();
 			System.out.println("로그아웃: " + username);
+		}
+
+		PrincipalDetail principalDetails = (PrincipalDetail)authentication.getPrincipal();
+		String provider = principalDetails.getUserDto().getProvider();
+		if(provider!=null && provider.startsWith("kakao")){
+
+		}else if(provider!=null && provider.startsWith("naver")){
+
+		}else if(provider!=null && provider.startsWith("google")){
+
 		}
 
 	}
