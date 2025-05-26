@@ -13,10 +13,17 @@ img {
 }
 
 .all-profile>.care-prof {
-    font-size: xx-large;
-    font-weight: bold;
     text-align: center;
     margin-top: 10px;
+}
+
+.all-profile>.care-prof>ul>li:nth-child(1) {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.all-profile>.care-prof>ul>li:nth-child(2) {
+    font-size: medium;
 }
 
 .all-profile>.photo {
@@ -68,7 +75,6 @@ img {
     text-align: justify;
     width: 850px;
     height: 100px;
-
 }
 
 .cng>.my-cng>.na-cng {
@@ -77,20 +83,28 @@ img {
     margin: 10px 0 10px 0;
 }
 
+.cng>.my-cng>.na-cng>ul>li:nth-child(1) {
+    font-weight: bold;
+}
+
+.cng>.my-cng>.na-cng>ul>li:nth-child(2) {
+    margin-left: 7%;
+    margin-top: -27px;
+}
+
 .cng>.my-cng>.loca {
     padding: 10px;
     border: 1px solid;
     margin: 10px 0 10px 0;
-    display: flex;
 }
-.cng>.my-cng>.loca>ul>li
 
-.cng>.my-cng>.loca>ul>.ad {
-    border: 1px solid;
-    width: 50px;
-    text-align: center;
-    margin-left: 1190%;
-    margin-top: 13px;
+.cng>.my-cng>.loca>ul>li:nth-child(1) {
+    font-weight: bold; 
+}
+
+.cng>.my-cng>.loca>ul>li:nth-child(2) {
+    margin-left: 7%;
+    margin-top: -27px;
 }
 
 .cng>.my-cng>.numb {
@@ -99,14 +113,61 @@ img {
     margin: 10px 0 10px 0;
 }
 
+.cng>.my-cng>.numb>ul>li:nth-child(1) {
+    font-weight: bold;
+}
+
+.cng>.my-cng>.numb>ul>li:nth-child(2) {
+    margin-left: 11%;
+    margin-top: -27px;
+}
+
 .cng>.my-cng>.amount {
     padding: 10px;
     border: 1px solid;
     margin: 10px 0 10px 0;
 }
 
+.cng>.my-cng>.amount>ul>li:nth-child(1) {
+    font-weight: bold;
+}
+
+.cng>.my-cng>.amount>ul>li:nth-child(2) {
+    margin-left: 11%;
+    margin-top: -27px;
+}
+.cng>.my-cng>.amount>ul>li:nth-child(3) {
+    margin-left: 11%;
+    /* margin-top: -27px; */
+}
+.cng>.my-cng>.amount>ul>li:nth-child(4) {
+    margin-left: 11%;
+    /* margin-top: 30px; */
+}
+
 .cng>.my-cng>.pr {
     padding: 10px;
     border: 1px solid;
     margin: 10px 0 10px 0;
+}
+
+.cng>.my-cng>.pr>ul>li:nth-child(1) {
+    font-weight: bold;
+}
+.cng>.my-cng>.pr>ul>li:nth-child(2) {
+    text-align: justify;
+    font-size: smaller;
+}
+.my-cng>ul>.ad{
+    border: 1px solid;
+    border-radius: 3px;
+    width: 50px;
+    height: 30px;
+    margin-left: 25%;
+    margin-top: 15%;
+    text-align: center;
+}
+.my-cng>ul>.ad>a{
+    font-size: medium;
+    /* text-align: center; */
 }
