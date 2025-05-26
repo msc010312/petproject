@@ -1,22 +1,27 @@
-.content {
-  font-size: 50px;
+/* ===== 기본 설정 ===== */
+html,
+body {
+  scroll-behavior: smooth;
 }
 
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+/* ===== 색상 변수 ===== */
+:root {
+  --color-primary: #f9c74f;
+  --color-secondary: #90be6d;
+  --color-accent: #577590;
+  --color-card-bg: #fff7e0;
 }
 
+/* ===== 슬라이드 영역 ===== */
 .slide {
   min-height: calc(100vh - 100px);
 }
 
 .slide.swiper {
   min-height: calc(100vh - 100px);
-  /* 헤더 제외한 높이 */
   height: calc(100vh - 100px);
 }
 
-/* 슬라이드 래퍼와 각 슬라이드가 100% 높이 차지하도록 */
 .swiper-wrapper {
   height: 100%;
 }
@@ -47,6 +52,7 @@
   opacity: 0;
   transform: translateY(-60px);
   transition: all 0.8s ease-out;
+  font-weight: 500;
 }
 
 .swiper-slide-active .slide-text {
@@ -54,104 +60,125 @@
   transform: translateY(0);
 }
 
-/* 처음엔 숨김 + 아래로 살짝 이동 */
-.services.hidden {
-  opacity: 0;
-  transform: translateY(500px);
-  transition: all 0.8s ease-out;
-}
-
-/* 보일 때 적용되는 애니메이션 */
-.services.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* ===== 서비스 영역 ===== */
 .services {
   margin: 0 auto;
   width: 1280px;
   justify-items: center;
   min-height: calc(100vh - 400px);
+  padding: 80px 0;
+}
+
+.services.hidden {
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.services.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .services > h6 {
   margin-top: 30px;
   margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--color-accent);
 }
 
 .services > p {
-  font-size: 15px;
+  font-size: 16px;
+  margin-bottom: 40px;
 }
 
-.services > .service-cards {
+.service-cards {
   display: flex;
   text-align: center;
   margin-top: 50px;
+  gap: 30px;
 }
 
-.services > .service-cards > .card {
+.card {
   display: block;
   opacity: 0;
   transform: translateY(500px);
   transition: all 1s ease-out;
   height: 500px;
   width: 330px;
-  margin: 30px;
-  border: 1px solid gray;
+  margin: 0;
+  border: 1px solid #ddd;
   border-radius: 25px;
+  background-color: var(--color-card-bg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.services > .service-cards > .card.show {
+.card.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.services > .service-cards > .card > p {
-  font-size: 20px;
-  margin-bottom: 50px;
+.card > span {
+  margin-top: 30px;
 }
 
-.services > .service-cards > .card > .image {
-  margin: 15px;
+.card > p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.card > .image {
+  margin: 15px auto;
   width: 300px;
   height: 250px;
 }
 
-.services > .service-cards > .card > .image > img {
+.card > .image > img {
   border-radius: 15%;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-.services > .service-cards > .card > a {
+.card > a {
   display: block;
   border-radius: 30px;
-  font-size: 20px;
-  letter-spacing: 5px;
+  font-size: 18px;
+  letter-spacing: 2px;
   line-height: 50px;
   color: white;
-  background-color: black;
+  background-color: var(--color-accent);
   width: 300px;
   height: 50px;
-  margin-top: 30px;
-  margin-left: 15px;
+  margin: 30px auto 0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
+.card > a:hover {
+  background-color: var(--color-secondary);
+}
+
+/* ===== 랭크 영역 ===== */
 .rank {
   margin: 0 auto;
   justify-items: center;
   min-height: 300px;
   display: flex;
   justify-content: center;
-  background-color: #f2fcfc;
+  background-color: #ebf8f4;
+  gap: 150px;
 }
 
 .rank > .description {
-  line-height: 300px;
-  margin-right: 250px;
+  line-height: 150px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 #myChart {
-	width: 500px !important;
-	margin-top: 30px;
+  width: 500px !important;
+  margin-top: 30px;
 }
