@@ -1,3 +1,11 @@
+body {
+    min-width: 0;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard', 'Noto Sans KR', Arial, sans-serif;
+}
+
 .content {
     font-size: 1.4rem;
 }
@@ -18,7 +26,6 @@ header {
 
 .tabs {
     display: flex;
-
     margin-bottom: 20px;
     background-color: #e0e0e0;
     border-radius: 15px;
@@ -48,39 +55,52 @@ header {
 
 .input-icon {
     position: relative;
-    /* flex: 1; */
-
 }
 
 .input-icon input {
     padding-left: 30px;
 }
 
+/* FLEX 래퍼 */
+.reservation-wrapper {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+/* 유연하게 (width: 100% & max-width) */
 .reservation-container {
+    flex: 1 1 0;
+    min-width: 400px;
+    max-width: 950px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-right: 150px;
 }
 
 .reservation-header {
-    width: 1000px;
-    height: 790px;
+    width: 100%;
+    max-width: 950px;
+    min-width: 320px;
     padding: 20px;
     border: 1px solid #757575;
     border-radius: 10px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
 }
 
 .form-group {
     margin-bottom: 20px;
 }
-
 .form-group>p {
     font-size: 9px;
     margin: 0px 0px 0px 0px;
 }
-
 .date-time {
     display: flex;
     gap: 40px;
@@ -93,31 +113,42 @@ textarea {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
 }
-
 textarea {
     height: 80px;
 }
 
 .map {
     margin-top: 10px;
-    height: 400px;
+    height: 350px;
     background-color: #eee;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
+/* ---- 사이드 예약 정보 ---- */
 .reservation-info {
-    position: fixed;
-    top: 240px;
-    right: 330px;
-    width: 280px;
+    flex: 0 0 300px;
+    width: 300px;
+    min-width: 260px;
+    max-width: 350px;
     border: 1px solid #757575;
     border-radius: 10px;
     padding: 20px;
-    z-index: 999;
+    background: #fafbff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+    z-index: 10;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
 }
+
 .reservation-info p{
     display: flex;
     justify-content: space-between;
@@ -143,40 +174,41 @@ textarea {
     cursor: pointer;
 }
 
+/* ----------- 시터 선택 ----------- */
 .sitter-section {
-    width: 1000px;
-    height: 450px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    width: 100%;
+    max-width: 950px;
+    min-width: 320px;
     padding: 20px;
     padding-right: 30px;
     border-radius: 10px;
-    border: 1px solid #757575;   
+    border: 1px solid #757575;
     overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 32px;
 }
-.sitter-card{
-    width: 970px;
-    height: 400px;
-    overflow-y: scroll;
+
+.sitter-card {
+    width: 100%;
+    max-width: 900px;
+    height: 300px;
+    overflow-y: auto;
     padding: 20px;
-    
+    box-sizing: border-box;
+    background: white;
 }
-/* .sitter-section::-webkit-scrollbar-thumb{
-    background-color: hsl(0, 0%, 45%);
-    border-radius: 20%;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-} */
 
 .sitter-content {
     display: flex;
     border: 1px solid #ccc;
-    height: 170px;
+    height: 120px;
     padding: 15px;
     border-radius: 10px;
     margin-top: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    background: #fff;
 }
-
 
 .sitter-img {
     width: 100px;
@@ -205,11 +237,33 @@ textarea {
     border: 1px solid #757575;
     border-radius: 5px;
     cursor: pointer;
-    margin-top:20px;
+    margin-top:15px;
 }
 
 .modal-note {
     margin-top: 20px;
     font-size: 14px;
     color: #666;
+}
+
+/* ---- 반응형 ---- */
+@media (max-width: 1150px) {
+    .reservation-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-width: 100vw;
+    }
+    .reservation-info {
+        margin-top: 30px;
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        position: static;
+        top: auto;
+        box-shadow: none;
+    }
+    .reservation-container, .reservation-header, .sitter-section, .sitter-card {
+        max-width: 100%;
+    }
 }
