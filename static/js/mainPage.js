@@ -49,8 +49,8 @@ const myChart = new Chart(ctx, {
       label: 'Best Sitter',
       data: [
         { x: 4.7, y: 'DayCare', name: '이현정', rating: 4.7 },
-        { x: 4.2, y: 'Hoteling', name: '김준희', rating: 4.2 },
-        { x: 2.2, y: 'Walking', name: '윤성환', rating: 2.2 }
+        { x: 2.8, y: 'Hoteling', name: '김준희', rating: 2.8 },
+        { x: 4.2, y: 'Walking', name: '윤성환', rating: 4.2 }
       ],
       parsing: {
         xAxisKey: 'x',
@@ -99,3 +99,23 @@ const myChart = new Chart(ctx, {
   }
 });
 
+  let scrolled = false;
+
+  window.addEventListener("wheel", (e) => {
+    if (scrolled) return;
+
+    const direction = e.deltaY;
+
+    if (direction > 0) {
+      // 아래로 스크롤할 때만 동작
+      scrolled = true;
+      const target = document.querySelector("#serviceSection");
+
+      target.scrollIntoView({ behavior: "smooth" });
+
+      // 중복 방지 타이머
+      setTimeout(() => {
+        scrolled = false;
+      }, 1000); // 1초 후 다시 스크롤 가능
+    }
+  }, { passive: false });
