@@ -38,6 +38,7 @@ public class UserDto {
                 .address(this.address)
                 .phone(this.phone)
                 .role(this.role)
+                .provider(this.provider)
                 .createdAt(this.createAt)
                 .build();
     }
@@ -52,6 +53,7 @@ public class UserDto {
                 .address(entity.getAddress())
                 .phone(entity.getPhone())
                 .role(entity.getRole())
+                .provider(entity.getProvider())
                 .createAt(entity.getCreatedAt())
                 .build();
     }

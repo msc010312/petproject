@@ -35,7 +35,7 @@ public class UserEntity {
     @Column(name = "phone", length = 20)
     private String phone;
 
-    @Column(name = "ROLE", length = 10)
+    @Column(name = "ROLE", length = 20)
     private String role;
 
     @Column(name ="provider", length = 10)
