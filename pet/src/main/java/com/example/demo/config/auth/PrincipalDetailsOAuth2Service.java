@@ -6,6 +6,9 @@ import com.example.demo.config.auth.provider.OAuth2UserInfo;
 import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,6 +32,10 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private HttpSession session;
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private HttpServletResponse response;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -81,10 +88,20 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
             phone = rawPhone.replace("+82 ", "0").replaceAll("-", "");
         }
         System.out.println(phone);
-        String role = (String) session.getAttribute("oauth2_role");
-        System.out.println("----------------------role--------------- : " + role);
-        session.removeAttribute("oauth2_role");
-        Optional<UserEntity> userOptional =  userRepository.findByName(email);
+        String role = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("oauth2_role".equals(cookie.getName())) {
+                    role = cookie.getValue();
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
+            }
+        }
+        System.out.println("OAuth2 role from cookie: " + role);
+        Optional<UserEntity> userOptional = Optional.ofNullable(userRepository.findByEmail(email));
         //UserDto 생성 (이유 : PrincipalDetails에 포함)
         //UserEntity 생성(이유 : 최초 로그인시 DB 저장용도)
         UserDto userDto = null;
