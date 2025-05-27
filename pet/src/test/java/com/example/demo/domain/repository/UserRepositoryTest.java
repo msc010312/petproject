@@ -1,12 +1,15 @@
 package com.example.demo.domain.repository;
 
 import com.example.demo.domain.entity.UserEntity;
-import com.example.demo.ennotion.UserType;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
+@Transactional
 class UserRepositoryTest {
 
     @Autowired
@@ -14,14 +17,23 @@ class UserRepositoryTest {
 
     @Test
     public void test() throws Exception{
+        // given : 멤버를 저장하기 위한 준비 과정
         UserEntity user = UserEntity.builder()
                 .email("aaa@test.com")
                 .password("1234")
                 .name("max")
                 .address("aaa-bbbb")
                 .phone("010-1111-1111")
-                .userType(UserType.Owner)
+                .provider("Local")
+                .role("ROLE_OWNER")
                 .build();
+
+        // when : 실제로 멤버를 저장
         userRepository.save(user);
+
+        // then : 멤버가 잘 추가되었는지 확인
+        UserEntity ur = userRepository.findByEmail(user.getEmail());
+        assertThat(ur.getAddress()).isEqualTo(user.getAddress());
+        assertThat(ur.getName()).isEqualTo(user.getName());
     }
 }
