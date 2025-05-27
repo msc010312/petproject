@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="../../css/footer.css" />
     <link rel="stylesheet" href="../../css/mypage/sitterpage.css" />
+    <!-- JS -->
+    <script src="/static/js/mypage/sitterpage.js"></script>
     <!-- goole icon -->
     <link
       rel="stylesheet"
@@ -87,7 +89,8 @@
                   <a href="/html/mypage/sitterprofile.html">프로필 관리</a>
                 </div>
                 <div class="pay-amount">
-                  <a href="">결제 내역</a>
+                  <!-- 모달 버튼 -->
+                  <button class="modal-btn" data-type="pay">결제 내역</button>
                 </div>
               </div>
               <!-- chart2 -->
@@ -119,10 +122,11 @@
                 <div class="time1">이용 시간 : 8시간</div>
                 <div class="serv1">이용 할 서비스 : 하루 돌봄(9:00-17:00)</div>
                 <div class="chart1">
-                  <a href="">채팅하기</a>
+                  <button class="openChatBtn" data-sitter="*">채팅</button>
                 </div>
                 <div class="view1">
-                  <a href="">상세보기</a>
+                  <!-- 모달 버튼 -->
+                  <button class="modal-btn" data-type="view1">상세보기</button>
                 </div>
               </div>
               <div class="res2">
@@ -145,10 +149,10 @@
                 <div class="time2">이용 시간 : 10시</div>
                 <div class="serv2">이용 할 서비스 : 산책 (1시간)</div>
                 <div class="chart2">
-                  <a href="">채팅하기</a>
+                  <button class="openChatBtn" data-sitter="*">채팅</button>
                 </div>
                 <div class="view2">
-                  <a href="">상세보기</a>
+                  <button class="modal-btn" data-type="view2">상세보기</button>
                 </div>
               </div>
               <div class="res3">
@@ -173,10 +177,10 @@
                   이용 할 서비스 : 산책 (30분 실외배변 필수)
                 </div>
                 <div class="chart3">
-                  <a href="">채팅하기</a>
+                  <button class="openChatBtn" data-sitter="*">채팅</button>
                 </div>
                 <div class="view3">
-                  <a href="">상세보기</a>
+                  <button class="modal-btn" data-type="view3">상세보기</button>
                 </div>
               </div>
               <div class="res4">
@@ -199,10 +203,10 @@
                 <div class="time4">이용 시간 : 10시(픽업)</div>
                 <div class="serv4">이용 할 서비스 : 호텔링 (7일)</div>
                 <div class="chart4">
-                  <a href="">채팅하기</a>
+                  <button class="openChatBtn" data-sitter="*">채팅</button>
                 </div>
                 <div class="view4">
-                  <a href="">상세보기</a>
+                  <button class="modal-btn" data-type="view4">상세보기</button>
                 </div>
               </div>
               <div class="allres">
@@ -236,7 +240,7 @@
                 <div class="ed1">기간 : 주 3회 산책(6개월)</div>
                 <div class="es1">이용한 서비스 : 산책</div>
                 <div class="char1">
-                  <a href="">후기</a>
+                  <button class="modal-btn" data-type="view5">후기</button>
                 </div>
               </div>
               <div class="end-res2">
@@ -245,7 +249,7 @@
                 <div class="ed2">기간 : 2025.03.03</div>
                 <div class="es2">이용한 서비스 : 방문 돌봄</div>
                 <div class="char2">
-                  <a href="">후기</a>
+                  <button class="modal-btn" data-type="view6">후기</button>
                 </div>
               </div>
               <div class="end-res3">
@@ -254,31 +258,80 @@
                 <div class="ed3">기간 : 2025.01.01-08</div>
                 <div class="es3">이용한 서비스 : 호텔링</div>
                 <div class="char3">
-                  <a href="">후기</a>
+                  <button class="modal-btn" data-type="view7">후기</button>
                 </div>
-                <div class="section">
-                  <div class="left">
-                    <span class="material-symbols-outlined">
-                      chevron_left
-                    </span>
-                  </div>
-                  <div class="number">
-                    <ul>
-                      <li><a href="">1</a></li>
-                      <li><a href="">2</a></li>
-                      <li><a href="">3</a></li>
-                      <li><a href="">4</a></li>
-                    </ul>
-                  </div>
-                  <div class="right">
-                    <span class="material-symbols-outlined">
-                      chevron_right
-                    </span>
-                  </div>
+              </div>
+              <div class="end-res4">
+                <div class="dog8"><img src="../../asset/dog6.jpg" /></div>
+                <div class="en4">이름 : 부</div>
+                <div class="ed4">기간 : 2025.01.01-08</div>
+                <div class="es4">이용한 서비스 : 호텔링</div>
+                <div class="char4">
+                  <button class="modal-btn" data-type="view8">후기</button>
+                </div>
+              </div>
+              <div class="end-res5">
+                <div class="dog8"><img src="../../asset/dog6.jpg" /></div>
+                <div class="en5">이름 : 부</div>
+                <div class="ed5">기간 : 2025.01.01-08</div>
+                <div class="es5">이용한 서비스 : 호텔링</div>
+                <div class="char5">
+                  <button class="modal-btn" data-type="view9">후기</button>
+                </div>
+              </div>
+              <div class="end-res6">
+                <div class="dog8"><img src="../../asset/dog6.jpg" /></div>
+                <div class="en6">이름 : 부</div>
+                <div class="ed6">기간 : 2025.01.01-08</div>
+                <div class="es6">이용한 서비스 : 호텔링</div>
+                <div class="char6">
+                  <button class="modal-btn" data-type="view10">후기</button>
+                </div>
+              </div>
+              <div class="section">
+                <div class="left">
+                  <span class="material-symbols-outlined"> chevron_left </span>
+                </div>
+                <div class="number">
+                  <ul>
+                    <li><a href="">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                  </ul>
+                </div>
+                <div class="right">
+                  <span class="material-symbols-outlined"> chevron_right </span>
                 </div>
               </div>
             </div>
-            <!-- chart4 -->
+            <!-- 기본 모달 -->
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <span class="close" id="closeBtn">&times;</span>
+                <div id="modalContentBody">
+                  <p>기본 모달 내용</p>
+                </div>
+              </div>
+            </div>
+            <!-- 채팅 모달 -->
+            <div id="chatModal" class="chat-modal">
+              <div class="chat-box">
+                <div class="chat-header">
+                  <span id="chatWith">채팅</span>
+                  <span id="closeChatBtn" class="close">&times;</span>
+                </div>
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input">
+                  <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="메시지를 입력하세요"
+                  />
+                  <button id="sendBtn">전송</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

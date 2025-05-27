@@ -69,7 +69,7 @@ img {
 }
 
 .produce>.btn>.pay-amount {
-    border: 1px;
+    /* border: 1px;
     border-radius: 5px;
     width: 600px;
     height: 30px;
@@ -77,80 +77,227 @@ img {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    background-color: gray;
+    background-color: gray; */
     margin-left: 640px;
     margin-top: -30px;
 }
 
-/*  */
-
-* {
-  box-sizing: border-box;
-}
-
+/* 모달 배경 */
 .modal {
-  /* 스타일 - customize */
-  background-color: rgba(0, 0, 0, 0.7);
-  pointer-events: none;
-  padding: 20px;
-
-  /* 트랜지션 효과 */
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-
-  /* 화면 전체를 덮게하는 코드 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  /* 중앙에 오게하는 코드 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 어두운 배경 */
+    transition: all 0.3s ease-in-out;
 }
 
-.modal-content {
-  /* 스타일 - customize */
-  /* max-width: 500px; */
-  width: 800px;
-  height: 500px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-
-  /* 트랜지션 효과 */
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-
-  transform: scale(0.8); 
-}
-
+/* 모달이 열릴 때 */
 .modal.show {
-  /* 모달이 열렸을 때 보여지게 하는 코드 */
-  opacity: 1;
-  pointer-events: auto;
+    display: block;
 }
 
-.modal.show .modal-content {
-  /* 모달이 열렸을 때 보여지게 하는 코드 */
-  opacity: 1;
-  transform: scale(1);
+/* 모달 내용 박스 */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
 }
 
+/* 닫기 버튼 */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.close:hover {
-  color: black;
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
 }
+
+
+/* 모달 등장 애니메이션 */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#modalContentBody p1 {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#modalContentBody p2 {
+    font-weight: bold;
+    font-size: medium;
+    color: brown;
+}
+
+#modalContentBody p3 {
+    font-weight: bold;
+    font-size: medium;
+}
+
+#modalContentBody p {
+    font-size: medium;
+
+}
+
+.pay-amount>button {
+    width: 600px;
+    height: 30px;
+    background-color: #dbf7d4;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.view1>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+.view2>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+/* 채팅 모달 */
+/* 채팅 모달 전체 영역 */
+.chat-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* 초기에는 안 보이게 */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 반투명 배경 */
+    z-index: 1000;
+}
+
+/* 채팅 박스 */
+.chat-box {
+    width: 500px;
+    height: 800px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 채팅 헤더 */
+.chat-header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 닫기 버튼 */
+.chat-header .close {
+    cursor: pointer;
+    font-size: 24px;
+    left: 66%;
+    top: 9.5%;
+}
+
+/* 채팅 메시지 영역 */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 15px;
+}
+
+/* 채팅 입력 영역 */
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+.chat-input button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* 모달이 활성화될 때 보이게 */
+.chat-modal.show {
+    display: flex;
+}
+
+.chart1>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+.chart2>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+.chat1>button {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+}
+
+.chat2>button {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+}
+
+/* --------------------------------------------- */
 
 /* reserve section */
 .reserve {
@@ -236,25 +383,25 @@ img {
 }
 
 .reserve>.res1>.chart1 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center; */
     margin-top: 10%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res1>.view1 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     margin-left: 51%;
-    margin-top: -5%;
+    margin-top: -30px;
     font-size: medium;
 }
 
@@ -314,25 +461,25 @@ img {
 }
 
 .reserve>.res2>.chart2 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center; */
     margin-top: 10%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res2>.view2 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     margin-left: 51%;
-    margin-top: -5%;
+    margin-top: -30px;
     font-size: medium;
 }
 
@@ -547,18 +694,18 @@ img {
 }
 
 .sitter>.sit-name1>.chat1 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 5px;
     width: 80px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
 
     margin-top: -52px;
     margin-left: 84%;
 }
 
 .sitter>.sit-name1>.chat1>a {
-    font-size: medium;
+    /* font-size: medium; */
 }
 
 .sitter>.sit-name2 {
@@ -605,17 +752,17 @@ img {
 }
 
 .sitter>.sit-name2>.chat2 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 5px;
     width: 80px;
-    height: 30px;
+    height: 30px; */
     text-align: center;
     margin-top: -52px;
     margin-left: 84%;
 }
 
 .sitter>.sit-name2>.chat2>a {
-    font-size: medium;
+    /* font-size: medium; */
 }
 
 .sitter>.res3 {

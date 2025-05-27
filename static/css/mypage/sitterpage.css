@@ -81,7 +81,7 @@ img {
 }
 
 .produce>.btn>.pay-amount {
-    border: 1px;
+    /* border: 1px;
     border-radius: 5px;
     width: 600px;
     height: 30px;
@@ -89,10 +89,300 @@ img {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    background-color: gray;
+    background-color: gray; */
     margin-left: 640px;
     margin-top: -30px;
 }
+
+/* 모달 배경 */
+.modal {
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 어두운 배경 */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 모달이 열릴 때 */
+.modal.show {
+    display: block;
+}
+
+/* 모달 내용 박스 */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* 닫기 버튼 */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* 모달 등장 애니메이션 */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#modalContentBody p1 {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#modalContentBody p2 {
+    font-weight: bold;
+    font-size: medium;
+    color: brown;
+}
+
+#modalContentBody p3 {
+    font-weight: bold;
+    font-size: medium;
+}
+
+#modalContentBody p {
+    font-size: medium;
+
+}
+
+
+
+
+/* 채팅 모달 */
+/* 채팅 모달 전체 영역 */
+.chat-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* 초기에는 안 보이게 */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 반투명 배경 */
+    z-index: 1000;
+}
+
+/* 채팅 박스 */
+.chat-box {
+    width: 500px;
+    height: 800px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 채팅 헤더 */
+.chat-header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 닫기 버튼 */
+.chat-header .close {
+    cursor: pointer;
+    font-size: 24px;
+    left: 66%;
+    top: 9.5%;
+}
+
+/* 채팅 메시지 영역 */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 15px;
+}
+
+/* 채팅 입력 영역 */
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+.chat-input button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* 모달이 활성화될 때 보이게 */
+.chat-modal.show {
+    display: flex;
+}
+
+/* button style */
+.pay-amount>button {
+    width: 600px;
+    height: 30px;
+    background-color: #dbf7d4;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.view1>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.view2>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.view3>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.view4>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.chart1>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.chart2>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.chart3>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.chart4>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.chat1>button {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    text-align: center;
+}
+
+.char1>button {
+    width: 140px;
+    height: 25px;
+    font-size: medium;
+    text-align: center;
+}
+
+.char2>button {
+    width: 140px;
+    height: 25px;
+    font-size: medium;
+    text-align: center;
+}
+
+.char3>button {
+    width: 140px;
+    height: 25px;
+    font-size: medium;
+    text-align: center;
+}
+
+.char4>button {
+    width: 140px;
+    height: 25px;
+    font-size: medium;
+    text-align: center;
+}
+
+.char5>button {
+    width: 140px;
+    height: 25px;
+    font-size: medium;
+    text-align: center;
+}
+
+.char6>button {
+    width: 140px;
+    height: 25px;
+    font-size: medium;
+    text-align: center;
+}
+
+/* --------------------------------------------- */
 
 /* reserve section */
 .reserve {
@@ -192,23 +482,23 @@ img {
 }
 
 .reserve>.res1>.chart1 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center; */
     margin-top: 1%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res1>.view1 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     margin-left: 51%;
     margin-top: -5%;
     font-size: medium;
@@ -285,23 +575,23 @@ img {
 }
 
 .reserve>.res2>.chart2 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center; */
     margin-top: 1%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res2>.view2 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     margin-left: 51%;
     margin-top: -5%;
     font-size: medium;
@@ -378,23 +668,23 @@ img {
 }
 
 .reserve>.res3>.chart3 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center; */
     margin-top: 1%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res3>.view3 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     margin-left: 51%;
     margin-top: -5%;
     font-size: medium;
@@ -471,23 +761,23 @@ img {
 }
 
 .reserve>.res4>.chart4 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center; */
     margin-top: 1%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res4>.view4 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     margin-left: 51%;
     margin-top: -5%;
     font-size: medium;
@@ -522,13 +812,13 @@ img {
 
 .allres>.right {
     margin-left: 125%;
-    margin-top: 2%;
+    margin-top: 2.5%;
 
 }
 
 /* reserve end */
 .resend {
-    width: 620px;
+    width: auto;
     height: 350px;
     border: 1px solid;
     border-radius: 5px;
@@ -557,7 +847,7 @@ img {
     border: 1px solid;
     border-radius: 5px;
     margin-top: 20px;
-    margin-left: 4%;
+    margin-left: 3%;
     width: 165px;
     height: 250px;
 }
@@ -584,11 +874,11 @@ img {
 }
 
 .char1 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 140px;
     height: 25px;
-    text-align: center;
+    text-align: center; */
     margin-left: 12px;
     margin-top: 22px;
     font-size: small;
@@ -597,8 +887,8 @@ img {
 .end-res2 {
     border: 1px solid;
     border-radius: 5px;
-    margin-top: -40.5%;
-    margin-left: 36.5%;
+    margin-top: -19.8%;
+    margin-left: 19%;
     width: 165px;
     height: 250px;
 }
@@ -625,11 +915,11 @@ img {
 }
 
 .char2 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 140px;
     height: 25px;
-    text-align: center;
+    text-align: center; */
     margin-left: 12px;
     margin-top: 22px;
     font-size: small;
@@ -638,8 +928,8 @@ img {
 .end-res3 {
     border: 1px solid;
     border-radius: 5px;
-    margin-top: -40.5%;
-    margin-left: 69%;
+    margin-top: -19.8%;
+    margin-left: 35%;
     width: 165px;
     height: 250px;
 }
@@ -666,37 +956,163 @@ img {
 }
 
 .char3 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 140px;
     height: 25px;
-    text-align: center;
+    text-align: center; */
     margin-left: 12px;
     margin-top: 22px;
     font-size: small;
 }
 
-.section {}
+.end-res4 {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: -20%;
+    margin-left: 51%;
+    width: 165px;
+    height: 250px;
+}
+
+.end-res4>.dog8 {
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.end-res4>.en4 {
+    text-align: center;
+    font-size: small;
+}
+
+.end-res4>.ed4 {
+    text-align: center;
+    font-size: small;
+}
+
+.end-res4>.es4 {
+    text-align: center;
+    font-size: small;
+}
+
+.char4 {
+    /* border: 1px solid;
+    border-radius: 3px;
+    width: 140px;
+    height: 25px;
+    text-align: center; */
+    margin-left: 12px;
+    margin-top: 22px;
+    font-size: small;
+}
+
+.end-res5 {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: -20%;
+    margin-left: 67%;
+    width: 165px;
+    height: 250px;
+}
+
+.end-res5>.dog8 {
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.end-res5>.en5 {
+    text-align: center;
+    font-size: small;
+}
+
+.end-res5>.ed5 {
+    text-align: center;
+    font-size: small;
+}
+
+.end-res5>.es5 {
+    text-align: center;
+    font-size: small;
+}
+
+.char5 {
+    /* border: 1px solid;
+    border-radius: 3px;
+    width: 140px;
+    height: 25px;
+    text-align: center; */
+    margin-left: 12px;
+    margin-top: 22px;
+    font-size: small;
+}
+
+.end-res6 {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: -20%;
+    margin-left: 83%;
+    width: 165px;
+    height: 250px;
+}
+
+.end-res6>.dog8 {
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.end-res6>.en6 {
+    text-align: center;
+    font-size: small;
+}
+
+.end-res6>.ed6 {
+    text-align: center;
+    font-size: small;
+}
+
+.end-res6>.es6 {
+    text-align: center;
+    font-size: small;
+}
+
+.char6 {
+    /* border: 1px solid;
+    border-radius: 3px;
+    width: 140px;
+    height: 25px;
+    text-align: center; */
+    margin-left: 12px;
+    margin-top: 22px;
+    font-size: small;
+}
+
+.section {
+    margin-left: 39.5%;
+    /* margin-top: -8px; */
+}
 
 .section>.left {
-    margin-left: -140%;
-    margin-top: 10%;
+    margin-top: 13px;
 }
 
 .section>.number {
-    margin-left: -118%;
-    margin-top: -18%;
+    margin-top: -29px;
+    margin-left: 7.5%;
     font-size: large;
 }
-.section>.number>ul{
+
+.section>.number>ul {
     display: flex;
 }
-.section>.number>ul>li{
+
+.section>.number>ul>li {
     padding-left: 20px;
 }
 
 .section>.right {
-    margin-left: -22%;
-    margin-top: -14%;
-
+    margin-left: 30%;
+    margin-top: -24.5px;
 }
