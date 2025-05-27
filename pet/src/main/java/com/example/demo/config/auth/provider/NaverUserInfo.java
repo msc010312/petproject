@@ -26,7 +26,7 @@ public class NaverUserInfo implements OAuth2UserInfo{
 
     @Override
     public String getPhone() {
-        return (String)attributes.get("phone");
+        return (String)attributes.get("mobile");
     }
 
     @Override
