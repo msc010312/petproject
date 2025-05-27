@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // 1. header.html 가져오기
-  fetch("/html/common/header.html")
+  fetch("/static/html/common/header.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("headerContainer").innerHTML = data;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch(error => console.error("헤더 로딩 실패:", error));
 
   // 2. footer.html 가져오기
-  fetch("/html/common/footer.html")
+  fetch("/static/html/common/footer.html")
     .then(response => response.text())
     .then(data => {
       document.getElementById("footerContainer").innerHTML = data;

@@ -166,6 +166,7 @@ textarea {
     padding: 20px;
 
 }
+
 .sitter-content {
     display: flex;
     border: 1px solid #ccc;
@@ -240,9 +241,11 @@ textarea {
     font-size: 20px;
     cursor: pointer;
 }
-.sitter-main{
+
+.sitter-main {
     display: flex;
 }
+
 .sitter-big-img {
     width: 200px;
     height: 200px;
@@ -251,18 +254,34 @@ textarea {
     margin-right: 20px;
     background: #ccc;
 }
+
 .sitter-introduce {
+    display: flex;
     width: 1000px;
     height: 300px;
     border: 1px solid black;
     border-radius: 10px;
     margin-top: 20px;
 }
+
+.sitter-paragraph {
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.sitter-introduce>p {
+    font-size: 15px;
+}
+
 .sitter-review {
     overflow: hidden;
     position: relative;
-    width: 880px; 
+    width: 880px;
 }
+
 .sitter-review-img {
     flex: 0 0 200px;
     height: 250px;
@@ -271,13 +290,15 @@ textarea {
 
     background: white;
 }
-.id{
+
+.id {
     display: flex;
     justify-content: space-around;
-    align-items: center;  
+    align-items: center;
     gap: 10px;
     height: 260px;
 }
+
 .reserve-btn2 {
     width: 130px;
     height: 50px;
@@ -289,7 +310,8 @@ textarea {
     margin-top: 20px;
     border-radius: 5px;
 }
-.sitter-small-img{
+
+.sitter-small-img {
     width: 100px;
     height: 100px;
     margin: 10px 0 0 10px;
@@ -297,14 +319,17 @@ textarea {
     margin-right: 20px;
     background: #ccc;
 }
+
 /*  */
 .slider__btn {
     height: 100%;
     position: relative;
 }
-.slider__btn span{
+
+.slider__btn span {
     height: 100%;
 }
+
 .slider__btn:hover {
     background-color: #333;
     color: #fff;
@@ -317,4 +342,3 @@ textarea {
     margin-top: 10px;
     gap: 20px;
 }
-
