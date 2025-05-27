@@ -37,13 +37,9 @@ public class SecurityConfig {
 
         // 권한체크
         http.authorizeHttpRequests((auth)->{ auth
-<<<<<<< HEAD
-                .requestMatchers("/","/signup","/login","set-role","/reserve").permitAll()
-=======
-                .requestMatchers("/","/signup","/login","/set-role","/reserve").permitAll()
->>>>>>> 04e2abadc05e6401afece47383cd8ec78680f557
+                .requestMatchers("/","/signup","/login","set-role").permitAll()
                 .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
-                //.requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
+                .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
                 .requestMatchers("/mypage/owner").hasRole("OWNER")
                 .requestMatchers("/mypage/sitter").hasRole("SITTER")
                 .requestMatchers("/mypage/admin").hasRole("ADMIN")
@@ -54,7 +50,7 @@ public class SecurityConfig {
         http.formLogin((login)->{ login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/" , true)
+                .defaultSuccessUrl("/main")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .successHandler(customLoginSuccessHandler)
