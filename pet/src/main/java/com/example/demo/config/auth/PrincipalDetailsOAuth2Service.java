@@ -1,6 +1,7 @@
 package com.example.demo.config.auth;
 
 import com.example.demo.config.auth.provider.KakaoUserInfo;
+import com.example.demo.config.auth.provider.NaverUserInfo;
 import com.example.demo.config.auth.provider.OAuth2UserInfo;
 import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.UserEntity;
@@ -56,13 +57,15 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
             System.out.println("kakao_account :" + kakao_account);
             oAuth2UserInfo = new KakaoUserInfo(id, connected_at, properties, kakao_account);
         }
-//        }else if(provider.startsWith("naver")){
-//            //네이버 로그인시
-//            Map<String,Object> response = (Map<String,Object>)attributes.get("response");
-//            String id = (String)response.get("id");
-//            oAuth2UserInfo = new NaverUserInfo(id,response);
-//
-//        }else if(provider.startsWith("google")){
+        else if(provider.startsWith("naver")){
+            //네이버 로그인시
+            Map<String,Object> response = (Map<String,Object>)attributes.get("response");
+            String id = (String)response.get("id");
+            System.out.println("id : " + id);
+            System.out.println("response : " + response);
+            oAuth2UserInfo = new NaverUserInfo(id,response);
+
+        }//else if(provider.startsWith("google")){
 //            String id = (String)attributes.get("sub");
 //            oAuth2UserInfo = new GoogleUserInfo(id,attributes);
 //        }
