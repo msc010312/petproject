@@ -127,8 +127,17 @@ function searchAddress() {
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === "OK") {
       const location = results[0].geometry.location;
+
+      // 지도 중심과 마커 이동
       map.setCenter(location);
       marker.setPosition(location);
+
+      // ✅ 예약 정보 카드의 위치 텍스트도 함께 업데이트
+      const locationText = document.getElementById("reservation-location");
+      if (locationText) {
+        locationText.textContent = address;
+      }
+
     } else {
       alert("주소를 찾을 수 없습니다: " + status);
     }
@@ -201,3 +210,31 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+const locationText = document.getElementById("reservation-location");
+if (locationText) {
+  locationText.textContent = address;
+}
+function initializePickers() {
+  flatpickr('.date-picker', {
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    onChange: updateReservationTime // ✅ 날짜 선택 시 호출
+  });
+
+  flatpickr('.time-picker', {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
+    time_24hr: true,
+    onChange: updateReservationTime // ✅ 시간 선택 시 호출
+  });
+}
+function updateReservationTime() {
+  const date = document.querySelector(".date-picker")?.value;
+  const time = document.querySelector(".time-picker")?.value;
+
+  const timeDisplay = document.getElementById("reservation-time");
+  if (timeDisplay && date && time) {
+    timeDisplay.textContent = `${date} ${time}`;
+  }
+}
