@@ -181,7 +181,13 @@ input[name="role"] {
 .social_login {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-login-btn {
+    width: 100%;
+    flex: 1;
 }
 
 /* signBtn */
@@ -196,3 +202,4 @@ input[name="role"] {
     color: #fff;
     transition: all 0.3s;
 }
+
