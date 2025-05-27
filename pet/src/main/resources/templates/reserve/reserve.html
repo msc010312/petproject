@@ -25,6 +25,9 @@
 
 <!-- 작업 영역 -->
 <div class="content" layout:fragment="content">
+    <div th:replace="modal/reservemodal :: sitterDetail">
+        <div id="modal-inner"></div>
+    </div>
     <h1 class="title">예약하기</h1>
     <div class="tabs">
         <button class="tab active" data-type="short">데이케어</button>
@@ -181,9 +184,5 @@
     </div>
     <!-- 래퍼 div 추가 끝 -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYVE-Fxs1sm7rsudqBgok6iAqx5aQoM&libraries=places" async defer></script>
-
-    <div id="reserve-modal" class="modal" style="display:none;">
-        <div id="modal-inner"></div>
-    </div>
 </div>
 </html>
