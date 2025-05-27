@@ -1,7 +1,10 @@
 @charset 'utf-8';
-
 .content {
-    height: calc(100vh - 200px);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
 }
 
 /*wrap*/
@@ -12,7 +15,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: calc(100vh - 200px);
 }
 
 .login_form,
@@ -27,10 +29,6 @@
     padding-bottom: 25px;
 }
 
-.login_form {
-    height: 450px;
-}
-
 .login_form>span,
 .signup_form>span {
     display: block;
@@ -42,8 +40,8 @@
     font-weight: 700;
 }
 
-#loginFrm,
-#signupFrm {
+#loginForm,
+#signupForm {
     position: relative;
     display: block;
     padding: 10px 40px;
@@ -69,7 +67,7 @@
     cursor: pointer;
 }
 
-input[name="tabName"] {
+input[name="role"] {
     display: none;
 }
 
@@ -105,6 +103,15 @@ input[name="tabName"] {
     transition: all 0.5s;
 }
 
+.example {
+    position:absolute;
+    display:block;
+    top: 35%;
+    right: 5px;
+    font-size:1.3rem;
+    color: #A9A9A9;
+}
+
 .txt_field input {
     position: relative;
     display: block;
@@ -116,16 +123,16 @@ input[name="tabName"] {
     font-size: 15px;
 }
 
-.txt_field input[name=userEmail] {
-    display: inline-block;
-    width: 450px;
-}
-
 /*유효하다면 올라감*/
 .txt_field input:focus~label,
 .txt_field input:valid~label {
     top: -5px;
     color: #333;
+}
+
+.txt_field input:focus~span,
+.txt_field input:valid~span{
+    display: none;
 }
 
 .fg_pw {
@@ -179,12 +186,12 @@ input[name="tabName"] {
 
 /* signBtn */
 #loginBtn,
-#joinButton {
+.joinbtn {
     width: 100%;
 }
 
 #loginBtn:hover,
-#joinButton:hover {
+.joinbtn:hover {
     background: #333;
     color: #fff;
     transition: all 0.3s;

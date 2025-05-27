@@ -1,6 +1,7 @@
 package com.example.demo.controller.user;
 
 import com.example.demo.InvalidEmailFormatException.InvalidEmailFormatException;
+import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
 import com.example.demo.service.UserServiceImpl;
@@ -11,8 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Data
@@ -41,10 +41,10 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String registerUser(UserEntity user, Model model) {
+    public String registerUser(@ModelAttribute UserDto userdto, UserEntity user, Model model) {
         String email = user.getEmail();
         String password = user.getPassword();
-        String userPwRe = user.getUserPwRe();
+        String userPwRe = userdto.getUserPwRe();
         String phone = user.getPhone();
         if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
             throw new InvalidEmailFormatException("이메일 형식이 올바르지 않습니다.");
@@ -53,7 +53,7 @@ public class UserController {
         if(password == null || !password.matches("^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$")){
             throw new InvalidEmailFormatException("영문 숫자 특수기호 조합 8자리 이상 입력해주세요");
         }
-        if(password.trim().equals(userPwRe.trim()) == false) {
+        if(!password.trim().equals(userPwRe.trim())) {
             throw new InvalidEmailFormatException("비밀번호가 일치하지 않습니다");
         }
         if(phone == null || !phone.matches("^01[016789]\\d{8}$")){
@@ -78,5 +78,12 @@ public class UserController {
         session.invalidate();
         model.addAttribute("message", "회원 탈퇴가 완료되었습니다.");
         return "sign/delete-success";
+    }
+
+    @PostMapping("/set-role")
+    @ResponseBody
+    public void setRole(HttpSession session, @RequestParam String role) {
+        session.setAttribute("oauth2_role", role);
+        System.out.println("UserContorller role: " + role);
     }
 }

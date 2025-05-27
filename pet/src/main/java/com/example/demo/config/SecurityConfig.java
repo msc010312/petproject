@@ -36,15 +36,21 @@ public class SecurityConfig {
 //		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
         // 권한체크
-//        http.authorizeHttpRequests((auth)->{ auth
-//                .requestMatchers("/","/signup","/login").permitAll()
-//                .anyRequest().authenticated();
-//        });
+        http.authorizeHttpRequests((auth)->{ auth
+                .requestMatchers("/","/signup","/login","set-role").permitAll()
+                .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
+                .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
+                .requestMatchers("/mypage/owner").hasRole("OWNER")
+                .requestMatchers("/mypage/sitter").hasRole("SITTER")
+                .requestMatchers("/mypage/admin").hasRole("ADMIN")
+                .anyRequest().authenticated();
+        });
 
         // 로그인
         http.formLogin((login)->{ login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/main")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .successHandler(customLoginSuccessHandler)
@@ -62,6 +68,11 @@ public class SecurityConfig {
 
         // 예외처리
         http.exceptionHandling((exception)->{
+        });
+
+        //OAUTH2-CLIENT
+        http.oauth2Login((oauth2)->{
+            oauth2.loginPage("/login");
         });
 
         return http.build();
