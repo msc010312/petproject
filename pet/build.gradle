@@ -30,6 +30,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
 	// VALIDATION
@@ -60,6 +61,8 @@ dependencies {
 
 	//OAUTH2 CLIENT
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

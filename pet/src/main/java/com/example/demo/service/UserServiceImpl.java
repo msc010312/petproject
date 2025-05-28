@@ -25,6 +25,9 @@ public class UserServiceImpl implements UserService {
     // 회원가입 처리
     @Override
     public UserEntity registerUser(UserEntity user) {
+        if(userRepository.findByEmail(user.getEmail()) != null) {
+            throw new IllegalStateException("이미 사용 중인 이메일입니다.");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setProvider("Local");
         return userRepository.save(user);

@@ -20,7 +20,7 @@
 
 .menu {
     position: relative;
-    flex: 3;
+    flex: 2.5;
     height: 100%;
 }
 
@@ -121,16 +121,44 @@
 
 .sign {
     position: relative;
+    display: flex;
+    justify-content: center;
     flex: 1.5;
+    height: 100%;
 }
 
 .btn-box {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    height: 100%;
+    flex: 1;
+}
+
+.unsigned-box,
+.signed-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex: 1;
+    gap: 15px;
+}
+
+.username-box {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    height: 100%;
+    flex: 1;
+    white-space: nowrap;
+    max-width: 200px;
+    min-width: 200px;
+}
+
+.username-box>span:first-child {
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
 
 .sign-in {
