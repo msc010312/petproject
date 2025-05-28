@@ -6,15 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
          const provider = this.dataset.provider;
          const selectedRole = document.querySelector('input[name="role"]:checked').value;
 
-         fetch('/set-role', {
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/x-www-form-urlencoded'
-           },
-           body: `role=${selectedRole}`
-         }).then(() => {
-           window.location.href = `/oauth2/authorization/${provider}`;
-         });
+         document.cookie = `oauth2_role=${selectedRole}; path=/; max-age=600`;
+
+         window.location.href = `/oauth2/authorization/${provider}`;
        });
      });
 });
