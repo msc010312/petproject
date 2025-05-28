@@ -321,16 +321,14 @@ img {
     font-size: small;
     padding-left: 15px;
 }
-
+.reserve>.resev-page {
+    display: flex;
+}
 .res1 {
     border: 1px solid;
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin-top: 6%;
-    margin-left: -11%;
-    margin-bottom: 10px;
-    margin: 6% -13% 10px;
     margin-left: -19%;
     margin-top: 7%;
 }
@@ -483,40 +481,8 @@ img {
     font-size: medium;
 }
 
-.allres {
-    text-align: center;
-    display: flex;
-    margin-left: 5%;
-}
-
-.allres>.left {
-    margin-left: 520%;
-    margin-top: 2.5%;
-}
-
-.allres>.number {
-    margin-left: 26%;
-    margin-top: -18%;
-    font-size: large;
-}
-
-.allres>.number>ul {
-    /* margin-left: 40%; */
-    margin-top: 15px;
-    display: flex;
-}
-
-.allres>.number>ul>li {
-    padding-left: 40%;
-}
-
-.allres>.right {
-    margin-left: 125%;
-    margin-top: 2%;
-
-}
-
-
+/* pagenation */
+          
 
 /* pet profil */
 .all-pro {
@@ -776,3 +742,4 @@ img {
 
     margin: 13px 7px 15px 11px;
 }
+
