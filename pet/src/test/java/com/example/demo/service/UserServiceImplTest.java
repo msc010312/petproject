@@ -15,9 +15,9 @@ import org.mockito.Mock;
 
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
-@SpringBootTest
 class UserServiceImplTest {
 
     @InjectMocks
@@ -27,8 +27,8 @@ class UserServiceImplTest {
     private UserRepository userRepository;
 
     @Test
-    @DisplayName("Email Duplication")
-    void registerUser() {
+    @DisplayName("이미 등록된 이메일로 회원가입 시 예외 발생")
+    void registerUser_Fail() {
         // Given
         UserEntity user = new UserEntity();
         user.setEmail("test@example.com");
@@ -38,7 +38,13 @@ class UserServiceImplTest {
 
         // When & Then
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> {
-            userService.registerUser(user);
+            try {
+                userService.registerUser(user);
+            } catch (IllegalStateException e) {
+                // 콘솔 출력
+                System.out.println("예외 발생 메시지 : " + e.getMessage());
+                throw e; // 다시 던져서 assertThrows가 인식하도록
+            }
         });
 
         assertEquals("이미 사용 중인 이메일입니다.", exception.getMessage());
