@@ -18,25 +18,31 @@
         </ul>
     </div>
     <div class="sign">
-        <div class="btn-box" sec:authorize="isAnonymous()">
-            <button class="sign-in btn">
-                <a th:href="@{/login}">로그인</a>
-            </button>
-            <button class="sign-up btn">
-                <a th:href="@{/signup}">회원가입</a>
-            </button>
+        <div class="unsigned-box" sec:authorize="isAnonymous()">
+            <div class="username-box">
+            </div>
+            <div class="btn-box">
+                <button class="sign-in btn">
+                    <a th:href="@{/login}">로그인</a>
+                </button>
+                <button class="sign-up btn">
+                    <a th:href="@{/signup}">회원가입</a>
+                </button>
+            </div>
         </div>
-        <div class="btn-box" sec:authorize="isAuthenticated()">
+        <div class="signed-box" sec:authorize="isAuthenticated()">
             <div class="username-box">
                 <span th:text="${#authentication.name}"></span>
                 <span>님 안녕하세요!</span>
             </div>
-            <form th:action="@{/logout}" method="post">
-                <button type="submit" class="logout btn">로그아웃</button>
-            </form>
-            <form th:action="@{/delete}" method="post">
-                <button type="submit" class="resign btn">회원탈퇴</button>
-            </form>
+            <div class="btn-box">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="logout btn">로그아웃</button>
+                </form>
+                <form th:action="@{/delete}" method="post">
+                    <button type="submit" class="resign btn">회원탈퇴</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
