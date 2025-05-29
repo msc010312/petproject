@@ -11,7 +11,7 @@ img {
     border-radius: 3px;
     width: 1260px;
     height: auto;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 20px 0;
 }
 
 .name {
@@ -69,7 +69,7 @@ img {
 }
 
 .produce>.btn>.pay-amount {
-    border: 1px;
+    /* border: 1px;
     border-radius: 5px;
     width: 600px;
     height: 30px;
@@ -77,10 +77,227 @@ img {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    background-color: gray;
+    background-color: gray; */
     margin-left: 640px;
     margin-top: -30px;
 }
+
+/* 모달 배경 */
+.modal {
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 어두운 배경 */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 모달이 열릴 때 */
+.modal.show {
+    display: block;
+}
+
+/* 모달 내용 박스 */
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px 20px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* 닫기 버튼 */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* 모달 등장 애니메이션 */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#modalContentBody p1 {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#modalContentBody p2 {
+    font-weight: bold;
+    font-size: medium;
+    color: brown;
+}
+
+#modalContentBody p3 {
+    font-weight: bold;
+    font-size: medium;
+}
+
+#modalContentBody p {
+    font-size: medium;
+
+}
+
+.pay-amount>button {
+    width: 600px;
+    height: 30px;
+    background-color: #dbf7d4;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.view1>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+.view2>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+/* 채팅 모달 */
+/* 채팅 모달 전체 영역 */
+.chat-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* 초기에는 안 보이게 */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 반투명 배경 */
+    z-index: 1000;
+}
+
+/* 채팅 박스 */
+.chat-box {
+    width: 500px;
+    height: 800px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 채팅 헤더 */
+.chat-header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 닫기 버튼 */
+.chat-header .close {
+    cursor: pointer;
+    font-size: 24px;
+    left: 66%;
+    top: 9.5%;
+}
+
+/* 채팅 메시지 영역 */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    font-size: 15px;
+}
+
+/* 채팅 입력 영역 */
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+.chat-input button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* 모달이 활성화될 때 보이게 */
+.chat-modal.show {
+    display: flex;
+}
+
+.chart1>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+.chart2>button {
+    width: 280px;
+    height: 30px;
+    font-size: medium;
+}
+
+.chat1>button {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+}
+
+.chat2>button {
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+}
+
+/* --------------------------------------------- */
 
 /* reserve section */
 .reserve {
@@ -91,18 +308,81 @@ img {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 20px 0;
 }
 
 .reserve>.reserv>span {
     font-size: x-large;
     padding-left: 10px;
+    font-weight: bold;
 }
 
 .reserve>.reserv>ul>li {
     font-size: small;
     padding-left: 15px;
 }
+
+.resev-page {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.resev-page.active {
+    display: flex;
+}
+
+.res-card {
+    width: 600px;
+    height: 150px;
+    border-radius: 8px;
+    /* box-sizing: border-box; */
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+
+.res-card ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.res-card .type {
+    background-color: #ccc;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.res-card .status {
+    background-color: #b9fda4;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.schedule{
+    font-size: 14px;
+    margin: 4px 15px;
+}
+.schedule>span {
+    font-size: 14px;
+    margin-top: 1px;
+}
+.sit {
+    font-size: 14px;
+    margin: 4px 0;
+}
+.price {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+
 
 .res1 {
     border: 1px solid;
@@ -161,25 +441,25 @@ img {
 }
 
 .reserve>.res1>.chart1 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
     display: block;
-    text-align: center;
+    text-align: center;  */
     margin-top: 10%;
     margin-left: 13px;
     font-size: medium;
 }
 
 .reserve>.res1>.view1 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center;  */
     margin-left: 51%;
-    margin-top: -5%;
+    margin-top: -30px;
     font-size: medium;
 }
 
@@ -188,7 +468,7 @@ img {
     border-radius: 5px;
     width: 600px;
     height: 150px;
-    margin-top: -12%;
+    margin-top: -12.8%;
     margin-left: 51%;
 }
 
@@ -214,7 +494,7 @@ img {
     width: 60px;
     height: 20px;
     border-radius: 30px;
-    
+
 }
 
 .res2>.schedule2 {
@@ -239,11 +519,11 @@ img {
 }
 
 .reserve>.res2>.chart2 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 3px;
     width: 280px;
     height: 30px;
-    display: block;
+    display: block; */
     text-align: center;
     margin-top: 10%;
     margin-left: 13px;
@@ -251,27 +531,96 @@ img {
 }
 
 .reserve>.res2>.view2 {
-    border-radius: 3px;
+    /* border-radius: 3px;
     border: 1px solid;
     width: 280px;
     height: 30px;
-    text-align: center;
+    text-align: center;  */
     margin-left: 51%;
-    margin-top: -5%;
+    margin-top: -30px;
     font-size: medium;
 }
+
+*/
+/* .actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  flex: 1;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0f0ff;
+  cursor: pointer;
+} */
 
 .allres {
-    border: 1px solid;
-    border-radius: 5px;
-    width: 1220px;
-    height: 30px;
-    text-align: center;
-    margin: 10px 20px;
-    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
 }
 
+.allres .number {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.page-btn {
+    padding: 6px 10px;
+    border: 1px solid #999;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page-btn.active {
+    background-color: #b9fda4;
+    font-weight: bold;
+}
+
+
+/* pagenation */
+
+
 /* pet profil */
+.all-pro {
+    display: flex;
+    margin: 20px 0 20px 0;
+}
+
+.profil {
+    border: 1px solid;
+    width: 610px;
+    height: 250px;
+}
+
+.care>a {
+    width: 60px;
+}
+
+.profil>.pet-prof>span {
+    font-size: large;
+    font-weight: bold;
+}
+
+.profil>.pet-prof>ul>li {
+    font-size: x-small;
+}
+
+.profil>.pet-prof>.pro1 {
+    border: 1px solid;
+    width: 590px;
+    height: auto;
+    margin-top: 10px;
+}
+
 .all-pro {
     display: flex;
 }
@@ -294,9 +643,11 @@ img {
     margin-top: -30px;
     border-radius: 5px;
 }
-.care>a{
+
+.care>a {
     font-size: medium;
 }
+
 .profil>.pet-prof>span {
     font-size: x-large;
     padding-left: 10px;
@@ -326,7 +677,7 @@ img {
     font-weight: bolder;
 }
 
-.profil>.pet-prof>.pro1>ul>li:nth-child(2){} 
+.profil>.pet-prof>.pro1>ul>li:nth-child(2) {}
 
 .profil>.pet-prof>.pro2 {
     border: 1px solid;
@@ -360,6 +711,7 @@ img {
 
 .sitter>.sit-used>span {
     font-size: x-large;
+    font-weight: bold;
     padding-left: 10px;
 }
 
@@ -396,27 +748,33 @@ img {
 .sitter>.sit-name1>ul>li:nth-child(3) {
     font-size: small;
     padding-left: 25px;
-    margin-top: -22px;
+    margin-top: -27px;
 }
 
 .sitter>.sit-name1>ul>li:nth-child(4) {
     font-size: small;
-    margin-top: -13.5%;
+    margin-top: -16%;
     margin-left: 85px;
 }
 
+.sitter>.sit-name1>ul>li:nth-child(5) {
+    font-size: small;
+    margin-left: 1px;
+}
+
 .sitter>.sit-name1>.chat1 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 5px;
     width: 80px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
 
     margin-top: -52px;
     margin-left: 84%;
 }
-.sitter>.sit-name1>.chat1>a{
-    font-size: medium;
+
+.sitter>.sit-name1>.chat1>a {
+    /* font-size: medium; */
 }
 
 .sitter>.sit-name2 {
@@ -447,27 +805,34 @@ img {
 .sitter>.sit-name2>ul>li:nth-child(3) {
     font-size: small;
     padding-left: 25px;
-    margin-top: -22px;
+    margin-top: -27px;
 }
 
 .sitter>.sit-name2>ul>li:nth-child(4) {
     font-size: small;
     margin-top: -13.5%;
     margin-left: 85px;
+    margin-top: -16%;
+}
+
+.sitter>.sit-name2>ul>li:nth-child(5) {
+    font-size: small;
+    margin-left: 1px;
 }
 
 .sitter>.sit-name2>.chat2 {
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: 5px;
     width: 80px;
-    height: 30px;
+    height: 30px; */
     text-align: center;
 
     margin-top: -52px;
     margin-left: 84%;
 }
-.sitter>.sit-name2>.chat2>a{
-    font-size: medium;
+
+.sitter>.sit-name2>.chat2>a {
+    /* font-size: medium; */
 }
 
 .sitter>.res3 {
