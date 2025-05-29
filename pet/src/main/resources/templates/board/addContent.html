@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+  board
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+  <link rel="stylesheet" href="/css/board.css">
+</th:block>
+
+<div class="content" layout:fragment="content">
+  <div class="add-content-wrap">
+    <form id="addConFrm">
+      <div class="add-title">
+        <input class="input-title" type="text" name="title" placeholder="제목">
+      </div>
+
+      <div class="add-ctnt">
+        <textarea class="input-ctnt" name="content" form="addConFrm"></textarea>
+      </div>
+
+      <div class="add-btn">
+        <button class="input-btn btn" id="addContentBtn">
+          <a th:href="@{/board}">작성</a>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+</html>
