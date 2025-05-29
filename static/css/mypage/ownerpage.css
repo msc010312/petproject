@@ -172,6 +172,7 @@ img {
     width: 600px;
     height: 30px;
     background-color: #dbf7d4;
+    border: none;
     border-radius: 5px;
     font-size: medium;
 }
@@ -336,19 +337,20 @@ img {
 .res-card {
     width: 600px;
     height: 150px;
+    border: none;
     border-radius: 8px;
     /* box-sizing: border-box; */
     background-color: #f9f9f9;
     position: relative;
+    margin-left: 13px
 }
-
 
 .res-card ul {
     display: flex;
     gap: 10px;
     list-style: none;
     padding: 0;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .res-card .type {
@@ -365,24 +367,33 @@ img {
     font-size: 12px;
 }
 
-.schedule{
+.schedule {
     font-size: 14px;
     margin: 4px 15px;
 }
+
 .schedule>span {
     font-size: 14px;
     margin-top: 1px;
 }
+
 .sit {
-    font-size: 14px;
-    margin: 4px 0;
+    font-size: 15px;
+    margin-left: 20px;
 }
+
 .price {
-    font-size: 14px;
-    margin: 4px 0;
+    font-size: 15px;
+    margin-left: 20px;
 }
 
-
+.res-card .actions button {
+    /* margin-top: 10%; */
+    margin-left: 13px;
+    font-size: medium;
+    width: 280px;
+    height: 30px;
+}
 
 .res1 {
     border: 1px solid;
@@ -557,12 +568,22 @@ img {
   cursor: pointer;
 } */
 
-.allres {
+.reserve .allres {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
     gap: 10px;
+}
+
+.allres button {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.left {
+    margin-left: 50%;
 }
 
 .allres .number {
@@ -570,19 +591,25 @@ img {
     gap: 5px;
     list-style: none;
     padding: 0;
+    margin-left: 10%;
 }
+
 
 .page-btn {
     padding: 6px 10px;
     border: 1px solid #999;
     background-color: white;
     cursor: pointer;
+    border: none;
     border-radius: 5px;
+    margin-left: 10%;
+
 }
 
 .page-btn.active {
     background-color: #b9fda4;
     font-weight: bold;
+    margin-left: 10%;
 }
 
 
