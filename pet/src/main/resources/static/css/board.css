@@ -1,0 +1,172 @@
+.board-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 30px 0;
+}
+
+.board {
+    width: 100%;
+    height: 100%;
+    /* table-layout: fixed; */
+    border-collapse: collapse;
+    font-size: 1.6rem;
+    overflow: hidden;
+}
+
+.board-subject {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.b-layout {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #333;
+    gap: 20px;
+}
+
+.b-layout>li {
+    display: block;
+}
+
+.board-title {
+    text-align: center;
+    margin-top: 30px;
+    padding-left: 15px;
+}
+
+.board-title-num,
+.board-list-num {
+    flex: 0.4;
+}
+
+.board-title-cont,
+.board-list-cont {
+    cursor: pointer;
+    flex: 10;
+    text-align: left;
+}
+
+.board-title-cont {
+    text-align: center;
+    cursor: default;
+}
+
+.board-list-cont:hover {
+    text-decoration: underline;
+}
+
+.board-title-name,
+.board-list-name {
+    flex: 1;
+}
+
+.board-title-date,
+.board-list-date {
+    flex: 1;
+}
+
+.board-bottom {
+    position: relative;
+}
+
+.add-list {
+    position: relative;
+    text-align: right;
+    margin: 20px 0;
+}
+
+.add {
+    background: #fff;
+    border: 1px solid #333;
+    transition: ease all 0.3s;
+}
+
+.add:hover {
+    background: #333;
+    border: none;
+}
+
+.add:hover>a {
+    color: #fff;
+}
+
+.paging {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    font-size: 1.6rem;
+    gap: 10px;
+}
+
+.paging>span {
+    cursor: pointer;
+}
+
+.txt-hidden {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* addContent */
+.add-content-wrap {
+    position: relative;
+    height: calc(100vh - 200px);
+}
+
+#addConFrm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.add-title,
+.add-ctnt,
+.add-btn {
+    width: 100%;
+}
+
+.input-title {
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.input-ctnt {
+    width: 100%;
+    height: 500px;
+    resize: none;
+	padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.input-btn {
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border: 1px solid #333;
+    transition: ease all 0.3s;
+}
+
+.input-btn:hover {
+    background: #333;
+    color: #fff;
+    border: none;
+}

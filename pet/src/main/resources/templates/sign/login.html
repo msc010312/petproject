@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    login
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/sign.css?after">
+</th:block>
+
+<!-- script -->
+<th:block layout:fragment="script">
+    <script src="/js/tab2.js" defer></script>
+</th:block>
+
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <div class="login_wrap">
+        <div th:replace="layout/loginForm :: loginForm"></div>
+    </div>
+</div>
+
+</html>

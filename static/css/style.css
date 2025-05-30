@@ -29,6 +29,7 @@ html {
 
 body {
     /* font-family: 'IBM Plex Serif', serif; */
+    font-family: 'Roboto', arial, sans-serif;
     overflow-x: hidden;
 }
 
@@ -56,7 +57,7 @@ body {
 /* content */
 .content {
     position: relative;
-    height: calc(100vh - 200px);
+    height: 100%;
 }
 
 /* btn */
@@ -67,6 +68,14 @@ body {
     border: none;
     cursor: pointer;
     font-size: 1.4rem;
+}
+
+.btn>a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100%;
 }
 
 .title { 

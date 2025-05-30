@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    signup
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/sign.css">
+</th:block>
+
+<!-- script -->
+<th:block layout:fragment="script">
+    <script src="/js/tab.js"></script>
+</th:block>
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <div class="signup_wrap">
+        <div class="signup_form">
+            <span>sign up</span>
+            <div class="convert-tab">
+                <input id="owner" type="radio" name="role" checked>
+                <label class="tab-name" for="owner">Owner</label>
+                <input id="sitter" type="radio" name="role">
+                <label class="tab-name" for="sitter">Sitter</label>
+            </div>
+            <div th:if="${error}" class="error-message" style="color:red; text-align:center; margin-bottom:10px;">
+                <p th:text="${error}"></p>
+            </div>
+            <!-- 성공 메시지 -->
+            <div th:if="${success}" style="color:green; text-align:center;">
+                <p th:text="${success}"></p>
+            </div>
+            <form action="/signup" id="ownerSign" class="tab-content" method="post">
+                <div class="txt_field">
+                    <input type="text" name="email" required>
+                    <label>e-mail</label>
+                    <span class="example">ex)test@gmail.com</span>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                    <span class="example">영문 숫자 특수기호 조합 8자리 이상 입력해주세요</span>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="userPwRe" required>
+                    <label>confirm Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="name" required>
+                    <label>Owner name</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="address" required>
+                    <label>address</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="phone" required>
+                    <label>Phone Number</label>
+                    <span class="example">하이픈(-),공백을 제외하고 입력해주세요</span>
+                </div>
+                <input type="hidden" name="role" value="ROLE_OWNER" required>
+                <input type="submit" name="signUp" value="Sign Up" id="OwnerBtn" class="joinbtn btn">
+            </form>
+            <form action="/signup" class="tab-content" id="sitterSign" method="post">
+                <div class="txt_field">
+                    <input type="text" name="email" required>
+                    <label>e-mail</label>
+                    <span class="example">ex)test@gmail.com</span>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                    <span class="example">영문 숫자 특수기호 조합 8자리 이상 입력해주세요</span>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="userPwRe" required>
+                    <label>confirm Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="name" required>
+                    <label>Sitter name</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="address" required>
+                    <label>address</label>
+                </div>
+                <div class="txt_field">
+                    <input type="text" name="phone" required>
+                    <label>Phone Number</label>
+                    <span class="example">하이픈(-),공백을 제외하고 입력해주세요</span>
+                </div>
+                <input type="hidden" name="role" value="ROLE_SITTER" required>
+                <input type="submit" name="signUp" value="Sign Up" id="SitterBtn" class="joinbtn btn">
+            </form>
+
+        </div>
+    </div>
+</div>
+</html>

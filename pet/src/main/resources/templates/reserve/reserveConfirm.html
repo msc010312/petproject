@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    login
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/reserveConfirm.css?after">
+</th:block>
+
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <div class="container">
+        <div class="icon">📅</div>
+        <h1>예약이 완료되었습니다!</h1>
+        <p class="sub-text">예약 확인 이메일이 발송되었습니다<br>예약 내역은 마이페이지에서도 확인하실 수 있습니다</p>
+
+        <div class="card">
+            <h2>예약 정보</h2>
+            <div class="card-info">
+
+            </div>
+            <button class="primary-btn">예약 내역 보기</button>
+            <button class="secondary-btn">홈으로 돌아가기</button>
+        </div>
+    </div>
+</div>
+</html>

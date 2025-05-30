@@ -1,0 +1,142 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sitter-main {
+    display: flex;
+}
+
+.sitter-big-img {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: #ccc;
+}
+
+.sitter-introduce {
+    display: flex;
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.sitter-paragraph {
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.sitter-introduce>p {
+    font-size: 15px;
+}
+
+.sitter-review {
+    overflow: hidden;
+    position: relative;
+    width: 880px;
+}
+
+.sitter-review-img {
+    flex: 0 0 200px;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background: white;
+}
+
+.id {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    height: 260px;
+}
+
+.reserve-btn2 {
+    width: 130px;
+    height: 50px;
+    padding: 10px;
+    background-color: #757575;
+    color: white;
+    border: none;
+    float: right;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.sitter-small-img {
+    width: 100px;
+    height: 100px;
+    margin: 10px 0 0 10px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background: #ccc;
+}
+
+/*  */
+.slider__btn {
+    height: 100%;
+    position: relative;
+}
+
+.slider__btn span {
+    height: 100%;
+}
+
+.slider__btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    margin-top: 10px;
+    gap: 20px;
+}
+dialog#reserve-modal {
+    width: 80vw;
+    height: 80vh;
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    background: transparent;
+}
+
+dialog#reserve-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
