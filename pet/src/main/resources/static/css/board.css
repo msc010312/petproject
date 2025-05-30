@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 /* no content*/
 .no-content {
     position: relative;
@@ -10,7 +9,6 @@
     min-height: calc(100vh - 500px);
 }
 
->>>>>>> feature/board
 .board-container {
     position: relative;
     display: flex;
@@ -47,10 +45,7 @@
 }
 
 .b-layout>li {
-<<<<<<< HEAD
-=======
     position: relative;
->>>>>>> feature/board
     display: block;
 }
 
@@ -60,11 +55,6 @@
     padding-left: 15px;
 }
 
-<<<<<<< HEAD
-.board-title-num,
-.board-list-num {
-    flex: 0.4;
-=======
 .board-list-wrap {
     position: relative;
     min-height: calc(100vh - 500px);
@@ -88,7 +78,6 @@
     height: 20px;
     width: 1px;
     background: #333;
->>>>>>> feature/board
 }
 
 .board-title-cont,
@@ -135,16 +124,8 @@
 
 .add:hover {
     background: #333;
-<<<<<<< HEAD
-    border: none;
-}
-
-.add:hover>a {
-    color: #fff;
-=======
     color: #fff;
     border: none;
->>>>>>> feature/board
 }
 
 .paging {
@@ -217,8 +198,6 @@
     background: #333;
     color: #fff;
     border: none;
-<<<<<<< HEAD
-=======
 }
 
 /* view-content */
@@ -251,5 +230,4 @@
     height: 100%;
     padding: 20px;
     font-size: 1.4rem;
->>>>>>> feature/board
 }

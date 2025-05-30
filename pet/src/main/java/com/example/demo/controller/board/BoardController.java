@@ -1,10 +1,5 @@
 package com.example.demo.controller.board;
 
-<<<<<<< HEAD
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-=======
 import com.example.demo.domain.entity.BoardEntity;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
@@ -19,15 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
->>>>>>> feature/board
 
 @Controller
 @Slf4j
 public class BoardController {
-<<<<<<< HEAD
-    @GetMapping("/board")
-    public String board(){
-=======
     @Autowired
     BoardService boardService;
 
@@ -43,7 +33,6 @@ public class BoardController {
 
         model.addAttribute("boardList", boardList);
         model.addAttribute("isLoggedIn", isLoggedIn);
->>>>>>> feature/board
         return "board/board";
     }
 
@@ -56,8 +45,6 @@ public class BoardController {
     public String boardView() {
         return "board/viewContent";
     }
-<<<<<<< HEAD
-=======
 
     @PostMapping("/board/add")
     public String saveBoard(@RequestParam("title") String title,
@@ -74,5 +61,4 @@ public class BoardController {
         boardService.saveContent(board);
         return "redirect:/board";
     }
->>>>>>> feature/board
 }

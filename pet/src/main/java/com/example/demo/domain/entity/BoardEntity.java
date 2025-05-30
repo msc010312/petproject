@@ -25,16 +25,11 @@ public class BoardEntity {
     @Lob
     @Column(name = "content", nullable = false)
     private String content;
-<<<<<<< HEAD
-    @Column(name="writer", length = 100)
-    private String writer;
-=======
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;
     @Column(name = "view_count", nullable = false)
     private int viewCount = 0;
->>>>>>> feature/board
     @Column(name="CREATE_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
     @PrePersist
