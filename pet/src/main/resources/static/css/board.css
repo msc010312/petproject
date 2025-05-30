@@ -198,3 +198,35 @@
     color: #fff;
     border: none;
 }
+
+/* view-content */
+.view-content-wrap {
+    position: relative;
+}
+
+.vc-top {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.vc-top-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.6rem;
+}
+
+.vc-top-list>li {
+    padding-left: 10px;
+}
+
+.vc-content {
+    position: relative;
+    height: 100%;
+    padding: 20px;
+    font-size: 1.4rem;
+}
