@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="/css/board.css">
 </th:block>
 
+<<<<<<< HEAD
+=======
+<!-- js -->
+<th:block layout:fragment="script">
+    <script src="/js/board.js"></script>
+</th:block>
+
+>>>>>>> feature/board
 
 <div class="content" layout:fragment="content">
     <div class="board-container">
@@ -28,6 +36,7 @@
                 <li class="board-title-name">작성자</li>
                 <li class="board-title-date">날짜</li>
             </ul>
+<<<<<<< HEAD
             <!-- test -->
             <ul class="board-list b-layout">
                 <li class="board-list-num">1</li>
@@ -84,6 +93,26 @@
                 <button class="add btn" >
                     <a th:href="@{/board/add}">글쓰기</a>
                 </button>
+=======
+            <div class="no-content" th:if="${#lists.isEmpty(boardList)}">
+                <p>등록된 게시글이 없습니다.</p>
+            </div>
+            <div class="board-list-wrap">
+            <ul class="board-list b-layout" th:each="board, stat : ${boardList}">
+                <li class="board-list-num" th:text="${stat.count}">1</li>
+                <li class="board-list-cont txt-hidden">
+                    <a th:href="@{/board/view}" th:text="${board.title}">제목</a>
+                </li>
+                <li class="board-list-name" th:text="${board.user.name}">작성자</li>
+                <li class="board-list-date" th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd')}">날짜</li>
+            </ul>
+            </div>
+        </div>
+        <div class="board-bottom">
+            <div class="add-list">
+                <button class="add btn" id="addBtn" type="submit">글쓰기</button>
+                <input type="hidden" id="isLoggedIn" th:value="${isLoggedIn}" />
+>>>>>>> feature/board
             </div>
             <div class="paging">
                 <span>1</span>

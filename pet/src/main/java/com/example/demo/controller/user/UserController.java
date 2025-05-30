@@ -5,6 +5,10 @@ import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
 import com.example.demo.service.UserServiceImpl;
+<<<<<<< HEAD
+=======
+import jakarta.servlet.http.HttpServletRequest;
+>>>>>>> feature/board
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +34,15 @@ public class UserController {
     }
 
     @GetMapping("/login")
+<<<<<<< HEAD
     public String login(){
+=======
+    public String login(@RequestParam(value = "redirect", required = false) String redirect,
+                        HttpServletRequest request){
+        if (redirect != null) {
+            request.getSession().setAttribute("redirectAfterLogin", redirect);
+        }
+>>>>>>> feature/board
         return "sign/login";
     }
 
