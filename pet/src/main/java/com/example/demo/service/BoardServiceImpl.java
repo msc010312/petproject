@@ -6,6 +6,8 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Data
 public class BoardServiceImpl implements BoardService{
@@ -15,5 +17,10 @@ public class BoardServiceImpl implements BoardService{
     @Override
     public BoardEntity saveContent(BoardEntity board) {
         return boardRepository.save(board);
+    }
+
+    @Override
+    public List<BoardEntity> getAllBoard() {
+        return boardRepository.findAll();
     }
 }

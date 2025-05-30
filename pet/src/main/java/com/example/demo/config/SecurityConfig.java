@@ -37,7 +37,7 @@ public class SecurityConfig {
 
         // 권한체크
         http.authorizeHttpRequests((auth)->{ auth
-                .requestMatchers("/","/signup","/login","set-role","/reserve","/board","/board/**").permitAll()
+                .requestMatchers("/","/signup","/login","set-role","/reserve","/board","/board/view").permitAll()
                 .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
 //                .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
                 .requestMatchers("/board/add").hasAnyRole("OWNER","SITTER","ADMIN")
@@ -72,8 +72,9 @@ public class SecurityConfig {
         });
 
         //OAUTH2-CLIENT
-        http.oauth2Login((oauth2)->{
-            oauth2.loginPage("/login");
+        http.oauth2Login((oauth2)->{ oauth2
+                .successHandler(customLoginSuccessHandler)
+                .loginPage("/login");
         });
 
         return http.build();
