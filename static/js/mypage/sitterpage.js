@@ -115,3 +115,45 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// pagenation sec
+document.addEventListener('DOMContentLoaded', () => {
+  const pages = document.querySelectorAll('.resev-page, .end-page, .res-page');
+  const pageButtons = document.querySelectorAll('.page-btn');
+  const leftBtn = document.querySelectorAll('.allres .left, exp .left, res .left');
+  const rightBtn = document.querySelectorAll('.allres .right, exp .right, res .right');
+  let currentPage = 1;
+  const totalPages = pages.length;
+
+  function showPage(page) {
+    pages.forEach((p, idx) => {
+      p.classList.toggle('active', idx === page - 1);
+    });
+
+    pageButtons.forEach((btn, idx) => {
+      btn.classList.toggle('active', idx === page - 1);
+    });
+
+    currentPage = page;
+  }
+
+  pageButtons.forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      showPage(idx + 1);
+    });
+  });
+
+  leftBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      showPage(currentPage - 1);
+    }
+  });
+
+  rightBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      showPage(currentPage + 1);
+    }
+  });
+
+  showPage(1); // 초기 첫 페이지 표시
+});
+

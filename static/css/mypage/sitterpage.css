@@ -2,8 +2,11 @@ img {
     border-radius: 40%;
     width: 100px;
     height: 100px;
-
     margin: 10px;
+}
+
+button {
+    border-radius: 5px;
 }
 
 .produce {
@@ -101,7 +104,7 @@ img {
     display: none;
     /* 기본적으로 숨김 */
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
     left: 0;
     top: 0;
     width: 100%;
@@ -199,7 +202,7 @@ img {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
     /* 반투명 배경 */
-    z-index: 1000;
+    z-index: 2000;
 }
 
 /* 채팅 박스 */
@@ -426,20 +429,100 @@ img {
     padding-left: 15px;
 }
 
-.res1 {
-    border: 1px solid;
-    border-radius: 5px;
+.end-page {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.end-page.active {
+    display: flex;
+}
+
+.res-card {
     width: 600px;
     height: 190px;
     margin-top: 6%;
     margin-left: -11%;
     margin-bottom: 10px;
-    margin: 6% -13% 10px;
+    border: none;
+    position: relative;
+    background-color: #f9f9f9;
+    /* margin: 6% -13% 10px;
     margin-left: -19%;
-    margin-top: 6%;
+    margin-top: 6%; */
 }
 
-.res1>ul {
+.res-card ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.res-card .type {
+    background-color: #ccc;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.res-card .status {
+    background-color: #b9fda4;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.schedule {
+    font-size: 14px;
+    margin: 4px 15px;
+}
+
+.schedule>span {
+    font-size: 14px;
+    margin-top: 1px;
+}
+
+.pet {
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.na {
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.price {
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.time {
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.serv {
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+
+
+.res-card .actions button {
+    margin-top: 1%;
+    margin-left: 13px;
+    font-size: medium;
+    width: 280px;
+    height: 30px;
+    border: none;
+}
+
+/* .res1>ul {
     border: 1px;
     text-align: center;
     display: flex;
@@ -467,8 +550,8 @@ img {
 
 .res1>.schedule1 {
     padding-left: 45%;
-    /* padding-top: 10px; */
-}
+    padding-top: 10px;
+}*/
 
 .res1>.schedule1>span {
     font-size: small;
@@ -800,9 +883,56 @@ img {
     margin-left: 51%;
     margin-top: -5%;
     font-size: medium;
+} */
+
+/* pagenation */
+.reserve .allres {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 39.5%;
+    margin-bottom: 10px;
+    gap: 10px;
 }
 
-.allres {
+.allres button {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.allres .number {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+.page-btn {
+    padding: 6px 10px;
+    border: 1px solid #999;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10%;
+
+}
+
+.page-btn.active {
+    background-color: #b9fda4;
+    font-weight: bold;
+    margin-left: 10%;
+}
+
+
+
+
+
+/* .allres {
     text-align: center;
     display: flex;
     margin-left: 5%;
@@ -820,7 +950,7 @@ img {
 }
 
 .allres>.number>ul {
-    /* margin-left: 40%; */
+    margin-left: 40%;
     margin-top: 15px;
     display: flex;
 }
@@ -833,7 +963,7 @@ img {
     margin-left: 125%;
     margin-top: 2.5%;
 
-}
+} */
 
 /* reserve end */
 .resend {
@@ -1108,12 +1238,12 @@ img {
     font-size: small;
 }
 
-.section {
+/* .section {
     margin-left: 39.5%;
     /* margin-top: -8px; */
-}
+/* } */
 
-.section>.left {
+/* .section>.left {
     margin-top: 13px;
 }
 
@@ -1134,4 +1264,47 @@ img {
 .section>.right {
     margin-left: 30%;
     margin-top: -24.5px;
+} */ 
+
+/* pagenation */
+.resend .res {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 39.5%;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.res button {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.res .number {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+.page-btn {
+    padding: 6px 10px;
+    border: 1px solid #999;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10%;
+
+}
+
+.page-btn.active {
+    background-color: #b9fda4;
+    font-weight: bold;
+    margin-left: 10%;
 }
