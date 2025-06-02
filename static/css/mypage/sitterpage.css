@@ -64,6 +64,7 @@ img {
 .produce>.payment-amount {
     font-size: medium;
     margin-left: 650px;
+    
 }
 
 .produce>.btn>.pro-setting {
@@ -92,6 +93,7 @@ img {
     background-color: gray; */
     margin-left: 640px;
     margin-top: -30px;
+    border: none;    
 }
 
 /* 모달 배경 */
@@ -228,8 +230,9 @@ img {
 .chat-header .close {
     cursor: pointer;
     font-size: 24px;
-    left: 66%;
-    top: 9.5%;
+    left: 57%;
+    top: 5.5%;
+    display: block;
 }
 
 /* 채팅 메시지 영역 */
@@ -275,6 +278,7 @@ img {
     background-color: #dbf7d4;
     border-radius: 5px;
     font-size: medium;
+    border: none;
 }
 
 .view1>button {
@@ -282,6 +286,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .view2>button {
@@ -289,6 +294,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .view3>button {
@@ -296,6 +302,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .view4>button {
@@ -303,6 +310,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .chart1>button {
@@ -310,6 +318,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .chart2>button {
@@ -317,6 +326,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .chart3>button {
@@ -324,6 +334,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .chart4>button {
@@ -331,6 +342,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .chat1>button {
@@ -338,6 +350,7 @@ img {
     height: 30px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .char1>button {
@@ -345,6 +358,7 @@ img {
     height: 25px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .char2>button {
@@ -352,6 +366,7 @@ img {
     height: 25px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .char3>button {
@@ -359,6 +374,7 @@ img {
     height: 25px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .char4>button {
@@ -366,6 +382,7 @@ img {
     height: 25px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .char5>button {
@@ -373,6 +390,7 @@ img {
     height: 25px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 .char6>button {
@@ -380,6 +398,7 @@ img {
     height: 25px;
     font-size: medium;
     text-align: center;
+    border: none;
 }
 
 /* --------------------------------------------- */

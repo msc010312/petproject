@@ -6,6 +6,10 @@ img {
     margin: 5px;
 }
 
+button {
+    border-radius: 5px;
+}
+
 .produce {
     border: 1px solid;
     border-radius: 3px;
@@ -172,6 +176,7 @@ img {
     width: 600px;
     height: 30px;
     background-color: #dbf7d4;
+    border: none;
     border-radius: 5px;
     font-size: medium;
 }
@@ -180,12 +185,16 @@ img {
     width: 280px;
     height: 30px;
     font-size: medium;
+    border: none;
+    border-radius: 5px;
 }
 
 .view2>button {
     width: 280px;
     height: 30px;
     font-size: medium;
+    border: none;
+    border-radius: 5px;
 }
 
 /* 채팅 모달 */
@@ -224,16 +233,17 @@ img {
     padding: 15px;
     font-size: 18px;
     font-weight: bold;
-    display: flex;
+    display: block;
     justify-content: space-between;
     align-items: center;
+
 }
 
 /* 닫기 버튼 */
 .chat-header .close {
     cursor: pointer;
     font-size: 24px;
-    left: 66%;
+    left: 61%;
     top: 9.5%;
 }
 
@@ -277,24 +287,28 @@ img {
     width: 280px;
     height: 30px;
     font-size: medium;
+    border: none;
 }
 
 .chart2>button {
     width: 280px;
     height: 30px;
     font-size: medium;
+    border: none;
 }
 
 .chat1>button {
     width: 80px;
     height: 30px;
     font-size: medium;
+    border: none;
 }
 
 .chat2>button {
     width: 80px;
     height: 30px;
     font-size: medium;
+    border: none;
 }
 
 /* --------------------------------------------- */
@@ -335,20 +349,21 @@ img {
 
 .res-card {
     width: 600px;
-    height: 150px;
+    height: 160px;
+    border: none;
     border-radius: 8px;
     /* box-sizing: border-box; */
     background-color: #f9f9f9;
     position: relative;
+    margin-left: 13px
 }
-
 
 .res-card ul {
     display: flex;
     gap: 10px;
     list-style: none;
     padding: 0;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .res-card .type {
@@ -365,24 +380,34 @@ img {
     font-size: 12px;
 }
 
-.schedule{
+.schedule {
     font-size: 14px;
     margin: 4px 15px;
 }
+
 .schedule>span {
     font-size: 14px;
     margin-top: 1px;
 }
+
 .sit {
-    font-size: 14px;
-    margin: 4px 0;
+    font-size: 15px;
+    margin-left: 20px;
 }
+
 .price {
-    font-size: 14px;
-    margin: 4px 0;
+    font-size: 15px;
+    margin-left: 20px;
 }
 
-
+.res-card .actions button {
+    margin-top: 1%;
+    margin-left: 13px;
+    font-size: medium;
+    width: 280px;
+    height: 30px;
+    border: none;
+}
 
 .res1 {
     border: 1px solid;
@@ -541,35 +566,30 @@ img {
     font-size: medium;
 }
 
-*/
-/* .actions {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
 
-.actions button {
-  flex: 1;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #e0f0ff;
-  cursor: pointer;
-} */
-
-.allres {
+.reserve .allres {
     display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 20px;
+    margin-left: 39.5%;
+    margin-bottom: 10px;
     gap: 10px;
 }
 
+.allres button {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 .allres .number {
     display: flex;
-    gap: 5px;
+    gap: 10px;
     list-style: none;
-    padding: 0;
+    padding: 5px;
+    margin-right: 2px;
 }
 
 .page-btn {
@@ -577,16 +597,17 @@ img {
     border: 1px solid #999;
     background-color: white;
     cursor: pointer;
+    border: none;
     border-radius: 5px;
+    margin-left: 10%;
+
 }
 
 .page-btn.active {
     background-color: #b9fda4;
     font-weight: bold;
+    margin-left: 10%;
 }
-
-
-/* pagenation */
 
 
 /* pet profil */
