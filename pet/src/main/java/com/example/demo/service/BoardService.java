@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface BoardService {
     BoardEntity saveContent(BoardEntity board);
-    List<BoardEntity> getAllBoard();
+    BoardEntity viewBoardContent(Long boardId);
+    List<BoardEntity> getAllBoard(int page);
+    public int getTotalBoardCount();
 }

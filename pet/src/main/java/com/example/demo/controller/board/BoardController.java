@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,12 +26,11 @@ public class BoardController {
     UserRepository userRepository;
 
     @GetMapping("/board")
-    public String board(Model model, Principal principal){
-        List<BoardEntity> boardList = boardService.getAllBoard(); // boardRepository.findAll() 같은 메서드
+    public String board(Model model, Principal principal, @RequestParam(value="page", defaultValue="0") int page){
+        List<BoardEntity> boardList = boardService.getAllBoard(page);
         boolean isLoggedIn = principal != null;
 
         System.out.println("boardlist : "+boardList);
-
         model.addAttribute("boardList", boardList);
         model.addAttribute("isLoggedIn", isLoggedIn);
         return "board/board";
@@ -41,8 +41,10 @@ public class BoardController {
         return "board/addContent";
     }
 
-    @GetMapping("/board/view")
-    public String boardView() {
+    @GetMapping("/board/view/{id}")
+    public String viewBoard(@PathVariable("id") Long id, Model model) {
+        BoardEntity board = boardService.viewBoardContent(id);
+        model.addAttribute("board", board);
         return "board/viewContent";
     }
 

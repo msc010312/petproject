@@ -30,7 +30,7 @@ public class BoardEntity {
     private UserEntity user;
     @Column(name = "view_count", nullable = false)
     private int viewCount = 0;
-    @Column(name="CREATE_AT")
+    @Column(name="CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
     @PrePersist
     public void prePersist() {
