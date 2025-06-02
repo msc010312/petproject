@@ -20,10 +20,14 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
     <script src="js/reserve.js" defer></script>
     <script src="js/reservemodal.js" defer></script>
+
 </th:block>
 
 <!-- 작업 영역 -->
 <div class="content" layout:fragment="content">
+    <div th:replace="modal/reservemodal :: sitterDetail">
+        <div id="modal-inner"></div>
+    </div>
     <h1 class="title">예약하기</h1>
     <div class="tabs">
         <button class="tab active" data-type="short">데이케어</button>
@@ -53,9 +57,8 @@
                 </div>
                 <div class="form-group">
                     <label>위치</label>
-                    <input type="text" placeholder="예: 서울특별시 강남구">
-                    <p>주소를 입력하거나 지도에서 직접 위치를 선택해주세요</p>
-                    <div class="map">지도</div>
+                    <input type="text" id="addressInput" placeholder="예: 서울특별시 강남구">
+                    <div id="map" style="width: 100%; height: 400px; margin-top: 10px;"></div>
                 </div>
             </div>
             <div class="sitter-section">
@@ -180,9 +183,6 @@
         </div>
     </div>
     <!-- 래퍼 div 추가 끝 -->
-
-    <div id="reserve-modal" class="modal" style="display:none;">
-        <div id="modal-inner"></div>
-    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYVE-Fxs1sm7rsudqBgok6iAqx5aQoM&libraries=places" async defer></script>
 </div>
 </html>
