@@ -30,6 +30,7 @@
             <ul class="board-title b-layout">
                 <li class="board-title-num">번호</li>
                 <li class="board-title-cont">제목</li>
+                <li class="board-title-view">조회수</li>
                 <li class="board-title-name">작성자</li>
                 <li class="board-title-date">날짜</li>
             </ul>
@@ -37,14 +38,15 @@
                 <p>등록된 게시글이 없습니다.</p>
             </div>
             <div class="board-list-wrap">
-                <ul class="board-list b-layout" th:each="board, stat : ${boardList}">
-                    <li class="board-list-num" th:text="${stat.count}">1</li>
-                    <li class="board-list-cont txt-hidden">
-                        <a th:href="@{/board/view}" th:text="${board.title}">제목</a>
-                    </li>
-                    <li class="board-list-name" th:text="${board.user.name}">작성자</li>
-                    <li class="board-list-date" th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd')}">날짜</li>
-                </ul>
+            <ul class="board-list b-layout" th:each="board, stat : ${boardList}">
+                <li class="board-list-num" th:text="${stat.count}">1</li>
+                <li class="board-list-cont txt-hidden">
+                    <a th:href="@{/board/view/{id}(id=${board.boardId})}" th:text="${board.title}">제목</a>
+                </li>
+                <li class="board-list-view" th:text="${board.viewCount}">1</li>
+                <li class="board-list-name" th:text="${board.user.name}">작성자</li>
+                <li class="board-list-date" th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd')}">날짜</li>
+            </ul>
             </div>
         </div>
         <div class="board-bottom">
