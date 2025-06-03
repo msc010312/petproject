@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("myModal");
   const closeBtn = document.getElementById("closeBtn");
@@ -116,44 +115,69 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // pagenation sec
-document.addEventListener('DOMContentLoaded', () => {
-  const pages = document.querySelectorAll('.resev-page, .end-page, .res-page');
-  const pageButtons = document.querySelectorAll('.page-btn');
-  const leftBtn = document.querySelectorAll('.allres .left, exp .left, res .left');
-  const rightBtn = document.querySelectorAll('.allres .right, exp .right, res .right');
-  let currentPage = 1;
-  const totalPages = pages.length;
 
-  function showPage(page) {
-    pages.forEach((p, idx) => {
-      p.classList.toggle('active', idx === page - 1);
+document.addEventListener("DOMContentLoaded", () => {
+  const endPages = document.querySelectorAll(".end-page");
+  const endPageBtns = document.querySelectorAll(".allres .page-btn");
+  const endLeftBtn = document.querySelector(".allres .left");
+  const endRightBtn = document.querySelector(".allres .right");
+  let currentEndPage = 1;
+  const totalEndPages = endPages.length;
+
+  function showEndPage(page) {
+    endPages.forEach((p, idx) => {
+      p.style.display = idx === page - 1 ? "block" : "none";
     });
-
-    pageButtons.forEach((btn, idx) => {
-      btn.classList.toggle('active', idx === page - 1);
+    endPageBtns.forEach((btn, idx) => {
+      btn.classList.toggle("active", idx === page - 1);
     });
-
-    currentPage = page;
+    currentEndPage = page;
   }
 
-  pageButtons.forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      showPage(idx + 1);
-    });
+  endPageBtns.forEach((btn, idx) => {
+    btn.addEventListener("click", () => showEndPage(idx + 1));
   });
 
-  leftBtn.addEventListener('click', () => {
-    if (currentPage > 1) {
-      showPage(currentPage - 1);
-    }
+  endLeftBtn.addEventListener("click", () => {
+    if (currentEndPage > 1) showEndPage(currentEndPage - 1);
   });
 
-  rightBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      showPage(currentPage + 1);
-    }
+  endRightBtn.addEventListener("click", () => {
+    if (currentEndPage < totalEndPages) showEndPage(currentEndPage + 1);
   });
 
-  showPage(1); // 초기 첫 페이지 표시
+  showEndPage(1); // 초기 첫 페이지
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const resPages = document.querySelectorAll(".res-page");
+  const resPageBtns = document.querySelectorAll(".res .page-btn");
+  const resLeftBtn = document.querySelector(".res .left");
+  const resRightBtn = document.querySelector(".res .right");
+  let currentResPage = 1;
+  const totalResPages = resPages.length;
+
+  function showResPage(page) {
+    resPages.forEach((p, idx) => {
+      p.style.display = idx === page - 1 ? "block" : "none";
+    });
+    resPageBtns.forEach((btn, idx) => {
+      btn.classList.toggle("active", idx === page - 1);
+    });
+    currentResPage = page;
+  }
+
+  resPageBtns.forEach((btn, idx) => {
+    btn.addEventListener("click", () => showResPage(idx + 1));
+  });
+
+  resLeftBtn.addEventListener("click", () => {
+    if (currentResPage > 1) showResPage(currentResPage - 1);
+  });
+
+  resRightBtn.addEventListener("click", () => {
+    if (currentResPage < totalResPages) showResPage(currentResPage + 1);
+  });
+
+  showResPage(1); // 초기 첫 페이지
+});
