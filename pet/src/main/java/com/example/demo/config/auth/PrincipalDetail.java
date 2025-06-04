@@ -4,6 +4,7 @@ import com.example.demo.domain.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "userDto")
 public class PrincipalDetail implements UserDetails,OAuth2User {
     private UserDto userDto;
     public PrincipalDetail(UserDto userDto){
@@ -32,7 +34,7 @@ public class PrincipalDetail implements UserDetails,OAuth2User {
     }
     @Override
     public String getName() {
-        return userDto.getEmail();
+        return userDto.getName();
     }
     //----------------------------
 

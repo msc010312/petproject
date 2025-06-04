@@ -9,4 +9,5 @@ public interface BoardService {
     BoardEntity viewBoardContent(Long boardId);
     List<BoardEntity> getAllBoard(int page);
     public int getTotalBoardCount();
+    public void deleteById(Long boardId);
 }

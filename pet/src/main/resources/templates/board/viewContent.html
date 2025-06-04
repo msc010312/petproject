@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="/css/board.css">
 </th:block>
 
+<!-- js -->
+<th:block layout:fragment="script">
+    <script src="/js/board.js" defer></script>
+</th:block>
+
 <div class="content" layout:fragment="content">
     <div class="view-content-wrap">
         <div class="vc-top">
@@ -31,9 +36,13 @@
         <div class="vc-content">
             <p th:text="${board.content}">내용</p>
         </div>
-        <button class="back btn" id="backBtn" type="submit">
-            <a th:href="@{/board}">뒤로가기</a>
-        </button>
+        <div class="vc-btn">
+            <a class="back btn" id="backBtn" th:href="@{/board}">뒤로가기</a>
+            <form th:action="@{/board/delete/{id}(id=${board.boardId})}" method="post" onsubmit="return confirmDelete()">
+                <input type="hidden" id="delSuccessMessage" th:value="${delSuccess}" />
+                <button type="submit" class="del btn" id="delBtn">글 삭제</button>
+            </form>
+        </div>
     </div>
 </div>
 </html>
