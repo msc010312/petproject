@@ -22,6 +22,7 @@
 
 
 <div class="content" layout:fragment="content">
+    <div id="delSuccessMessage" th:if="${delSuccess != null}" th:attr="data-message=${delSuccess}"></div>
     <div class="board-container">
         <div class="board">
             <div class="board-subject">

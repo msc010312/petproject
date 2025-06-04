@@ -258,8 +258,23 @@
     font-size: 1.4rem;
 }
 
+.vc-btn {
+    position: relative;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+}
+
 .back {
-    position: absolute;
-    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.del {
+    background : crimson;
+    color: #fff;
 }
 
