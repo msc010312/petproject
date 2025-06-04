@@ -1,4 +1,4 @@
-// reserve.js (재구성본 전체 복붙용)
+// reserve.js (날짜 선택 시 가격 계산 제거됨)
 
 let selectedSitterPrice = 30000;
 window.priceConfirmed = false;
@@ -85,13 +85,8 @@ function initializePickers() {
         const checkIn = selectedDates[0];
         const checkOut = selectedDates[1];
 
-        const diffDays = Math.round((checkOut - checkIn) / (1000 * 60 * 60 * 24)) + 1;
-        const price = selectedSitterPrice;
-        const total = price * diffDays;
-
-        document.getElementById("reservation-time").textContent = `${checkIn.toLocaleDateString()} ~ ${checkOut.toLocaleDateString()}`;
-        document.getElementById("reservation-price").textContent = `${price.toLocaleString()}원`;
-        document.getElementById("reservation-total").textContent = `${total.toLocaleString()}원`;
+        document.getElementById("reservation-time").textContent =
+          `${checkIn.toLocaleDateString()} ~ ${checkOut.toLocaleDateString()}`;
       }
     }
   });

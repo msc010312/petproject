@@ -1,42 +1,94 @@
-// reservemodal.js (재구성본 전체 복붙용)
-
-// 시터 상세 정보 모달 로직
 window.addEventListener("DOMContentLoaded", () => {
   const detailButtons = document.querySelectorAll(".details-btn");
   const modal = document.getElementById("reserve-modal");
   const closeBtn = document.querySelector(".close-btn");
-  const modalInner = document.getElementById("modal-inner");
   const sitterCards = document.querySelectorAll(".sitter-card .sitter-content");
 
+  // 상세보기 클릭 시 모달 열기 및 가격 저장
   detailButtons.forEach((btn, index) => {
     btn.addEventListener("click", () => {
       const selected = sitterCards[index];
       const priceEl = selected.querySelector(".sitter-price");
       const priceText = priceEl?.textContent?.replace(/[^0-9]/g, "") || "30000";
       const parsedPrice = parseInt(priceText);
+
       window.selectedSitterPrice = parsedPrice;
       window.priceConfirmed = true;
-
-      // 예약 정보에 가격과 총 금액 반영
-      const priceTarget = document.getElementById("reservation-price");
-      const totalTarget = document.getElementById("reservation-total");
-      if (priceTarget) priceTarget.textContent = parsedPrice.toLocaleString() + "원";
-      if (totalTarget) totalTarget.textContent = parsedPrice.toLocaleString() + "원";
 
       if (modal) modal.style.display = "flex";
     });
   });
 
+  // 모달 닫기
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
     });
   }
 
-  // 외부 클릭 시 닫기
+  // 바깥 영역 클릭 시 모달 닫기
   window.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
     }
   });
+
+  // 예약 버튼 마우스오버 시 가격 계산
+  const reserveBtn = document.querySelector(".reserve-btn2");
+  if (reserveBtn) {
+    reserveBtn.addEventListener("mouseenter", () => {
+      const price = window.selectedSitterPrice || 30000;
+      const timeText = document.getElementById("reservation-time")?.textContent;
+
+      let total = price;
+
+      if (timeText && timeText.includes("~")) {
+        const [startStr, endStr] = timeText.split("~").map(s => s.trim());
+        const startDate = new Date(startStr);
+        const endDate = new Date(endStr);
+        const diffDays = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+        total = price * diffDays;
+      }
+
+      document.getElementById("reservation-price").textContent = `${price.toLocaleString()}원`;
+      document.getElementById("reservation-total").textContent = `${total.toLocaleString()}원`;
+    });
+
+    // 예약하기 클릭 시 모달 닫기
+    reserveBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  }
+
+  // 후기 이미지 슬라이더
+  const track = document.getElementById("slider-track");
+  const prevBtn = document.querySelector(".slider__btn.prev");
+  const nextBtn = document.querySelector(".slider__btn.next");
+
+  let currentIndex = 0;
+  const itemWidth = 115; // 이미지 100px + 간격 15px
+  const maxIndex = track ? track.children.length - 4 : 0;
+
+  function updateSliderPosition() {
+    if (track) {
+      track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
+  }
+
+  if (prevBtn && nextBtn && track) {
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSliderPosition();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSliderPosition();
+      }
+    });
+  }
 });
+
