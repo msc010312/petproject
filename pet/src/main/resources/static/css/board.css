@@ -37,7 +37,7 @@
 .b-layout {
     position: relative;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     padding: 20px 30px;
     border-bottom: 1px solid #333;
@@ -52,7 +52,8 @@
 .board-title {
     text-align: center;
     margin-top: 30px;
-    padding-left: 15px;
+    padding-left: 17px;
+    padding-right: 25px;
 }
 
 .board-list-wrap {
@@ -71,7 +72,7 @@
 }
 
 .board-list-num::after,
-.board-list-cont::after {
+.board-list-cont::after{
     content: '';
     position: absolute;
     right: 0;
@@ -94,6 +95,11 @@
 
 .board-list-cont:hover {
     text-decoration: underline;
+}
+
+.board-title-view,
+.board-list-view {
+    flex: 0.6;
 }
 
 .board-title-name,
@@ -216,18 +222,59 @@
 .vc-top-list {
     position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    justify-content: space-between;
     font-size: 1.6rem;
+    padding: 0 20px;
 }
 
-.vc-top-list>li {
-    padding-left: 10px;
+.vc-top-list-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.vc-top-list-info>p {
+    position: relative;
+}
+
+.vc-top-list-info>p::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    height: 20px;
+    width: 1px;
+    background: #333;
+}
+
+.vc-top-list-info>p:last-child::after {
+    display: none;
 }
 
 .vc-content {
     position: relative;
-    height: 100%;
+    min-height: calc(100vh - 400px);
     padding: 20px;
     font-size: 1.4rem;
 }
+
+.vc-btn {
+    position: relative;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+}
+
+.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.del {
+    background : crimson;
+    color: #fff;
+}
+

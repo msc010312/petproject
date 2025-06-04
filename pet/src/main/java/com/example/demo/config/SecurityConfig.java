@@ -37,7 +37,7 @@ public class SecurityConfig {
 
         // 권한체크
         http.authorizeHttpRequests((auth)->{ auth
-                .requestMatchers("/","/signup","/login","set-role","/reserve","/board","/board/view").permitAll()
+                .requestMatchers("/","/signup","/login","set-role","/reserve","/board/**").permitAll()
                 .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
 //                .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
                 .requestMatchers("/board/add").hasAnyRole("OWNER","SITTER","ADMIN")
