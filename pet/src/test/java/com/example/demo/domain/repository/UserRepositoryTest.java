@@ -30,9 +30,11 @@ class UserRepositoryTest {
 
         // when : 실제로 멤버를 저장
         userRepository.save(user);
+        System.out.println("저장된 유저 이메일 : " + user.getEmail());
 
         // then : 멤버가 잘 추가되었는지 확인
         UserEntity ur = userRepository.findByEmail(user.getEmail());
+        System.out.println("조회된 유저 이름 : " + ur.getName());
         assertThat(ur.getAddress()).isEqualTo(user.getAddress());
         assertThat(ur.getName()).isEqualTo(user.getName());
     }

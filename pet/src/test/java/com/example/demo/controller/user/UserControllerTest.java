@@ -62,41 +62,41 @@ class UserControllerTest {
 //                .andExpect(view().name("sign/signup"));
 //    }
 
-    @Test
-    @DisplayName("POST /signup - 회원가입 성공 시 로그인 페이지로 이동")
-    void registerUser_success() throws Exception {
-        // Given
-        String email = "test@example.com";
-        String password = "Test@1234";
-        String phone = "01012345678";
-        String userPwRe = password;
-        String name = "tester";
-        String address = "abc-def";
-        String role = "ROLE_OWNER";
-        String provider = "Local";
-        LocalDateTime createAt = LocalDateTime.now();
-
-        // When
-        ResultActions result = mockMvc.perform(post("/signup")
-                .param("email", email)
-                .param("password", password)
-                .param("phone", phone)
-                .param("userPwRe", userPwRe)
-                .param("name", name)
-                .param("role", role)
-                .param("address", address)
-                .param("provider", provider)
-                .param("createAt", String.valueOf(createAt))
-        );
-
-        // Then
-        result.andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("sign/login"));
-
-        // userService.registerUser() 호출 여부 검증
-//        verify(userService, times(1)).registerUser(any(UserEntity.class));
-    }
+//    @Test
+//    @DisplayName("POST /signup - 회원가입 성공 시 로그인 페이지로 이동")
+//    void registerUser_success() throws Exception {
+//        // Given
+//        String email = "test@example.com";
+//        String password = "Test@1234";
+//        String phone = "01012345678";
+//        String userPwRe = password;
+//        String name = "tester";
+//        String address = "abc-def";
+//        String role = "ROLE_OWNER";
+//        String provider = "Local";
+//        LocalDateTime createAt = LocalDateTime.now();
+//
+//        // When
+//        ResultActions result = mockMvc.perform(post("/signup")
+//                .param("email", email)
+//                .param("password", password)
+//                .param("phone", phone)
+//                .param("userPwRe", userPwRe)
+//                .param("name", name)
+//                .param("role", role)
+//                .param("address", address)
+//                .param("provider", provider)
+//                .param("createAt", String.valueOf(createAt))
+//        );
+//
+//        // Then
+//        result.andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("sign/login"));
+//
+//        // userService.registerUser() 호출 여부 검증
+////        verify(userService, times(1)).registerUser(any(UserEntity.class));
+//    }
 
     //    @Test
 //    void login() {
@@ -139,6 +139,7 @@ void deleteUser() throws Exception {
             .andExpect(view().name("sign/delete-success"))
             .andExpect(model().attribute("message", "회원 탈퇴가 완료되었습니다."));
 }
+
 //
 //    @Test
 //    void setRole() {

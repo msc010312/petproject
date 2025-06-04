@@ -19,24 +19,26 @@
 <th:block layout:fragment="script">
     <script src="/js/mainPage.js" defer></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
 </th:block>
 
 <!-- 작업 영역 -->
 <div class="content" layout:fragment="content2">
     <!-- 슬라이드 영역 -->
-    <div class="swiper slide">
+    <div class="swiper slide" id="slideSection">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="../../asset/강아지2.jpg" alt="슬라이드1">
+                <img src="../../asset/강아지2.jpg" alt="슬라이드1"/>
                 <div class="slide-text">
                     <h4>우리 아이를 위한 하루의 시작</h4>
                     <p>
-                        바쁜 하루를 시작하는 당신을 대신해, 반려견의 하루를 따뜻하게 책임집니다.
+                        바쁜 하루를 시작하는 당신을 대신해, 반려견의 하루를 따뜻하게
+                        책임집니다.
                     </p>
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="../../asset/산책.jpg" alt="슬라이드2">
+                <img src="../../asset/산책.jpg" alt="슬라이드2"/>
                 <div class="slide-text">
                     <h4>언제 어디서든 안심하고 맡기세요</h4>
                     <p>
@@ -46,7 +48,7 @@
                 </div>
             </div>
             <div class="swiper-slide">
-                <img src="../../asset/산책2.jpg" alt="슬라이드3">
+                <img src="../../asset/산책2.jpg" alt="슬라이드3"/>
                 <div class="slide-text">
                     <h4>함께하지 못하는 시간, 걱정 대신 신뢰로</h4>
                     <p>
@@ -60,37 +62,31 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
     </div>
-    <div class="services hidden">
-        <h2>서비스 소개</h2>
+    <div class="services hidden" id="serviceSection">
+        <h6>서비스 소개</h6>
         <p>원하시는 정보를 찾기 위한 서비스를 확인해보세요.</p>
         <div class="service-cards">
             <div class="card">
-              <span class="material-symbols-outlined">
-                pets
-              </span>
+                <span class="material-symbols-outlined"> pets </span>
                 <p>데이 케어 서비스</p>
                 <div class="image">
-                    <img src="../../asset/강아지.jpg" alt="">
+                    <img src="../../asset/강아지.jpg" alt=""/>
                 </div>
                 <a href="javascript:void(0)">신청하기</a>
             </div>
             <div class="card">
-              <span class="material-symbols-outlined">
-                location_city
-              </span>
+                <span class="material-symbols-outlined"> location_city </span>
                 <p>호텔링 서비스</p>
                 <div class="image">
-                    <img src="../../asset/강아지.jpg" alt="">
+                    <img src="../../asset/강아지.jpg" alt=""/>
                 </div>
                 <a href="javascript:void(0)">신청하기</a>
             </div>
             <div class="card">
-              <span class="material-symbols-outlined">
-                location_on
-              </span>
+                <span class="material-symbols-outlined"> location_on </span>
                 <p>산책 서비스</p>
                 <div class="image">
-                    <img src="../../asset/강아지.jpg" alt="">
+                    <img src="../../asset/강아지.jpg" alt=""/>
                 </div>
                 <a href="javascript:void(0)">신청하기</a>
             </div>
