@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    board
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/board.css">
+</th:block>
+
+<div class="content" layout:fragment="content">
+    <div class="view-content-wrap">
+        <div class="vc-top">
+            <div class="vc-top-list">
+                <span th:text="${board.title}">제목</span>
+                <div class="vc-top-list-info">
+                    <p th:text="${board.user.name}">작성자</p>
+                    <p th:text="${#temporals.format(board.createdAt, 'yyyy-MM-dd')}">날짜</p>
+                    <p th:text="${board.viewCount}">1</p>
+                </div>
+            </div>
+        </div>
+        <div class="vc-content">
+            <p th:text="${board.content}">내용</p>
+        </div>
+        <button class="back btn" id="backBtn" type="submit">
+            <a th:href="@{/board}">뒤로가기</a>
+        </button>
+    </div>
+</div>
+</html>

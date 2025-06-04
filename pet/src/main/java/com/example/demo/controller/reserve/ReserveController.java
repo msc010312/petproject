@@ -11,4 +11,11 @@ public class ReserveController {
     public String reserve() {
         return "reserve/reserve";
     }
+
+//   *** 임시 URL 기능 구현시 삭제 필수 !!! ***
+    @GetMapping("/reserve/confirm")
+    public String reserveSuccess() {
+        return "reserve/reserveConfirm";
+    }
+
 }
