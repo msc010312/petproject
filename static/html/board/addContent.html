@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link -->
+    <script src="/js/link.js" defer></script>
+    <title>Document</title>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- 헤더영역 -->
+        <div class="header">
+            <div class="logo">
+                <span><a href="#">LOGO</a></span>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="menu-service list">
+                        <a href="#">Service</a>
+                        <ul class="sub-menu">
+                            <li class="sub-item"><a href="#">Day Care</a></li>
+                            <li class="sub-item"><a href="#">Hotelling</a></li>
+                            <li class="sub-item"><a href="#">work with pet</a></li>
+                        </ul>
+                    </li>
+                    <li class="list"><a href="#">place</a></li>
+                    <li class="list"><a href="#">board</a></li>
+                </ul>
+            </div>
+            <div class="sign">
+                <button class="sign-in btn">
+                    <a href="/html/sign/login.html">로그인</a>
+                </button>
+                <button class="sign-up btn">
+                    <a href="/html/sign/signup.html">회원가입</a>
+                </button>
+            </div>
+        </div>
+        <!-- content -->
+        <div class="main">
+            <div class="pagew">
+                <div class="content">
+                    <div class="add-content-wrap">
+                    <form id="addConFrm">
+                        <input type="hidden" name="userId">
+                        <input type="hidden" name="boardId">
+
+                        <div class="add-title">
+                            <input class="input-title" type="text" name="title" placeholder="제목">
+                        </div>
+
+                        <div class="add-ctnt">
+                            <textarea class="input-ctnt" name="ctnt" form="writeEditFrm"></textarea>
+                        </div>
+
+                        <div class="add-btn">
+                            <button class="input-btn btn" id="addContentBtn">
+                                <span>작성</span>
+                            </button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <span>footer</span>
+        </div>
+    </div>
+</body>
+
+</html>

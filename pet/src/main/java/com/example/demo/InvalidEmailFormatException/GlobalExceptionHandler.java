@@ -13,9 +13,9 @@ public class GlobalExceptionHandler {
         return "sign/signup";
     }
 
-    @ExceptionHandler(Exception.class)
-    public String handleGeneralException(Exception ex, Model model) {
-        model.addAttribute("error", "서버 오류: " + ex.getMessage());
-        return "sign/signup";
-    }
+//    @ExceptionHandler(Exception.class)
+//    public String handleGeneralException(Exception ex, Model model) {
+//        model.addAttribute("error", "서버 오류: " + ex.getMessage());
+//        return "sign/signup";
+//    }
 }

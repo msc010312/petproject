@@ -1,3 +1,14 @@
+
+/* no content*/
+.no-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    min-height: calc(100vh - 500px);
+}
+
 .board-container {
     position: relative;
     display: flex;
@@ -26,7 +37,7 @@
 .b-layout {
     position: relative;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     padding: 20px 30px;
     border-bottom: 1px solid #333;
@@ -34,18 +45,40 @@
 }
 
 .b-layout>li {
+    position: relative;
     display: block;
 }
 
 .board-title {
     text-align: center;
     margin-top: 30px;
-    padding-left: 15px;
+    padding-left: 17px;
+    padding-right: 25px;
+}
+
+.board-list-wrap {
+    position: relative;
+    min-height: calc(100vh - 500px);
+}
+
+.board-list {
+    text-align:center;
 }
 
 .board-title-num,
 .board-list-num {
     flex: 0.4;
+    text-align: start;
+}
+
+.board-list-num::after,
+.board-list-cont::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    height: 20px;
+    width: 1px;
+    background: #333;
 }
 
 .board-title-cont,
@@ -62,6 +95,11 @@
 
 .board-list-cont:hover {
     text-decoration: underline;
+}
+
+.board-title-view,
+.board-list-view {
+    flex: 0.6;
 }
 
 .board-title-name,
@@ -85,15 +123,15 @@
 }
 
 .add {
-    background: #333;
-    color: #fff;
-    transition: all 0.3s ease;
+    background: #fff;
+    border: 1px solid #333;
+    transition: ease all 0.3s;
 }
 
 .add:hover {
-    background: #fff;
-    border: 1px solid #333;
-    color: #333;
+    background: #333;
+    color: #fff;
+    border: none;
 }
 
 .paging {
@@ -114,3 +152,129 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+/* addContent */
+.add-content-wrap {
+    position: relative;
+    height: calc(100vh - 200px);
+}
+
+#addConFrm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.add-title,
+.add-ctnt,
+.add-btn {
+    width: 100%;
+}
+
+.input-title {
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.input-ctnt {
+    width: 100%;
+    height: 500px;
+    resize: none;
+	padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.input-btn {
+    position: absolute;
+    right: 0;
+    background: #fff;
+    border: 1px solid #333;
+    transition: ease all 0.3s;
+}
+
+.input-btn:hover {
+    background: #333;
+    color: #fff;
+    border: none;
+}
+
+/* view-content */
+.view-content-wrap {
+    position: relative;
+}
+
+.vc-top {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.vc-top-list {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+    padding: 0 20px;
+}
+
+.vc-top-list-info {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.vc-top-list-info>p {
+    position: relative;
+}
+
+.vc-top-list-info>p::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    height: 20px;
+    width: 1px;
+    background: #333;
+}
+
+.vc-top-list-info>p:last-child::after {
+    display: none;
+}
+
+.vc-content {
+    position: relative;
+    min-height: calc(100vh - 400px);
+    padding: 20px;
+    font-size: 1.4rem;
+}
+
+.vc-btn {
+    position: relative;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 20px;
+}
+
+.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.del {
+    background : crimson;
+    color: #fff;
+}
+
