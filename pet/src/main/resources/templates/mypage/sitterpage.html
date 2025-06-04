@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- link -->
+    <script src="/js/link.js" defer></script>
+    <title>Document</title>
+    <!-- css -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link th:href="@{/css/sitterpage.css}" rel="stylesheet" />
+    <!-- JS -->
+    <script th:src="@{/js/sitterpage.js}" defer></script>
+    <!-- goole icon -->
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+</head>
+
+<body>
+<div class="wrapper">
+    <!-- 헤더영역 (템플릿화 예정) -->
+    <div class="header">
+        <div class="logo">
+            <span><a href="#">LOGO</a></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li class="menu-service">
+                    <a href="#">Service</a>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="#">Day Care</a></li>
+                        <li class="sub-item"><a href="#">Hotelling</a></li>
+                        <li class="sub-item"><a href="#">work with pet</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">place</a></li>
+                <li><a href="#">board</a></li>
+            </ul>
+        </div>
+        <div class="sign">
+            <button class="sign-in btn">
+                <a href="../sign/login.html">로그인</a>
+            </button>
+            <button class="sign-up btn">
+                <a href="../sign/signup.html">회원가입</a>
+            </button>
+        </div>
+    </div>
+    <!-- 메인영역 -->
+    <div class="main">
+        <!-- pagew 1260px -->
+        <div class="pagew">
+            <!-- 작업 영역 -->
+            <div class="content">
+                <!-- chart1 -->
+                <div class="produce">
+                    <div class="name">
+                        <div class="dog1"> <img th:src="@{'/asset/' + ${res.sitterImage}}" alt="시터이미지"/></div>
+                        <span>반갑습니다, <span th:text="${sitter.name}">시터님</span>!</span>
+                        <ul>
+                            <li>오늘도 반려동물에게 즐거운 하루를 선사해 주세요</li>
+                            <!-- <span class="material-symbols-outlined"> favorite </span> -->
+                        </ul>
+                    </div>
+                    <div class="review">
+                <span class="material-symbols-outlined" style="font-size: 16px">
+                  star
+                </span>
+                        <span>작성된 후기 : <span th:text="${sitter.reviewCount}">건</span></span>
+                    </div>
+                    <div class="reserving">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  calendar_today
+                </span>
+                        <span>진행 중인 예약 : <span th:text="${sitter.ongoingCount}">건</span></span>
+                    </div>
+                    <div class="payment-amount">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  credit_card
+                </span>
+                        <span>이 달 금액 : <span th:text="${sitter.monthlyCount">원</span></span>
+                    </div>
+                    <div class="btn">
+                        <div class="pro-setting">
+                            <a href="sitterprofile.html">프로필 관리</a>
+                        </div>
+                        <div class="pay-amount">
+                            <!-- 모달 버튼 -->
+                            <button class="modal-btn" data-type="pay">결제 내역</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- chart2 -->
+                <div class="reserve">
+                    <div class="reserv">
+                        <span>진행중인 예약</span>
+                        <ul>
+                            <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
+                        </ul>
+                    </div>
+                    <!-- page 1 -->
+                    <div class="end-page" data-page="1">
+                        <div class="res-row">
+                            <div th:each="res : ${ongoingReservations}" class="res-card">
+                                <ul>
+                                    <li class="type" th:text="${res.serviceType}">데이케어</li>
+                                    <li class="status" th:text="${res.status}">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span th:text="${res.dateRange}">2025-05-15</span>
+                                </div>
+                                <div class="pet"><img th:src="@{'/asset/' + ${res.petImage}}" alt="반려동물"/></div>
+                                <div class="na">이름 : 백구</div>
+                                <div class="price">케어 비용 : 70,000원</div>
+                                <div class="time">이용 시간 : 8시간</div>
+                                <div class="serv">이용 할 서비스 : 하루 돌봄(9:00-17:00)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view1">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 미정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-12</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog3.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 모과</div>
+                                <div class="price">케어 비용 : 25,000원</div>
+                                <div class="time">이용 시간 : 10시</div>
+                                <div class="serv">이용 할 서비스 : 산책 (1시간)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view2">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 중</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-30 - 2025-06-30</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog4.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 숭늉</div>
+                                <div class="price">케어 비용 : 20,000원(총:60만원)</div>
+                                <div class="time">이용 시간 : 매일 7:30</div>
+                                <div class="serv">
+                                    이용 할 서비스 : 산책 (30분 실외배변 필수)
+                                </div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view3">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">호텔링</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-06-14 - 2025-06-20</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/cat.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 푸우</div>
+                                <div class="price">케어 비용 : 200,000원</div>
+                                <div class="time">이용 시간 : 10시(픽업)</div>
+                                <div class="serv">이용 할 서비스 : 호텔링 (7일)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view4">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page 2 -->
+                    <div class="end-page" data-page="2">
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">데이케어</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-15</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 바움</div>
+                                <div class="price">케어 비용 : 70,000원</div>
+                                <div class="time">이용 시간 : 8시간</div>
+                                <div class="serv">이용 할 서비스 : 하루 돌봄(9:00-17:00)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view1">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 미정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-12</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 몬트</div>
+                                <div class="price">케어 비용 : 25,000원</div>
+                                <div class="time">이용 시간 : 10시</div>
+                                <div class="serv">이용 할 서비스 : 산책 (1시간)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view2">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 중</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-30 - 2025-06-30</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 루나</div>
+                                <div class="price">케어 비용 : 20,000원(총:60만원)</div>
+                                <div class="time">이용 시간 : 매일 7:30</div>
+                                <div class="serv">
+                                    이용 할 서비스 : 산책 (30분 실외배변 필수)
+                                </div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view3">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">호텔링</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-06-14 - 2025-06-20</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 너구리</div>
+                                <div class="price">케어 비용 : 200,000원</div>
+                                <div class="time">이용 시간 : 10시(픽업)</div>
+                                <div class="serv">이용 할 서비스 : 호텔링 (7일)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view4">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page 3 -->
+                    <div class="end-page" data-page="3">
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">데이케어</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-15</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 동동</div>
+                                <div class="price">케어 비용 : 70,000원</div>
+                                <div class="time">이용 시간 : 8시간</div>
+                                <div class="serv">이용 할 서비스 : 하루 돌봄(9:00-17:00)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view1">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 미정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-12</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 리치</div>
+                                <div class="price">케어 비용 : 25,000원</div>
+                                <div class="time">이용 시간 : 10시</div>
+                                <div class="serv">이용 할 서비스 : 산책 (1시간)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view2">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 중</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-30 - 2025-06-30</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 카레</div>
+                                <div class="price">케어 비용 : 20,000원(총:60만원)</div>
+                                <div class="time">이용 시간 : 매일 7:30</div>
+                                <div class="serv">
+                                    이용 할 서비스 : 산책 (30분 실외배변 필수)
+                                </div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view3">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">호텔링</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-06-14 - 2025-06-20</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 도토리</div>
+                                <div class="price">케어 비용 : 200,000원</div>
+                                <div class="time">이용 시간 : 10시(픽업)</div>
+                                <div class="serv">이용 할 서비스 : 호텔링 (7일)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view4">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page 4 -->
+                    <div class="end-page" data-page="4">
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">데이케어</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-15</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 맹구</div>
+                                <div class="price">케어 비용 : 70,000원</div>
+                                <div class="time">이용 시간 : 8시간</div>
+                                <div class="serv">이용 할 서비스 : 하루 돌봄(9:00-17:00)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view1">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 미정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-12</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 모카</div>
+                                <div class="price">케어 비용 : 25,000원</div>
+                                <div class="time">이용 시간 : 10시</div>
+                                <div class="serv">이용 할 서비스 : 산책 (1시간)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view2">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="res-row">
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">산책</li>
+                                    <li class="status">예약 중</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-05-30 - 2025-06-30</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 두부</div>
+                                <div class="price">케어 비용 : 20,000원(총:60만원)</div>
+                                <div class="time">이용 시간 : 매일 7:30</div>
+                                <div class="serv">
+                                    이용 할 서비스 : 산책 (30분 실외배변 필수)
+                                </div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view3">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="res-card">
+                                <ul>
+                                    <li class="type">호텔링</li>
+                                    <li class="status">예약 확정</li>
+                                </ul>
+                                <div class="schedule">
+                      <span
+                              class="material-symbols-outlined"
+                              style="font-size: 15px"
+                      >
+                        calendar_today
+                      </span>
+                                    <span>2025-06-14 - 2025-06-20</span>
+                                </div>
+                                <div class="pet"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                                <div class="na">이름 : 동글이</div>
+                                <div class="price">케어 비용 : 200,000원</div>
+                                <div class="time">이용 시간 : 10시(픽업)</div>
+                                <div class="serv">이용 할 서비스 : 호텔링 (7일)</div>
+                                <div class="actions">
+                                    <button class="openChatBtn">채팅</button>
+                                    <button class="modal-btn" data-type="view4">
+                                        상세보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이지네이션 -->
+                    <div class="allres">
+                        <button class="left material-symbols-outlined">
+                            chevron_left
+                        </button>
+                        <ul class="number">
+                            <li>
+                                <button class="page-btn">1</button>
+                            </li>
+                            <li>
+                                <button class="page-btn">2</button>
+                            </li>
+                            <li>
+                                <button class="page-btn">3</button>
+                            </li>
+                            <li>
+                                <button class="page-btn">4</button>
+                            </li>
+                        </ul>
+                        <button class="right material-symbols-outlined">
+                            chevron_right
+                        </button>
+                    </div>
+                </div>
+                <!-- chart3 -->
+                <div class="resend">
+                    <div class="end">
+                        <span>예약완료</span>
+                        <ul>
+                            <li>LEE 시터님의 완료된 예약 내역입니다.</li>
+                        </ul>
+                    </div>
+                    <!-- page 1 -->
+                    <div class="res-page" data-page="1">
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 설리반</div>
+                            <div class="ed">기간 : 주 3회 산책(6개월)</div>
+                            <div class="es">이용한 서비스 : 산책</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view5">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/cat2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 마이크</div>
+                            <div class="ed">기간 : 2025.03.03</div>
+                            <div class="es">이용한 서비스 : 방문 돌봄</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view6">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog6.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 부</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view7">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog4.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 랜달</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view8">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 로즈</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view9">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog5.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 워터누즈</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view10">후기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page 2 -->
+                    <div class="res-page" data-page="2">
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog3.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 우디</div>
+                            <div class="ed">기간 : 주 3회 산책(6개월)</div>
+                            <div class="es">이용한 서비스 : 산책</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view5">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog5.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 버즈</div>
+                            <div class="ed">기간 : 2025.03.03</div>
+                            <div class="es">이용한 서비스 : 방문 돌봄</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view6">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/cat.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 제시</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view7">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog4.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 프랭키</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view8">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog6.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 포키</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view9">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 렛소</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view10">후기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page 3 -->
+                    <div class="res-page" data-page="3">
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog5.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 켄마</div>
+                            <div class="ed">기간 : 주 3회 산책(6개월)</div>
+                            <div class="es">이용한 서비스 : 산책</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view5">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog3.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 쇼요</div>
+                            <div class="ed">기간 : 2025.03.03</div>
+                            <div class="es">이용한 서비스 : 방문 돌봄</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view6">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog4.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 류</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view7">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 다이치</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view8">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/cat2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 히나마키</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view9">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/cat.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 우시지마</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view10">후기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- page 4 -->
+                    <div class="res-page" data-page="4">
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog6.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 미피</div>
+                            <div class="ed">기간 : 주 3회 산책(6개월)</div>
+                            <div class="es">이용한 서비스 : 산책</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view5">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/cat.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 무민</div>
+                            <div class="ed">기간 : 2025.03.03</div>
+                            <div class="es">이용한 서비스 : 방문 돌봄</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view6">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog6.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 솔찌핑</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view7">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog3.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 하츄핑</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view8">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/cat2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 케로로</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view9">후기</button>
+                            </div>
+                        </div>
+                        <div class="end-res">
+                            <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                            <div class="en">이름 : 버럭이</div>
+                            <div class="ed">기간 : 2025.01.01-08</div>
+                            <div class="es">이용한 서비스 : 호텔링</div>
+                            <div class="char">
+                                <button class="modal-btn" data-type="view10">후기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이지네이션 -->
+                    <div class="res">
+                        <button class="left material-symbols-outlined">
+                            chevron_left
+                        </button>
+                        <ul class="number">
+                            <li>
+                                <button class="page-btn">1</button>
+                            </li>
+                            <li>
+                                <button class="page-btn">2</button>
+                            </li>
+                            <li>
+                                <button class="page-btn">3</button>
+                            </li>
+                            <li>
+                                <button class="page-btn">4</button>
+                            </li>
+                        </ul>
+                        <button class="right material-symbols-outlined">
+                            chevron_right
+                        </button>
+                    </div>
+                </div>
+                <!-- 기본 모달 -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeBtn">&times;</span>
+                        <div id="modalContentBody">
+                            <p>기본 모달 내용</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 채팅 모달 -->
+                <div id="chatModal" class="chat-modal">
+                    <div class="chat-box">
+                        <div class="chat-header">
+                            <span id="chatWith">채팅</span>
+                            <span id="closeChatBtn" class="close">&times;</span>
+                        </div>
+                        <div class="chat-messages" id="chatMessages"></div>
+                        <div class="chat-input">
+                            <input
+                                    type="text"
+                                    id="chatInput"
+                                    placeholder="메시지를 입력하세요"
+                            />
+                            <button id="sendBtn">전송</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer영역(템플릿화 예정) -->
+    <div class="footer">
+        <span>footer</span>
+    </div>
+</div>
+</body>
+</html>
