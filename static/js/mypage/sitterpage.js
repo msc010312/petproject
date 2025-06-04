@@ -109,8 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     chatInput.value = "";
     chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    // 이 자리에서 WebSocket 등으로 currentSitter에게 메시지 전송 가능
   }
 });
 
@@ -159,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showResPage(page) {
     resPages.forEach((p, idx) => {
-      p.style.display = idx === page - 1 ? "block" : "none";
+      p.style.display = idx === page - 1 ? "flex" : "none";
     });
     resPageBtns.forEach((btn, idx) => {
       btn.classList.toggle("active", idx === page - 1);

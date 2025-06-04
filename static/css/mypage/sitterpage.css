@@ -21,7 +21,7 @@ button {
     margin-left: 7px;
     display: flex;
 }
-
+ 
 .name>span {
     font-size: x-large;
     font-weight: bold;
@@ -227,14 +227,15 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 /* 닫기 버튼 */
 .chat-header .close {
+    position: absolute;
     cursor: pointer;
     font-size: 24px;
-    left: 57%;
-    top: 5.5%;
+    top: 10px;
     display: block;
 }
 
@@ -451,16 +452,15 @@ button {
 }
 
 .res-card {
-    /* width: 750px; */
     height: 210px;
     margin-left: 3%;
-    margin-top: 10px;
+    margin-top: 25px;
 
-    border: none;
+    border: 1px solid;
     border-radius: 5px;
     position: relative;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
+    /* background-color: #f9f9f9; */
+    /* box-sizing: border-box; */
 }
 
 .res-card ul {
@@ -526,14 +526,20 @@ button {
 .actions {
     /* margin-top: 10px; */
     display: flex;
+    /* border: 1px solid; */
 }
 
 .actions .openChatBtn {
     margin-left: 3%;
+    background-color: #daffc1;
+    border: 1px solid;
 }
 
 .actions .modal-btn {
     margin-left: 5%;
+    background-color: #f4ffc2;
+    border: 1px solid;
+
 }
 
 .res-card .actions button {
@@ -543,7 +549,6 @@ button {
     border: none;
     margin-top: 8px;
 }
-
 
 .end-page {
     display: none;
@@ -580,7 +585,7 @@ button {
     text-align: center;
 }
 
-.res1>ul>li:nth-child(2) {
+/* .res1>ul>li:nth-child(2) {
     background-color: #B9FDA4;
     margin-top: 5px;
     margin-left: 10px;
@@ -588,7 +593,7 @@ button {
     height: 20px;
     border-radius: 30px;
     text-align: center;
-}
+} */
 
 .res1>.schedule1 {
     padding-left: 45%;
@@ -975,7 +980,7 @@ button {
     border: 1px solid;
     border-radius: 3px;
     width: 1260px;
-    height: 350px;
+    /* height; */
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -1007,6 +1012,7 @@ button {
     overflow-x: auto;
     gap: 20px;
     padding: 10px;
+    margin-left: 12px;
 }
 
 
@@ -1049,38 +1055,14 @@ button {
     margin-left: 12px;
     margin-top: 22px;
     font-size: small;
+
 }
 
 .char .modal-btn {
     border: none;
-
+    background-color: white;
 }
 
-.res-page {
-  display: none;            /* 기본적으로 숨김 */
-  flex-wrap: nowrap;        /* 줄바꿈 방지 */
-  overflow-x: auto;         /* 스크롤 생기도록 */
-  gap: 20px;
-  padding: 10px;
-}
-
-.res-page.active {
-  display: flex;            /* 활성화된 페이지만 flex로 표시 */
-  flex-direction: row;      /* 가로 정렬 */
-}
-
-.end-res {
-  flex: 0 0 auto;           /* 가로 크기 고정 */
-  width: 160px;
-  min-width: 160px;
-  height: 250px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  padding: 10px;
-  text-align: center;
-  background-color: #fff;
-}
 
 .end-res2 {
     border: 1px solid;
