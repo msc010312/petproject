@@ -14,6 +14,11 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class PetEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pet_seq")
+    @SequenceGenerator(name="pet_seq", sequenceName = "pet_seq", allocationSize = 1)
+    private Long petId;
+
     @Column(name = "pet_name")
     private String petName;
 

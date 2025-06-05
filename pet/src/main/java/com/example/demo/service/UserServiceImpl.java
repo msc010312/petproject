@@ -1,10 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.entity.OwnerEntity;
-import com.example.demo.domain.entity.SitterEntity;
 import com.example.demo.domain.entity.UserEntity;
-import com.example.demo.domain.repository.OwnerRepository;
-import com.example.demo.domain.repository.SitterRepository;
 import com.example.demo.domain.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +13,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private OwnerRepository ownerRepository;
-
-    @Autowired
-    private SitterRepository sitterRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -40,23 +30,7 @@ public class UserServiceImpl implements UserService {
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setProvider("Local");
-
-        UserEntity savedUser = userRepository.save(user);
-
-        // 역할에 따라 추가로 저장
-        if ("ROLE_OWNER".equals(user.getRole())) {
-            OwnerEntity owner = OwnerEntity.builder()
-                    .user(savedUser)
-                    .build();
-            ownerRepository.save(owner);
-        } else if ("ROLE_SITTER".equals(user.getRole())) {
-            SitterEntity sitter = SitterEntity.builder()
-                    .user(savedUser)
-                    .build();
-            sitterRepository.save(sitter);
-        }
-
-        return savedUser;
+        return userRepository.save(user);
     }
 
     @Override
