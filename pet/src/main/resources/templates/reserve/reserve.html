@@ -20,7 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
     <script src="js/reserve.js" defer></script>
     <script src="js/reservemodal.js" defer></script>
-
+    <script src="js/reservePay.js" defer></script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </th:block>
 
 <!-- 작업 영역 -->
@@ -163,7 +164,6 @@
                 </div>
             </div>
         </div>
-    <form method="post">
         <div class="reservation-info">
             <h3>예약 정보</h3>
             <div class="location">
@@ -190,9 +190,8 @@
                 <label><input type="radio" name="payment"> 계좌이체</label><br>
                 <label><input type="radio" name="payment"> 현장 결제</label>
             </div>
-            <button class="reserve-btn" onclick="location.href='reserveConfirm.html'">예약하기</button>
+            <button class="reserve-btn" onclick="pay()">예약하기</button>
         </div>
-    </form>
     </div>
     <!-- 래퍼 div 추가 끝 -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYVE-Fxs1sm7rsudqBgok6iAqx5aQoM&libraries=places" async defer></script>
