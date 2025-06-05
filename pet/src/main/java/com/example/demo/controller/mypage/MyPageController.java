@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mypage")
 public class MyPageController {
     @GetMapping("/ownerpage")
+
     public String ownerPage() {
         return "mypage/ownerpage";
     }
 
-    @GetMapping("/sitter")
-    public String sitter() {
-        return "mypage/sitter";
-    }
 }
