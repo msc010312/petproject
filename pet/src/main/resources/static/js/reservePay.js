@@ -7,6 +7,10 @@
         const service = document.getElementById("reservation-service").innerText;
         const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value;
 
+        const buyerEmail = document.getElementById("buyerEmail").value;
+        const buyerTel = document.getElementById("buyerTel").value;
+        const buyerName = document.getElementById("buyerName").value;
+
         if (!paymentMethod) {
             alert("결제 수단을 선택해주세요.");
             return;
@@ -19,7 +23,8 @@
           merchant_uid: "merchant_"+crypto.randomUUID(),
           name: service,
           amount: 100,
-          buyer_tel: "010-0000-0000",
-          buyer_email: "gildong@gmail.com",
+          buyer_tel: buyerTel,
+          buyer_email: buyerEmail,
+          buyer_name: buyerName
         });
     }

@@ -32,7 +32,7 @@
         </div>
         <div class="signed-box" sec:authorize="isAuthenticated()">
             <div class="username-box">
-                <span th:text="${#authentication.name}"></span>
+                <span th:text="${#authentication.principal.name}"></span>
                 <span>님 안녕하세요!</span>
             </div>
             <div class="btn-box">

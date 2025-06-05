@@ -23,6 +23,11 @@ public class PrincipalDetail implements UserDetails,OAuth2User {
     public PrincipalDetail(UserDto userDto){
         this.userDto = userDto;
     }
+
+    public PrincipalDetail(UserDto userDto, Map<String, Object> attributes) {
+        this.userDto = userDto;
+        this.attributes = attributes;
+    }
     //----------------------------
     // OAuth2User
     //----------------------------
@@ -30,6 +35,9 @@ public class PrincipalDetail implements UserDetails,OAuth2User {
     String access_token;
     @Override
     public Map<String, Object> getAttributes() {
+        if (attributes == null) {
+            return Map.of();
+        }
         return attributes;
     }
     @Override
