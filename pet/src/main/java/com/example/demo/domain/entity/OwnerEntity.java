@@ -19,6 +19,9 @@ public class OwnerEntity {
     @SequenceGenerator(name="owner_seq", sequenceName = "owner_seq", allocationSize = 1)
     private Long ownerId;
 
+    @Column(name = "total_payment")
+    private Long totalPayment = 0L;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;

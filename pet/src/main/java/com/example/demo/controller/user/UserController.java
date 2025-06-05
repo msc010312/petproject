@@ -91,4 +91,9 @@ public class UserController {
         session.setAttribute("oauth2_role", role);
         System.out.println("UserContorller role: " + role);
     }
+
+    @PostMapping("/update/owner/{userId}")
+    public String updateOwner() {
+        return  null;
+    }
 }

@@ -35,7 +35,7 @@ public class ReserveEntity {
     private String request;
 
     @Column(name = "payment", nullable = false)
-    private String payment;
+    private Long payment;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sitter_id")
