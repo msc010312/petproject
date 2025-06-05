@@ -1,6 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.entity.OwnerEntity;
+import com.example.demo.domain.entity.SitterEntity;
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.OwnerRepository;
+import com.example.demo.domain.repository.SitterRepository;
 import com.example.demo.domain.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private OwnerRepository ownerRepository;
+
+    @Autowired
+    private SitterRepository sitterRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -25,12 +35,26 @@ public class UserServiceImpl implements UserService {
     // 회원가입 처리
     @Override
     public UserEntity registerUser(UserEntity user) {
-        if(userRepository.findByEmail(user.getEmail()) != null) {
+        if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new IllegalStateException("이미 사용 중인 이메일입니다.");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setProvider("Local");
-        return userRepository.save(user);
+
+        UserEntity savedUser = userRepository.save(user);
+
+        if ("ROLE_OWNER".equals(user.getRole())) {
+            OwnerEntity owner = OwnerEntity.builder()
+                    .user(savedUser)
+                    .build();
+            ownerRepository.save(owner);
+        } else if ("ROLE_SITTER".equals(user.getRole())) {
+            SitterEntity sitter = SitterEntity.builder()
+                    .user(savedUser)
+                    .build();
+            sitterRepository.save(sitter);
+        }
+        return savedUser;
     }
 
     @Override
