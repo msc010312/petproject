@@ -76,7 +76,7 @@
                             <p>📶 서비스 가능 반경 : 약 2.0km</p>
                         </div>
                         <div class="sitter-details">
-                            <div class="sitter-price">30,000원/일</div>
+                            <div class="sitter-price">25,000원/일</div>
                             <button class="details-btn">상세 정보</button>
                         </div>
                     </div>
@@ -163,15 +163,26 @@
                 </div>
             </div>
         </div>
+    <form method="post">
         <div class="reservation-info">
             <h3>예약 정보</h3>
             <div class="location">
-                <p><span>서비스</span><span>데이케어 서비스</span></p>
-                <p><span>위치</span> <span>대구광역시 동구 신천로</span></p>
+                <div class="info-line">
+                    <span class="info-label">서비스:</span>
+                    <span class="info-value" id="reservation-service">데이케어 서비스</span>
+                </div>
+                <div class="info-line">
+                    <span class="info-label">위치:</span>
+                    <span class="info-value" id="reservation-location">대구광역시 동구 신천로</span>
+                </div>
+                <div class="info-line">
+                    <span class="info-label">시간:</span>
+                    <span class="info-value" id="reservation-time"></span>
+                </div>
             </div>
             <div class="location">
-                <p><span>기본 가격:</span> <span>0원</span></p>
-                <p><span>총 결제 금액:</span> <span>0원</span></p>
+                <p><span>기본 가격:</span> <span id="reservation-price">0원</span></p>
+                <p><span>총 결제 금액:</span> <span id="reservation-total">0원</span></p>
             </div>
             <div class="payment-method">
                 <p>결제 방법</p>
@@ -181,6 +192,7 @@
             </div>
             <button class="reserve-btn" onclick="location.href='reserveConfirm.html'">예약하기</button>
         </div>
+    </form>
     </div>
     <!-- 래퍼 div 추가 끝 -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYVE-Fxs1sm7rsudqBgok6iAqx5aQoM&libraries=places" async defer></script>

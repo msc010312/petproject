@@ -1,9 +1,11 @@
-// 탭 콘텐츠 및 지도, 주소 기능 포함 JS 전체 정리
+// reserve.js (날짜 선택 시 가격 계산 제거됨)
+
+let selectedSitterPrice = 30000;
+window.priceConfirmed = false;
 
 const reservationHeader = document.getElementById('reservationHeader');
 const tabs = document.querySelectorAll('.tab');
 
-// 탭별 템플릿 정의
 const serviceTemplates = {
   short: `
     <h2>데이케어 예약</h2>
@@ -19,13 +21,8 @@ const serviceTemplates = {
       </div>
     </div>
     <div class="form-group">
-      <label>반려동물 정보나 요청사항</label>
-      <textarea></textarea>
-    </div>
-    <div class="form-group">
       <label>위치</label>
       <input type="text" id="addressInput" placeholder="예: 서울특별시 강남구">
-      <p>주소를 입력하거나 지도에서 직접 위치를 선택해주세요</p>
       <div id="map" style="width: 100%; height: 400px;"></div>
     </div>
   `,
@@ -35,21 +32,13 @@ const serviceTemplates = {
       <label>체크인/체크아웃 날짜</label>
       <div class="date-time">
         <div class="input-icon">
-          <input type="text" class="date-picker" placeholder="📅 체크인 날짜를 선택해주세요">
-        </div>
-        <div class="input-icon">
-          <input type="text" class="date-picker" placeholder="📅 체크아웃 날짜를 선택해주세요">
+          <input type="text" class="date-range-picker" placeholder="📅 체크인/체크아웃 날짜를 선택해주세요">
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label>기타 요청사항</label>
-      <textarea></textarea>
-    </div>
-    <div class="form-group">
       <label>호텔링 위치</label>
-      <input type="text" id="addressInput" placeholder="예: 부산광역시 해운대구">
-      <p>주소를 입력하거나 지도에서 직접 위치를 선택해주세요</p>
+      <input type="text" id="addressInput" placeholder="예: 부산 해운대구">
       <div id="map" style="width: 100%; height: 400px;"></div>
     </div>
   `,
@@ -67,13 +56,8 @@ const serviceTemplates = {
       </div>
     </div>
     <div class="form-group">
-      <label>산책 거리나 반려동물 성향</label>
-      <textarea></textarea>
-    </div>
-    <div class="form-group">
       <label>출발 위치</label>
-      <input type="text" id="addressInput" placeholder="예: 인천광역시 연수구">
-      <p>주소를 입력하거나 지도에서 직접 위치를 선택해주세요</p>
+      <input type="text" id="addressInput" placeholder="예: 인천 연수구">
       <div id="map" style="width: 100%; height: 400px;"></div>
     </div>
   `
@@ -81,123 +65,99 @@ const serviceTemplates = {
 
 function initializePickers() {
   flatpickr('.date-picker', {
-    dateFormat: "Y-m-d",
-    minDate: "today"
+    dateFormat: 'Y-m-d',
+    minDate: 'today',
+    onChange: updateReservationTime
   });
-
   flatpickr('.time-picker', {
     enableTime: true,
     noCalendar: true,
-    dateFormat: "H:i",
-    time_24hr: true
+    dateFormat: 'H:i',
+    time_24hr: true,
+    onChange: updateReservationTime
+  });
+  flatpickr('.date-range-picker', {
+    mode: 'range',
+    dateFormat: 'Y-m-d',
+    minDate: 'today',
+    onClose: function (selectedDates) {
+      if (selectedDates.length === 2) {
+        const checkIn = selectedDates[0];
+        const checkOut = selectedDates[1];
+
+        document.getElementById("reservation-time").textContent =
+          `${checkIn.toLocaleDateString()} ~ ${checkOut.toLocaleDateString()}`;
+      }
+    }
   });
 }
 
-let map;
-let marker;
-let geocoder;
-let autocomplete;
+function updateReservationTime() {
+  const date = document.querySelector(".date-picker")?.value;
+  const time = document.querySelector(".time-picker")?.value;
+  if (date && time) {
+    document.getElementById("reservation-time").textContent = `${date} ${time}`;
+  }
+}
 
-function initMap() {
+function loadMap() {
   const mapContainer = document.getElementById("map");
   if (!mapContainer) return;
 
-  const defaultLoc = { lat: 37.4979, lng: 127.0276 };
-  map = new google.maps.Map(mapContainer, {
+  const defaultLoc = { lat: 37.5665, lng: 126.9780 };
+  const map = new google.maps.Map(mapContainer, {
     center: defaultLoc,
-    zoom: 14
+    zoom: 13
   });
 
-  marker = new google.maps.Marker({
-    position: defaultLoc,
+  const marker = new google.maps.Marker({
     map: map,
-    title: "기본 위치"
+    position: defaultLoc
   });
 
-  geocoder = new google.maps.Geocoder();
-}
-
-function searchAddress() {
-  const addressInput = document.getElementById("addressInput");
-  if (!addressInput) return;
-
-  const address = addressInput.value;
-  if (!address) return alert("주소를 입력해주세요.");
-
-  geocoder.geocode({ address: address }, (results, status) => {
-    if (status === "OK") {
-      const location = results[0].geometry.location;
-      map.setCenter(location);
-      marker.setPosition(location);
-    } else {
-      alert("주소를 찾을 수 없습니다: " + status);
-    }
-  });
-}
-
-function initAutocomplete() {
-  const input = document.getElementById("addressInput");
-  if (!input) return;
-
-  if (autocomplete && autocomplete.unbindAll) {
-    autocomplete.unbindAll();
-    autocomplete = null;
-  }
-
-  autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.setFields(["geometry", "formatted_address"]);
-
-  autocomplete.addListener("place_changed", () => {
-    const place = autocomplete.getPlace();
-    if (!place.geometry) {
-      alert("선택한 장소에 위치 정보가 없습니다.");
-      return;
-    }
-
-    const location = place.geometry.location;
-    map.setCenter(location);
-    marker.setPosition(location);
-    input.value = place.formatted_address;
-    searchAddress();
+  const geocoder = new google.maps.Geocoder();
+  map.addListener("click", (e) => {
+    marker.setPosition(e.latLng);
+    geocoder.geocode({ location: e.latLng }, (results, status) => {
+      if (status === "OK" && results[0]) {
+        document.getElementById("addressInput").value = results[0].formatted_address;
+        document.getElementById("reservation-location").textContent = results[0].formatted_address;
+      }
+    });
   });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  if (reservationHeader && serviceTemplates.short) {
+    reservationHeader.innerHTML = serviceTemplates.short;
+  }
   initializePickers();
 
-  const waitForGoogle = setInterval(() => {
-    if (window.google && window.google.maps && window.google.maps.places) {
-      initMap();
-      initAutocomplete();
-      clearInterval(waitForGoogle);
+  const googleInterval = setInterval(() => {
+    if (window.google && window.google.maps) {
+      loadMap();
+      clearInterval(googleInterval);
     }
   }, 100);
 
   tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
 
       const type = tab.dataset.type;
       reservationHeader.innerHTML = serviceTemplates[type];
       initializePickers();
+      setTimeout(loadMap, 100);
 
-      setTimeout(() => {
-        if (window.google && window.google.maps && window.google.maps.places) {
-          initMap();
-          initAutocomplete();
-        }
-      }, 0);
+      document.getElementById("reservation-service").textContent = tab.textContent + " 서비스";
+      document.getElementById("reservation-location").textContent = "";
+      document.getElementById("reservation-time").textContent = "";
+      document.getElementById("reservation-price").textContent = "0원";
+      document.getElementById("reservation-total").textContent = "0원";
+
+      selectedSitterPrice = 30000;
+      priceConfirmed = false;
     });
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      const addressInput = document.getElementById("addressInput");
-      if (addressInput === document.activeElement) {
-        e.preventDefault();
-        searchAddress();
-      }
-    }
   });
 });
