@@ -11,17 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mypage")
 public class MyPageController {
     @GetMapping("/ownerpage")
-    public String ownerPage(Model model) {
-//        OwnerDto user = new OwnerDto("aaa", 2, 3, 1, 150000);
-//        model.addAttribute("user", user);
+
+    public String ownerPage() {
         return "mypage/ownerpage";
     }
 
-    @GetMapping("/sitterpage")
-    public <Sitter> String sitter(Model model) {
-        // 시터 정보 조회
-
-
-        return "mypage/sitterpage";
-    }
 }
