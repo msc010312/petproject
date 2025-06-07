@@ -1,68 +1,400 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
-    <title>마이페이지</title>
-    <link rel="stylesheet" th:href="@{/css/ownerpage.css}"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link -->
+    <script src="/js/link.js" defer></script>
+    <title>Document</title>
+    <!-- css -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link th:href="@{/css/ownerpage.css}" rel="stylesheet" />
+    <!-- JS -->
     <script th:src="@{/js/ownerpage.js}" defer></script>
+
+    <!-- goole icon -->
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
+
 <body>
 <div class="wrapper">
-    <div th:replace="layout/header :: header"></div>
-
-    <div class="main">
-        <div class="pagew">
-            <div class="produce">
-                <div class="name">
-                    <img th:src="@{/asset/강아지.jpg}"/>
-                    <span th:text="'안녕하세요, ' + ${user.name} + '님!'">안녕하세요, OOO님!</span>
-                    <ul>
-                        <li>오늘도 반려견과 행복한 하루 되세요</li>
+    <!-- 헤더영역 (템플릿화 예정) -->
+    <div class="header">
+        <div class="logo">
+            <span><a href="#">LOGO</a></span>
+        </div>
+        <div class="menu">
+            <ul>
+                <li class="menu-service">
+                    <a href="#">Service</a>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="#">Day Care</a></li>
+                        <li class="sub-item"><a href="#">Hotelling</a></li>
+                        <li class="sub-item"><a href="#">work with pet</a></li>
                     </ul>
+                </li>
+                <li><a href="#">place</a></li>
+                <li><a href="#">board</a></li>
+            </ul>
+        </div>
+        <div class="sign">
+            <button class="sign-in btn">
+                <a href="../sign/login.html">로그인</a>
+            </button>
+            <button class="sign-up btn">
+                <a href="../sign/signup.html">회원가입</a>
+            </button>
+        </div>
+    </div>
+    <!-- 메인영역 -->
+    <div class="main">
+        <!-- pagew 1260px -->
+        <div class="pagew">
+            <!-- 작업 영역 -->
+            <div class="content">
+                <!-- chart1 -->
+                <div class="produce">
+                    <div class="name">
+                        <img src="../../asset/dog1.jpg" />
+                        <span>안녕하세요, OOO님!</span>
+                        <ul>
+                            <li>오늘도 반려견과 행복한 하루 되세요</li>
+                        </ul>
+                    </div>
+                    <div class="pet">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  pets
+                </span>
+                        <span>반려동물 : 2마리</span>
+                    </div>
+                    <div class="review">
+                <span class="material-symbols-outlined" style="font-size: 16px">
+                  star
+                </span>
+                        <span>작성한 리뷰 : *건</span>
+                    </div>
+                    <div class="reserving">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  calendar_today
+                </span>
+                        <span>진행 중인 예약 : *건</span>
+                    </div>
+                    <div class="payment-amount">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  credit_card
+                </span>
+                        <span>누적 이용 금액 : *원</span>
+                    </div>
+                    <div class="btn">
+                        <div class="pro-setting">
+                            <a href="./ownerprofile.html">프로필 관리</a>
+                        </div>
+                        <div class="pay-amount">
+                            <!-- 모달 버튼 -->
+                            <button class="modal-btn" data-type="pay">결제 내역</button>
+                        </div>
+                    </div>
+                    <!-- chart2 -->
                 </div>
-                <div class="pet"><span>반려동물 : </span><span th:text="${user.petCount}">2</span>마리</div>
-                <div class="review"><span>작성한 리뷰 : </span><span th:text="${user.reviewCount}">0</span>건</div>
-                <div class="reserving"><span>진행 중인 예약 : </span><span th:text="${user.reservationCount}">0</span>건</div>
-                <div class="payment-amount"><span>누적 이용 금액 : </span><span th:text="${user.totalSpent}">0</span>원</div>
-                <div class="btn">
-                    <div class="pro-setting"><a th:href="@{/mypage/ownerprofile}">프로필 관리</a></div>
-                    <div class="pay-amount">
-                        <button class="modal-btn" data-type="pay">결제 내역</button>
+                <div class="reserve">
+                    <div class="reserv">
+                        <span>진행중인 예약</span>
+                        <ul>
+                            <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
+                        </ul>
+                    </div>
+                    <!-- 페이지 1 -->
+                    <div class="resev-page" data-page="1">
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">호텔링</li>
+                                <li class="status">예약 확정</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-05-12 ~ 2025-05-15</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">120,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn" data-type="view1">상세보기</button>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">산책</li>
+                                <li class="status">예약 확정</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-06-01</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">25,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn" data-type="view2">상세보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이지 2 -->
+                    <div class="resev-page" data-page="2">
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">호텔링</li>
+                                <li class="status">예약 대기</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-06-10 ~ 2025-06-13</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">150,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn">상세보기</button>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">산책</li>
+                                <li class="status">예약 완료</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-07-01</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">30,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn">상세보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이지 3 -->
+                    <div class="resev-page" data-page="3">
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">호텔링</li>
+                                <li class="status">예약 취소</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-07-15 ~ 2025-07-17</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">0원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn">상세보기</button>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">산책</li>
+                                <li class="status">예약 확정</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-08-01</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">28,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn">상세보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이지 4 -->
+                    <div class="resev-page" data-page="4">
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">호텔링</li>
+                                <li class="status">이용 완료</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-08-10 ~ 2025-08-13</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">170,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn">상세보기</button>
+                            </div>
+                        </div>
+                        <div class="res-card">
+                            <ul>
+                                <li class="type">산책</li>
+                                <li class="status">예약 확정</li>
+                            </ul>
+                            <div class="schedule">
+                    <span class="material-symbols-outlined"
+                    >calendar_today</span
+                    >
+                                <span>2025-08-15</span>
+                            </div>
+                            <div class="sit">OOO시터</div>
+                            <div class="price">26,000원</div>
+                            <div class="actions">
+                                <button class="openChatBtn">채팅</button>
+                                <button class="modal-btn">상세보기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 페이지네이션 -->
+                    <div class="allres">
+                        <button class="left material-symbols-outlined">
+                            chevron_left
+                        </button>
+                        <ul class="number">
+                            <li><button class="page-btn">1</button></li>
+                            <li><button class="page-btn">2</button></li>
+                            <li><button class="page-btn">3</button></li>
+                            <li><button class="page-btn">4</button></li>
+                        </ul>
+                        <button class="right material-symbols-outlined">
+                            chevron_right
+                        </button>
                     </div>
                 </div>
-            </div>
-
-            <div class="reserve">
-                <div class="reserv">
-                    <span>진행중인 예약</span>
-                    <ul>
-                        <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
-                    </ul>
-                </div>
-
-                <div class="resev-page active" data-page="1">
-                    <div class="res-card" th:each="res, i : ${reservations}">
-                        <ul>
-                            <li class="type" th:text="${res.type}">호텔링</li>
-                            <li class="status" th:text="${res.status}">예약 확정</li>
-                        </ul>
-                        <div class="schedule">
-                            <span class="material-symbols-outlined">calendar_today</span>
-                            <span th:text="${res.date}">2025-05-12 ~ 2025-05-15</span>
+                <!-- chart3 -->
+                <div class="all-pro">
+                    <div class="profil">
+                        <div class="pet-prof">
+                            <span>반려동물 프로필</span>
+                            <ul>
+                                <li>등록된 반려동물 정보입니다.</li>
+                            </ul>
+                            <div class="care">
+                                <a href="javascript:void(0)">관리</a>
+                            </div>
+                            <div class="pro1">
+                                <img src="../../asset/dog1.jpg" alt="" />
+                                <ul>
+                                    <li>이름</li>
+                                    <li>포메라니안 / 2세 / 3.5KG</li>
+                                </ul>
+                            </div>
+                            <div class="pro2">
+                                <img src="../../asset/dog1.jpg" alt="" />
+                                <ul>
+                                    <li>이름</li>
+                                    <li>골든두들 / 4세 / 25KG</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="sit" th:text="${res.sitter}">시터이름</div>
-                        <div class="price" th:text="${res.price} + '원'">120,000원</div>
-                        <div class="actions">
-                            <button class="openChatBtn" th:attr="data-sitter=${res.sitter}">채팅</button>
-                            <button class="modal-btn" th:attr="data-type='view' + ${i.index + 1}">상세보기</button>
+                    </div>
+                    <div class="sitter">
+                        <div class="sit-used">
+                            <span>최근 이용한 시터</span>
+                            <ul>
+                                <li>최근에 이용한 펫시터 목록입니다.</li>
+                            </ul>
+                        </div>
+                        <div class="sit-name1">
+                            <img src="../../asset/sitter1.jpg" alt="" />
+                            <ul>
+                                <li>이름</li>
+                                <span
+                                        class="material-symbols-outlined"
+                                        style="font-size: 18px"
+                                >
+                      star
+                    </span>
+                                <li>4.8점</li>
+                                <li>호텔링,산책</li>
+                                <li>2025-03-14 이용</li>
+                            </ul>
+                            <div class="chat1">
+                                <!-- 모달 버튼 -->
+                                <button class="openChatBtn" data-sitter="sitter3">
+                                    채팅
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sit-name2">
+                            <img src="../../asset/sitter1.jpg" alt="" />
+                            <ul>
+                                <li>이름</li>
+                                <span
+                                        class="material-symbols-outlined"
+                                        style="font-size: 18px"
+                                >
+                      star
+                    </span>
+                                <li>3.9점</li>
+                                <li>호텔링,산책</li>
+                                <li>2025-04-19 이용</li>
+                            </ul>
+                            <div class="chat2">
+                                <!-- 모달 버튼 -->
+                                <button class="openChatBtn" data-sitter="sitter4">
+                                    채팅
+                                </button>
+                            </div>
+                        </div>
+                        <div class="res3">
+                            <a href="../reserve/reserve.html">새 예약하기</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div th:replace="layout/footer :: footer"></div>
+    <!-- 기본 모달 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <div id="modalContentBody">
+                <p>기본 모달 내용</p>
+            </div>
+        </div>
+    </div>
+    <!-- 채팅 모달 -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-box">
+            <div class="chat-header">
+                <span id="chatWith">채팅</span>
+                <span id="closeChatBtn" class="close">&times;</span>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="메시지를 입력하세요"
+                />
+                <button id="sendBtn">전송</button>
+            </div>
+        </div>
+    </div>
+    <!-- footer영역(템플릿화 예정) -->
+    <div class="footer">
+        <span>footer</span>
+    </div>
 </div>
 </body>
 </html>

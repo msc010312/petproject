@@ -1,6 +1,7 @@
 package com.example.demo.controller.user;
 
 import com.example.demo.InvalidEmailFormatException.InvalidEmailFormatException;
+import com.example.demo.domain.dto.OwnerForm;
 import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.UserEntity;
 import com.example.demo.domain.repository.UserRepository;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @Data
@@ -93,7 +95,16 @@ public class UserController {
     }
 
     @PostMapping("/update/owner/{userId}")
-    public String updateOwner() {
-        return  null;
+    public String updateOwner(@PathVariable Long userId, @ModelAttribute OwnerForm ownerForm, @RequestParam("profileImage") MultipartFile imageFile) {
+
+        UserEntity userEntity = userService.findById(userId);
+
+        userEntity.setName(ownerForm.getName());
+        userEntity.setAddress(ownerForm.getAddress());
+        userEntity.setPhone(ownerForm.getPhone());
+
+        userService.saveUser(userEntity);
+
+        return "redirect:/mypage/ownerpage" + userId;
     }
 }

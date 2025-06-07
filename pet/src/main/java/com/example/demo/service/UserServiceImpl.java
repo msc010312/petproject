@@ -62,6 +62,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail((email));
     }
 
+    @Override
+    public UserEntity findById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다. ID: " + userId));
+    }
+
 //        if (userRepository.findByEmail(get)) {
 //            throw new DuplicateEmailException("이미 사용 중인 이메일입니다.");
 //        return userRepository.findByEmail(email); // 이메일로 사용자 조회
@@ -72,3 +78,5 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(userId);
     }
 }
+
+

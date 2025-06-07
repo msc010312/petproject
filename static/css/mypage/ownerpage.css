@@ -236,15 +236,15 @@ button {
     display: block;
     justify-content: space-between;
     align-items: center;
-
+    position: relative;
 }
 
 /* 닫기 버튼 */
 .chat-header .close {
     cursor: pointer;
     font-size: 24px;
-    left: 61%;
-    top: 9.5%;
+    position: absolute;
+    top: 15px;
 }
 
 /* 채팅 메시지 영역 */
