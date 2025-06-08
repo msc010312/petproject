@@ -22,6 +22,11 @@
     <script src="js/reservemodal.js" defer></script>
     <script src="js/reservePay.js" defer></script>
     <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <script th:inline="javascript">
+        let ownerId = [[${owner.ownerId}]];
+        let ownerName = "[[${owner.user.name}]]";
+        let ownerEmail = "[[${owner.user.email}]]";
+    </script>
 </th:block>
 
 <!-- 작업 영역 -->

@@ -867,3 +867,32 @@ button {
 
     margin: 13px 7px 15px 11px;
 }
+
+.pro-card {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.pro-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.pro-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pro-card button {
+  margin-left: auto;
+  background-color: #f44;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}

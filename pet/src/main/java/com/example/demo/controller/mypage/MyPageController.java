@@ -1,6 +1,8 @@
 package com.example.demo.controller.mypage;
 
+import com.example.demo.domain.entity.OwnerEntity;
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.OwnerRepository;
 import com.example.demo.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,15 @@ public class MyPageController {
     @Autowired
     private UserServiceImpl userService;
 
+    @Autowired
+    private OwnerRepository ownerRepository;
+
     @GetMapping("/ownerpage")
-    public String ownerPage() {
+    public String ownerPage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        String email = userDetails.getUsername();
+        UserEntity user = userService.findByEmail(email);
+        OwnerEntity owner = ownerRepository.findByUser(user);
+        model.addAttribute("owner", owner);
         return "mypage/ownerpage";
     }
 

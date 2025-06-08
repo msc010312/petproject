@@ -13,6 +13,9 @@
     <link th:href="@{/css/ownerpage.css}" rel="stylesheet" />
     <!-- JS -->
     <script th:src="@{/js/ownerpage.js}" defer></script>
+    <script th:inline="javascript">
+        let ownerId = [[${owner.ownerId}]];
+    </script>
 
     <!-- goole icon -->
     <link
@@ -92,7 +95,7 @@
                     </div>
                     <div class="btn">
                         <div class="pro-setting">
-                            <a href="./ownerprofile.html">프로필 관리</a>
+                            <a th:href="@{/mypage/ownerprofile}">프로필 관리</a>
                         </div>
                         <div class="pay-amount">
                             <!-- 모달 버튼 -->
@@ -289,22 +292,22 @@
                                 <li>등록된 반려동물 정보입니다.</li>
                             </ul>
                             <div class="care">
-                                <a href="javascript:void(0)">관리</a>
+                                <button class="modal-btn" data-type="petInfo">관리</button>
                             </div>
-                            <div class="pro1">
-                                <img src="../../asset/dog1.jpg" alt="" />
-                                <ul>
-                                    <li>이름</li>
-                                    <li>포메라니안 / 2세 / 3.5KG</li>
-                                </ul>
-                            </div>
-                            <div class="pro2">
-                                <img src="../../asset/dog1.jpg" alt="" />
-                                <ul>
-                                    <li>이름</li>
-                                    <li>골든두들 / 4세 / 25KG</li>
-                                </ul>
-                            </div>
+<!--                            <div class="pro1">-->
+<!--                                <img src="../../asset/dog1.jpg" alt="" />-->
+<!--                                <ul>-->
+<!--                                    <li>이름</li>-->
+<!--                                    <li>포메라니안 / 2세 / 3.5KG</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                            <div class="pro2">-->
+<!--                                <img src="../../asset/dog1.jpg" alt="" />-->
+<!--                                <ul>-->
+<!--                                    <li>이름</li>-->
+<!--                                    <li>골든두들 / 4세 / 25KG</li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div class="sitter">

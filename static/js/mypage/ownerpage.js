@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
         case "view2":
           content = "<p1>산책 예약</p1><br><p2>예약 확정</p2><p>시터 이름 : 몽실</p><p>날짜 : 2025-06-01</p><p>가격 : 30,000원</p><p>시간 : 오전 10시 (1시간)</p><p>주의사항 : 궁금증이 많아 산책할 때 집중하지 못함. 식탐이 많아 아무거나 주워먹음(자세히 봐주세요)</p>";
           break;
+        case "petInfo":
+          content = "<p1>반려동물 프로필</p1><br><br><br><p>petName : </p><p>petKind : </p><p>petAge : </p><p>petChar : </p><p>caution : </p>";
+          break;
         default:
           content = "<p>알 수 없는 요청입니다.</p>";
       }

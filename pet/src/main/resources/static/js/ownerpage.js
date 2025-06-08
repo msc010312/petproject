@@ -21,6 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
         case "view2":
           content = "<p1>산책 예약</p1><br><p2>예약 확정</p2><p>시터 이름 : 몽실</p><p>날짜 : 2025-06-01</p><p>가격 : 30,000원</p><p>시간 : 오전 10시 (1시간)</p><p>주의사항 : 궁금증이 많아 산책할 때 집중하지 못함. 식탐이 많아 아무거나 주워먹음(자세히 봐주세요)</p>";
           break;
+         case "petInfo":
+           content = `
+             <h3>반려동물 정보 등록</h3>
+             <div class="pet-form">
+               <label>이름: <input type="text" id="petName" /></label><br>
+               <label>품종: <input type="text" id="petKind" /></label><br>
+               <label>나이(세): <input type="number" id="petAge" /></label><br>
+               <label>성격: <textarea id="petChar"></textarea></label><br>
+               <label>주의사항: <textarea id="caution"></textarea></label><br><br>
+               <button id="addPetBtn">등록</button>
+             </div>
+           `;
+           break;
         default:
           content = "<p>알 수 없는 요청입니다.</p>";
       }
@@ -128,4 +141,102 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   showPage(1); // 초기 첫 페이지 표시
+});
+
+document.body.addEventListener("click", async (event) => {
+  if (event.target.id === "addPetBtn") {
+    const name = document.getElementById("petName").value.trim();
+    const kind = document.getElementById("petKind").value.trim();
+    const age = document.getElementById("petAge").value;
+    const petChar = document.getElementById("petChar").value.trim();
+    const caution = document.getElementById("caution").value.trim();
+
+    if (!name || !kind || !age) {
+      alert("이름, 품종, 나이는 필수 입력입니다.");
+      return;
+    }
+
+    const response = await fetch("/pet", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        petName: name,
+        petKind: kind,
+        petAge: age,
+        petChar: petChar,
+        caution: caution,
+        ownerId: ownerId
+      })
+    });
+
+    if (response.ok) {
+      const savedPet = await response.json();
+
+      const petCard = document.createElement("div");
+      petCard.className = "pro-card";
+      petCard.dataset.petId = savedPet.petId;
+      petCard.innerHTML = `
+        <img src="/asset/dog1.jpg" alt="">
+        <ul>
+          <li>${savedPet.petName}</li>
+          <li>${savedPet.petKind} / ${savedPet.petAge}세</li>
+          <li>${savedPet.petChar}</li>
+          <li>${savedPet.caution}</li>
+        </ul>
+        <button class="deletePetBtn">삭제</button>
+      `;
+
+      document.querySelector(".pet-prof").appendChild(petCard);
+      modal.classList.remove("show");
+    } else {
+      alert("등록 실패");
+    }
+  }
+
+  if (event.target.classList.contains("deletePetBtn")) {
+    const petCard = event.target.closest(".pro-card");
+    const petId = petCard.dataset.petId;
+
+    const confirmed = confirm("삭제하시겠습니까?");
+    if (!confirmed) return;
+
+    const res = await fetch(`/pet/${petId}`, { method: "DELETE" });
+
+    if (res.ok) {
+      petCard.remove();
+    } else {
+      alert("삭제 실패");
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+  if (typeof ownerId !== "undefined") {
+    const res = await fetch(`/pet/list/${ownerId}`);
+    if (res.ok) {
+      const pets = await res.json();
+
+      const petContainer = document.querySelector(".pet-prof");
+
+      pets.forEach(pet => {
+        const card = document.createElement("div");
+        card.className = "pro-card";
+        card.dataset.petId = pet.petId;
+
+        card.innerHTML = `
+          <img src="/asset/dog1.jpg" alt="">
+          <ul>
+            <li>${pet.petName}</li>
+            <li>${pet.petKind} / ${pet.petAge}세</li>
+            <li>${pet.petChar}</li>
+            <li>${pet.caution}</li>
+          </ul>
+          <button class="deletePetBtn">삭제</button>
+        `;
+        petContainer.appendChild(card);
+      });
+    } else {
+      console.error("반려동물 불러오기 실패");
+    }
+  }
 });
