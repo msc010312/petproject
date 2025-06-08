@@ -24,8 +24,8 @@
     <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
     <script th:inline="javascript">
         let ownerId = [[${owner.ownerId}]];
-        let ownerName = "[[${owner.user.name}]]";
-        let ownerEmail = "[[${owner.user.email}]]";
+        let ownerName = [[${owner.user.name}]];
+        let ownerEmail = [[${owner.user.email}]];
     </script>
 </th:block>
 

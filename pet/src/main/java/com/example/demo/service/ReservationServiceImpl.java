@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,17 +46,20 @@ public class ReservationServiceImpl implements ReservationService {
                 .orElseThrow(() -> new RuntimeException("오너를 찾을 수 없습니다."));
 
         long price = switch (dto.getServiceType()) {
-            case "walk" -> sitter.getWalkPrice();
-            case "hotel" -> sitter.getHotelPrice();
-            case "short" -> sitter.getDayPrice();
+            case "walk" -> Optional.ofNullable(sitter.getWalkPrice()).orElse(0L);
+            case "hotel" -> Optional.ofNullable(sitter.getHotelPrice()).orElse(0L);
+            case "short" -> Optional.ofNullable(sitter.getDayPrice()).orElse(0L);
             default -> throw new IllegalArgumentException("알 수 없는 서비스 타입");
         };
+
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+        LocalDateTime dateTime = LocalDateTime.parse(dto.getDateTime(), formatter);
 
         ReserveEntity reserve = ReserveEntity.builder()
                 .serviceType(dto.getServiceType())
                 .location(dto.getLocation())
                 .request(dto.getRequest())
-                .date(LocalDateTime.parse(dto.getDateTime()))
+                .date(dateTime)
                 .payment(price)
                 .status("예약 확정")
                 .sitter(sitter)
@@ -71,5 +76,15 @@ public class ReservationServiceImpl implements ReservationService {
                 .reservation(reserve)
                 .build();
         paymentRepository.save(payment);
+
+        Long existingTotal = owner.getTotalPayment() != null ? owner.getTotalPayment() : 0L;
+        Long updatedTotal = existingTotal + price;
+        owner.setTotalPayment(updatedTotal);
+        ownerRepository.save(owner);
+        ownerRepository.flush();
+        System.out.println("=== 결제 금액 확인 ===");
+        System.out.println("price: " + price);
+        System.out.println("기존 totalPayment: " + existingTotal);
+        System.out.println("업데이트 totalPayment: " + updatedTotal);
     }
 }

@@ -161,3 +161,11 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.querySelectorAll(".details-btn").forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    // 임시 ID로 index + 1 사용 (실제 ID는 서버에서 받아오면 대체)
+    selectedSitterId = index + 1;
+    console.log("임시 선택된 시터 ID:", selectedSitterId);
+  });
+});
