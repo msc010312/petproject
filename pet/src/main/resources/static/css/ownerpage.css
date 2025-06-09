@@ -236,15 +236,15 @@ button {
     display: block;
     justify-content: space-between;
     align-items: center;
-
+    position: relative;
 }
 
 /* 닫기 버튼 */
 .chat-header .close {
     cursor: pointer;
     font-size: 24px;
-    left: 61%;
-    top: 9.5%;
+    position: absolute;
+    top: 10px;
 }
 
 /* 채팅 메시지 영역 */
@@ -866,4 +866,33 @@ button {
     font-size: small;
 
     margin: 13px 7px 15px 11px;
+}
+
+.pro-card {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.pro-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.pro-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pro-card button {
+  margin-left: auto;
+  background-color: #f44;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }

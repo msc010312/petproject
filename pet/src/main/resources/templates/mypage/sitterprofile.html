@@ -7,10 +7,10 @@
     <script src="/js/link.js" defer></script>
     <title>Document</title>
     <!-- css -->
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
-    <link th:href="@{/css/header.css}" rel="stylesheet" />
-    <link th:href="@{/css/footer.css}" rel="stylesheet" />
-    <link th:href="@{/css/sitterprofile.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/header.css}" rel="stylesheet"/>
+    <link th:href="@{/css/footer.css}" rel="stylesheet"/>
+    <link th:href="@{/css/sitterprofile.css}" rel="stylesheet"/>
     <!-- google icon -->
     <link
             rel="stylesheet"
@@ -19,132 +19,125 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 헤더영역 (템플릿화 예정) -->
-        <div class="header">
-            <div class="logo">
-                <span><a href="#">LOGO</a></span>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li class="menu-service">
-                        <a href="#">Service</a>
-                        <ul class="sub-menu">
-                            <li class="sub-item"><a href="#">Day Care</a></li>
-                            <li class="sub-item"><a href="#">Hotelling</a></li>
-                            <li class="sub-item"><a href="#">work with pet</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">place</a></li>
-                    <li><a href="#">board</a></li>
-                </ul>
-            </div>
-            <div class="sign">
-                <button class="sign-in btn">
-                    <a href="../sign/login.html">로그인</a>
-                </button>
-                <button class="sign-up btn">
-                    <a href="../sign/signup.html">회원가입</a>
-                </button>
-            </div>
+<div class="wrapper">
+    <!-- 헤더영역 (템플릿화 예정) -->
+    <div class="header">
+        <div class="logo">
+            <span><a href="#">LOGO</a></span>
         </div>
-        <!-- 메인영역 -->
-        <div class="main">
-            <!-- pagew 1260px -->
-            <div class="pagew">
-                <!-- 작업 영역 -->
-                <div class="content">
-                    <div class="all-profile">
-                        <div class="care-prof">
-                            <ul>
-                                <li>프로필 관리</li>
-                                <li>원하는 정보를 수정할 수 있습니다.</li>
-                            </ul>
-                        </div>
+        <div class="menu">
+            <ul>
+                <li class="menu-service">
+                    <a href="#">Service</a>
+                    <ul class="sub-menu">
+                        <li class="sub-item"><a href="#">Day Care</a></li>
+                        <li class="sub-item"><a href="#">Hotelling</a></li>
+                        <li class="sub-item"><a href="#">work with pet</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">place</a></li>
+                <li><a href="#">board</a></li>
+            </ul>
+        </div>
+        <div class="sign">
+            <button class="sign-in btn">
+                <a href="../sign/login.html">로그인</a>
+            </button>
+            <button class="sign-up btn">
+                <a href="../sign/signup.html">회원가입</a>
+            </button>
+        </div>
+    </div>
+    <!-- 메인영역 -->
+    <div class="main">
+        <!-- pagew 1260px -->
+        <div class="pagew">
+            <!-- 작업 영역 -->
+            <div class="content">
+                <div class="all-profile">
+                    <div class="care-prof">
+                        <ul>
+                            <li>프로필 관리</li>
+                            <li>원하는 정보를 수정할 수 있습니다.</li>
+                        </ul>
+                    </div>
+                    <form th:action="@{/update/sitter/{userId}(userId=${user.userId})}" method="post"
+                          enctype="multipart/form-data">
                         <div class="photo">
-                            <img th:src="'/images/'+${img}" th:if="${img} != null" alt="시터 이미지"/>
+                            <!-- 프로필 이미지 (동적으로 사용하려면 user.profileImageUrl 사용) -->
+                            <!-- <img th:src="@{${user.profileImageUrl}}" alt="시터 이미지"/> -->
                             <div class="clear">
                                 <ul>
                                     <li>
-                                        <a href="">사진 변경</a>
-                                    </li>
-                                    <li>
-                                        <a href="">변경 완료</a>
+                                        <label>
+                                            사진 변경:
+                                            <input type="file" name="profileImage"/>
+                                        </label>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="cng">
-                            <!-- <div class="pw-cng">
-                              <ul>
-                                <li>지금 현재 사용하고 있는 비밀번호</li>
-                                <li>변경 하고 싶은 비밀번호</li>
-                                <li>변경 한 비밀번호 다시 입력</li>
-                              </ul>
-                            </div> -->
                             <div class="my-cng">
                                 <div class="na-cng">
                                     <ul>
-                                        <li>이름 : </li>
-                                        <li>구자경</li>
+                                        <li>이름 :</li>
+                                        <li><input type="text" name="name" th:value="${user.name}"/></li>
                                     </ul>
                                 </div>
                                 <div class="loca">
                                     <ul>
                                         <li>주소 :</li>
-                                        <li>대구 남구 중앙대로40길</li>
+                                        <li><input type="text" name="address" th:value="${user.address}"/></li>
                                     </ul>
                                 </div>
                                 <div class="numb">
                                     <ul>
                                         <li>전화번호 :</li>
-                                        <li>010-0000-1111</li>
+                                        <li><input type="text" name="phone" th:value="${user.phone}"/></li>
                                     </ul>
                                 </div>
                                 <div class="amount">
                                     <ul>
                                         <li>이용금액</li>
-                                        <input>산책 - 30분 : 15,000원 / 1시간 : 25,000원</input>
-                                        <input>호텔링 - 하루 5만원(24시간 기준 - 추가 시 : 30분당 1만원)</input>
-                                        <input>데이케어 - 3시간 : 30,000원 (3시간 이상부터 가능 / 추가 시 : 10분당 5,000원씩 추가)</input>
+                                        <li>
+                                            <p>산책</p><input type="number" name="walkPrice"
+                                                            th:value="${sitter.walkPrice}"/>
+                                        </li>
+                                        <li>
+                                            <p>호텔링</p><input type="number" name="hotelPrice"
+                                                             th:value="${sitter.hotelPrice}"/>
+                                        </li>
+                                        <li>
+                                            <p>데이케어</p><input type="number" name="dayPrice"
+                                                              th:value="${sitter.dayPrice}"/>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="pr">
                                     <ul>
                                         <li>자기소개 :</li>
-                                        <input>안녕하세요! 저는 반려동물과 함께하는 시간을 진심으로 사랑하는 LEE입니다. 어릴 적부터 다양한 반려동물과 함께 자라면서 동물들의 감정과 건강에
-                                            대해 깊은 관심을 가져왔고, 그 경험을 바탕으로 OOO에서 신뢰받는 펫시터가 되고자 합니다.
-
-                                            저는 강아지 산책, 돌봄, 방문 케어 등 반려견의 일상에서 꼭 필요한 서비스들을 꼼꼼하고 세심하게 제공하고 있습니다. 반려견의 성격과 건강
-                                            상태에 맞춰 맞춤형 산책 경로를 계획하고, 산책 중에도 늘 주의 깊게 관찰하며 안전을 최우선으로 생각합니다. 또한, 식사 관리, 약 복용, 배변
-                                            훈련 등 보호자분들께서 부탁하시는 모든 사항을 정확히 지켜 신뢰받고 있습니다.
-
-                                            특히, 반려견의 스트레스를 최소화하고 편안함을 최대화하기 위해 항상 친근한 태도로 접근하며, 필요한 경우 반려동물과의 놀이 시간을 충분히 갖도록
-                                            노력합니다. 긴급 상황 시에는 빠르게 대처할 수 있도록 동물 응급처치 교육도 이수했으며, 언제든지 보호자분과 연락을 주고받으며 상황을
-                                            공유합니다.
-
-                                            저에게 맡겨 주신 소중한 반려견이 가족처럼 안전하고 행복한 시간을 보낼 수 있도록 최선을 다하겠습니다. 믿고 맡겨 주세요!
-
-                                            감사합니다.
-                                        </input>
-
+                                        <li>
+                                            <textarea name="presentation">[[${sitter.presentation}]]</textarea>
+                                        </li>
                                     </ul>
                                 </div>
                                 <ul>
                                     <li class="ad">
-                                        <a href="">수정</a>
+                                        <button type="submit">변경 완료</button>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- footer영역(템플릿화 예정) -->
-                <div class="footer">
-                    <span>footer</span>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- footer영역(템플릿화 예정) -->
+    <div class="footer">
+        <span>footer</span>
+    </div>
+</div>
 </body>
 </html>

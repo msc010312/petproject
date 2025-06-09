@@ -41,8 +41,8 @@ public class SecurityConfig {
                 .requestMatchers("/css/**","/js/**","/asset/**").permitAll()
 //                .requestMatchers("/reserve").hasAnyRole("OWNER","SITTER","ADMIN")
                 .requestMatchers("/board/add").hasAnyRole("OWNER","SITTER","ADMIN")
-                .requestMatchers("/mypage/owner").hasRole("OWNER")
-                .requestMatchers("/mypage/sitter").hasRole("SITTER")
+                .requestMatchers("/mypage/ownerpage").hasRole("OWNER")
+                .requestMatchers("/mypage/sitterpage").hasRole("SITTER")
                 .requestMatchers("/mypage/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
         });

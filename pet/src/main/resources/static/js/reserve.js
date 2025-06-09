@@ -7,7 +7,7 @@ const reservationHeader = document.getElementById('reservationHeader');
 const tabs = document.querySelectorAll('.tab');
 
 const serviceTemplates = {
-  short: `
+  daycare: `
     <h2>데이케어 예약</h2>
     <div class="form-group">
       <label>데이케어 날짜와 시간을 입력하세요</label>
@@ -159,5 +159,13 @@ window.addEventListener("DOMContentLoaded", () => {
       selectedSitterPrice = 30000;
       priceConfirmed = false;
     });
+  });
+});
+
+document.querySelectorAll(".details-btn").forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    // 임시 ID로 index + 1 사용 (실제 ID는 서버에서 받아오면 대체)
+    selectedSitterId = index + 1;
+    console.log("임시 선택된 시터 ID:", selectedSitterId);
   });
 });

@@ -19,6 +19,7 @@ img {
 
 .all-profile>.care-prof>ul>li:nth-child(1) {
     font-size: xx-large;
+    font-size: xx-large;
     font-weight: bold;
 }
 
@@ -61,14 +62,6 @@ img {
     margin-left: 30%;
 }
 
-
-
-/* .cng>.pw-cng {
-    font-size: large;
-    text-align: justify;
-    padding-bottom: 10px;
-} */
-
 .cng>.my-cng {
     font-size: large;
     text-align: justify;
@@ -87,7 +80,16 @@ img {
 }
 
 .cng>.my-cng>.na-cng>ul>li:nth-child(2) {
-    margin-left: 7%;
+    margin-left: 14%;
+    margin-top: -27px;
+}
+
+.cng>.my-cng>.na-cng>ul>li:nth-child(3) {
+    font-weight: bold;
+}
+
+.cng>.my-cng>.na-cng>ul>li:nth-child(4) {
+    margin-left: 16%;
     margin-top: -27px;
 }
 
@@ -132,16 +134,8 @@ img {
 }
 
 .cng>.my-cng>.amount>ul>li:nth-child(2) {
-    margin-left: 11%;
+    margin-left: 14%;
     margin-top: -27px;
-}
-.cng>.my-cng>.amount>ul>li:nth-child(3) {
-    margin-left: 11%;
-    /* margin-top: -27px; */
-}
-.cng>.my-cng>.amount>ul>li:nth-child(4) {
-    margin-left: 11%;
-    /* margin-top: 30px; */
 }
 
 .cng>.my-cng>.pr {
@@ -153,20 +147,54 @@ img {
 .cng>.my-cng>.pr>ul>li:nth-child(1) {
     font-weight: bold;
 }
+
 .cng>.my-cng>.pr>ul>li:nth-child(2) {
     text-align: justify;
     font-size: smaller;
+    margin-left: 7%;
+    margin-top: -3%;
 }
-.my-cng>ul>.ad{
-    border: 1px solid;
-    border-radius: 3px;
-    width: 50px;
-    height: 30px;
+
+.cng>.my-cng>.pr>ul>li:nth-child(3) {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.cng>.my-cng>.pr>ul>li:nth-child(4) {
+    text-align: justify;
+    font-size: smaller;
+    margin-left: 7%;
+    margin-top: -3%;
+}
+
+.cng>.my-cng>.pr>ul>li:nth-child(5) {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.cng>.my-cng>.pr>ul>li:nth-child(6) {
+    text-align: justify;
+    font-size: smaller;
+        margin-left: 7%;
+}
+
+.cng>.my-cng>.pr>ul>li:nth-child(7) {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.cng>.my-cng>.pr>ul>li:nth-child(8) {
+    text-align: justify;
+    font-size: smaller;
+    margin-left: 7%;
+}
+
+.my-cng>ul>.ad {
     margin-left: 25%;
     margin-top: 15%;
-    text-align: center;
 }
-.my-cng>ul>.ad>a{
+
+.my-cng>ul>.ad>a {
     font-size: medium;
     /* text-align: center; */
 }
