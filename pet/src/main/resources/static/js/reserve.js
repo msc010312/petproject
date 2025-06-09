@@ -85,8 +85,11 @@ function initializePickers() {
         const checkIn = selectedDates[0];
         const checkOut = selectedDates[1];
 
+        const checkInFormatted = checkIn.toLocaleDateString();
+        const checkOutFormatted = checkOut.toLocaleDateString();
+
         document.getElementById("reservation-time").textContent =
-          `${checkIn.toLocaleDateString()} ~ ${checkOut.toLocaleDateString()}`;
+          `${checkInFormatted} ~ ${checkOutFormatted}`;
       }
     }
   });
