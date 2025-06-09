@@ -1,10 +1,8 @@
 package com.example.demo.controller.mypage;
 
-import com.example.demo.domain.entity.OwnerEntity;
-import com.example.demo.domain.entity.ReserveEntity;
-import com.example.demo.domain.entity.SitterEntity;
-import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.entity.*;
 import com.example.demo.domain.repository.OwnerRepository;
+import com.example.demo.domain.repository.PetRepository;
 import com.example.demo.domain.repository.ReserveRepository;
 import com.example.demo.domain.repository.SitterRepository;
 import com.example.demo.service.UserServiceImpl;
@@ -36,16 +34,21 @@ public class MyPageController {
     @Autowired
     private ReserveRepository reserveRepository;
 
+    @Autowired
+    private PetRepository petRepository;
+
     @GetMapping("/ownerpage")
     public String ownerPage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         String email = userDetails.getUsername();
         UserEntity user = userService.findByEmail(email);
         OwnerEntity owner = ownerRepository.findByUser(user);
         SitterEntity sitter = sitterRepository.findByUser(user);
+        List<ReserveEntity> sitterReserves = reserveRepository.findBySitter(sitter);
         List<ReserveEntity> reservations = reserveRepository.findByOwner(owner);
         model.addAttribute("owner", owner);
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
+        model.addAttribute("sitterReservations", sitterReserves);
         return "mypage/ownerpage";
     }
 
@@ -63,7 +66,14 @@ public class MyPageController {
         String email = userDetails.getUsername();
         UserEntity user = userService.findByEmail(email);
         SitterEntity sitter = sitterRepository.findByUser(user);
+        OwnerEntity owner = ownerRepository.findByUser(user);
+        List<PetEntity> pet = petRepository.findByOwner(owner);
+        List<ReserveEntity> reserve = reserveRepository.findBySitter(sitter);
+        List<ReserveEntity> reservations = reserveRepository.findBySitter(sitter);
         model.addAttribute("sitter", sitter);
+        model.addAttribute("reservations", reservations);
+        model.addAttribute("reserve",reserve);
+        model.addAttribute("pet",pet);
         return "mypage/sitterpage";
     }
 
