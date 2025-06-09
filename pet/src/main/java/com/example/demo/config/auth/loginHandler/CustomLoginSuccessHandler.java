@@ -18,13 +18,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
 		log.info("CustomLoginSuccessHandler's onAuthenticationSuccess invoke");
-		String redirectUrl = request.getParameter("redirect");
 
+		String redirectUrl = request.getParameter("redirect");
 		if ("/board/add".equals(redirectUrl)) {
 			response.sendRedirect("/board");
 			return;
 		}
-
+		request.getSession().removeAttribute("loginErrorMessage");
 		response.sendRedirect("/");
 	}
 

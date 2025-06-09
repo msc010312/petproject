@@ -11,4 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
          window.location.href = `/oauth2/authorization/${provider}`;
        });
      });
+
+         document.querySelectorAll('input[name="role"]').forEach(radio => {
+             radio.addEventListener('change', function () {
+                 document.getElementById('roleInput').value = this.value;
+             });
+         });
+
+         const checkedRadio = document.querySelector('input[name="role"]:checked');
+         if (checkedRadio) {
+             document.getElementById('roleInput').value = checkedRadio.value;
+         }
 });

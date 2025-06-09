@@ -6,6 +6,7 @@ import com.example.demo.domain.dto.SitterForm;
 import com.example.demo.domain.dto.UserDto;
 import com.example.demo.domain.entity.SitterEntity;
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.OwnerRepository;
 import com.example.demo.domain.repository.SitterRepository;
 import com.example.demo.domain.repository.UserRepository;
 import com.example.demo.service.UserServiceImpl;
@@ -36,6 +37,9 @@ public class UserController {
     @Autowired
     private SitterRepository sitterRepository;
 
+    @Autowired
+    private OwnerRepository ownerRepository;
+
     @GetMapping("/signup")
     public String signup() {
         return "sign/signup";
@@ -43,7 +47,14 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(@RequestParam(value = "redirect", required = false) String redirect,
-                        HttpServletRequest request){
+                        HttpServletRequest request,HttpSession session, Model model){
+        String errMsg = (String) session.getAttribute("loginErrorMessage");
+        if (errMsg != null) {
+            model.addAttribute("loginErrorMessage", errMsg);
+            session.removeAttribute("loginErrorMessage");
+        }
+
+
         if (redirect != null) {
             request.getSession().setAttribute("redirectAfterLogin", redirect);
         }
@@ -100,7 +111,7 @@ public class UserController {
     @ResponseBody
     public void setRole(HttpSession session, @RequestParam String role) {
         session.setAttribute("oauth2_role", role);
-        System.out.println("UserContorller role: " + role);
+        System.out.println("UserController role: " + role);
     }
 
     @PostMapping("/update/owner/{userId}")
