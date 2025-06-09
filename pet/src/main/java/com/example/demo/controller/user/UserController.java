@@ -2,13 +2,17 @@ package com.example.demo.controller.user;
 
 import com.example.demo.InvalidEmailFormatException.InvalidEmailFormatException;
 import com.example.demo.domain.dto.OwnerForm;
+import com.example.demo.domain.dto.SitterForm;
 import com.example.demo.domain.dto.UserDto;
+import com.example.demo.domain.entity.SitterEntity;
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.SitterRepository;
 import com.example.demo.domain.repository.UserRepository;
 import com.example.demo.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @Data
+@Slf4j
+
 public class UserController {
 
     @Autowired
@@ -26,6 +32,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private SitterRepository sitterRepository;
 
     @GetMapping("/signup")
     public String signup() {
@@ -106,5 +115,28 @@ public class UserController {
         userService.saveUser(userEntity);
 
         return "redirect:/mypage/ownerpage" + userId;
+    }
+
+    @PostMapping("/update/sitter/{userId}")
+    public String updateSitter(@PathVariable Long userId, @ModelAttribute SitterForm sitterForm, @RequestParam("profileImage") MultipartFile imageFile) {
+
+        UserEntity userEntity = userService.findById(userId);
+        SitterEntity sitterEntity = sitterRepository.findByUser(userEntity);
+
+        userEntity.setName(sitterForm.getName());
+        userEntity.setAddress(sitterForm.getAddress());
+        userEntity.setPhone(sitterForm.getPhone());
+
+        sitterEntity.setWalkPrice(sitterForm.getWalkPrice() != null ? sitterForm.getWalkPrice() : 0L);
+        sitterEntity.setHotelPrice(sitterForm.getHotelPrice() != null ? sitterForm.getHotelPrice() : 0L);
+        sitterEntity.setDayPrice(sitterForm.getDayPrice() != null ? sitterForm.getDayPrice() : 0L);
+        sitterEntity.setPresentation(
+                sitterForm.getPresentation() != null ? sitterForm.getPresentation() : ""
+        );
+
+        userService.saveUser(userEntity);
+        sitterRepository.save(sitterEntity);
+
+        return "redirect:/mypage/sitterpage";
     }
 }

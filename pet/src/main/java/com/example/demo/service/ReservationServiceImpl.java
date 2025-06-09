@@ -45,12 +45,26 @@ public class ReservationServiceImpl implements ReservationService {
         OwnerEntity owner = ownerRepository.findById(dto.getOwnerId())
                 .orElseThrow(() -> new RuntimeException("오너를 찾을 수 없습니다."));
 
-        long price = switch (dto.getServiceType()) {
+        System.out.println("=== Sitter 정보 확인 ===");
+        System.out.println("Sitter ID: " + sitter.getSitterId());
+        System.out.println("WalkPrice: " + sitter.getWalkPrice());
+        System.out.println("HotelPrice: " + sitter.getHotelPrice());
+        System.out.println("DayPrice: " + sitter.getDayPrice());
+
+
+        String serviceType = dto.getServiceType().trim().toLowerCase(); // 공백 제거 + 소문자화
+
+        long price = switch (serviceType) {
             case "walk" -> Optional.ofNullable(sitter.getWalkPrice()).orElse(0L);
             case "hotel" -> Optional.ofNullable(sitter.getHotelPrice()).orElse(0L);
             case "short" -> Optional.ofNullable(sitter.getDayPrice()).orElse(0L);
             default -> throw new IllegalArgumentException("알 수 없는 서비스 타입");
         };
+
+        System.out.println("sitter.getDayPrice(): " + sitter.getDayPrice());
+        System.out.println("sitter.getHotelPrice(): " + sitter.getHotelPrice());
+        System.out.println("sitter.getWalkPrice(): " + sitter.getWalkPrice());
+
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         LocalDateTime dateTime = LocalDateTime.parse(dto.getDateTime(), formatter);
@@ -75,6 +89,12 @@ public class ReservationServiceImpl implements ReservationService {
                 .paymentDate(LocalDateTime.now())
                 .reservation(reserve)
                 .build();
+
+        System.out.println("결제 정보 저장 직전");
+        System.out.println("Amount: " + payment.getPaymentAmount());
+        System.out.println("Transaction ID: " + payment.getTransactionId());
+        System.out.println("예약 ID: " + reserve.getReserveId());
+
         paymentRepository.save(payment);
 
         Long existingTotal = owner.getTotalPayment() != null ? owner.getTotalPayment() : 0L;
@@ -82,9 +102,5 @@ public class ReservationServiceImpl implements ReservationService {
         owner.setTotalPayment(updatedTotal);
         ownerRepository.save(owner);
         ownerRepository.flush();
-        System.out.println("=== 결제 금액 확인 ===");
-        System.out.println("price: " + price);
-        System.out.println("기존 totalPayment: " + existingTotal);
-        System.out.println("업데이트 totalPayment: " + updatedTotal);
     }
 }
