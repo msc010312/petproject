@@ -7,7 +7,7 @@ const reservationHeader = document.getElementById('reservationHeader');
 const tabs = document.querySelectorAll('.tab');
 
 const serviceTemplates = {
-  short: `
+  daycare: `
     <h2>데이케어 예약</h2>
     <div class="form-group">
       <label>데이케어 날짜와 시간을 입력하세요</label>

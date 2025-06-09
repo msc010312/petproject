@@ -57,7 +57,7 @@ public class ReservationServiceImpl implements ReservationService {
         long price = switch (serviceType) {
             case "walk" -> Optional.ofNullable(sitter.getWalkPrice()).orElse(0L);
             case "hotel" -> Optional.ofNullable(sitter.getHotelPrice()).orElse(0L);
-            case "short" -> Optional.ofNullable(sitter.getDayPrice()).orElse(0L);
+            case "daycare" -> Optional.ofNullable(sitter.getDayPrice()).orElse(0L);
             default -> throw new IllegalArgumentException("알 수 없는 서비스 타입");
         };
 
