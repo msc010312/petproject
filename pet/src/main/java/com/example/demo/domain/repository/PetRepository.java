@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface PetRepository extends JpaRepository<PetEntity, Long> {
     List<PetEntity> findByOwner(OwnerEntity owner);
+
 }
