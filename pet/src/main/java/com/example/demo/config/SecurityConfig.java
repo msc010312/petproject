@@ -4,6 +4,8 @@ import com.example.demo.config.auth.loginHandler.CustomLoginFailureHandler;
 import com.example.demo.config.auth.loginHandler.CustomLoginSuccessHandler;
 import com.example.demo.config.auth.logoutHandler.CustomLogoutHandler;
 import com.example.demo.config.auth.logoutHandler.CustomLogoutSuccessHandler;
+import com.example.demo.config.auth.provider.CustomAuthenticationProvider;
+import com.example.demo.service.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,10 +24,29 @@ public class SecurityConfig {
     private CustomLoginSuccessHandler customLoginSuccessHandler;
 
     @Autowired
+    private CustomLoginFailureHandler customLoginFailureHandler;
+
+    @Autowired
     private CustomLogoutHandler customLogoutHandler;
 
     @Autowired
     private CustomLogoutSuccessHandler customLogoutSuccessHandler;
+
+    @Autowired
+    private CustomUserDetailService customUserDetailService;
+
+//    @Autowired
+//    private PrincipalDetailsOAuth2Service principalDetailsOAuth2Service;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CustomAuthenticationProvider customAuthenticationProvider() {
+        return new CustomAuthenticationProvider(customUserDetailService, passwordEncoder());
+    }
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
@@ -48,14 +69,15 @@ public class SecurityConfig {
         });
 
         // 로그인
-        http.formLogin((login)->{ login
+        http.authenticationProvider(customAuthenticationProvider())
+                .formLogin((login)->{ login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/main")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .successHandler(customLoginSuccessHandler)
-                .failureHandler(new CustomLoginFailureHandler());
+                .failureHandler(customLoginFailureHandler);
         });
 
         // 로그아웃
@@ -75,14 +97,12 @@ public class SecurityConfig {
         http.oauth2Login((oauth2)->{ oauth2
                 .successHandler(customLoginSuccessHandler)
                 .loginPage("/login");
+//                .userInfoEndpoint(userInfo -> userInfo
+//                        .userService(principalDetailsOAuth2Service)
+//                );
         });
 
         return http.build();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     @Bean

@@ -5,7 +5,11 @@ import com.example.demo.config.auth.provider.KakaoUserInfo;
 import com.example.demo.config.auth.provider.NaverUserInfo;
 import com.example.demo.config.auth.provider.OAuth2UserInfo;
 import com.example.demo.domain.dto.UserDto;
+import com.example.demo.domain.entity.OwnerEntity;
+import com.example.demo.domain.entity.SitterEntity;
 import com.example.demo.domain.entity.UserEntity;
+import com.example.demo.domain.repository.OwnerRepository;
+import com.example.demo.domain.repository.SitterRepository;
 import com.example.demo.domain.repository.UserRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +33,10 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private OwnerRepository ownerRepository;
+    @Autowired
+    private SitterRepository sitterRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -122,6 +130,17 @@ public class PrincipalDetailsOAuth2Service extends DefaultOAuth2UserService {
                         .build();
             UserEntity user = userDto.toEntity();
             userRepository.save(user);  //계정 등록
+
+            // 역할별 엔티티 저장
+            if ("ROLE_OWNER".equalsIgnoreCase(role)) {
+                OwnerEntity owner = new OwnerEntity();
+                owner.setUser(user);
+                ownerRepository.save(owner);
+            } else if ("ROLE_SITTER".equalsIgnoreCase(role)) {
+                SitterEntity sitter = new SitterEntity();
+                sitter.setUser(user);
+                sitterRepository.save(sitter);
+            }
 
         }else{
             //기존 유저 존재(Dto)

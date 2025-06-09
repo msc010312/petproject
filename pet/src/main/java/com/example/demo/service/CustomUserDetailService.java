@@ -18,12 +18,14 @@ public class CustomUserDetailService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByEmail(email);
         if (userEntity == null) {
             throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
         }
+
         UserDto userDto = UserDto.builder()
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
