@@ -36,7 +36,7 @@
     </div>
     <h1 class="title">예약하기</h1>
     <div class="tabs">
-        <button class="tab active" data-type="short">데이케어</button>
+        <button class="tab active" data-type="daycare">데이케어</button>
         <button class="tab" data-type="hotel">호텔링</button>
         <button class="tab" data-type="walk">산책</button>
     </div>
@@ -68,6 +68,31 @@
                 </div>
             </div>
             <div class="sitter-section">
+                <h2>시터 선택</h2>
+                <div class="sitter-card">
+                    <div class="sitter-content" th:each="sitter : ${sitters}">
+                        <div class="sitter-img1">
+                            <!-- 사용자 프로필 이미지가 있다면 UserEntity에 있는 필드 사용 -->
+                            <!--<img th:src="@{${sitter.user.profileImageUrl}}" alt="시터 이미지" class="sitter-img">-->
+                        </div>
+                        <div class="sitter-info">
+                            <p><strong th:text="${sitter.user.name}">이름</strong></p>
+                            <p><span th:text="${sitter.user.address}">지역</span></p>
+<!--                            <p><span th:text="${sitter.presentation}">소개</span></p>-->
+                        </div>
+                        <div class="sitter-details">
+                            <div class="sitter-price">
+                                데이케어: <span th:text="${#numbers.formatInteger(sitter.dayPrice, 3, 'COMMA')}">0</span>원/일<br>
+                                호텔링: <span th:text="${#numbers.formatInteger(sitter.hotelPrice, 3, 'COMMA')}">0</span>원/일<br>
+                                산책: <span th:text="${#numbers.formatInteger(sitter.walkPrice, 3, 'COMMA')}">0</span>원/회
+                            </div>
+                            <button class="details-btn" th:attr="data-id=${sitter.sitterId}">상세 정보</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="sitter-section">
                 <h2>시터 선택</h2>
                 <div class="sitter-card">
                     <div class="sitter-content">
@@ -167,7 +192,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="reservation-info">
             <input type="hidden" id="buyerEmail" th:value="${email}">
@@ -202,6 +227,7 @@
         </div>
     </div>
     <!-- 래퍼 div 추가 끝 -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYVE-Fxs1sm7rsudqBgok6iAqx5aQoM&libraries=places" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYVE-Fxs1sm7rsudqBgok6iAqx5aQoM&libraries=places"
+            async defer></script>
 </div>
 </html>

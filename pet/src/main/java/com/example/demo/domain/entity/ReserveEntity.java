@@ -47,4 +47,6 @@ public class ReserveEntity {
 
     @Column(name = "status", nullable = false)
     private String status;
+
+    private LocalDateTime checkOut;
 }

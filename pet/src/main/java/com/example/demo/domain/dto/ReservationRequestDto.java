@@ -10,7 +10,8 @@ public class ReservationRequestDto {
     private String serviceType;
     private String location;
     private String request;
-    private String dateTime;
+    private String startDateTime;
+    private String endDateTime;
     private String paymentMethod;
     private String transactionId;
 }

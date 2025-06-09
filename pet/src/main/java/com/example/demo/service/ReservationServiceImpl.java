@@ -39,41 +39,48 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional
     public void makeReservation(ReservationRequestDto dto) {
+        // 1. 시터, 오너 조회
         SitterEntity sitter = sitterRepository.findById(dto.getSitterId())
                 .orElseThrow(() -> new RuntimeException("시터를 찾을 수 없습니다."));
-
         OwnerEntity owner = ownerRepository.findById(dto.getOwnerId())
                 .orElseThrow(() -> new RuntimeException("오너를 찾을 수 없습니다."));
 
-        System.out.println("=== Sitter 정보 확인 ===");
-        System.out.println("Sitter ID: " + sitter.getSitterId());
-        System.out.println("WalkPrice: " + sitter.getWalkPrice());
-        System.out.println("HotelPrice: " + sitter.getHotelPrice());
-        System.out.println("DayPrice: " + sitter.getDayPrice());
-
-
-        String serviceType = dto.getServiceType().trim().toLowerCase(); // 공백 제거 + 소문자화
-
-        long price = switch (serviceType) {
-            case "walk" -> Optional.ofNullable(sitter.getWalkPrice()).orElse(0L);
-            case "hotel" -> Optional.ofNullable(sitter.getHotelPrice()).orElse(0L);
-            case "daycare" -> Optional.ofNullable(sitter.getDayPrice()).orElse(0L);
-            default -> throw new IllegalArgumentException("알 수 없는 서비스 타입");
-        };
-
-        System.out.println("sitter.getDayPrice(): " + sitter.getDayPrice());
-        System.out.println("sitter.getHotelPrice(): " + sitter.getHotelPrice());
-        System.out.println("sitter.getWalkPrice(): " + sitter.getWalkPrice());
-
-
+        String serviceType = dto.getServiceType().trim().toLowerCase();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-        LocalDateTime dateTime = LocalDateTime.parse(dto.getDateTime(), formatter);
 
+        // 2. 날짜 파싱
+        LocalDateTime startDateTime = LocalDateTime.parse(dto.getStartDateTime(), formatter);
+        LocalDateTime endDateTime = null;
+        if (dto.getEndDateTime() != null && !dto.getEndDateTime().isEmpty()) {
+            endDateTime = LocalDateTime.parse(dto.getEndDateTime(), formatter);
+        }
+
+        // 3. 서비스별 가격 계산
+        long price;
+        switch (serviceType) {
+            case "walk":
+                price = Optional.ofNullable(sitter.getWalkPrice()).orElse(0L);
+                break;
+            case "daycare":
+                price = Optional.ofNullable(sitter.getDayPrice()).orElse(0L);
+                break;
+            case "hotel":
+                long days = (endDateTime != null) ? java.time.Duration.between(startDateTime, endDateTime).toDays() : 1;
+                if (days <= 0) days = 1; // 최소 1일
+                long dailyPrice = Optional.ofNullable(sitter.getHotelPrice()).orElse(0L);
+                price = dailyPrice * days;
+                break;
+            default:
+                throw new IllegalArgumentException("알 수 없는 서비스 타입입니다: " + serviceType);
+        }
+
+        // 4. 예약 엔티티 생성 및 저장
         ReserveEntity reserve = ReserveEntity.builder()
-                .serviceType(dto.getServiceType())
+                .serviceType(serviceType)
                 .location(dto.getLocation())
                 .request(dto.getRequest())
-                .date(dateTime)
+                .date(startDateTime)
+                .checkOut(endDateTime)
                 .payment(price)
                 .status("예약 확정")
                 .sitter(sitter)
@@ -81,6 +88,7 @@ public class ReservationServiceImpl implements ReservationService {
                 .build();
         reserveRepository.save(reserve);
 
+        // 5. 결제 엔티티 저장
         PaymentEntity payment = PaymentEntity.builder()
                 .paymentAmount((int) price)
                 .paymentMethod(dto.getPaymentMethod())
@@ -89,18 +97,13 @@ public class ReservationServiceImpl implements ReservationService {
                 .paymentDate(LocalDateTime.now())
                 .reservation(reserve)
                 .build();
-
-        System.out.println("결제 정보 저장 직전");
-        System.out.println("Amount: " + payment.getPaymentAmount());
-        System.out.println("Transaction ID: " + payment.getTransactionId());
-        System.out.println("예약 ID: " + reserve.getReserveId());
-
         paymentRepository.save(payment);
 
-        Long existingTotal = owner.getTotalPayment() != null ? owner.getTotalPayment() : 0L;
-        Long updatedTotal = existingTotal + price;
-        owner.setTotalPayment(updatedTotal);
+        // 6. 오너 총 결제 금액 누적 저장
+        Long existingTotal = Optional.ofNullable(owner.getTotalPayment()).orElse(0L);
+        owner.setTotalPayment(existingTotal + price);
         ownerRepository.save(owner);
-        ownerRepository.flush();
     }
+
+
 }

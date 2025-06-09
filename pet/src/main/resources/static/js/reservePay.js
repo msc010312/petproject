@@ -1,6 +1,6 @@
 IMP.init("imp47302140");
 
-let selectedSitterId = 1; // 임시 시터값
+let selectedSitterId = 1;
 
 function pay() {
   const totalText = document.getElementById("reservation-total").innerText;
@@ -22,14 +22,16 @@ function pay() {
   const selectedTab = document.querySelector(".tab.active");
   const serviceType = selectedTab.dataset.type;
   const serviceText = selectedTab.textContent + " 서비스";
-  const selectedServiceType = document.querySelector(".tab.active").dataset.type;
+
+  // 날짜 처리
+  const { startDateTime, endDateTime } = convertToISOString(dateTime);
 
   IMP.request_pay({
     channelKey: "channel-key-8c4b6869-ef18-4d04-a650-a6f93622e59c",
     pay_method: "card",
     merchant_uid: "merchant_" + crypto.randomUUID(),
     name: serviceText,
-    amount: 100, // 실제 결제금액 적용 amount
+    amount: 100, // amount
     buyer_email: ownerEmail,
     buyer_name: ownerName
   }, function (rsp) {
@@ -38,9 +40,10 @@ function pay() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          serviceType: selectedServiceType,
+          serviceType: serviceType,
           location: location,
-          dateTime: convertToISOString(dateTime),
+          startDateTime: startDateTime,
+          endDateTime: endDateTime,
           request: requestText,
           paymentMethod: rsp.pay_method,
           transactionId: rsp.imp_uid,
@@ -60,7 +63,36 @@ function pay() {
   });
 }
 function convertToISOString(dateTimeStr) {
-  if (!dateTimeStr) return new Date().toISOString();
+  if (!dateTimeStr || dateTimeStr.trim() === "") {
+    console.warn("빈 날짜입니다. 현재 날짜로 대체");
+    return { startDateTime: new Date().toISOString(), endDateTime: null };
+  }
+
+  // 호텔링 형식: "2025. 6. 12. ~ 2025. 6. 14."
+  if (dateTimeStr.includes("~")) {
+    const [startRaw, endRaw] = dateTimeStr.split(" ~ ");
+    const start = parseKoreanDate(startRaw);
+    const end = parseKoreanDate(endRaw);
+    return {
+      startDateTime: start.toISOString(),
+      endDateTime: end.toISOString()
+    };
+  }
+
+  // 단일 날짜+시간 형식: "2025-06-12 15:00"
   const [date, time] = dateTimeStr.split(" ");
-  return new Date(`${date}T${time}:00`).toISOString();
+  const full = `${date}T${time || "00:00"}:00`;
+  const dt = new Date(full);
+  if (isNaN(dt)) {
+    console.error("Invalid datetime:", dateTimeStr);
+    return { startDateTime: new Date().toISOString(), endDateTime: null };
+  }
+  return { startDateTime: dt.toISOString(), endDateTime: null };
+}
+
+// "2025. 6. 12." 같은 형식을 Date 객체로 변환
+function parseKoreanDate(raw) {
+  const parts = raw.trim().replace(/\.$/, "").split(". ");
+  const [y, m, d] = parts.map(Number);
+  return new Date(y, m - 1, d);
 }
