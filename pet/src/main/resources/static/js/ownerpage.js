@@ -55,50 +55,98 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 //-----------------------------------------------------------------------------------
-// 채팅 모달
-document.addEventListener("DOMContentLoaded", function () {
-  const openBtns = document.querySelectorAll(".openChatBtn");
-  const closeBtn = document.getElementById("closeChatBtn");
-  const chatModal = document.getElementById("chatModal");
-  const chatWith = document.getElementById("chatWith");
-  const sendBtn = document.getElementById("sendBtn");
-  const chatInput = document.getElementById("chatInput");
-  const chatMessages = document.getElementById("chatMessages");
+//// 채팅 모달
+//document.addEventListener("DOMContentLoaded", function () {
+//  const openBtns = document.querySelectorAll(".openChatBtn");
+//  const closeBtn = document.getElementById("closeChatBtn");
+//  const chatModal = document.getElementById("chatModal");
+//  const chatWith = document.getElementById("chatWith");
+//  const sendBtn = document.getElementById("sendBtn");
+//  const chatInput = document.getElementById("chatInput");
+//  const chatMessages = document.getElementById("chatMessages");
+//
+//  let currentSitter = null;
+//
+//  openBtns.forEach((btn) => {
+//    btn.addEventListener("click", () => {
+//      currentSitter = btn.dataset.sitter;
+//      chatWith.textContent = `${currentSitter}님과의 채팅`;
+//      chatMessages.innerHTML = ""; // 새로운 시터 채팅 시 메시지 초기화
+//      chatModal.classList.add("show");
+//    });
+//  });
+//
+//  closeBtn.addEventListener("click", () => {
+//    chatModal.classList.remove("show");
+//    currentSitter = null;
+//  });
+//
+//  sendBtn.addEventListener("click", sendMessage);
+//  chatInput.addEventListener("keydown", function (e) {
+//    if (e.key === "Enter") sendMessage();
+//  });
+//
+//  function sendMessage() {
+//    const message = chatInput.value.trim();
+//    if (message === "" || !currentSitter) return;
+//
+//    const msg = document.createElement("div");
+//    msg.textContent = `나: ${message}`;
+//    chatMessages.appendChild(msg);
+//
+//    chatInput.value = "";
+//    chatMessages.scrollTop = chatMessages.scrollHeight;
+//
+//    // 이 자리에서 WebSocket 등으로 currentSitter에게 메시지 전송 가능
+//  }
+//});
 
-  let currentSitter = null;
-
-  openBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      currentSitter = btn.dataset.sitter;
-      chatWith.textContent = `${currentSitter}님과의 채팅`;
-      chatMessages.innerHTML = ""; // 새로운 시터 채팅 시 메시지 초기화
-      chatModal.classList.add("show");
+// 채팅 모달 열기
+document.querySelectorAll('.openChatBtn').forEach(button => {
+    button.addEventListener('click', function() {
+        const chatModal = document.getElementById('chatModal');
+        const chatWith = document.getElementById('chatWith');
+        chatWith.textContent = `시터 ${this.dataset.sitter}`;  // 클릭한 버튼에 저장된 시터 정보로 채팅 상대 설정
+        chatModal.style.display = 'flex';  // 모달 열기
     });
-  });
+});
 
-  closeBtn.addEventListener("click", () => {
-    chatModal.classList.remove("show");
-    currentSitter = null;
-  });
+// 채팅 모달 닫기
+document.getElementById('closeChatBtn').addEventListener('click', function() {
+    document.getElementById('chatModal').style.display = 'none';  // 모달 닫기
+});
 
-  sendBtn.addEventListener("click", sendMessage);
-  chatInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") sendMessage();
-  });
+// 메시지 전송 버튼 클릭 시
+document.getElementById('sendBtn').addEventListener('click', function() {
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
 
-  function sendMessage() {
-    const message = chatInput.value.trim();
-    if (message === "" || !currentSitter) return;
+    // 메시지가 비어있지 않으면
+    if (chatInput.value.trim() !== '') {
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('message');
+        newMessage.textContent = chatInput.value;  // 입력한 메시지
 
-    const msg = document.createElement("div");
-    msg.textContent = `나: ${message}`;
-    chatMessages.appendChild(msg);
+        // 메시지 추가
+        chatMessages.appendChild(newMessage);
 
-    chatInput.value = "";
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+        // 입력 필드 초기화
+        chatInput.value = '';
 
-    // 이 자리에서 WebSocket 등으로 currentSitter에게 메시지 전송 가능
-  }
+        // 최신 메시지로 자동 스크롤
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // WebSocket을 통해 메시지를 서버로 전송
+        sendMessageToServer(chatInput.value.trim());
+    }
+});
+
+// 엔터키로 메시지 전송
+document.getElementById('chatInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();  // 기본 엔터키 동작 (줄 바꿈)을 방지
+        document.getElementById('sendBtn').click();  // 전송 버튼 클릭
+    }
 });
 
 // pagenation sec
