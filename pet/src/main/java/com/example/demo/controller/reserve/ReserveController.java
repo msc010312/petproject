@@ -1,7 +1,9 @@
 package com.example.demo.controller.reserve;
 
 import com.example.demo.domain.entity.OwnerEntity;
+import com.example.demo.domain.entity.SitterEntity;
 import com.example.demo.service.OwnerServiceImpl;
+import com.example.demo.service.SitterServiceImpl;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Controller
 @Slf4j
 public class ReserveController {
 
     @Autowired
     private OwnerServiceImpl ownerService;
+
+    @Autowired
+    private SitterServiceImpl sitterService;
 
     String RESTAPI_KEY = "4881768043204435";
     String RESTAPI_SECRET = "qX6baW4APJB91uMknRd8DcE6OUs2XGybSfx8thVQaAtKCMTlEzRLSlbzGBFTEuO54irUsTik9uieDbgn";
@@ -58,8 +65,11 @@ public class ReserveController {
     @GetMapping("/reserve")
     public String reserve(Model model, @AuthenticationPrincipal UserDetails userDetails) {
         OwnerEntity owner = ownerService.findByUserEmail(userDetails.getUsername());
-
         model.addAttribute("owner", owner);
+
+        List<SitterEntity> sitterList = sitterService.getAllSitters();
+        model.addAttribute("sitters", sitterList);
+
         return "reserve/reserve";
     }
 
