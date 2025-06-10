@@ -39,9 +39,12 @@
                 <form th:action="@{/logout}" method="post">
                     <button type="submit" class="logout btn">로그아웃</button>
                 </form>
-                <form th:action="@{/delete}" method="post">
-                    <button type="submit" class="resign btn">회원탈퇴</button>
-                </form>
+<!--                <form th:action="@{/delete}" method="post">-->
+<!--                    <button type="submit" class="resign btn">회원탈퇴</button>-->
+<!--                </form>-->
+                <button class="mypage btn">
+                    <a th:href="@{/mypage}">마이페이지</a>
+                </button>
             </div>
         </div>
     </div>
