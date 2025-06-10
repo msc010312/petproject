@@ -26,53 +26,41 @@
 <div class="content" layout:fragment="content">
     <div class="all-profile">
         <div class="care-prof">
-            <ul>
-                <li>프로필 관리</li>
-                <li>원하는 정보를 수정할 수 있습니다.</li>
-            </ul>
+            <span>프로필 관리</span>
+            <span>원하는 정보를 수정 및 확인할 수 있습니다.</span>
         </div>
-        <form class="ccc" th:action="@{/update/owner/{userId}(userId=${user.userId})}" method="post"
+        <form class="user-info-form" th:action="@{/update/owner/{userId}(userId=${user.userId})}" method="post"
               enctype="multipart/form-data">
             <div class="photo">
                 <img th:src="@{${user.profileImageUrl}}" alt="프로필 이미지"/>
                 <div class="clear">
-                    <ul>
-                        <li>
-                            <label>
-                                <input type="file" name="profileImage"/>
-                            </label>
-                        </li>
-                    </ul>
+                    <label>
+                        <input type="file" name="profileImage"/>
+                    </label>
                 </div>
             </div>
             <div class="cng">
                 <div class="my-cng">
                     <div class="na-cng">
-                        <ul>
-                            <li>이름 :</li>
-                            <li><input type="text" name="name" th:value="${user.name}"/></li>
-                        </ul>
+                        <span>이름 :</span>
+                        <input type="text" name="name" th:value="${user.name}"/>
                     </div>
-                    <div class="loca">
-                        <ul>
-                            <li>주소 :</li>
-                            <li><input type="text" name="address" th:value="${user.address}"/></li>
-                        </ul>
+                    <div class="location">
+                        <span>주소 :</span>
+                        <input type="text" name="address" th:value="${user.address}"/>
                     </div>
-                    <div class="numb">
-                        <ul>
-                            <li>전화번호 :</li>
-                            <li><input type="text" name="phone" th:value="${user.phone}"/></li>
-                        </ul>
+                    <div class="number">
+                        <span>전화번호 :</span>
+                        <input type="text" name="phone" th:value="${user.phone}"/>
                     </div>
-                    <div class="ad">
-                        <button type="submit">변경 완료</button>
+                    <div class="add">
+                        <button type="submit" class="btn">변경 완료</button>
                     </div>
                 </div>
             </div>
         </form>
-        <form class="ddd" th:action="@{/delete}" method="post">
-            <button type="submit" class="resign_btn">회원 탈퇴</button>
+        <form class="resign-form" th:action="@{/delete}" method="post">
+            <button type="submit" class="resign_btn btn">회원 탈퇴</button>
         </form>
     </div>
 </div>

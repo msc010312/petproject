@@ -1,220 +1,85 @@
-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 25px;
-    margin-top: 10px;
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
 }
 
 .all-profile {
-    width: 1260px;
-    height: 800px;
-    border: 1px solid;
-    border-radius: 5px;
-    margin: 20px 0 20px 0;
-}
-
-.all-profile>.care-prof {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.all-profile>.care-prof>ul>li:nth-child(1) {
-    font-size: xx-large;
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-.all-profile>.care-prof>ul>li:nth-child(2) {
-    font-size: medium;
-}
-
-.all-profile>.photo {
-    width: 270px;
-    height: 270px;
-    border: 1px solid;
-    border-radius: 3px;
-    margin: 25px 50px 5px 50px;
-    background-color: lightgray;
-    padding: 8px;
-}
-
-.all-profile>.photo>.clear>ul {
+    position: relative;
     display: flex;
-}
-
-.all-profile>.photo>.clear>ul>li {
-    border: 1px solid;
-    width: 65px;
-    height: 25px;
-    font-size: small;
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 8%;
-    border-radius: 3px;
-}
-
-.all-profile>.photo>.clear>ul>li:nth-child(1) {
-    margin-left: 23%;
-}
-
-.all-profile>.photo>.clear>ul>li:nth-child(2) {}
-
-.ccc {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 50px;
-}
-
-.cng>.my-cng {
-    font-size: large;
-    text-align: justify;
-    width: 850px;
-    height: 100px;
-}
-
-.cng>.my-cng>.na-cng {
-    padding: 10px;
-    border: 1px solid;
-    margin: 10px 0 10px 0;
-}
-
-.cng>.my-cng>.na-cng>ul>li:nth-child(1) {
-    font-weight: bold;
-}
-
-.cng>.my-cng>.na-cng>ul>li:nth-child(2) {
-    margin-left: 14%;
-    margin-top: -27px;
-}
-
-.cng>.my-cng>.na-cng>ul>li:nth-child(3) {
-    font-weight: bold;
-}
-
-.cng>.my-cng>.na-cng>ul>li:nth-child(4) {
-    margin-left: 16%;
-    margin-top: -27px;
-}
-
-.cng>.my-cng>.loca {
-    padding: 10px;
-    border: 1px solid;
-    margin: 10px 0 10px 0;
-}
-
-.cng>.my-cng>.loca>ul>li:nth-child(1) {
-    font-weight: bold;
-}
-
-.cng>.my-cng>.loca>ul>li:nth-child(2) {
-    margin-left: 7%;
-    margin-top: -27px;
-}
-
-.cng>.my-cng>.numb {
-    padding: 10px;
-    border: 1px solid;
-    margin: 10px 0 10px 0;
-}
-
-.cng>.my-cng>.numb>ul>li:nth-child(1) {
-    font-weight: bold;
-}
-
-.cng>.my-cng>.numb>ul>li:nth-child(2) {
-    margin-left: 11%;
-    margin-top: -27px;
-}
-
-.cng>.my-cng>.amount {
-    padding: 10px;
-    border: 1px solid;
-    margin: 10px 0 10px 0;
-}
-
-.cng>.my-cng>.amount>ul>li:nth-child(1) {
-    font-weight: bold;
-}
-
-.cng>.my-cng>.amount>ul>li:nth-child(2) {
-    margin-left: 14%;
-    margin-top: -27px;
-}
-
-.cng>.my-cng>.pr {
-    padding: 10px;
-    border: 1px solid;
-    margin: 10px 0 10px 0;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(1) {
-    font-weight: bold;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(2) {
-    text-align: justify;
-    font-size: smaller;
-    margin-left: 7%;
-    margin-top: -3%;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(3) {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(4) {
-    text-align: justify;
-    font-size: smaller;
-    margin-left: 7%;
-    margin-top: -3%;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(5) {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(6) {
-    text-align: justify;
-    font-size: smaller;
-        margin-left: 7%;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(7) {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.cng>.my-cng>.pr>ul>li:nth-child(8) {
-    text-align: justify;
-    font-size: smaller;
-    margin-left: 7%;
-}
-
-.ad {
-    margin-left: 30%;
-    margin-top: 50px;
-}
-
-.ad > button {
-    width: 75px;
-    height: 30px;
-    border: none;
+    align-items: center;
+    gap: 50px;
+    padding: 75px 100px 100px 100px;
+    border: 1px solid #333;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.4rem;
 }
 
-.ddd {
-    margin-left: 55%;
-    margin-top: -29px;
+.care-prof {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
 }
+
+.care-prof>span:first-child {
+    font-weight: 800;
+}
+
+.user-info-form {
+    position: relative;
+    display: flex;
+
+}
+
+.photo {
+    position: relative;
+}
+
+.photo>img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    background: #ccc;
+}
+
+.clear {
+    margin-top: 15px;
+}
+
+.cng {
+    position: relative;
+}
+
+.my-cng {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+.my-cng>div>input {
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 1px solid #333;
+}
+
+.resign-form {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+}
+
 
 .resign_btn {
     background: crimson;
-    width: 75px;
-    height: 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
