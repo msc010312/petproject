@@ -167,8 +167,44 @@ window.addEventListener("DOMContentLoaded", () => {
 
 document.querySelectorAll(".details-btn").forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    // 임시 ID로 index + 1 사용 (실제 ID는 서버에서 받아오면 대체)
-    selectedSitterId = index + 1;
-    console.log("임시 선택된 시터 ID:", selectedSitterId);
+    selectedSitterId = btn.dataset.id;
+
+    const dayPrice = parseInt(btn.dataset.dayprice || "0");
+    const hotelPrice = parseInt(btn.dataset.hotelprice || "0");
+    const walkPrice = parseInt(btn.dataset.walkprice || "0");
+
+    let price = 0;
+    let total = 0;
+    const activeTab = document.querySelector(".tab.active");
+    const serviceType = activeTab?.dataset.type;
+    const timeText = document.getElementById("reservation-time")?.textContent || "";
+
+    if (serviceType === "daycare") {
+      price = dayPrice;
+      total = price; // 데이케어는 날짜 차이 계산이 필요 없으므로 그대로 설정
+    } else if (serviceType === "hotel") {
+      price = hotelPrice;
+
+      // 호텔링 예약 시, 날짜 차이 계산
+      if (timeText.includes("~")) {
+        const [startStr, endStr] = timeText.split("~").map(s => s.trim());
+        const startDate = new Date(startStr);
+        const endDate = new Date(endStr);
+        const diffDays = Math.max(1, Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)));
+        total = hotelPrice * diffDays; // 호텔링만 날짜 차이를 곱해서 total 계산
+      }
+    } else if (serviceType === "walk") {
+      price = walkPrice;
+      total = price; // 산책도 날짜 차이 없이 가격 그대로 적용
+    }
+
+    // 금액 출력
+    document.getElementById("reservation-price").textContent = `${price.toLocaleString()}원`;
+    document.getElementById("reservation-total").textContent = `${total.toLocaleString()}원`;
+
+    selectedSitterPrice = price;
+    priceConfirmed = true;
+
+    console.log(`선택된 시터 ID: ${selectedSitterId}, 가격: ${price.toLocaleString()}원, 총 결제 금액: ${total.toLocaleString()}원`);
   });
 });
