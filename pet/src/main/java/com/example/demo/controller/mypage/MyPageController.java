@@ -91,4 +91,22 @@ public class MyPageController {
         return "mypage/sitterprofile";
     }
 
+    @GetMapping("")
+    public String redirectMyPage(@AuthenticationPrincipal UserDetails userDetails) {
+        String email = userDetails.getUsername();
+        UserEntity user = userService.findByEmail(email);
+
+        OwnerEntity owner = ownerRepository.findByUser(user);
+        if (owner != null) {
+            return "redirect:/mypage/ownerpage";
+        }
+
+        SitterEntity sitter = sitterRepository.findByUser(user);
+        if (sitter != null) {
+            return "redirect:/mypage/sitterpage";
+        }
+
+        return "redirect:/";
+    }
+
 }
