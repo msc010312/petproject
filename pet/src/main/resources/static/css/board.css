@@ -251,6 +251,20 @@
     display: none;
 }
 
+.vc-top-list-info>p:nth-child(2) {
+    padding-top: 2px;
+}
+
+.vc-top-list-info>p:nth-child(2)::after {
+    top: 1px;
+}
+
+
+.vc-top-list-info>p:last-child::before {
+    content: '조회수 : ';
+    display: inline;
+}
+
 .vc-content {
     position: relative;
     min-height: calc(100vh - 400px);
