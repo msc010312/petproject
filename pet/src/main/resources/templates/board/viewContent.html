@@ -37,7 +37,7 @@
             <p th:text="${board.content}">내용</p>
         </div>
         <div class="vc-btn">
-            <a class="back btn" id="backBtn" th:href="@{/board}">뒤로가기</a>
+            <a class="back btn" id="backBtn" th:href="@{/board}">목록</a>
             <form th:action="@{/board/delete/{id}(id=${board.boardId})}" method="post" onsubmit="return confirmDelete()">
                 <input type="hidden" id="delSuccessMessage" th:value="${delSuccess}" />
                 <button type="submit" class="del btn" id="delBtn">글 삭제</button>

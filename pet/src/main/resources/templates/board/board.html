@@ -26,7 +26,7 @@
     <div class="board-container">
         <div class="board">
             <div class="board-subject">
-                <span>게시판 제목</span>
+                <span>공지사항</span>
             </div>
             <ul class="board-title b-layout">
                 <li class="board-title-num">번호</li>
@@ -40,7 +40,7 @@
             </div>
             <div class="board-list-wrap">
             <ul class="board-list b-layout" th:each="board, stat : ${boardList}">
-                <li class="board-list-num" th:text="${stat.count}">1</li>
+                <li class="board-list-num" th:text="${totalCount - (currentPage * 7) - stat.index}">1</li>
                 <li class="board-list-cont txt-hidden">
                     <a th:href="@{/board/view/{id}(id=${board.boardId})}" th:text="${board.title}">제목</a>
                 </li>
@@ -56,11 +56,22 @@
                 <input type="hidden" id="isLoggedIn" th:value="${isLoggedIn}" />
             </div>
             <div class="paging">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
+                <a th:if="${currentPage > 0}"
+                   th:href="@{/board(page=${currentPage - 1})}"
+                   class="page-link">◀ 이전</a>
+                <span th:if="${currentPage == 0}" class="disabled">◀ 이전</span>
+
+                <span th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/board(page=${pageNum})}"
+                       th:text="${pageNum + 1}"
+                       th:classappend="${pageNum == currentPage} ? ' current' : ''"
+                       class="page-link"></a>
+                </span>
+
+                <a th:if="${currentPage < totalPages - 1}"
+                   th:href="@{/board(page=${currentPage + 1})}"
+                   class="page-link">다음 ▶</a>
+                <span th:if="${currentPage >= totalPages - 1}" class="disabled">다음 ▶</span>
             </div>
         </div>
     </div>

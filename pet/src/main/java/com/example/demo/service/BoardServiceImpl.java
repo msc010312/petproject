@@ -4,13 +4,9 @@ import com.example.demo.domain.entity.BoardEntity;
 import com.example.demo.domain.repository.BoardRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,17 +22,18 @@ public class BoardServiceImpl implements BoardService{
         return boardRepository.save(board);
     }
 
+    private final int PAGE_SIZE = 7;
+
     @Override
     public List<BoardEntity> getAllBoard(int page) {
-        List<Sort.Order> sorts = new ArrayList<>();
-        sorts.add(Sort.Order.desc("createdAt"));
-        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return boardRepository.findAll();
+        int startRow = page * PAGE_SIZE + 1;
+        int endRow = (page + 1) * PAGE_SIZE;
+        return boardRepository.findBoardsByPage(startRow, endRow);
     }
 
     @Override
     public int getTotalBoardCount() {
-        return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM pet_board", Integer.class);
+        return boardRepository.countTotalBoards();
     }
 
     @Override

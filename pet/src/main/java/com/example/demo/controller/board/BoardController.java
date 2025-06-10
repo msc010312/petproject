@@ -35,13 +35,21 @@ public class BoardController {
     BoardRepository boardRepository;
 
     @GetMapping("/board")
-    public String board(Model model, Principal principal, @RequestParam(value="page", defaultValue="0") int page){
+    public String board(Model model, Principal principal,
+                        @RequestParam(value="page", defaultValue="0") int page) {
+
         List<BoardEntity> boardList = boardService.getAllBoard(page);
+        int totalCount = boardService.getTotalBoardCount();
+        int totalPages = (int) Math.ceil((double) totalCount / 7);
+
         boolean isLoggedIn = principal != null;
 
-        System.out.println("boardlist : "+boardList);
         model.addAttribute("boardList", boardList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
         model.addAttribute("isLoggedIn", isLoggedIn);
+        model.addAttribute("totalCount", totalCount);
+
         return "board/board";
     }
 
