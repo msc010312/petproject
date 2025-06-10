@@ -741,7 +741,7 @@ button {
     padding-left: 15px;
 }
 
-.sitter>.sit-name1 {
+.sitter>.reservation-item {
     border: 1px solid;
     border-radius: 5px;
     width: 590px;
@@ -753,37 +753,37 @@ button {
     flex-wrap: wrap;
 }
 
-.sitter>.sit-name1>ul>li:nth-child(1) {
+.sitter>.reservation-item>ul>li:nth-child(1) {
     font-weight: bold;
     font-size: small;
     padding: 5px;
 }
 
-.sitter>.sit-name1>ul>li:nth-child(2) {
+.sitter>.reservation-item>ul>li:nth-child(2) {
     font-size: small;
     font-weight: bolder;
     margin-left: 30%;
     margin-top: -13.5%;
 }
 
-.sitter>.sit-name1>ul>li:nth-child(3) {
+.sitter>.reservation-item>ul>li:nth-child(3) {
     font-size: small;
     padding-left: 25px;
     margin-top: -27px;
 }
 
-.sitter>.sit-name1>ul>li:nth-child(4) {
+.sitter>.reservation-item>ul>li:nth-child(4) {
     font-size: small;
     margin-top: -16%;
     margin-left: 85px;
 }
 
-.sitter>.sit-name1>ul>li:nth-child(5) {
+.sitter>.reservation-item>ul>li:nth-child(5) {
     font-size: small;
     margin-left: 1px;
 }
 
-.sitter>.sit-name1>.chat1 {
+.sitter>.reservation-item>.chat1 {
     /* border: 1px solid;
     border-radius: 5px;
     width: 80px;
@@ -794,65 +794,7 @@ button {
     margin-left: 84%;
 }
 
-.sitter>.sit-name1>.chat1>a {
-    /* font-size: medium; */
-}
-
-.sitter>.sit-name2 {
-    border: 1px solid;
-    border-radius: 5px;
-    width: 590px;
-    height: 70px;
-    margin-top: 10px;
-    margin-left: 11px;
-
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.sitter>.sit-name2>ul>li:nth-child(1) {
-    font-weight: bold;
-    font-size: small;
-    padding: 5px;
-}
-
-.sitter>.sit-name2>ul>li:nth-child(2) {
-    font-size: small;
-    font-weight: bolder;
-    margin-left: 30%;
-    margin-top: -13.5%;
-}
-
-.sitter>.sit-name2>ul>li:nth-child(3) {
-    font-size: small;
-    padding-left: 25px;
-    margin-top: -27px;
-}
-
-.sitter>.sit-name2>ul>li:nth-child(4) {
-    font-size: small;
-    margin-top: -13.5%;
-    margin-left: 85px;
-    margin-top: -16%;
-}
-
-.sitter>.sit-name2>ul>li:nth-child(5) {
-    font-size: small;
-    margin-left: 1px;
-}
-
-.sitter>.sit-name2>.chat2 {
-    /* border: 1px solid;
-    border-radius: 5px;
-    width: 80px;
-    height: 30px; */
-    text-align: center;
-
-    margin-top: -52px;
-    margin-left: 84%;
-}
-
-.sitter>.sit-name2>.chat2>a {
+.sitter>.reservation-item>.chat1>a {
     /* font-size: medium; */
 }
 

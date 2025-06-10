@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showPage(1); // 초기 첫 페이지 표시
 });
 
+//------------------------ pet --------------------------
 document.body.addEventListener("click", async (event) => {
   if (event.target.id === "addPetBtn") {
     const name = document.getElementById("petName").value.trim();

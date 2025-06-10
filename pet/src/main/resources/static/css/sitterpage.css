@@ -453,8 +453,8 @@ button {
 
 .res-card {
     height: 210px;
-    margin-left: 3%;
-    margin-top: 25px;
+    margin-left: -40%;
+    margin-top: 70px;
 
     border: 1px solid;
     border-radius: 5px;
@@ -982,9 +982,9 @@ button {
     width: 1260px;
     /* height; */
     position: relative;
-    display: flex;
+/*    display: flex;
     flex-wrap: wrap;
-    margin: 20px 0 20px 0;
+    margin: 20px 0 20px 0;*/
 }
 
 .resend>.end {
@@ -1021,8 +1021,9 @@ button {
     height: 250px;
     border-radius: 5px;
     border: 1px solid;
-    margin: 10px;
-    flex: 0 0 auto;
+/*    margin: 10px;
+    flex: 0 0 auto;*/
+    margin-top: 30px;
 }
 
 .end-res .pet1 {
@@ -1283,15 +1284,16 @@ button {
 }
 
 /* pagenation */
-.resend .res {
-    display: flex;
-    margin-top: 20px;
+.resend .res-pagination-container {
+  /*  display: flex;*/
+/*    margin-top: 20px;
     margin-left: 39.5%;
     margin-bottom: 10px;
-    gap: 10px;
+    gap: 10px;*/
+    justify-items: center;
 }
 
-.res button {
+.res-pagination-container button {
     flex: 1;
     padding: 6px 10px;
     border: none;
@@ -1300,7 +1302,7 @@ button {
 }
 
 
-.res .number {
+.res-pagination-container .number {
     display: flex;
     gap: 10px;
     list-style: none;
