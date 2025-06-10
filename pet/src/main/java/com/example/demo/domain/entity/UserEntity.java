@@ -44,6 +44,9 @@ public class UserEntity {
     @Column(name = "CREATED_AT")
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
+
     @PrePersist
     public void prePersist() {
         if (createdAt == null) {

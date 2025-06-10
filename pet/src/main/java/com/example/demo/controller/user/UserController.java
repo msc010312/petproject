@@ -14,12 +14,16 @@ import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @Controller
 @Data
@@ -35,6 +39,9 @@ public class UserController {
 
     @Autowired
     private SitterRepository sitterRepository;
+
+    @Value("${upload.path}")  // 서버에 파일이 저장될 경로 (application.properties에서 설정)
+    private String uploadPath;
 
     @GetMapping("/signup")
     public String signup() {
@@ -90,6 +97,9 @@ public class UserController {
     @PostMapping("/delete")
     public String deleteUser(@AuthenticationPrincipal UserDetails userDetails, HttpSession session, Model model) {
         UserEntity user = userRepository.findByEmail(userDetails.getUsername());
+
+
+
         userService.deleteById(user.getUserId());
         session.invalidate();
         model.addAttribute("message", "회원 탈퇴가 완료되었습니다.");
@@ -104,7 +114,7 @@ public class UserController {
     }
 
     @PostMapping("/update/owner/{userId}")
-    public String updateOwner(@PathVariable Long userId, @ModelAttribute OwnerForm ownerForm, @RequestParam("profileImage") MultipartFile imageFile) {
+    public String updateOwner(@PathVariable Long userId, @ModelAttribute OwnerForm ownerForm, @RequestParam("profileImage") MultipartFile imageFile) throws IOException {
 
         UserEntity userEntity = userService.findById(userId);
 
@@ -112,13 +122,32 @@ public class UserController {
         userEntity.setAddress(ownerForm.getAddress());
         userEntity.setPhone(ownerForm.getPhone());
 
+        // 이미지 파일이 존재하면 처리
+        if (!imageFile.isEmpty()) {
+            String filename = imageFile.getOriginalFilename();
+            String filePath = "/uploads/" + filename; // 서버에 저장될 파일 경로
+
+            // 디렉토리 존재 여부 확인 및 생성
+            File directory = new File(uploadPath);
+            if (!directory.exists()) {
+                directory.mkdirs(); // 디렉토리 생성
+            }
+
+            // 파일을 서버에 저장
+            File dest = new File(uploadPath + "/" + filename);
+            imageFile.transferTo(dest);  // 파일 저장
+
+            // 경로를 데이터베이스에 저장
+            userEntity.setProfileImageUrl(filePath); // 경로를 데이터베이스에 저장
+        }
+
         userService.saveUser(userEntity);
 
-        return "redirect:/mypage/ownerpage" + userId;
+        return "redirect:/mypage/ownerpage";
     }
 
     @PostMapping("/update/sitter/{userId}")
-    public String updateSitter(@PathVariable Long userId, @ModelAttribute SitterForm sitterForm, @RequestParam("profileImage") MultipartFile imageFile) {
+    public String updateSitter(@PathVariable Long userId, @ModelAttribute SitterForm sitterForm, @RequestParam("profileImage") MultipartFile imageFile) throws IOException {
 
         UserEntity userEntity = userService.findById(userId);
         SitterEntity sitterEntity = sitterRepository.findByUser(userEntity);
@@ -133,6 +162,25 @@ public class UserController {
         sitterEntity.setPresentation(
                 sitterForm.getPresentation() != null ? sitterForm.getPresentation() : ""
         );
+
+        // 이미지 파일이 존재하면 처리
+        if (!imageFile.isEmpty()) {
+            String filename = imageFile.getOriginalFilename();
+            String filePath = "/uploads/" + filename; // 서버에 저장될 파일 경로
+
+            // 디렉토리 존재 여부 확인 및 생성
+            File directory = new File(uploadPath);
+            if (!directory.exists()) {
+                directory.mkdirs(); // 디렉토리 생성
+            }
+
+            // 파일을 서버에 저장
+            File dest = new File(uploadPath + "/" + filename);
+            imageFile.transferTo(dest);  // 파일 저장
+
+            // 경로를 데이터베이스에 저장
+            userEntity.setProfileImageUrl(filePath); // 경로를 데이터베이스에 저장
+        }
 
         userService.saveUser(userEntity);
         sitterRepository.save(sitterEntity);
