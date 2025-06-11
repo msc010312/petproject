@@ -269,3 +269,19 @@ img {
         max-width: 100%;
     }
 }
+.reservation-info .info-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+.reservation-info .info-label {
+    flex: 0 0 auto;      /* 레이블은 콘텐츠 폭만큼 */
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+.reservation-info .info-value {
+    flex: 1 1 auto;      /* 나머지 공간 차지 */
+    text-align: right;   /* 값 우측 정렬 */
+    word-wrap: break-word; /* 긴 텍스트 자동 줄바꿈 */
+}
