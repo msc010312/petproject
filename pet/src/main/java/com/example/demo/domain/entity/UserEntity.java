@@ -47,6 +47,12 @@ public class UserEntity {
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private OwnerEntity owner;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private SitterEntity sitter;
+
     @PrePersist
     public void prePersist() {
         if (createdAt == null) {

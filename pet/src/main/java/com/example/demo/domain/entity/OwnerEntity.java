@@ -24,7 +24,7 @@ public class OwnerEntity {
     @Column(name = "total_payment")
     private Long totalPayment = 0L;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserEntity user;
 }

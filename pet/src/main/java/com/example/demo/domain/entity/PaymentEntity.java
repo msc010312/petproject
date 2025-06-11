@@ -36,7 +36,7 @@ public class PaymentEntity {
     @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id")
     private ReserveEntity reservation;
 }

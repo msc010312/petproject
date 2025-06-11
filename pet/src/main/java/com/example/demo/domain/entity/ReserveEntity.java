@@ -37,11 +37,11 @@ public class ReserveEntity {
     @Column(name = "payment", nullable = false)
     private Long payment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "sitter_id")
     private SitterEntity sitter;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
     private OwnerEntity owner;
 

@@ -10,6 +10,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Data
@@ -73,6 +74,7 @@ public class UserServiceImpl implements UserService {
 //        return userRepository.findByEmail(email); // 이메일로 사용자 조회
 
 
+    @Transactional
     @Override
     public void deleteById(Long userId) {
         userRepository.deleteById(userId);
