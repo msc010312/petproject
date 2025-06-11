@@ -97,8 +97,21 @@ public class MyPageController {
         OwnerEntity owner = ownerRepository.findByUser(user);
         List<PetEntity> pet = petRepository.findByOwner(owner);
         List<ReserveEntity> reservations = reserveRepository.findBySitter(sitter);
+
+        // 진행 중인 예약만 필터링 (예약 확정 상태)
+        List<ReserveEntity> ongoingReservations = reservations.stream()
+                .filter(reserve -> "예약 확정".equals(reserve.getStatus()))
+                .collect(Collectors.toList());
+
+        // 완료된 예약만 필터링 (완료 상태)
+        List<ReserveEntity> completedReservations = reservations.stream()
+                .filter(reserve -> "완료".equals(reserve.getStatus()))
+                .collect(Collectors.toList());
+
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
+        model.addAttribute("ongoingReservations", ongoingReservations); // 진행중인 예약
+        model.addAttribute("completedReservations", completedReservations); // 완료된 예약
         model.addAttribute("pet",pet);
         return "mypage/sitterpage";
     }
