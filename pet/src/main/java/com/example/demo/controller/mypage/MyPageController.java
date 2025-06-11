@@ -57,7 +57,7 @@ public class MyPageController {
         List<ReserveEntity> ongoingReservations = reservations.stream()
                 .filter(reserve -> "예약 확정".equals(reserve.getStatus()))
                 .collect(Collectors.toList());
-        
+
         int pageSize = 2;
         int totalPages = (int) Math.ceil((double) ongoingReservations.size() / pageSize);
         int start = page * pageSize;
@@ -118,13 +118,19 @@ public class MyPageController {
                 .filter(reserve -> "완료".equals(reserve.getStatus()))
                 .collect(Collectors.toList());
 
+        int totalCompletedPages = (int) Math.ceil((double) completedReservations.size() / pageSize);
+        int startCompleted = page * pageSize;
+        int endCompleted = Math.min(startCompleted + pageSize, completedReservations.size());
+        List<ReserveEntity> pageCompletedContent = completedReservations.subList(startCompleted, endCompleted);
+
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
         model.addAttribute("ongoingReservations", pageContent); // 진행중인 예약
-        model.addAttribute("completedReservations", completedReservations); // 완료된 예약
+        model.addAttribute("completedReservations", pageCompletedContent); // 완료된 예약
         model.addAttribute("pet",pet);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        model.addAttribute("completedTotalPages", totalCompletedPages);
         return "mypage/sitterpage";
     }
 
