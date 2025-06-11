@@ -126,7 +126,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     // @Scheduled 어노테이션을 사용하여 주기적으로 예약 상태를 업데이트
-    @Scheduled(cron = "0 0/5 * * * *")  // 매 10분마다 실행
+    @Scheduled(cron = "0 0/5 * * * *")  // 매 5분마다 실행
     @Transactional
     public void scheduledUpdateReservationStatus() {
         System.out.println("Scheduled update started at: " + LocalDateTime.now());

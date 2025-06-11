@@ -104,6 +104,7 @@
                     </div>
                     <!-- chart2 -->
                 </div>
+                <!-- 진행 중인 예약 -->
                 <div class="reserve">
                     <div class="reserv">
                         <span>진행중인 예약</span>
@@ -111,114 +112,119 @@
                             <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
                         </ul>
                     </div>
-                    <!-- 페이지 1 -->
-                    <div th:each="reserve : ${reservations}" th:if="${reserve.status == '예약 확정'}" class="resev-page" data-page="1">
+                    <div th:each="reserve : ${ongoingReservations}">
                         <div class="res-card">
                             <ul>
-                                <span class="type" th:text="${reserve.serviceType}"></span>
-                                <span class="status" th:text="${reserve.status}"></span>
+                                <li class="type" th:text="${reserve.serviceType}"></li>
+                                <li class="status" th:text="${reserve.status}"></li>
                             </ul>
                             <div class="schedule">
                                 <span class="material-symbols-outlined">calendar_today</span>
                                 <span th:text="${reserve.date}"></span>
                             </div>
                             <div class="sit" th:text="${reserve.sitter.user.name} + '시터'"></div>
-                            <div class="price" th:text="${reserve.payment}">120,000원</div>
+                            <div class="price" th:text="${reserve.payment}"></div>
                             <div class="actions">
                                 <button class="openChatBtn">채팅</button>
                                 <button class="modal-btn" data-type="view1">상세보기</button>
                             </div>
                         </div>
-                        <!-- 페이지네이션 -->
-                        <div class="allres">
-                            <button th:if="${currentPage > 0}"
-                                    th:onclick="location.href=\'items?page=' + ${currentPage -1} + '\'">
-                                <span class="left material-symbols-outlined">chevron_left</span>
-                            </button>
-                            <ul class="number">
-                                <div th:each="pageNum : ${#numbers.sequence(0, totalPages != null ? totalPages - 1 : 0)}">
-                                    <button class="page-btn" th:text="${pageNum + 1}"
-                                            th:classappend="${pageNum == currentPage ? 'active' : ''}"
-                                            th:onclick="location.href='items?page=' + ${pageNum}"></button>
-                                </div>
-                            </ul>
-                            <button th:if="${totalPages != null and currentPage < totalPages -1}"
-                                    th:onclick="location.href=\'items?page=' + ${currentPage +1} + '\'">
-                                <span class="right material-symbols-outlined">chevron_right</span>
-                            </button>
+                    </div>
+                </div>
+                <!-- 페이지네이션 -->
+                <div class="allres">
+                    <button class="left material-symbols-outlined">
+                        chevron_left
+                    </button>
+                    <ul class="number">
+                        <li>
+                            <button class="page-btn">1</button>
+                        </li>
+                        <li>
+                            <button class="page-btn">2</button>
+                        </li>
+                        <li>
+                            <button class="page-btn">3</button>
+                        </li>
+                        <li>
+                            <button class="page-btn">4</button>
+                        </li>
+                    </ul>
+                    <button class="right material-symbols-outlined">
+                        chevron_right
+                    </button>
+                </div>
+            </div>
+            <!-- chart3 -->
+            <div class="all-pro">
+                <div class="profil">
+                    <div class="pet-prof">
+                        <span>반려동물 프로필</span>
+                        <ul>
+                            <li>등록된 반려동물 정보입니다.</li>
+                        </ul>
+                        <div class="care">
+                            <button class="modal-btn" data-type="petInfo">관리</button>
                         </div>
                     </div>
                 </div>
-                <!-- chart3 -->
-                <div class="all-pro">
-                    <div class="profil">
-                        <div class="pet-prof">
-                            <span>반려동물 프로필</span>
-                            <ul>
-                                <li>등록된 반려동물 정보입니다.</li>
-                            </ul>
-                            <div class="care">
-                                <button class="modal-btn" data-type="petInfo">관리</button>
-                            </div>
-                        </div>
+                <div class="sitter">
+                    <div class="sit-used">
+                        <span>최근 이용한 시터</span>
+                        <ul>
+                            <li>최근에 이용한 펫시터 목록입니다.</li>
+                        </ul>
                     </div>
-                    <div class="sitter">
-                        <div class="sit-used">
-                            <span>최근 이용한 시터</span>
-                            <ul>
-                                <li>최근에 이용한 펫시터 목록입니다.</li>
-                            </ul>
-                        </div>
-                        <div th:each="res : ${reservations}" th:if="${res.status == '완료'}">
-                            <div class="reservation-item">
+                    <div th:each="res : ${completedReservations}">
+                        <div class="reservation-item">
                                 <span th:if="${res.sitter != null}"
                                       th:text="'이름 : ' + ${res.sitter.user.name}"></span><br>
-                                <span th:text="'서비스 : ' + ${res.serviceType}"></span><br>
-                                <span th:text="'날짜 : ' + ${res.date}"></span>
-                            </div>
+                            <span th:text="'서비스 : ' + ${res.serviceType}"></span><br>
+                            <span th:text="'날짜 : ' + ${res.date}"></span>
                         </div>
-                        <div class="chat1">
-                            <!-- 모달 버튼 -->
-                            <button class="openChatBtn" data-sitter="sitter3">
-                                채팅
-                            </button>
-                        </div>
+                    </div>
+                    <div class="chat1">
+                        <!-- 모달 버튼 -->
+                        <button class="openChatBtn" data-sitter="sitter3">
+                            채팅
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- 기본 모달 -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeBtn">&times;</span>
-            <div id="modalContentBody">
-                <p>기본 모달 내용</p>
-            </div>
+</div>
+<!-- 기본 모달 -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <div id="modalContentBody">
+            <p>기본 모달 내용</p>
         </div>
     </div>
-    <!-- 채팅 모달 -->
-    <div id="chatModal" class="chat-modal">
-        <div class="chat-box">
-            <div class="chat-header">
-                <span id="chatWith">채팅</span>
-                <span id="closeChatBtn" class="close">&times;</span>
-            </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input">
-                <input
-                        type="text"
-                        id="chatInput"
-                        placeholder="메시지를 입력하세요"
-                />
-                <button id="sendBtn">전송</button>
-            </div>
+</div>
+<!-- 채팅 모달 -->
+<div id="chatModal" class="chat-modal">
+    <div class="chat-box">
+        <div class="chat-header">
+            <span id="chatWith">채팅</span>
+            <span id="closeChatBtn" class="close">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="메시지를 입력하세요"
+            />
+            <button id="sendBtn">전송</button>
         </div>
     </div>
-    <!-- footer영역(템플릿화 예정) -->
-    <div class="footer">
-        <span>footer</span>
-    </div>
+</div>
+<!-- footer영역(템플릿화 예정) -->
+<div class="footer">
+    <span>footer</span>
+</div>
 </div>
 </body>
 </html>
