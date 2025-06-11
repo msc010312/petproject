@@ -321,7 +321,7 @@ button {
     height: auto;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin: 20px 0 20px 0;
 }
 
@@ -344,6 +344,10 @@ button {
 }
 
 .resev-page.active {
+    display: flex;
+}
+
+.reseach {
     display: flex;
 }
 

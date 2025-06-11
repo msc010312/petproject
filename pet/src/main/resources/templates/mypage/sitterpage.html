@@ -30,26 +30,35 @@
     <!-- chart1 -->
     <div class="produce">
         <div class="name">
-            <div class="dog1"><img th:src="@{/asset/sitter1.jpg}"/></div>
-            <span th:text="'반갑습니다,' + ${sitter.user.name} + '시터님'"></span>
+            <div class="dog1"><img src="../../asset/sitter2.jpg"/></div>
+            <span th:text="'반갑습니다, ' + ${sitter.user.name} + '님!'"></span>
             <ul>
                 <li>오늘도 반려동물에게 즐거운 하루를 선사해 주세요</li>
-                <!-- <span class="material-symbols-outlined"> favorite </span> -->
             </ul>
         </div>
-        <span class="material-symbols-outlined" style="font-size: 16px">star</span>
-        <div class="review">작성된 후기 : 2건</span></div>
-        <span class="material-symbols-outlined" style="font-size: 15px">calendar_today</span>
-        <div class="reserving">진행 중인 예약 : 6건</span></div>
-        <span class="material-symbols-outlined" style="font-size: 15px">credit_card</span>
-        <div class="payement-amount">이 달 금액 : 100,000원</span>
+        <div class="review">
+                <span class="material-symbols-outlined" style="font-size: 16px">
+                  star
+                </span>
+            <span>작성된 후기 : *건</span>
+        </div>
+        <div class="reserving">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  calendar_today
+                </span>
+            <span>진행 중인 예약 : *건</span>
+        </div>
+        <div class="payment-amount">
+                <span class="material-symbols-outlined" style="font-size: 15px">
+                  credit_card
+                </span>
+            <span>이 달 금액 : *원</span>
         </div>
         <div class="btn">
             <div class="pro-setting"><a th:href="@{/mypage/sitterprofile}">프로필 관리</a></div>
             <div class="pay-amount">
                 <!-- 모달 버튼 -->
                 <button class="modal-btn" data-type="pay">결제 내역</button>
-                </th:block>
             </div>
         </div>
     </div>
@@ -61,9 +70,8 @@
                 <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
             </ul>
         </div>
-        <div th:each="reserve:${ongoingReservations}" th:if="${reserve.sitter == sitter}"
-             class="end-page" data-page="1">
-            <div class="res-row">
+        <div>
+            <div th:each="reserve:${ongoingReservations}" th:if="${reserve.sitter == sitter}">
                 <div class="res-card">
                     <ul>
                         <li class="type" th:text="${reserve.serviceType}"></li>
@@ -83,50 +91,12 @@
                     </div>
                 </div>
             </div>
-            <!--페이지네이션-->
-            <div class="allres">
-                <button th:if="${currentPage > 0}"
-                        th:onclick="location.href=\'items?page=' + ${currentPage -1} + '\'">
-                    <span class="left material-symbols-outlined">chevron_left</span>
-                </button>
-                <ul class="number">
-                    <div th:each="pageNum : ${#numbers.sequence(0, totalPages != null ? totalPages - 1 : 0)}">
-                        <button class="page-btn" th:text="${pageNum + 1}"
-                                th:classappend="${pageNum == currentPage ? 'active' : ''}"
-                                th:onclick="location.href='items?page=' + ${pageNum}"></button>
-                    </div>
-                </ul>
-                <button th:if="${totalPages != null and currentPage < totalPages -1}"
-                        th:onclick="location.href=\'items?page=' + ${currentPage +1} + '\'">
-                    <span class="right material-symbols-outlined">chevron_right</span>
-                </button>
-            </div>
         </div>
-    </div>
-    <!-- chart3 -->
-    <div class="resend">
-        <div class="end">
-            <span>예약완료</span>
-            <ul>
-                <li>LEE 시터님의 완료된 예약 내역입니다.</li>
-            </ul>
-        </div>
-        <div th:each="reserve:${completedReservations}" th:if="${reserve.sitter == sitter}" class="res-page" data-page="1">
-            <div class="end-res">
-                <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
-                <div class="en" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
-                <div class="ed" th:text="'기간 : ' + ${reserve.date}"></div>
-                <div class="es" th:text="'이용한 서비스 : ' + ${reserve.serviceType}"></div>
-                <div class="char">
-                    <button class="modal-btn" data-type="view5">후기</button>
-                </div>
-            </div>
-        </div>
-        <!-- 페이지네이션 -->
-        <div class="res-pagination-container">
+        <!--페이지네이션-->
+        <div class="allres">
             <button th:if="${currentPage > 0}"
                     th:onclick="location.href=\'items?page=' + ${currentPage -1} + '\'">
-                <span class="left">&lt;</span>
+                <span class="left material-symbols-outlined">chevron_left</span>
             </button>
             <ul class="number">
                 <div th:each="pageNum : ${#numbers.sequence(0, totalPages != null ? totalPages - 1 : 0)}">
@@ -135,39 +105,79 @@
                             th:onclick="location.href='items?page=' + ${pageNum}"></button>
                 </div>
             </ul>
-
             <button th:if="${totalPages != null and currentPage < totalPages -1}"
                     th:onclick="location.href=\'items?page=' + ${currentPage +1} + '\'">
-                <span class="right">&gt;</span>
+                <span class="right material-symbols-outlined">chevron_right</span>
             </button>
         </div>
     </div>
-    <!-- 기본 모달 -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeBtn">&times;</span>
-            <div id="modalContentBody">
-                <p>기본 모달 내용</p>
+</div>
+<!-- chart3 -->
+<div class="resend">
+    <div class="end">
+        <span>예약완료</span>
+        <ul>
+            <li>LEE 시터님의 완료된 예약 내역입니다.</li>
+        </ul>
+    </div>
+    <div th:each="reserve:${completedReservations}" th:if="${reserve.sitter == sitter}" class="res-page"
+         data-page="1">
+        <div class="end-res">
+            <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+            <div class="en" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
+            <div class="ed" th:text="'기간 : ' + ${reserve.date}"></div>
+            <div class="es" th:text="'이용한 서비스 : ' + ${reserve.serviceType}"></div>
+            <div class="char">
+                <button class="modal-btn" data-type="view5">후기</button>
             </div>
         </div>
     </div>
-    <!-- 채팅 모달 -->
-    <div id="chatModal" class="chat-modal">
-        <div class="chat-box">
-            <div class="chat-header">
-                <span id="chatWith">채팅</span>
-                <span id="closeChatBtn" class="close">&times;</span>
+    <!-- 페이지네이션 -->
+    <div class="res-pagination-container">
+        <button th:if="${currentPage > 0}"
+                th:onclick="location.href=\'items?page=' + ${currentPage -1} + '\'">
+            <span class="left">&lt;</span>
+        </button>
+        <ul class="number">
+            <div th:each="pageNum : ${#numbers.sequence(0, totalPages != null ? totalPages - 1 : 0)}">
+                <button class="page-btn" th:text="${pageNum + 1}"
+                        th:classappend="${pageNum == currentPage ? 'active' : ''}"
+                        th:onclick="location.href='items?page=' + ${pageNum}"></button>
             </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input">
-                <input
-                        type="text"
-                        id="chatInput"
-                        placeholder="메시지를 입력하세요"
-                />
-                <button id="sendBtn">전송</button>
-            </div>
+        </ul>
+
+        <button th:if="${totalPages != null and currentPage < totalPages -1}"
+                th:onclick="location.href=\'items?page=' + ${currentPage +1} + '\'">
+            <span class="right">&gt;</span>
+        </button>
+    </div>
+</div>
+<!-- 기본 모달 -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <div id="modalContentBody">
+            <p>기본 모달 내용</p>
         </div>
     </div>
+</div>
+<!-- 채팅 모달 -->
+<div id="chatModal" class="chat-modal">
+    <div class="chat-box">
+        <div class="chat-header">
+            <span id="chatWith">채팅</span>
+            <span id="closeChatBtn" class="close">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="메시지를 입력하세요"
+            />
+            <button id="sendBtn">전송</button>
+        </div>
+    </div>
+</div>
 </div>
 </html>
