@@ -1,69 +1,33 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- link -->
-    <script src="/js/link.js" defer></script>
-    <title>Document</title>
-    <!-- css -->
-    <link th:href="@{/css/style.css}" rel="stylesheet"/>
-    <link th:href="@{/css/header.css}" rel="stylesheet"/>
-    <link th:href="@{/css/footer.css}" rel="stylesheet"/>
-    <link th:href="@{/css/ownerpage.css}" rel="stylesheet"/>
-    <!-- JS -->
-    <script th:src="@{/js/ownerpage.js}" defer></script>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/temp}"
+>
+
+<!-- title -->
+<th:block layout:fragment="title">
+    mypage
+</th:block>
+
+<!-- css -->
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="/css/ownerpage.css?after">
+</th:block>
+
+<!-- script -->
+<th:block layout:fragment="script">
+    <script src="/js/ownerpage.js" defer></script>
     <script th:inline="javascript">
         let ownerId = [[${owner.ownerId}]];
     </script>
-
-    <!-- goole icon -->
-    <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-</head>
-
-<body>
-<div class="wrapper">
-    <!-- 헤더영역 (템플릿화 예정) -->
-    <div class="header">
-        <div class="logo">
-            <span><a href="#">LOGO</a></span>
-        </div>
-        <div class="menu">
-            <ul>
-                <li class="menu-service">
-                    <a href="#">Service</a>
-                    <ul class="sub-menu">
-                        <li class="sub-item"><a href="#">Day Care</a></li>
-                        <li class="sub-item"><a href="#">Hotelling</a></li>
-                        <li class="sub-item"><a href="#">work with pet</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">place</a></li>
-                <li><a href="#">board</a></li>
-            </ul>
-        </div>
-        <div class="sign">
-            <button class="sign-in btn">
-                <a href="../sign/login.html">로그인</a>
-            </button>
-            <button class="sign-up btn">
-                <a href="../sign/signup.html">회원가입</a>
-            </button>
-        </div>
-    </div>
-    <!-- 메인영역 -->
-    <div class="main">
-        <!-- pagew 1260px -->
-        <div class="pagew">
-            <!-- 작업 영역 -->
-            <div class="content">
-                <!-- chart1 -->
-                <div class="produce">
-                    <div class="name">
-                        <img src="/asset/dog1.jpg"/>
+</th:block>
+<!-- 작업 영역 -->
+<div class="content" layout:fragment="content">
+    <!-- chart1 -->
+    <div class="produce">
+        <div class="name">
+            <img src="/asset/dog1.jpg"/>
                         <span th:text="'안녕하세요,' + ${owner.user.name} + '님!'"></span>
                         <ul>
                             <li>오늘도 반려견과 행복한 하루 되세요</li>
@@ -104,8 +68,8 @@
                     </div>
                     <!-- chart2 -->
                 </div>
-                <!-- 진행 중인 예약 -->
-                <div class="reserve">
+    <!-- 진행 중인 예약 -->
+    <div class="reserve">
                     <div class="reserv">
                         <span>진행중인 예약</span>
                         <ul>
@@ -150,10 +114,8 @@
                         <span th:if="${currentPage >= totalPages - 1}" class="disabled">다음 ▶</span>
                     </div>
                 </div>
-
-            </div>
-            <!-- chart3 -->
-            <div class="all-pro">
+    <!-- chart3 -->
+    <div class="all-pro">
                 <div class="profil">
                     <div class="pet-prof">
                         <span>반려동물 프로필</span>
@@ -188,8 +150,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </div>
 <!-- 기본 모달 -->
 <div id="myModal" class="modal">
@@ -218,10 +178,4 @@
         </div>
     </div>
 </div>
-<!-- footer영역(템플릿화 예정) -->
-<div class="footer">
-    <span>footer</span>
-</div>
-</div>
-</body>
 </html>
