@@ -90,24 +90,25 @@
                 </div>
             </div>
         </div>
-    <!--페이지네이션-->
-    <div class="allres">
-        <button th:if="${currentPage > 0}"
-                th:onclick="location.href=\'items?page=' + ${currentPage -1} + '\'">
-            <span class="left material-symbols-outlined">chevron_left</span>
-        </button>
-        <ul class="number">
-            <div th:each="pageNum : ${#numbers.sequence(0, totalPages != null ? totalPages - 1 : 0)}">
-                <button class="page-btn" th:text="${pageNum + 1}"
-                        th:classappend="${pageNum == currentPage ? 'active' : ''}"
-                        th:onclick="location.href='items?page=' + ${pageNum}"></button>
-            </div>
-        </ul>
-        <button th:if="${totalPages != null and currentPage < totalPages -1}"
-                th:onclick="location.href=\'items?page=' + ${currentPage +1} + '\'">
-            <span class="right material-symbols-outlined">chevron_right</span>
-        </button>
-    </div>
+        <!--페이지네이션-->
+        <div class="allres">
+            <a th:if="${currentPage > 0}"
+               th:href="@{/mypage/sitterpage(page=${currentPage - 1})}"
+               class="page-link">◀ 이전</a>
+            <span th:if="${currentPage == 0}" class="disabled">◀ 이전</span>
+
+            <span th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/mypage/sitterpage(page=${pageNum})}"
+                       th:text="${pageNum + 1}"
+                       th:classappend="${pageNum == currentPage} ? ' current' : ''"
+                       class="page-link"></a>
+                </span>
+
+            <a th:if="${currentPage < totalPages - 1}"
+               th:href="@{/mypage/sitterpage(page=${currentPage + 1})}"
+               class="page-link">다음 ▶</a>
+            <span th:if="${currentPage >= totalPages - 1}" class="disabled">다음 ▶</span>
+        </div>
     </div>
     <!-- chart3 -->
     <div class="resend">

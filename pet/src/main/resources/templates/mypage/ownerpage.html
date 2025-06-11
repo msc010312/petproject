@@ -20,6 +20,7 @@
     <script src="/js/ownerpage.js" defer></script>
     <script th:inline="javascript">
         let ownerId = [[${owner.ownerId}]];
+        console.log("JS ownerId:", ownerId);
     </script>
 </th:block>
 <!-- 작업 영역 -->
@@ -150,7 +151,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <!-- 기본 모달 -->
 <div id="myModal" class="modal">
     <div class="modal-content">
@@ -177,5 +178,6 @@
             <button id="sendBtn">전송</button>
         </div>
     </div>
+</div>
 </div>
 </html>
