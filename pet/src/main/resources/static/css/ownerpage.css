@@ -573,10 +573,11 @@ button {
 
 .reserve .allres {
     display: flex;
+    justify-content: center;
     margin-top: 20px;
-    margin-left: 39.5%;
     margin-bottom: 10px;
     gap: 10px;
+    padding: 10px;
 }
 
 .allres button {
@@ -727,11 +728,31 @@ button {
 
 /* SITTER */
 .sitter {
+    position: relative;
     border: 1px solid;
     border-radius: 3px;
     width: 680px;
     height: 260px;
     margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recent-sitter {
+    height: 100%;
+    overflow-y: scroll;
+    padding-left: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.3rem;
+}
+
+.completedReservations {
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
 }
 
 .sitter>.sit-used>span {
@@ -834,7 +855,7 @@ button {
 }
 
 .pro-card button {
-  margin-left: auto;
+  margin-left: 350px;
   background-color: #f44;
   color: white;
   border: none;
