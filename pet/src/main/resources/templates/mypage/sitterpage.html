@@ -61,23 +61,21 @@
                 <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
             </ul>
         </div>
-        <div th:each="reserve:${reservations}" th:if="${reserve.sitter == sitter && reserve.status == '예약 확정'}"
+        <div th:each="reserve:${ongoingReservations}" th:if="${reserve.sitter == sitter}"
              class="end-page" data-page="1">
             <div class="res-row">
                 <div class="res-card">
                     <ul>
-                        <span class="reserveType" th:text="${reserve.serviceType}"></span>
-                        <!--                                    <li class="type" th:text="${reserve.serviceType}"></li>-->
-                        <!--                                    <li class="status" th:text="${reserve.status}"></li>-->
+                        <li class="type" th:text="${reserve.serviceType}"></li>
+                        <li class="status" th:text="${reserve.status}"></li>
                     </ul>
                     <div class="schedule">
-                                    <span class="material-symbols-outlined"
-                                          style="font-size: 15px">calendar_today</span>
-                        <div class="schedule" th:text="${reserve.date}"></div>
+                        <span class="material-symbols-outlined" style="font-size: 15px">calendar_today</span>
+                        <span th:text="${reserve.date}"></span>
                     </div>
                     <div class="pet"><img th:src="@{/asset/cat.jpg}" alt="반려동물 이미지"></div>
                     <div class="na" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
-                    <div class="price">케어비용 : 50,000원</div>
+                    <div class="price" th:text="'케어비용 : ' + ${reserve.payment}"></div>
                     <div class="noti" th:text="'요청사항 : ' + ${reserve.request}"></div>
                     <div class="actions">
                         <button class="openChatBtn">채팅</button>
@@ -113,7 +111,7 @@
                 <li>LEE 시터님의 완료된 예약 내역입니다.</li>
             </ul>
         </div>
-        <div th:each="reserve:${reservations}" th:if="${reserve.status == '완료'}" class="res-page" data-page="1">
+        <div th:each="reserve:${completedReservations}" th:if="${reserve.sitter == sitter}" class="res-page" data-page="1">
             <div class="end-res">
                 <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
                 <div class="en" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
