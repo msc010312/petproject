@@ -68,11 +68,9 @@ public class MyPageController {
         SitterEntity sitter = sitterRepository.findByUser(user);
         OwnerEntity owner = ownerRepository.findByUser(user);
         List<PetEntity> pet = petRepository.findByOwner(owner);
-        List<ReserveEntity> reserve = reserveRepository.findBySitter(sitter);
         List<ReserveEntity> reservations = reserveRepository.findBySitter(sitter);
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
-        model.addAttribute("reserve",reserve);
         model.addAttribute("pet",pet);
         return "mypage/sitterpage";
     }

@@ -12,10 +12,12 @@ import com.example.demo.domain.repository.SitterRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -105,5 +107,26 @@ public class ReservationServiceImpl implements ReservationService {
         ownerRepository.save(owner);
     }
 
+    @Override
+    @Transactional
+    public void updateReservationStatus() {
+        // 현재 시간
+        LocalDateTime now = LocalDateTime.now();
 
+        // 예약이 진행 중인 상태에서 예약 시간이 지난 예약들 조회
+        List<ReserveEntity> ongoingReservations = reserveRepository.findByStatusAndDateBefore("예약 확정", now);
+
+        // 예약 상태를 '완료'로 업데이트
+        for (ReserveEntity reserve : ongoingReservations) {
+            reserve.setStatus("완료");
+            reserveRepository.save(reserve);
+        }
+    }
+
+    // @Scheduled 어노테이션을 사용하여 주기적으로 예약 상태를 업데이트
+    @Scheduled(cron = "0 0/10 * * * *")  // 매 10분마다 실행
+    @Transactional
+    public void scheduledUpdateReservationStatus() {
+        updateReservationStatus();
+    }
 }
