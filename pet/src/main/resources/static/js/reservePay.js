@@ -31,7 +31,7 @@ function pay() {
     pay_method: "card",
     merchant_uid: "merchant_" + crypto.randomUUID(),
     name: serviceText,
-    amount: 100, // amount
+    amount: amount, // amount
     buyer_email: ownerEmail,
     buyer_name: ownerName
   }, function (rsp) {
