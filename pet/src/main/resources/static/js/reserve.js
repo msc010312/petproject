@@ -294,6 +294,13 @@ window.addEventListener('DOMContentLoaded', () => {
       clearInterval(ac);
     }
   }, 100);
+
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get('type');
+    if (typeParam && serviceTemplates[typeParam]) {
+      const matchedTab = [...tabs].find(t => t.dataset.type === typeParam);
+      if (matchedTab) matchedTab.click();
+    }
 });
 document.querySelectorAll(".details-btn").forEach((btn, index) => {
   btn.addEventListener("click", () => {
