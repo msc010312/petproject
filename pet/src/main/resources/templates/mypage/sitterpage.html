@@ -73,21 +73,27 @@
         <div class="reseach">
             <div th:each="reserve:${ongoingReservations}" th:if="${reserve.sitter == sitter}">
                 <div class="res-card">
-                    <ul>
-                        <li class="type" th:text="${reserve.serviceType}"></li>
-                        <li class="status" th:text="${reserve.status}"></li>
-                    </ul>
-                    <div class="schedule">
-                        <span class="material-symbols-outlined" style="font-size: 15px">calendar_today</span>
-                        <span th:text="${reserve.date}"></span>
+                    <div class="card-top">
+                        <p class="type" th:text="${reserve.serviceType}">서비스 유형</p>
+                        <p class="status" th:text="${reserve.status}">예약 상태</p>
                     </div>
-                    <div class="pet"><img th:src="@{/asset/cat.jpg}" alt="반려동물 이미지"></div>
-                    <div class="na" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
-                    <div class="price" th:text="'케어비용 : ' + ${reserve.payment}"></div>
-                    <div class="noti" th:text="'요청사항 : ' + ${reserve.request}"></div>
+                    <div class="card-mid">
+                        <div class="pet card-img">
+                            <img th:src="@{/asset/cat.jpg}" alt="반려동물 이미지">
+                        </div>
+                        <div class="card-info">
+                            <div class="schedule">
+                                <span class="material-symbols-outlined" style="font-size: 15px">calendar_today</span>
+                                <span th:text="${reserve.date}"></span>
+                            </div>
+                            <div class="na" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
+                            <div class="price" th:text="'케어비용 : ' + ${reserve.payment}"></div>
+                            <div class="noti" th:text="'요청사항 : ' + ${reserve.request}"></div>
+                        </div>
+                    </div>
                     <div class="actions">
-                        <button class="openChatBtn">채팅</button>
-                        <button class="modal-btn" data-type="view1">상세보기</button>
+                        <button class="openChatBtn btn">채팅</button>
+                        <button class="modal-btn btn" data-type="view1">상세보기</button>
                     </div>
                 </div>
             </div>

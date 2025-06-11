@@ -452,97 +452,67 @@ button {
 }
 
 .reseach {
-    display: flex;
-    justify-content: space-around;
-}
-
-.res-card {
-    border: 1px solid;
-    border-radius: 5px;
     position: relative;
 }
 
-.res-card ul {
+.res-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    gap: 20px;
+}
+
+.card-top {
+    position: relative;
     display: flex;
     gap: 10px;
-    list-style: none;
-    padding: 0;
-    margin: 10px;
 }
 
-.res-card .type {
-    background-color: #ccc;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
+.card-top>p {
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
-.res-card .status {
-    background-color: #b9fda4;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
+.type {
+    background: #ccc;
 }
 
-.schedule {
-    font-size: 14px;
-    /* margin-top: 10px; */
-    margin-left: 25%;
+.status {
+    background: #b9fda4;
 }
 
-.schedule>span {
-    font-size: 14px;
-    margin-top: 1px;
+.card-mid{
+    position: relative;
+    display: flex;
+    gap: 30px;
 }
 
-.pet {
-    font-size: 15px;
-    margin-left: 5px;
-    margin-top: -20px;
+.card-img {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    border-radius: 40%;
 }
 
-.na {
-    font-size: 15px;
-    margin-left: 25%;
-    margin-top: -16%;
-}
-
-.price {
-    font-size: 15px;
-    margin-left: 25%;
-}
-
-.time {
-    font-size: 15px;
-    margin-left: 25%;
-}
-
-.serv {
-    font-size: 15px;
-    margin-left: 25%;
+.card-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .actions {
+    position: relative;
     display: flex;
+    gap: 20px;
 }
 
-.actions .openChatBtn {
-    background-color: #daffc1;
-    border: 1px solid;
-}
-
-.actions .modal-btn {
-    background-color: #f4ffc2;
-    border: 1px solid;
-
-}
-
-.res-card .actions button {
-    font-size: medium;
-    width: 250px;
-    height: 30px;
-    border: none;
-    margin-top: 8px;
+.actions>button {
+    flex: 1;
 }
 
 .end-page {
