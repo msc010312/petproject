@@ -415,7 +415,7 @@ button {
     height: auto;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin: 10px 0 10px 0;
 }
 
@@ -451,16 +451,15 @@ button {
     }
 }
 
-.res-card {
-    height: 210px;
-    margin-left: -40%;
-    margin-top: 70px;
+.reseach {
+    display: flex;
+    justify-content: space-around;
+}
 
+.res-card {
     border: 1px solid;
     border-radius: 5px;
     position: relative;
-    /* background-color: #f9f9f9; */
-    /* box-sizing: border-box; */
 }
 
 .res-card ul {
@@ -524,19 +523,15 @@ button {
 }
 
 .actions {
-    /* margin-top: 10px; */
     display: flex;
-    /* border: 1px solid; */
 }
 
 .actions .openChatBtn {
-    margin-left: 3%;
     background-color: #daffc1;
     border: 1px solid;
 }
 
 .actions .modal-btn {
-    margin-left: 5%;
     background-color: #f4ffc2;
     border: 1px solid;
 
