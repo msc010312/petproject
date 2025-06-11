@@ -574,9 +574,9 @@ button {
 .reserve .allres {
     display: flex;
     margin-top: 20px;
+    margin-left: 39.5%;
     margin-bottom: 10px;
     gap: 10px;
-    justify-content: center;
 }
 
 .allres button {
@@ -819,7 +819,6 @@ button {
   align-items: center;
   margin-top: 10px;
   gap: 10px;
-  padding-left: 10px
 }
 
 .pro-card img {
@@ -835,7 +834,7 @@ button {
 }
 
 .pro-card button {
-  margin-left: 350px;
+  margin-left: auto;
   background-color: #f44;
   color: white;
   border: none;

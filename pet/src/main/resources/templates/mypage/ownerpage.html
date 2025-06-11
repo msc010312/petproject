@@ -77,23 +77,21 @@
                 <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
             </ul>
         </div>
-        <div class="reseach">
-            <div th:each="reserve : ${ongoingReservations}">
-                <div class="res-card">
-                    <ul>
-                        <li class="type" th:text="${reserve.serviceType}"></li>
-                        <li class="status" th:text="${reserve.status}"></li>
-                    </ul>
-                    <div class="schedule">
-                        <span class="material-symbols-outlined">calendar_today</span>
-                        <span th:text="${reserve.date}"></span>
-                    </div>
-                    <div class="sit" th:text="${reserve.sitter.user.name} + '시터'"></div>
-                    <div class="price" th:text="${reserve.payment}"></div>
-                    <div class="actions">
-                        <button class="openChatBtn">채팅</button>
-                        <button class="modal-btn" data-type="view1">상세보기</button>
-                    </div>
+        <div th:each="reserve : ${ongoingReservations}">
+            <div class="res-card">
+                <ul>
+                    <li class="type" th:text="${reserve.serviceType}"></li>
+                    <li class="status" th:text="${reserve.status}"></li>
+                </ul>
+                <div class="schedule">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <span th:text="${reserve.date}"></span>
+                </div>
+                <div class="sit" th:text="${reserve.sitter.user.name} + '시터'"></div>
+                <div class="price" th:text="${reserve.payment}"></div>
+                <div class="actions">
+                    <button class="openChatBtn">채팅</button>
+                    <button class="modal-btn" data-type="view1">상세보기</button>
                 </div>
             </div>
         </div>
@@ -137,7 +135,6 @@
                     <li>최근에 이용한 펫시터 목록입니다.</li>
                 </ul>
             </div>
-            <div>
             <div th:each="res : ${completedReservations}">
                 <div class="reservation-item">
                                 <span th:if="${res.sitter != null}"
@@ -146,42 +143,41 @@
                     <span th:text="'날짜 : ' + ${res.date}"></span>
                 </div>
             </div>
+            <div class="chat1">
+                <!-- 모달 버튼 -->
+                <button class="openChatBtn" data-sitter="sitter3">
+                    채팅
+                </button>
             </div>
-<!--            <div class="chat1">-->
-<!--                &lt;!&ndash; 모달 버튼 &ndash;&gt;-->
-<!--                <button class="openChatBtn" data-sitter="sitter3">-->
-<!--                    채팅-->
-<!--                </button>-->
-<!--            </div>-->
         </div>
     </div>
 
-    <!-- 기본 모달 -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeBtn">&times;</span>
-            <div id="modalContentBody">
-                <p>기본 모달 내용</p>
-            </div>
+<!-- 기본 모달 -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <div id="modalContentBody">
+            <p>기본 모달 내용</p>
         </div>
     </div>
-    <!-- 채팅 모달 -->
-    <div id="chatModal" class="chat-modal">
-        <div class="chat-box">
-            <div class="chat-header">
-                <span id="chatWith">채팅</span>
-                <span id="closeChatBtn" class="close">&times;</span>
-            </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input">
-                <input
-                        type="text"
-                        id="chatInput"
-                        placeholder="메시지를 입력하세요"
-                />
-                <button id="sendBtn">전송</button>
-            </div>
+</div>
+<!-- 채팅 모달 -->
+<div id="chatModal" class="chat-modal">
+    <div class="chat-box">
+        <div class="chat-header">
+            <span id="chatWith">채팅</span>
+            <span id="closeChatBtn" class="close">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="메시지를 입력하세요"
+            />
+            <button id="sendBtn">전송</button>
         </div>
     </div>
+</div>
 </div>
 </html>

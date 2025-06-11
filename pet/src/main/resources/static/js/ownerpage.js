@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
          case "petInfo":
            content = `
              <h3>반려동물 정보 등록</h3>
-             <div class="pet-form" style="padding: 10px;font-size: 1.5rem;">
+             <div class="pet-form">
                <label>이름: <input type="text" id="petName" /></label><br>
                <label>품종: <input type="text" id="petKind" /></label><br>
                <label>나이(세): <input type="number" id="petAge" /></label><br>
