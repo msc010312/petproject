@@ -133,26 +133,22 @@
                 </div>
                 <!-- 페이지네이션 -->
                 <div class="allres">
-                    <button class="left material-symbols-outlined">
-                        chevron_left
-                    </button>
-                    <ul class="number">
-                        <li>
-                            <button class="page-btn">1</button>
-                        </li>
-                        <li>
-                            <button class="page-btn">2</button>
-                        </li>
-                        <li>
-                            <button class="page-btn">3</button>
-                        </li>
-                        <li>
-                            <button class="page-btn">4</button>
-                        </li>
-                    </ul>
-                    <button class="right material-symbols-outlined">
-                        chevron_right
-                    </button>
+                    <a th:if="${currentPage > 0}"
+                       th:href="@{/mypage/ownerpage(page=${currentPage - 1})}"
+                       class="page-link">◀ 이전</a>
+                    <span th:if="${currentPage == 0}" class="disabled">◀ 이전</span>
+
+                    <span th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/mypage/ownerpage(page=${pageNum})}"
+                       th:text="${pageNum + 1}"
+                       th:classappend="${pageNum == currentPage} ? ' current' : ''"
+                       class="page-link"></a>
+                </span>
+
+                    <a th:if="${currentPage < totalPages - 1}"
+                       th:href="@{/mypage/ownerpage(page=${currentPage + 1})}"
+                       class="page-link">다음 ▶</a>
+                    <span th:if="${currentPage >= totalPages - 1}" class="disabled">다음 ▶</span>
                 </div>
             </div>
             <!-- chart3 -->

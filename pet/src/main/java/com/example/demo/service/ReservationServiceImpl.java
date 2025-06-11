@@ -37,6 +37,8 @@ public class ReservationServiceImpl implements ReservationService {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    private final int PAGE_SIZE = 2;
+
 
     @Override
     @Transactional
@@ -123,6 +125,18 @@ public class ReservationServiceImpl implements ReservationService {
             reserve.setStatus("완료");
             reserveRepository.save(reserve);
         }
+    }
+
+    @Override
+    public List<ReserveEntity> getAllReserve(int page) {
+        int startRow = page * PAGE_SIZE + 1;
+        int endRow = (page + 1) * PAGE_SIZE;
+        return reserveRepository.ownerPage(startRow, endRow);
+    }
+
+    @Override
+    public int getTotalCount() {
+        return reserveRepository.countTotalreserve();
     }
 
     // @Scheduled 어노테이션을 사용하여 주기적으로 예약 상태를 업데이트
