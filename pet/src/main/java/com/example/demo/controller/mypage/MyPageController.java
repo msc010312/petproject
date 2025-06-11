@@ -92,7 +92,8 @@ public class MyPageController {
     }
 
     @GetMapping("/sitterpage")
-    public String sitterPage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+    public String sitterPage(@AuthenticationPrincipal UserDetails userDetails, Model model,
+                             @RequestParam(value = "page", defaultValue = "0") int page) {
         String email = userDetails.getUsername();
         UserEntity user = userService.findByEmail(email);
         SitterEntity sitter = sitterRepository.findByUser(user);
@@ -105,6 +106,13 @@ public class MyPageController {
                 .filter(reserve -> "예약 확정".equals(reserve.getStatus()))
                 .collect(Collectors.toList());
 
+        int pageSize = 2;
+        int totalPages = (int) Math.ceil((double) ongoingReservations.size() / pageSize);
+        int start = page * pageSize;
+        int end = Math.min(start + pageSize, ongoingReservations.size());
+
+        List<ReserveEntity> pageContent = ongoingReservations.subList(start, end);
+
         // 완료된 예약만 필터링 (완료 상태)
         List<ReserveEntity> completedReservations = reservations.stream()
                 .filter(reserve -> "완료".equals(reserve.getStatus()))
@@ -112,9 +120,11 @@ public class MyPageController {
 
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
-        model.addAttribute("ongoingReservations", ongoingReservations); // 진행중인 예약
+        model.addAttribute("ongoingReservations", pageContent); // 진행중인 예약
         model.addAttribute("completedReservations", completedReservations); // 완료된 예약
         model.addAttribute("pet",pet);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
         return "mypage/sitterpage";
     }
 
