@@ -20,15 +20,16 @@
     <div class="container">
         <div class="icon">📅</div>
         <h1>예약이 완료되었습니다!</h1>
-        <p class="sub-text">예약 확인 이메일이 발송되었습니다<br>예약 내역은 마이페이지에서도 확인하실 수 있습니다</p>
+        <p class="sub-text">예약 내역은 마이페이지에서도 확인하실 수 있습니다</p>
 
         <div class="card">
-            <h2>예약 정보</h2>
-            <div class="card-info">
+<!--            <h2>예약 정보</h2>-->
+<!--            <div class="card-info">-->
 
-            </div>
-            <button class="primary-btn">예약 내역 보기</button>
-            <button class="secondary-btn">홈으로 돌아가기</button>
+<!--            </div>-->
+
+            <button class="primary-btn"><a th:href="@{/mypage}">예약 내역 보기</a></button>
+            <button class="secondary-btn"><a th:href="@{/}">홈으로 돌아가기</a></button>
         </div>
     </div>
 </div>

@@ -71,7 +71,8 @@
             </ul>
         </div>
         <div class="reseach">
-            <div th:each="reserve:${ongoingReservations}" th:if="${reserve.sitter == sitter}">
+            <div class="ongoingReservations" th:each="reserve:${ongoingReservations}"
+                 th:if="${reserve.sitter == sitter}">
                 <div class="res-card">
                     <div class="card-top">
                         <p class="type" th:text="${reserve.serviceType}">서비스 유형</p>
@@ -126,65 +127,49 @@
                 <li>LEE 시터님의 완료된 예약 내역입니다.</li>
             </ul>
         </div>
-        <div th:each="reserve:${completedReservations}" th:if="${reserve.sitter == sitter}" class="res-page"
-             data-page="1">
-            <div class="end-res">
-                <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
-                <div class="en" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
-                <div class="ed" th:text="'기간 : ' + ${reserve.date}"></div>
-                <div class="es" th:text="'이용한 서비스 : ' + ${reserve.serviceType}"></div>
-                <div class="char">
-                    <button class="modal-btn" data-type="view5">후기</button>
+        <div class="resCR">
+            <div class="completedReservations" th:each="reserve:${completedReservations}"
+                 th:if="${reserve.sitter == sitter}">
+                <div class="res-page">
+                    <div class="end-res">
+                        <div class="pet1"><img th:src="@{/asset/dog2.jpg}" alt="반려동물"/></div>
+                        <div class="en" th:each="pet : ${pet}" th:text="'이름 : ' + ${pet.petName}"></div>
+                        <div class="ed" th:text="'기간 : ' + ${reserve.date}"></div>
+                        <div class="es" th:text="'이용한 서비스 : ' + ${reserve.serviceType}"></div>
+                        <div class="char">
+                            <button class="modal-btn" data-type="view5">후기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- 페이지네이션 -->
-        <div class="res-pagination-container">
-            <button th:if="${currentPage > 0}"
-                    th:onclick="location.href=\'items?page=' + ${currentPage -1} + '\'">
-                <span class="left">&lt;</span>
-            </button>
-            <ul class="number">
-                <div th:each="pageNum : ${#numbers.sequence(0, totalPages != null ? totalPages - 1 : 0)}">
-                    <button class="page-btn" th:text="${pageNum + 1}"
-                            th:classappend="${pageNum == currentPage ? 'active' : ''}"
-                            th:onclick="location.href='items?page=' + ${pageNum}"></button>
-                </div>
-            </ul>
-
-            <button th:if="${totalPages != null and currentPage < totalPages -1}"
-                    th:onclick="location.href=\'items?page=' + ${currentPage +1} + '\'">
-                <span class="right">&gt;</span>
-            </button>
+    </div>
+    <!-- 기본 모달 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeBtn">&times;</span>
+            <div id="modalContentBody">
+                <p>기본 모달 내용</p>
+            </div>
         </div>
     </div>
-</div>
-<!-- 기본 모달 -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeBtn">&times;</span>
-        <div id="modalContentBody">
-            <p>기본 모달 내용</p>
+    <!-- 채팅 모달 -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-box">
+            <div class="chat-header">
+                <span id="chatWith">채팅</span>
+                <span id="closeChatBtn" class="close">&times;</span>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="메시지를 입력하세요"
+                />
+                <button id="sendBtn">전송</button>
+            </div>
         </div>
     </div>
-</div>
-<!-- 채팅 모달 -->
-<div id="chatModal" class="chat-modal">
-    <div class="chat-box">
-        <div class="chat-header">
-            <span id="chatWith">채팅</span>
-            <span id="closeChatBtn" class="close">&times;</span>
-        </div>
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input">
-            <input
-                    type="text"
-                    id="chatInput"
-                    placeholder="메시지를 입력하세요"
-            />
-            <button id="sendBtn">전송</button>
-        </div>
-    </div>
-</div>
 </div>
 </html>

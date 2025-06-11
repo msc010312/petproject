@@ -51,6 +51,11 @@ h1 {
     cursor: pointer;
 }
 
+.primary-btn > a {
+    color: #fff;
+    font-size: 16px;
+}
+
 .secondary-btn {
     display: block;
     width: 100%;
@@ -60,4 +65,8 @@ h1 {
     border: 1px solid #ddd;
     font-size: 16px;
     cursor: pointer;
+}
+
+.secondary-btn > a {
+    font-size: 16px;
 }
