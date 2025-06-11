@@ -28,128 +28,128 @@
     <div class="produce">
         <div class="name">
             <img src="/asset/dog1.jpg"/>
-                        <span th:text="'안녕하세요,' + ${owner.user.name} + '님!'"></span>
-                        <ul>
-                            <li>오늘도 반려견과 행복한 하루 되세요</li>
-                        </ul>
-                    </div>
-                    <div class="pet">
+            <span th:text="'안녕하세요,' + ${owner.user.name} + '님!'"></span>
+            <ul>
+                <li>오늘도 반려견과 행복한 하루 되세요</li>
+            </ul>
+        </div>
+        <div class="pet">
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   pets
                 </span>
-                        <span>반려동물 : 2마리</span>
-                    </div>
-                    <div class="review">
+            <span>반려동물 : 2마리</span>
+        </div>
+        <div class="review">
                 <span class="material-symbols-outlined" style="font-size: 16px">
                   star
                 </span>
-                        <span>작성한 리뷰 : 6건</span>
-                    </div>
-                    <div class="reserving">
+            <span>작성한 리뷰 : 6건</span>
+        </div>
+        <div class="reserving">
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   calendar_today
                 </span>
-                        <span>진행중인 예약 : 3건</span>
-                    </div>
-                    <div class="payment-amount">
+            <span>진행중인 예약 : 3건</span>
+        </div>
+        <div class="payment-amount">
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   credit_card
                 </span>
-                        <span th:text="'누적 이용 금액 : ' + ${owner.totalPayment}"></span>
-                    </div>
-                    <div class="btn">
-                        <div class="pro-setting">
-                            <a th:href="@{/mypage/ownerprofile}">프로필 관리</a>
-                        </div>
-                        <div class="pay-amount">
-                            <!-- 모달 버튼 -->
-                            <button class="modal-btn" data-type="pay" th:text="${owner.totalPayment}">결제 내역</button>
-                        </div>
-                    </div>
-                    <!-- chart2 -->
-                </div>
+            <span th:text="'누적 이용 금액 : ' + ${owner.totalPayment}"></span>
+        </div>
+        <div class="btn">
+            <div class="pro-setting">
+                <a th:href="@{/mypage/ownerprofile}">프로필 관리</a>
+            </div>
+            <div class="pay-amount">
+                <!-- 모달 버튼 -->
+                <button class="modal-btn" data-type="pay" th:text="${owner.totalPayment}">결제 내역</button>
+            </div>
+        </div>
+        <!-- chart2 -->
+    </div>
     <!-- 진행 중인 예약 -->
     <div class="reserve">
-                    <div class="reserv">
-                        <span>진행중인 예약</span>
-                        <ul>
-                            <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
-                        </ul>
-                    </div>
-                    <div th:each="reserve : ${ongoingReservations}">
-                        <div class="res-card">
-                            <ul>
-                                <li class="type" th:text="${reserve.serviceType}"></li>
-                                <li class="status" th:text="${reserve.status}"></li>
-                            </ul>
-                            <div class="schedule">
-                                <span class="material-symbols-outlined">calendar_today</span>
-                                <span th:text="${reserve.date}"></span>
-                            </div>
-                            <div class="sit" th:text="${reserve.sitter.user.name} + '시터'"></div>
-                            <div class="price" th:text="${reserve.payment}"></div>
-                            <div class="actions">
-                                <button class="openChatBtn">채팅</button>
-                                <button class="modal-btn" data-type="view1">상세보기</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 페이지네이션 -->
-                    <div class="allres">
-                        <a th:if="${currentPage > 0}"
-                           th:href="@{/mypage/ownerpage(page=${currentPage - 1})}"
-                           class="page-link">◀ 이전</a>
-                        <span th:if="${currentPage == 0}" class="disabled">◀ 이전</span>
+        <div class="reserv">
+            <span>진행중인 예약</span>
+            <ul>
+                <li>현재 진행 중이거나 예정된 예약 내역입니다.</li>
+            </ul>
+        </div>
+        <div th:each="reserve : ${ongoingReservations}">
+            <div class="res-card">
+                <ul>
+                    <li class="type" th:text="${reserve.serviceType}"></li>
+                    <li class="status" th:text="${reserve.status}"></li>
+                </ul>
+                <div class="schedule">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                    <span th:text="${reserve.date}"></span>
+                </div>
+                <div class="sit" th:text="${reserve.sitter.user.name} + '시터'"></div>
+                <div class="price" th:text="${reserve.payment}"></div>
+                <div class="actions">
+                    <button class="openChatBtn">채팅</button>
+                    <button class="modal-btn" data-type="view1">상세보기</button>
+                </div>
+            </div>
+        </div>
+        <!-- 페이지네이션 -->
+        <div class="allres">
+            <a th:if="${currentPage > 0}"
+               th:href="@{/mypage/ownerpage(page=${currentPage - 1})}"
+               class="page-link">◀ 이전</a>
+            <span th:if="${currentPage == 0}" class="disabled">◀ 이전</span>
 
-                        <span th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}">
+            <span th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}">
                     <a th:href="@{/mypage/ownerpage(page=${pageNum})}"
                        th:text="${pageNum + 1}"
                        th:classappend="${pageNum == currentPage} ? ' current' : ''"
                        class="page-link"></a>
                 </span>
 
-                        <a th:if="${currentPage < totalPages - 1}"
-                           th:href="@{/mypage/ownerpage(page=${currentPage + 1})}"
-                           class="page-link">다음 ▶</a>
-                        <span th:if="${currentPage >= totalPages - 1}" class="disabled">다음 ▶</span>
-                    </div>
-                </div>
+            <a th:if="${currentPage < totalPages - 1}"
+               th:href="@{/mypage/ownerpage(page=${currentPage + 1})}"
+               class="page-link">다음 ▶</a>
+            <span th:if="${currentPage >= totalPages - 1}" class="disabled">다음 ▶</span>
+        </div>
+    </div>
     <!-- chart3 -->
     <div class="all-pro">
-                <div class="profil">
-                    <div class="pet-prof">
-                        <span>반려동물 프로필</span>
-                        <ul>
-                            <li>등록된 반려동물 정보입니다.</li>
-                        </ul>
-                        <div class="care">
-                            <button class="modal-btn" data-type="petInfo">관리</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="sitter">
-                    <div class="sit-used">
-                        <span>최근 이용한 시터</span>
-                        <ul>
-                            <li>최근에 이용한 펫시터 목록입니다.</li>
-                        </ul>
-                    </div>
-                    <div th:each="res : ${completedReservations}">
-                        <div class="reservation-item">
-                                <span th:if="${res.sitter != null}"
-                                      th:text="'이름 : ' + ${res.sitter.user.name}"></span><br>
-                            <span th:text="'서비스 : ' + ${res.serviceType}"></span><br>
-                            <span th:text="'날짜 : ' + ${res.date}"></span>
-                        </div>
-                    </div>
-                    <div class="chat1">
-                        <!-- 모달 버튼 -->
-                        <button class="openChatBtn" data-sitter="sitter3">
-                            채팅
-                        </button>
-                    </div>
+        <div class="profil">
+            <div class="pet-prof">
+                <span>반려동물 프로필</span>
+                <ul>
+                    <li>등록된 반려동물 정보입니다.</li>
+                </ul>
+                <div class="care">
+                    <button class="modal-btn" data-type="petInfo">관리</button>
                 </div>
             </div>
+        </div>
+        <div class="sitter">
+            <div class="sit-used">
+                <span>최근 이용한 시터</span>
+                <ul>
+                    <li>최근에 이용한 펫시터 목록입니다.</li>
+                </ul>
+            </div>
+            <div th:each="res : ${completedReservations}">
+                <div class="reservation-item">
+                                <span th:if="${res.sitter != null}"
+                                      th:text="'이름 : ' + ${res.sitter.user.name}"></span><br>
+                    <span th:text="'서비스 : ' + ${res.serviceType}"></span><br>
+                    <span th:text="'날짜 : ' + ${res.date}"></span>
+                </div>
+            </div>
+            <div class="chat1">
+                <!-- 모달 버튼 -->
+                <button class="openChatBtn" data-sitter="sitter3">
+                    채팅
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- 기본 모달 -->
 <div id="myModal" class="modal">
