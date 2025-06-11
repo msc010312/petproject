@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -45,9 +46,22 @@ public class MyPageController {
         SitterEntity sitter = sitterRepository.findByUser(user);
         List<ReserveEntity> sitterReserves = reserveRepository.findBySitter(sitter);
         List<ReserveEntity> reservations = reserveRepository.findByOwner(owner);
+
+        // 진행 중인 예약만 필터링 (예약 확정 상태)
+        List<ReserveEntity> ongoingReservations = reservations.stream()
+                .filter(reserve -> "예약 확정".equals(reserve.getStatus()))
+                .collect(Collectors.toList());
+
+        // 완료된 예약만 필터링 (완료 상태)
+        List<ReserveEntity> completedReservations = reservations.stream()
+                .filter(reserve -> "완료".equals(reserve.getStatus()))
+                .collect(Collectors.toList());
+
         model.addAttribute("owner", owner);
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
+        model.addAttribute("ongoingReservations", ongoingReservations); // 진행중인 예약
+        model.addAttribute("completedReservations", completedReservations); // 완료된 예약
         model.addAttribute("sitterReservations", sitterReserves);
         return "mypage/ownerpage";
     }

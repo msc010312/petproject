@@ -115,18 +115,21 @@ public class ReservationServiceImpl implements ReservationService {
 
         // 예약이 진행 중인 상태에서 예약 시간이 지난 예약들 조회
         List<ReserveEntity> ongoingReservations = reserveRepository.findByStatusAndDateBefore("예약 확정", now);
+        System.out.println("변경 대상 예약 수: " + ongoingReservations.size());
 
         // 예약 상태를 '완료'로 업데이트
         for (ReserveEntity reserve : ongoingReservations) {
+            System.out.println("→ 예약 ID: " + reserve.getReserveId() + ", 현재 상태: " + reserve.getStatus() + ", 시작시간: " + reserve.getDate());
             reserve.setStatus("완료");
             reserveRepository.save(reserve);
         }
     }
 
     // @Scheduled 어노테이션을 사용하여 주기적으로 예약 상태를 업데이트
-    @Scheduled(cron = "0 0/10 * * * *")  // 매 10분마다 실행
+    @Scheduled(cron = "0 0/5 * * * *")  // 매 5분마다 실행
     @Transactional
     public void scheduledUpdateReservationStatus() {
+        System.out.println("Scheduled update started at: " + LocalDateTime.now());
         updateReservationStatus();
     }
 }
