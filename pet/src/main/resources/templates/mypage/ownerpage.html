@@ -112,7 +112,7 @@
                         </ul>
                     </div>
                     <!-- 페이지 1 -->
-                    <div th:each="reserve:${reservations}" class="resev-page" data-page="1">
+                    <div th:each="reserve : ${reservations}" th:if="${reserve.status == '예약 확정'}" class="resev-page" data-page="1">
                         <div class="res-card">
                             <ul>
                                 <span class="type" th:text="${reserve.serviceType}"></span>
@@ -169,7 +169,7 @@
                                 <li>최근에 이용한 펫시터 목록입니다.</li>
                             </ul>
                         </div>
-                        <div th:each="res : ${reservations}">
+                        <div th:each="res : ${reservations}" th:if="${res.status == '완료'}">
                             <div class="reservation-item">
                                 <span th:if="${res.sitter != null}"
                                       th:text="'이름 : ' + ${res.sitter.user.name}"></span><br>
