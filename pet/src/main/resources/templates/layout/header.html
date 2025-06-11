@@ -6,14 +6,14 @@
     <div class="menu">
         <ul>
             <li class="menu-service list">
-                <a href="#">Service</a>
+                <a th:href="@{/reserve}">Service</a>
                 <ul class="sub-menu">
-                    <li class="sub-item"><a th:href="@{/reserve}">Day Care</a></li>
-                    <li class="sub-item"><a th:href="@{/reserve}">Hotelling</a></li>
-                    <li class="sub-item"><a th:href="@{/reserve}">work with pet</a></li>
+                    <li class="sub-item"><a th:href="@{/reserve(type='daycare')}">Day Care</a></li>
+                    <li class="sub-item"><a th:href="@{/reserve(type='hotel')}">Hotelling</a></li>
+                    <li class="sub-item"><a th:href="@{/reserve(type='walk')}">work with pet</a></li>
                 </ul>
             </li>
-            <li class="menu-place list"><a href="#">place</a></li>
+<!--            <li class="menu-place list"><a href="#">place</a></li>-->
             <li class="menu-board list"><a th:href="@{/board}">board</a></li>
         </ul>
     </div>
@@ -39,9 +39,6 @@
                 <form th:action="@{/logout}" method="post">
                     <button type="submit" class="logout btn">로그아웃</button>
                 </form>
-<!--                <form th:action="@{/delete}" method="post">-->
-<!--                    <button type="submit" class="resign btn">회원탈퇴</button>-->
-<!--                </form>-->
                 <button class="mypage btn">
                     <a th:href="@{/mypage}">마이페이지</a>
                 </button>
