@@ -26,7 +26,7 @@
     <div class="board-container">
         <div class="board">
             <div class="board-subject">
-                <span>공지사항</span>
+                <span>자유게시판</span>
             </div>
             <ul class="board-title b-layout">
                 <li class="board-title-num">번호</li>
@@ -55,7 +55,7 @@
                 <button class="add btn" id="addBtn" type="submit">글쓰기</button>
                 <input type="hidden" id="isLoggedIn" th:value="${isLoggedIn}" />
             </div>
-            <div class="paging">
+            <div class="paging" th:if="${!#lists.isEmpty(boardList)}">
                 <a th:if="${currentPage > 0}"
                    th:href="@{/board(page=${currentPage - 1})}"
                    class="page-link">◀ 이전</a>

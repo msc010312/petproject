@@ -16,6 +16,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +55,10 @@ public class ReservationServiceImpl implements ReservationService {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
         // 2. 날짜 파싱
-        LocalDateTime startDateTime = LocalDateTime.parse(dto.getStartDateTime(), formatter);
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.parse(dto.getStartDateTime(), formatter.withZone(ZoneId.of("Asia/Seoul")));
+        LocalDateTime startDateTime = zonedDateTime.toLocalDateTime();
+//        LocalDateTime startDateTime = LocalDateTime.parse(dto.getStartDateTime(), formatter);
         LocalDateTime endDateTime = null;
         if (dto.getEndDateTime() != null && !dto.getEndDateTime().isEmpty()) {
             endDateTime = LocalDateTime.parse(dto.getEndDateTime(), formatter);

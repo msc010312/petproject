@@ -52,11 +52,15 @@ public class MyPageController {
         SitterEntity sitter = sitterRepository.findByUser(user);
         List<ReserveEntity> sitterReserves = reserveRepository.findBySitter(sitter);
         List<ReserveEntity> reservations = reserveRepository.findByOwner(owner);
+        List<PetEntity> pets = petRepository.findByOwner(owner);
 
         // 진행 중인 예약만 필터링
         List<ReserveEntity> ongoingReservations = reservations.stream()
                 .filter(reserve -> "예약 확정".equals(reserve.getStatus()))
                 .collect(Collectors.toList());
+
+        int petCount = pets.size();
+        int ongoingCount = ongoingReservations.size();
         
         int pageSize = 2;
         int totalPages = (int) Math.ceil((double) ongoingReservations.size() / pageSize);
@@ -77,6 +81,8 @@ public class MyPageController {
         model.addAttribute("sitterReservations", sitterReserves);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        model.addAttribute("petCount", petCount);
+        model.addAttribute("ongoingCount", ongoingCount);
 
         return "mypage/ownerpage";
     }
@@ -106,6 +112,9 @@ public class MyPageController {
                 .filter(reserve -> "예약 확정".equals(reserve.getStatus()))
                 .collect(Collectors.toList());
 
+
+        int ongoingCount = ongoingReservations.size();
+
         int pageSize = 2;
         int totalPages = (int) Math.ceil((double) ongoingReservations.size() / pageSize);
         int start = page * pageSize;
@@ -118,6 +127,8 @@ public class MyPageController {
                 .filter(reserve -> "완료".equals(reserve.getStatus()))
                 .collect(Collectors.toList());
 
+        int completeCount = completedReservations.size();
+
         model.addAttribute("sitter", sitter);
         model.addAttribute("reservations", reservations);
         model.addAttribute("ongoingReservations", pageContent); // 진행중인 예약
@@ -125,6 +136,8 @@ public class MyPageController {
         model.addAttribute("pet",pet);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
+        model.addAttribute("ongoingCount", ongoingCount);
+        model.addAttribute("completeCount", completeCount);
         return "mypage/sitterpage";
     }
 

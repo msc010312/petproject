@@ -506,6 +506,10 @@ button {
     border-radius: 40%;
 }
 
+.card-img>img {
+    margin: 0;
+}
+
 .card-info {
     position: relative;
     display: flex;

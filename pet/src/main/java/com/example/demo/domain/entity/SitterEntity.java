@@ -1,18 +1,16 @@
 package com.example.demo.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "pet_sitter")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
+@ToString(onlyExplicitlyIncluded = true)
 public class SitterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sitter_seq")

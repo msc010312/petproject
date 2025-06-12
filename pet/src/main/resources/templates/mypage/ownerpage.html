@@ -28,7 +28,7 @@
     <!-- chart1 -->
     <div class="produce">
         <div class="name">
-            <img src="/asset/dog1.jpg"/>
+            <img th:src="${owner.user.profileImageUrl != null ? owner.user.profileImageUrl : '/path/to/default-image.jpg'}"/>
             <span th:text="'안녕하세요, ' + ${owner.user.name} + '님!'"></span>
             <ul>
                 <li>오늘도 반려견과 행복한 하루 되세요</li>
@@ -38,19 +38,19 @@
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   pets
                 </span>
-            <span>반려동물 : 2 마리</span>
+            <span>반려동물 : <span th:text="${petCount}">0</span> 마리</span>
         </div>
         <div class="review">
                 <span class="material-symbols-outlined" style="font-size: 16px">
                   star
                 </span>
-            <span>작성한 리뷰 : 6 건</span>
+            <span>작성한 리뷰 : 0 건</span>
         </div>
         <div class="reserving">
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   calendar_today
                 </span>
-            <span>진행중인 예약 : 3 건</span>
+            <span>진행중인 예약 : <span th:text="${ongoingCount}">0</span> 건</span>
         </div>
         <div class="payment-amount">
                 <span class="material-symbols-outlined" style="font-size: 15px">

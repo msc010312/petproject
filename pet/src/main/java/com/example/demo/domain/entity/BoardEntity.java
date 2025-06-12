@@ -25,7 +25,7 @@ public class BoardEntity {
     @Lob
     @Column(name = "content", nullable = false)
     private String content;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;
     @Column(name = "view_count", nullable = false)

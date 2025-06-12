@@ -30,7 +30,9 @@
     <!-- chart1 -->
     <div class="produce">
         <div class="name">
-            <div class="dog1"><img src="../../asset/sitter2.jpg"/></div>
+            <div class="dog1">
+                <img th:src="${sitter.user.profileImageUrl != null ? sitter.user.profileImageUrl : '/path/to/default-image.jpg'}"/>
+            </div>
             <span th:text="'반갑습니다, ' + ${sitter.user.name} + '님!'"></span>
             <ul>
                 <li>오늘도 반려동물에게 즐거운 하루를 선사해 주세요</li>
@@ -40,19 +42,19 @@
                 <span class="material-symbols-outlined" style="font-size: 16px">
                   star
                 </span>
-            <span>작성된 후기 : *건</span>
+            <span>작성된 후기 : 0건</span>
         </div>
         <div class="reserving">
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   calendar_today
                 </span>
-            <span>진행 중인 예약 : *건</span>
+            <span>진행 중인 예약 : <span th:text="${ongoingCount}">0</span>건</span>
         </div>
         <div class="payment-amount">
                 <span class="material-symbols-outlined" style="font-size: 15px">
                   credit_card
                 </span>
-            <span>이 달 금액 : *원</span>
+            <span>완료된 예약 : <span th:text="${completeCount}">0</span>건</span>
         </div>
         <div class="btn">
             <div class="pro-setting"><a th:href="@{/mypage/sitterprofile}">프로필 관리</a></div>

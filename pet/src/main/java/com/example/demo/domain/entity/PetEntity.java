@@ -35,7 +35,7 @@ public class PetEntity {
     @Lob
     private String caution;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private OwnerEntity owner;
 }

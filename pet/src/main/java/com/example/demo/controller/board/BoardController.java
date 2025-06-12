@@ -91,6 +91,7 @@ public class BoardController {
         UserEntity loginUser = userService.findByEmail(principal.getName());
         Long loginUserId = loginUser.getUserId();
 
+
         // 권한 체크 (작성자 또는 ADMIN인지 확인)
         if (!board.getUser().getUserId().equals(loginUserId) && !loginUser.getRole().equals("ROLE_ADMIN")) {
             attr.addFlashAttribute("delSuccess", "삭제 권한이 없습니다.");
